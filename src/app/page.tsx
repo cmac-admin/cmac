@@ -1,8 +1,14 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="home-page">
       <section className="hero">
-        <div className="hero__image-layer" />
+        <div className="hero__slideshow" aria-hidden="true">
+          <div className="hero__slide hero__slide--one" />
+          <div className="hero__slide hero__slide--two" />
+          <div className="hero__slide hero__slide--three" />
+        </div>
 
         <div className="hero__meta">
           <p>Est. 2014</p>
@@ -26,9 +32,20 @@ export default function Home() {
               Through music, visual arts, scholarships, and family partnership,
               CMAC helps every student shine in and beyond the classroom.
             </p>
-            <a href="/get-involved">Support This Season</a>
+            <Link href="/get-involved">Support This Season</Link>
           </div>
         </article>
+      </section>
+
+      <section className="announcement-banner">
+        <p>
+          Membership applications are now open for the 2026–2027 school year.
+          Join a community of musicians, educators, and patrons sustaining arts
+          education on Long Island.
+        </p>
+        <Link href="/get-involved" className="announcement-banner__button">
+          Join Now
+        </Link>
       </section>
 
       <section className="intro">
