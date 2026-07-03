@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const schools = [
   "Boyle Road Elementary",
   "Terryville Road Elementary",
-  "John F. Kennedy Middle School",
+  "JFK Middle Shchool",
   "Comsewogue High School",
 ];
 
@@ -26,14 +28,22 @@ export default function OrderHerePage() {
         <div className="school-grid">
           {schools.map((school) => (
             <article key={school} className="school-card">
-              <h3>{school}</h3>
+              <h3
+                className={
+                  school === "JFK Middle Shchool"
+                    ? "school-card__title school-card__title--long"
+                    : "school-card__title"
+                }
+              >
+                {school}
+              </h3>
               <div className="order-buttons">
-                <a href="/get-involved" className="order-button">
+                <Link href="/get-involved" className="order-button">
                   Concert Flowers
-                </a>
-                <a href="/get-involved" className="order-button">
-                  Drama Ornament
-                </a>
+                </Link>
+                <Link href="/get-involved" className="order-button">
+                  Drama Ornaments
+                </Link>
               </div>
             </article>
           ))}

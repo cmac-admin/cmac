@@ -26,6 +26,19 @@ export default function TeacherGrantsPage() {
           </a>
         </p>
       </section>
+
+      <section className="content-card">
+        <h2>Previous Grant Winners</h2>
+        <ul className="winner-list">
+          <li>
+            <strong>2026:</strong> To Be Announced...
+          </li>
+          <li>
+            <strong>2025:</strong> Ms. Daly-Greco, Art Teacher at JFK Middle
+            School & Clinton Avenue.
+          </li>
+        </ul>
+      </section>
     </main>
   );
 }
