@@ -1,10 +1,14 @@
-const sponsorPlaceholders = [
-  "Sponsor Logo 1",
-  "Sponsor Logo 2",
-  "Sponsor Logo 3",
-  "Sponsor Logo 4",
-  "Sponsor Logo 5",
-  "Sponsor Logo 6",
+const sponsors = [
+  {
+    name: "ONE RIVER - Port Jefferson",
+    website: "https://portjefferson.oneriverschool.com/",
+    logo: "/cmac/one-river-logo-orange.png",
+  },
+  { name: "Sponsor Logo 2" },
+  { name: "Sponsor Logo 3" },
+  { name: "Sponsor Logo 4" },
+  { name: "Sponsor Logo 5" },
+  { name: "Sponsor Logo 6" },
 ];
 
 export default function SponsorsPage() {
@@ -26,10 +30,29 @@ export default function SponsorsPage() {
           music and arts programs.
         </p>
         <div className="sponsor-grid">
-          {sponsorPlaceholders.map((name) => (
-            <article key={name} className="sponsor-tile">
-              <div className="sponsor-logo-placeholder">Logo</div>
-              <p>{name}</p>
+          {sponsors.map((sponsor) => (
+            <article key={sponsor.name} className="sponsor-tile">
+              {sponsor.website ? (
+                <a
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="sponsor-link"
+                >
+                  <div className="sponsor-logo-placeholder sponsor-logo-placeholder--image">
+                    <img
+                      src={sponsor.logo}
+                      alt={`${sponsor.name} logo`}
+                      className="sponsor-logo-image"
+                    />
+                  </div>
+                </a>
+              ) : (
+                <>
+                  <div className="sponsor-logo-placeholder">Logo</div>
+                  <p>{sponsor.name}</p>
+                </>
+              )}
             </article>
           ))}
         </div>

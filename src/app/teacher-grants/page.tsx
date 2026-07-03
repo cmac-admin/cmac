@@ -11,7 +11,7 @@ export default function TeacherGrantsPage() {
       </section>
 
       <section className="content-card">
-        <h2>Grant Details</h2>
+        <h2 className="center-heading">Grant Details</h2>
         <ul className="info-list">
           <li>Grant application due by Saturday, May 1, 2027.</li>
           <li>Selected teacher(s) receive a CMAC grant award.</li>
@@ -28,7 +28,7 @@ export default function TeacherGrantsPage() {
       </section>
 
       <section className="content-card">
-        <h2>Previous Grant Winners</h2>
+        <h2 className="center-heading">Previous Grant Winners</h2>
         <ul className="winner-list">
           <li>
             <strong>2026:</strong> To Be Announced...
