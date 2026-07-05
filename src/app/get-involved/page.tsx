@@ -23,10 +23,20 @@ export default function GetInvolvedPage() {
               </a>
               .
             </p>
-            <div className="qr-placeholder" aria-label="QR code placeholder">
-              <p>QR CODE</p>
-              <span>@CMAC-Comsewogue</span>
-            </div>
+            <img
+              className="qr-image"
+              src="/cmac/cmac-venmo-qr.png"
+              alt="CMAC Venmo QR code"
+            />
+          </article>
+          <article>
+            <h3>Zelle</h3>
+            <p>Scan this code in your banking app to donate via Zelle.</p>
+            <img
+              className="qr-image"
+              src="/cmac/cmac-zelle-qr.png"
+              alt="CMAC Zelle QR code"
+            />
           </article>
           <article>
             <h3>Checks</h3>
@@ -68,55 +78,29 @@ export default function GetInvolvedPage() {
       <section className="content-card">
         <h2>Membership Form</h2>
         <p className="muted-copy">
-          Keep this polished quick-entry form, then continue to our official
-          Google Form for final submission.
+          Complete the full official CMAC membership form below.
         </p>
-        <form
-          className="membership-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
-          target="_blank"
-        >
-          <label>
-            Full Name
-            <input type="text" name="fullName" placeholder="Your name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" placeholder="name@email.com" />
-          </label>
-          <label>
-            Membership Level
-            <select name="membershipLevel" defaultValue="">
-              <option value="" disabled>
-                Select a level
-              </option>
-              <option>Individual — $25/year</option>
-              <option>Family — $40/year</option>
-              <option>Patron — $75/year</option>
-              <option>Corporate Sponsor — $150/year</option>
-            </select>
-          </label>
-          <label>
-            Notes
-            <textarea
-              name="notes"
-              rows={4}
-              placeholder="Any additional details..."
-            />
-          </label>
-          <p className="muted-copy">
-            Submission is collected through the official Google Form.
-          </p>
-          <button type="submit">Continue to Official Membership Form</button>
-        </form>
+        <div className="form-embed form-embed--membership">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform?embedded=true"
+            width="100%"
+            height="1850"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+            title="CMAC Membership Form"
+          >
+            Loading membership form…
+          </iframe>
+        </div>
         <p className="subpage-link">
-          <a href="https://www.comsewoguemusicandarts.org/join-cmac/">
-            View previous Join CMAC page
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform">
+            Open membership form in a new tab
           </a>
         </p>
       </section>
 
-      <section className="content-card">
+      <section className="content-card" id="mailing-list">
         <h2>Join Our Mailing List</h2>
         <p className="muted-copy">
           Get updates on fundraisers, student events, scholarship windows, and

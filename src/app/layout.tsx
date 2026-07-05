@@ -50,6 +50,9 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="site-footer">
+          <p className="site-footer__mailing">
+            <Link href="/get-involved#mailing-list">JOIN OUR MAILING LIST</Link>
+          </p>
           <div className="site-footer__social">
             <p>Follow Us</p>
             <div className="site-footer__icons">

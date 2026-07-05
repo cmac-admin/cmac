@@ -22,7 +22,7 @@ export default function Home() {
               <span />
               Now Playing
             </p>
-            <time>2025 — 26</time>
+            <time>2026 — 27</time>
           </header>
 
           <div className="hero-card__visual" />

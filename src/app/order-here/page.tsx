@@ -38,10 +38,20 @@ export default function OrderHerePage() {
                 {school}
               </h3>
               <div className="order-buttons">
-                <Link href="/get-involved" className="order-button">
+                <Link
+                  href="/order-form"
+                  className="order-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Concert Flowers
                 </Link>
-                <Link href="/get-involved" className="order-button">
+                <Link
+                  href="/order-form"
+                  className="order-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Drama Ornaments
                 </Link>
               </div>

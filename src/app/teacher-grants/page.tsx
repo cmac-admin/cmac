@@ -20,9 +20,15 @@ export default function TeacherGrantsPage() {
             learning and arts participation.
           </li>
         </ul>
+        <p className="section-label">Eligibility</p>
+        <ul className="eligibility-list eligibility-list--letters">
+          <li>A.</li>
+          <li>B.</li>
+          <li>C.</li>
+        </ul>
         <p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform">
-            Apply for teacher grant
+            APPLY FOR TEACHER GRANT
           </a>
         </p>
       </section>
