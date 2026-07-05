@@ -11,7 +11,7 @@ export default function Home() {
         </div>
 
         <div className="hero__meta">
-          <p>Est. 2014</p>
+          <p>Est. 2023</p>
           <span />
           <p>Suffolk Non-Profit</p>
         </div>
