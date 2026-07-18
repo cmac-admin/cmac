@@ -504,9 +504,10 @@ a {
 }
 
 .subpage-hero {
-  background: linear-gradient(90deg, #0f151d 0%, #182a3f 100%);
-  color: #eee8dc;
+  background: linear-gradient(180deg, #ece9e2 0%, #e7e4de 100%);
+  color: var(--ink);
   padding: clamp(1.2rem, 2.2vw, 2rem);
+  border: 1px solid #c7c4bd;
   border-radius: 0.4rem;
 }
 
@@ -514,7 +515,7 @@ a {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--gold);
+  color: var(--navy);
   font-size: 0.84rem;
 }
 
