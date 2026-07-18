@@ -70,7 +70,7 @@ export default function GetInvolvedPage() {
           </article>
           <article className="membership-tier">
             <h3>Corporate Sponsor</h3>
-            <p>$150/year</p>
+            <p>$150/year - Business logo will appear on our website as a sponsor.</p>
           </article>
         </div>
       </section>
@@ -106,6 +106,7 @@ export default function GetInvolvedPage() {
           Get updates on fundraisers, student events, scholarship windows, and
           new CMAC announcements.
         </p>
+        <p className="coming-soon-banner">COMING SOON</p>
         <form className="membership-form mailing-list-form">
           <label>
             Name
@@ -115,7 +116,7 @@ export default function GetInvolvedPage() {
             Email
             <input type="email" name="mailEmail" placeholder="you@email.com" />
           </label>
-          <button type="button">Join Mailing List</button>
+          <button type="button" disabled>Join Mailing List</button>
         </form>
       </section>
     </main>

@@ -27,7 +27,7 @@ export default function ScholarshipsPage() {
               <td>
                 CMAC scholarship winner(s) will be required to submit an
                 acceptance letter from the college or university of their
-                choice. The fund will not be released without an acceptance
+                choice. The funds will not be released without an acceptance
                 letter.
               </td>
             </tr>

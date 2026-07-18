@@ -1097,6 +1097,23 @@ a {
   background: #205084;
 }
 
+.membership-form button:disabled {
+  background: #6e7681;
+  cursor: not-allowed;
+}
+
+.coming-soon-banner {
+  margin: 0.8rem 0 0;
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.25rem;
+  background: #f4be53;
+  color: #1f252f;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .form-embed {
   margin-top: 0.95rem;
   border: 1px solid #d0c9bc;
