@@ -64,6 +64,7 @@ export default function AboutPage() {
             <ul className="info-list">
               <li>Annmarie Kosak</li>
               <li>James Perrone</li>
+              <li>Michael Provenzale</li>
             </ul>
           </div>
         </div>

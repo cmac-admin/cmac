@@ -82,6 +82,9 @@ export default function RootLayout({
           <p className="site-footer__copyright">
             © Copyright Comsewogue Music and Arts. All Rights Reserved. Privacy
             Policy {"|"} <Link href="/sitemap">Sitemap</Link>
+            <br />
+            Webmaster:{" "}
+            <a href="mailto:webmaster@webmaster.com">webmaster@webmaster.com</a>
           </p>
         </footer>
       </body>
