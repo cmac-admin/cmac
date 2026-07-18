@@ -95,6 +95,7 @@ export default function NewsPage() {
           Stay connected for CMAC announcements, event updates, and scholarship
           reminders.
         </p>
+        <p className="coming-soon-banner">COMING SOON</p>
         <form className="membership-form mailing-list-form">
           <label>
             Name
@@ -104,7 +105,7 @@ export default function NewsPage() {
             Email
             <input type="email" name="mailEmail" placeholder="you@email.com" />
           </label>
-          <button type="button">Join Email List</button>
+          <button type="button" disabled>Join Email List</button>
         </form>
       </section>
     </main>
