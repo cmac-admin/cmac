@@ -48,11 +48,21 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="intro">
-        <p>
-          We strengthen Comsewogue’s arts ecosystem with year-round programs,
-          funding, and community support for students and educators.
-        </p>
+      <section className="impact-stats" aria-label="CMAC impact at a glance">
+        <article>
+          <p className="impact-stats__value">2023</p>
+          <p className="impact-stats__label">Founded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">4 Schools</p>
+          <p className="impact-stats__label">Active Event Support</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">2 Funding Paths</p>
+          <p className="impact-stats__label">
+            Student Scholarships + Teacher Grants
+          </p>
+        </article>
       </section>
 
       <section className="grid">

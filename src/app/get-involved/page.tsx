@@ -11,7 +11,139 @@ export default function GetInvolvedPage() {
       </section>
 
       <section className="content-card">
-        <h2>Ways to Support</h2>
+        <h2>Ways to Give</h2>
+        <p className="muted-copy">
+          Select an option below to jump to details.
+        </p>
+        <div className="give-nav-grid">
+          <a className="give-nav-link" href="#yearly-membership">
+            1. Yearly Membership
+          </a>
+          <a className="give-nav-link" href="#one-time-donation">
+            2. One-Time Donation
+          </a>
+          <a className="give-nav-link" href="#monthly-giving">
+            3. Monthly Giving
+          </a>
+          <a className="give-nav-link" href="#corporate-sponsorships">
+            4. Corporate Sponsorships
+          </a>
+          <a className="give-nav-link" href="#tribute-gifts">
+            5. Tribute Gifts
+          </a>
+          <a className="give-nav-link" href="#matching-gifts">
+            6. Matching Gifts
+          </a>
+          <a className="give-nav-link" href="#fundraising-sales">
+            7. Fundraising Sales
+          </a>
+          <a className="give-nav-link" href="#volunteer">
+            8. Volunteer
+          </a>
+        </div>
+      </section>
+
+      <section className="content-card">
+        <h2>Giving Option Details</h2>
+        <div className="give-detail-grid">
+          <article id="yearly-membership" className="give-detail-card">
+            <h3>1. Yearly Membership</h3>
+            <p>Join today to become a member of CMAC.</p>
+          </article>
+
+          <article id="one-time-donation" className="give-detail-card">
+            <h3>2. One-Time Donation</h3>
+            <p>
+              Make a single contribution to support CMAC&apos;s mission.
+            </p>
+          </article>
+
+          <article id="monthly-giving" className="give-detail-card">
+            <h3>3. Monthly Giving</h3>
+            <p>
+              Become a CMAC Sustaining Supporter. Your recurring gift provides
+              stable funding for student scholarships and teacher grants.
+            </p>
+          </article>
+
+          <article id="corporate-sponsorships" className="give-detail-card">
+            <h3>4. Corporate Sponsorships</h3>
+            <p>
+              Local businesses can support CMAC through sponsorship packages
+              that include:
+            </p>
+            <ul>
+              <li>Logo placement on our site</li>
+              <li>Community visibility</li>
+              <li>Event recognition</li>
+            </ul>
+          </article>
+
+          <article id="tribute-gifts" className="give-detail-card">
+            <h3>5. Tribute Gifts</h3>
+            <p>
+              Honor a student or loved one with a donation in their name.
+              Tribute gifts can be recognized on our website or at events.
+            </p>
+          </article>
+
+          <article id="matching-gifts" className="give-detail-card">
+            <h3>6. Matching Gifts</h3>
+            <p>
+              Check with your employer about matching charitable donations.
+              Contact your HR department to double your impact.
+            </p>
+          </article>
+
+          <article id="fundraising-sales" className="give-detail-card">
+            <h3>7. Fundraising Sales</h3>
+            <p>
+              At most concerts and drama productions, CMAC offers handcrafted
+              performance-night gifts that directly support our scholarships and
+              grants. These items celebrate your performer while fueling the
+              arts in our district.
+            </p>
+            <p>A few examples include:</p>
+            <ul>
+              <li>
+                <strong>Personalized Ornaments:</strong> themed keepsakes
+                created for each show to commemorate your student&apos;s
+                performance.
+              </li>
+              <li>
+                <strong>Fresh Flower Bouquets:</strong> ready for pickup at the
+                show, making concert night effortless and memorable.
+              </li>
+              <li>
+                <strong>Kisses for the Cast:</strong> a fun, heartfelt way to
+                send encouragement backstage while supporting CMAC.
+              </li>
+            </ul>
+          </article>
+
+          <article id="volunteer" className="give-detail-card">
+            <h3>8. Volunteer</h3>
+            <p>
+              Volunteering is one of the most meaningful ways to support CMAC
+              and the talented students who bring art, music, and theater to
+              life in our district.
+            </p>
+            <p>
+              Whether you help at the CMAC table or assist with fundraising
+              items, every volunteer makes a difference - and every role helps
+              CMAC continue to provide scholarships and grants within our
+              district.
+            </p>
+            <p>
+              Fill out our membership application to become a part of CMAC
+              today.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="content-card">
+        <h2>Direct Donation Methods</h2>
         <div className="split-grid">
           <article>
             <h3>Venmo</h3>

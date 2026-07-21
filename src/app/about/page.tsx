@@ -10,6 +10,28 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section
+        className="impact-stats impact-stats--compact"
+        aria-label="CMAC impact highlights"
+      >
+        <article>
+          <p className="impact-stats__value">2023</p>
+          <p className="impact-stats__label">Founded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">4 Schools</p>
+          <p className="impact-stats__label">District Event Support</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">X</p>
+          <p className="impact-stats__label">Students Supported</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">$X</p>
+          <p className="impact-stats__label">Scholarships Awarded</p>
+        </article>
+      </section>
+
       <section className="content-card">
         <h2>Our Mission</h2>
         <p>

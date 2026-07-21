@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Merriweather, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+
+const bodyFont = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const headingFont = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["400", "700", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Comsewogue Music & Arts",
@@ -14,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         <Link href="/" className="floating-logo" aria-label="CMAC Home">
           <img
             src="/cmac/cmac-logo.png"
@@ -41,6 +55,7 @@ export default function RootLayout({
           <nav className="menu-bar main-nav" aria-label="Primary">
             <Link href="/about">About</Link>
             <Link href="/get-involved">Get Involved</Link>
+            <Link href="/events">Events</Link>
             <Link href="/scholarships">Scholarships</Link>
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/news">News</Link>
