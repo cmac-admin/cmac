@@ -4,6 +4,7 @@ const siteLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/get-involved", label: "Get Involved" },
+  { href: "/events", label: "Events" },
   { href: "/scholarships", label: "Scholarships" },
   { href: "/teacher-grants", label: "Teacher Grants" },
   { href: "/news", label: "News" },
