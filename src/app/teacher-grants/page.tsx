@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Teacher Grants",
+  description:
+    "CMAC teacher grants fund innovative arts classroom projects in the Comsewogue School District. Apply by June 30, 2027.",
+  openGraph: {
+    title: "Teacher Grants | Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC provides grants to Comsewogue music and arts teachers to fund high-impact classroom projects. Apply by June 30, 2027.",
+    url: "https://www.comsewoguemusicandarts.org/teacher-grants",
+  },
+};
+
 export default function TeacherGrantsPage() {
   return (
     <main className="subpage">
@@ -16,7 +30,7 @@ export default function TeacherGrantsPage() {
           <tbody>
             <tr>
               <th scope="row">Application Deadline</th>
-              <td>Saturday, May 1, 2027</td>
+              <td>JUNE 30, 2027</td>
             </tr>
             <tr>
               <th scope="row">Award</th>

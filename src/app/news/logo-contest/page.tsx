@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Logo Contest",
+  description:
+    "Read the story of CMAC's 2023 logo contest — won by Geana Ottenwalder — and how our official logo came to life.",
+  openGraph: {
+    title: "Logo Contest | Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC's official logo was born from a 2023 student contest. Read about winner Geana Ottenwalder and the story behind our brand.",
+    url: "https://www.comsewoguemusicandarts.org/news/logo-contest",
+  },
+};
 
 export default function LogoContestStoryPage() {
   return (

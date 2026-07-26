@@ -16,9 +16,33 @@ const headingFont = Merriweather({
   display: "swap",
 });
 
+const siteUrl = "https://www.comsewoguemusicandarts.org";
+
 export const metadata: Metadata = {
-  title: "Comsewogue Music & Arts",
-  description: "Comsewogue Music and Arts Connection",
+  title: {
+    default: "Comsewogue Music & Arts Corp.",
+    template: "%s | CMAC",
+  },
+  description:
+    "Comsewogue Music & Arts Corp. (CMAC) is a 501(c) non-profit supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    siteName: "Comsewogue Music & Arts Corp.",
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: "Comsewogue Music & Arts Corp.",
+    description:
+      "Supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
+    images: [
+      {
+        url: "/cmac/cmac-logo.png",
+        width: 400,
+        height: 400,
+        alt: "Comsewogue Music and Arts Connection logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

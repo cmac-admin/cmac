@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Comsewogue Music & Arts Corp. — our mission, board members, and commitment to supporting students in grades 3–12 across the Comsewogue School District.",
+  openGraph: {
+    title: "About CMAC | Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC is a 501(c) non-profit dedicated to supporting student artists and musicians in the Comsewogue School District through scholarships, grants, and community events.",
+    url: "https://www.comsewoguemusicandarts.org/about",
+  },
+};
+
 export default function AboutPage() {
   return (
     <main className="subpage">

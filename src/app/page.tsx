@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "CMAC is a 501(c) non-profit celebrating and funding arts education in the Comsewogue School District. Scholarships, teacher grants, concerts, and more.",
+  openGraph: {
+    title: "Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC celebrates and funds arts education in the Comsewogue School District — scholarships, teacher grants, concerts, and community events.",
+    url: "https://www.comsewoguemusicandarts.org",
+  },
+};
 
 export default function Home() {
   return (

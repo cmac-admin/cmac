@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "News",
+  description:
+    "The latest announcements, student highlights, and updates from Comsewogue Music & Arts Corp.",
+  openGraph: {
+    title: "News | Comsewogue Music & Arts Corp.",
+    description:
+      "Stay up to date with CMAC announcements, student achievements, scholarship news, and community highlights.",
+    url: "https://www.comsewoguemusicandarts.org/news",
+  },
+};
 
 export default function NewsPage() {
   return (
