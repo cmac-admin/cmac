@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Scholarships",
+  description:
+    "CMAC offers scholarships to Comsewogue students in grades 12 pursuing music, visual arts, and creative fields. Learn about eligibility and how to apply.",
+  openGraph: {
+    title: "Scholarships | Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC awards scholarships to support Comsewogue students pursuing music, visual arts, and creative careers. See eligibility requirements and application details.",
+    url: "https://www.comsewoguemusicandarts.org/scholarships",
+  },
+};
+
 export default function ScholarshipsPage() {
   return (
     <main className="subpage">

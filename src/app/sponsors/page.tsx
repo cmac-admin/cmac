@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sponsors",
+  description:
+    "Thank you to the community sponsors who make CMAC's mission possible. Interested in sponsoring? Learn about partnership opportunities.",
+  openGraph: {
+    title: "Sponsors | Comsewogue Music & Arts Corp.",
+    description:
+      "CMAC thanks its community sponsors for making student scholarships and arts programs possible. Learn how your business can get involved.",
+    url: "https://www.comsewoguemusicandarts.org/sponsors",
+  },
+};
+
 const sponsors = [
   {
     name: "ONE RIVER - Port Jefferson",

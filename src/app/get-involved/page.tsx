@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Get Involved",
+  description:
+    "Join CMAC! Become a member, donate, volunteer, or sponsor. Every contribution directly supports student scholarships and teacher grants in the Comsewogue School District.",
+  openGraph: {
+    title: "Get Involved | Comsewogue Music & Arts Corp.",
+    description:
+      "Join CMAC through membership, donations, volunteering, or corporate sponsorship. Your support funds scholarships and teacher grants for Comsewogue students.",
+    url: "https://www.comsewoguemusicandarts.org/get-involved",
+  },
+};
+
 export default function GetInvolvedPage() {
   return (
     <main className="subpage">

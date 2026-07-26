@@ -1,3 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Events",
+  description:
+    "CMAC supports music concerts, drama productions, and art shows across all four Comsewogue schools every year. See the full list of annual performances and events.",
+  openGraph: {
+    title: "Events | Comsewogue Music & Arts Corp.",
+    description:
+      "Explore the concerts, drama productions, and art shows CMAC proudly supports each year across the Comsewogue School District.",
+    url: "https://www.comsewoguemusicandarts.org/events",
+  },
+};
+
 export default function EventsPage() {
   return (
     <main className="subpage">
