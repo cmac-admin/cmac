@@ -24,6 +24,7 @@ type OrderRow = {
 const ORDER_FEED_URL = "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
 
 const ALL_EVENTS: EventEntry[] = [
+  { isoDate: "2025-06-25", time: "TBD",      name: "Last Day of School",                       school: "Comsewogue High School",           schoolShort: "CHS",      location: "All Schools",             type: "District",      cmacTable: "No",  formStatus: "TBD",    notes: "Test past event" },
   { isoDate: "2026-11-13", time: "7:00 PM",  name: "NYSCAME All-County Concert",               school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "No",  formStatus: "TBD",    notes: "All-county event" },
   { isoDate: "2026-11-24", time: "TBD",       name: "JFK Fall Fine Art Showcase",               school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Art Show",      cmacTable: "TBD", formStatus: "TBD",    notes: "Confirm time" },
   { isoDate: "2026-12-09", time: "6:30 PM",  name: "Boyle Winter Concert",                     school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "JFK Middle School",       type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
