@@ -2,17 +2,17 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-type EventPlan = {
-  name: string;
-  date: string;
+type EventEntry = {
+  isoDate: string;
   time: string;
-  location: string;
-  formStatus: "Open" | "Closed";
-};
-
-type SchoolPlan = {
+  name: string;
   school: string;
-  events: EventPlan[];
+  schoolShort: string;
+  location: string;
+  type: string;
+  cmacTable: "Yes" | "No" | "TBD";
+  formStatus: "Open" | "Closed" | "TBD";
+  notes?: string;
 };
 
 type OrderRow = {
@@ -23,363 +23,230 @@ type OrderRow = {
 
 const ORDER_FEED_URL = "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
 
-const schoolPlans: SchoolPlan[] = [
-  {
-    school: "Boyle Road Elementary",
-    events: [
-      {
-        name: "Boyle Elementary Winter Concert",
-        date: "December 9, 2026",
-        time: "6:30 PM",
-        location: "JFK Middle",
-        formStatus: "Open",
-      },
-      {
-        name: "Boyle Elementary Spring Concert",
-        date: "May 19, 2027",
-        time: "6:30 PM",
-        location: "JFK Middle",
-        formStatus: "Open",
-      },
-    ],
-  },
-  {
-    school: "Terryville Road Elementary",
-    events: [
-      {
-        name: "Terryville Winter Concert",
-        date: "December 15, 2026",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "Terryville Drama Production",
-        date: "May 6, 2027",
-        time: "7:00 PM",
-        location: "Terryville",
-        formStatus: "Open",
-      },
-      {
-        name: "Terryville Drama Production",
-        date: "May 7, 2027",
-        time: "7:00 PM",
-        location: "Terryville",
-        formStatus: "Open",
-      },
-      {
-        name: "Terryville Spring Concert",
-        date: "TBD",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Closed",
-      },
-    ],
-  },
-  {
-    school: "John F. Kennedy Middle School",
-    events: [
-      {
-        name: "JFK Winter Concert Group 1",
-        date: "December 14, 2026",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Winter Concert Group 2",
-        date: "December 17, 2026",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Drama Production",
-        date: "March 4, 2027",
-        time: "6:00 PM",
-        location: "JFK",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Drama Production",
-        date: "March 5, 2027",
-        time: "7:00 PM",
-        location: "JFK",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Drama Production",
-        date: "March 6, 2027",
-        time: "7:00 PM",
-        location: "JFK",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Drama Production",
-        date: "March 7, 2027",
-        time: "7:00 PM",
-        location: "JFK",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Spring Concert Group 1",
-        date: "May 24, 2027",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "JFK Spring Concert Group 2",
-        date: "May 26, 2027",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-    ],
-  },
-  {
-    school: "Comsewogue High School",
-    events: [
-      {
-        name: "CHS Winter & Chamber Concert",
-        date: "December 16, 2026",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "CHS Drama Production",
-        date: "February 26, 2027",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "CHS Drama Production",
-        date: "February 27, 2027",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "CHS Art Show",
-        date: "May 18-21, 2027",
-        time: "TBD",
-        location: "CHS",
-        formStatus: "Open",
-      },
-      {
-        name: "CHS Spring Concert",
-        date: "TBD",
-        time: "7:00 PM",
-        location: "CHS",
-        formStatus: "Closed",
-      },
-    ],
-  },
+const ALL_EVENTS: EventEntry[] = [
+  { isoDate: "2026-11-13", time: "7:00 PM",  name: "NYSCAME All-County Concert",               school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "No",  formStatus: "TBD",    notes: "All-county event" },
+  { isoDate: "2026-11-24", time: "TBD",       name: "JFK Fall Fine Art Showcase",               school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Art Show",      cmacTable: "TBD", formStatus: "TBD",    notes: "Confirm time" },
+  { isoDate: "2026-12-09", time: "6:30 PM",  name: "Boyle Winter Concert",                     school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "JFK Middle School",       type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-14", time: "7:00 PM",  name: "JFK Winter Concert, Group 1",              school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-15", time: "6:30 PM",  name: "Terryville Winter Concert",                school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "CHS Auditorium",        type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-16", time: "7:00 PM",  name: "CHS Winter & Chamber Concert",             school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-17", time: "7:00 PM",  name: "JFK Winter Concert, Group 2",              school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-02-26", time: "7:00 PM",  name: "CHS Musical: TBA",                         school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Musical",       cmacTable: "Yes", formStatus: "Open",   notes: "Night 1" },
+  { isoDate: "2027-02-27", time: "7:00 PM",  name: "CHS Musical: TBA",                         school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Musical",       cmacTable: "Yes", formStatus: "Open",   notes: "Night 2" },
+  { isoDate: "2027-03-03", time: "4:30 PM",  name: "JFK Drama – Senior Citizen's Dinner & Show", school: "John F. Kennedy Middle School", schoolShort: "JFK",      location: "JFK Middle School",       type: "Drama",         cmacTable: "No",  formStatus: "TBD",    notes: "Dinner show" },
+  { isoDate: "2027-03-04", time: "6:00 PM",  name: "JFK Drama Production",                     school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Drama",         cmacTable: "Yes", formStatus: "Open",   notes: "Night 1" },
+  { isoDate: "2027-03-05", time: "6:30 PM",  name: "Clinton Talent Show",                      school: "Clinton Avenue Elementary",        schoolShort: "Clinton",  location: "Clinton Avenue Elementary", type: "Performing Arts", cmacTable: "TBD", formStatus: "TBD", notes: "Confirm location" },
+  { isoDate: "2027-03-05", time: "7:00 PM",  name: "JFK Drama Production",                     school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Drama",         cmacTable: "Yes", formStatus: "Open",   notes: "Night 2" },
+  { isoDate: "2027-03-06", time: "7:00 PM",  name: "JFK Drama Production",                     school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Drama",         cmacTable: "Yes", formStatus: "Open",   notes: "Night 3" },
+  { isoDate: "2027-03-17", time: "6:00 PM",  name: "Terryville Art Show & Evening Book Fair",  school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "Terryville Road Elementary", type: "Art Show",  cmacTable: "TBD", formStatus: "TBD" },
+  { isoDate: "2027-03-18", time: "6:30 PM",  name: "Boyle Drama Production",                   school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "Boyle Road Elementary",   type: "Drama",         cmacTable: "Yes", formStatus: "Open",   notes: "Night 1" },
+  { isoDate: "2027-03-19", time: "6:30 PM",  name: "Boyle Drama Production",                   school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "Boyle Road Elementary",   type: "Drama",         cmacTable: "Yes", formStatus: "Open",   notes: "Night 2" },
+  { isoDate: "2027-04-06", time: "7:00 PM",  name: "CHS Spring Concert",                       school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-04-07", time: "6:00 PM",  name: "Norwood Art Show & Evening Book Fair",     school: "Norwood Avenue Elementary",        schoolShort: "Norwood",  location: "Norwood Avenue Elementary", type: "Art Show",    cmacTable: "TBD", formStatus: "TBD" },
+  { isoDate: "2027-04-09", time: "7:00 PM",  name: "Boyle PTA Talent Show",                    school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "Boyle Road Elementary",   type: "Performing Arts", cmacTable: "TBD", formStatus: "TBD", notes: "Confirm CMAC presence" },
+  { isoDate: "2027-04-13", time: "5:00 PM",  name: "JFK Interactive Spring Art Show",          school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Art Show",      cmacTable: "TBD", formStatus: "TBD" },
+  { isoDate: "2027-04-28", time: "5:30 PM",  name: "Boyle Art Show & Book Fair",               school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "Boyle Road Elementary",   type: "Art Show",      cmacTable: "TBD", formStatus: "TBD",    notes: "Part of PTA Basket Auction & Bingo Night" },
+  { isoDate: "2027-04-29", time: "6:00 PM",  name: "CHS Performing Arts Show",                 school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Performing Arts", cmacTable: "Yes", formStatus: "Open", notes: "Night 1" },
+  { isoDate: "2027-04-30", time: "6:00 PM",  name: "Norwood Talent Show",                      school: "Norwood Avenue Elementary",        schoolShort: "Norwood",  location: "Norwood Avenue Elementary", type: "Performing Arts", cmacTable: "TBD", formStatus: "TBD", notes: "Confirm CMAC presence" },
+  { isoDate: "2027-05-06", time: "7:00 PM",  name: "Terryville Drama Performance",             school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "Terryville Road Elementary", type: "Drama",    cmacTable: "Yes", formStatus: "Open",   notes: "Night 1" },
+  { isoDate: "2027-05-07", time: "7:00 PM",  name: "Terryville Drama Performance",             school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "Terryville Road Elementary", type: "Drama",    cmacTable: "Yes", formStatus: "Open",   notes: "Night 2" },
+  { isoDate: "2027-05-13", time: "6:00 PM",  name: "Clinton Art Show",                         school: "Clinton Avenue Elementary",        schoolShort: "Clinton",  location: "Clinton Avenue Elementary", type: "Art Show",    cmacTable: "TBD", formStatus: "TBD",    notes: "Confirm CMAC presence" },
+  { isoDate: "2027-05-14", time: "5:00 PM",  name: "Clinton Spring Fling",                     school: "Clinton Avenue Elementary",        schoolShort: "Clinton",  location: "Clinton Avenue Elementary", type: "Performing Arts", cmacTable: "TBD", formStatus: "TBD", notes: "Confirm CMAC presence" },
+  { isoDate: "2027-05-18", time: "All Day",  name: "CHS Art Show",                             school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS",                     type: "Art Show",      cmacTable: "TBD", formStatus: "TBD",    notes: "Multi-day — confirm dates" },
+  { isoDate: "2027-05-18", time: "6:00 PM",  name: "Terryville 4th Grade Spring Concert",      school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "CHS Auditorium",        type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-05-18", time: "7:30 PM",  name: "Terryville 5th Grade Spring Concert",      school: "Terryville Road Elementary",       schoolShort: "Terryville", location: "CHS Auditorium",        type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-05-19", time: "6:30 PM",  name: "Boyle Spring Concert",                     school: "Boyle Road Elementary",            schoolShort: "Boyle",    location: "JFK Middle School",       type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-05-20", time: "7:00 PM",  name: "CHS Performing Arts Show",                 school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Performing Arts", cmacTable: "Yes", formStatus: "Open", notes: "Night 2" },
+  { isoDate: "2027-05-24", time: "7:00 PM",  name: "JFK Spring Concert, Group 1",              school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-05-26", time: "7:00 PM",  name: "JFK Spring Concert, Group 2",              school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2027-06-03", time: "TBD",       name: "Norwood 2nd Grade Ukulele Concert",        school: "Norwood Avenue Elementary",        schoolShort: "Norwood",  location: "Norwood Avenue Elementary", type: "Concert",     cmacTable: "TBD", formStatus: "TBD",    notes: "Confirm time — Night 1" },
+  { isoDate: "2027-06-03", time: "6:30 PM",  name: "JFK Ensembles Concert",                    school: "John F. Kennedy Middle School",    schoolShort: "JFK",      location: "JFK Middle School",       type: "Concert",       cmacTable: "TBD", formStatus: "TBD" },
+  { isoDate: "2027-06-04", time: "TBD",       name: "Norwood 2nd Grade Ukulele Concert",        school: "Norwood Avenue Elementary",        schoolShort: "Norwood",  location: "Norwood Avenue Elementary", type: "Concert",     cmacTable: "TBD", formStatus: "TBD",    notes: "Confirm time — Night 2" },
+  { isoDate: "2027-06-08", time: "7:00 PM",  name: "CHS Pops & Chamber Concert",               school: "Comsewogue High School",           schoolShort: "CHS",      location: "CHS Auditorium",          type: "Concert",       cmacTable: "Yes", formStatus: "Open" },
 ];
+
+const SCHOOL_COLORS: Record<string, string> = {
+  CHS:       "school-badge--chs",
+  JFK:       "school-badge--jfk",
+  Boyle:     "school-badge--boyle",
+  Terryville:"school-badge--terry",
+  Clinton:   "school-badge--clinton",
+  Norwood:   "school-badge--norwood",
+};
+
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+function formatDate(iso: string) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const dt = new Date(y, m - 1, d);
+  return {
+    label: `${DAYS[dt.getDay()]} ${MONTHS[m - 1]} ${d}`,
+    monthKey: `${MONTHS[m - 1]} ${y}`,
+  };
+}
 
 function text(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
-
 function numberValue(value: unknown): number {
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return value;
-  }
-  if (typeof value === "string") {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : 1;
-  }
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") { const p = Number(value); return Number.isFinite(p) ? p : 1; }
   return 1;
 }
-
 function pick(row: Record<string, unknown>, keys: string[]): unknown {
-  for (const key of keys) {
-    if (key in row) {
-      return row[key];
-    }
-  }
+  for (const key of keys) { if (key in row) return row[key]; }
   return "";
 }
-
 function normalizeOrder(row: Record<string, unknown>): OrderRow | null {
-  const school = text(
-    pick(row, ["school", "School", "schoolName", "School Name", "campus"]),
-  );
-  const item = text(
-    pick(row, ["item", "Item", "product", "Product", "orderType"]),
-  );
-  const quantity = Math.max(
-    1,
-    numberValue(pick(row, ["quantity", "Quantity", "qty", "Qty"])),
-  );
-
-  if (!school || !item) {
-    return null;
-  }
-
+  const school   = text(pick(row, ["school","School","schoolName","School Name","campus"]));
+  const item     = text(pick(row, ["item","Item","product","Product","orderType"]));
+  const quantity = Math.max(1, numberValue(pick(row, ["quantity","Quantity","qty","Qty"])));
+  if (!school || !item) return null;
   return { school, item, quantity };
 }
 
 export default function SnapshotPage() {
-  const [orders, setOrders] = useState<OrderRow[]>([]);
-  const [feedState, setFeedState] = useState<"idle" | "loading" | "ready" | "error">(
-    "idle",
-  );
-
+  const [orders, setOrders]       = useState<OrderRow[]>([]);
+  const [feedState, setFeedState] = useState<"idle"|"loading"|"ready"|"error">("idle");
   const feedConfigured = ORDER_FEED_URL.startsWith("https://");
 
   useEffect(() => {
-    if (!feedConfigured) {
-      return;
-    }
-
+    if (!feedConfigured) return;
     let active = true;
     setFeedState("loading");
-
     const load = async () => {
       try {
-        const response = await fetch(ORDER_FEED_URL, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error("Failed to load order feed");
-        }
-        const raw = await response.json();
-        const rows = Array.isArray(raw)
-          ? raw
-          : Array.isArray((raw as { orders?: unknown[] }).orders)
-            ? (raw as { orders: unknown[] }).orders
-            : [];
-        const normalized = rows
-          .map((entry) =>
-            normalizeOrder((entry ?? {}) as Record<string, unknown>),
-          )
-          .filter((entry): entry is OrderRow => entry !== null);
-
-        if (active) {
-          setOrders(normalized);
-          setFeedState("ready");
-        }
-      } catch {
-        if (active) {
-          setFeedState("error");
-        }
-      }
+        const res = await fetch(ORDER_FEED_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error("bad response");
+        const raw = await res.json();
+        const rows = Array.isArray(raw) ? raw : Array.isArray((raw as {orders?:unknown[]}).orders) ? (raw as {orders:unknown[]}).orders : [];
+        const normalized = rows.map(e => normalizeOrder((e ?? {}) as Record<string,unknown>)).filter((e): e is OrderRow => e !== null);
+        if (active) { setOrders(normalized); setFeedState("ready"); }
+      } catch { if (active) setFeedState("error"); }
     };
-
     load();
     const interval = window.setInterval(load, 30000);
-
-    return () => {
-      active = false;
-      window.clearInterval(interval);
-    };
+    return () => { active = false; window.clearInterval(interval); };
   }, [feedConfigured]);
 
-  const schoolStats = useMemo(() => {
-    return schoolPlans.map((plan) => {
-      const bySchool = orders.filter((row) => row.school === plan.school);
-      const itemCounts = bySchool.reduce<Record<string, number>>((acc, row) => {
-        acc[row.item] = (acc[row.item] ?? 0) + row.quantity;
-        return acc;
-      }, {});
-
-      return {
-        school: plan.school,
-        events: plan.events,
-        totalOrders: bySchool.length,
-        totalItems: bySchool.reduce((sum, row) => sum + row.quantity, 0),
-        itemCounts,
-      };
-    });
-  }, [orders]);
-
   const totalOrders = orders.length;
-  const totalItems = orders.reduce((sum, row) => sum + row.quantity, 0);
+  const totalItems  = orders.reduce((s, r) => s + r.quantity, 0);
+
+  // Group events by month
+  const grouped = useMemo(() => {
+    const map = new Map<string, EventEntry[]>();
+    for (const ev of ALL_EVENTS) {
+      const { monthKey } = formatDate(ev.isoDate);
+      if (!map.has(monthKey)) map.set(monthKey, []);
+      map.get(monthKey)!.push(ev);
+    }
+    return map;
+  }, []);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const nextEvent = ALL_EVENTS.find(e => new Date(e.isoDate) >= today);
 
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Private Board Page</p>
-        <h1>Board Snapshot</h1>
+        <p className="subpage-kicker">Board Dashboard · 2026–2027 School Year</p>
+        <h1>Event Calendar Snapshot</h1>
         <p>
-          School-by-school schedule and order summary. You can update event names
-          and dates in this page file for each new calendar year.
+          All district arts performances and events CMAC supports, in chronological order.
+          Update <code>formStatus</code> in the page file to Open or Closed as forms go live.
         </p>
       </section>
 
-      <section className="content-card">
-        <h2>Live Feed Status</h2>
-        <p className="muted-copy">
-          {feedConfigured
-            ? "Connected to order feed. Data refreshes every 30 seconds."
-            : "Order feed URL not set yet. Replace ORDER_FEED_URL in this page to enable live updates."}
-        </p>
+      {/* Summary bar */}
+      <section className="content-card snapshot-summary-bar">
         <div className="snapshot-pill-row">
-          <span className="snapshot-pill">Status: {feedState.toUpperCase()}</span>
-          <span className="snapshot-pill">Total Orders: {totalOrders}</span>
-          <span className="snapshot-pill">Total Items: {totalItems}</span>
+          <span className="snapshot-pill">📅 {ALL_EVENTS.length} Total Events</span>
+          {nextEvent && (
+            <span className="snapshot-pill">
+              ▶ Next: {formatDate(nextEvent.isoDate).label} — {nextEvent.name}
+            </span>
+          )}
+          {feedConfigured ? (
+            <>
+              <span className="snapshot-pill">Feed: {feedState.toUpperCase()}</span>
+              <span className="snapshot-pill">Orders: {totalOrders}</span>
+              <span className="snapshot-pill">Items: {totalItems}</span>
+            </>
+          ) : (
+            <span className="snapshot-pill snapshot-pill--warn">⚠ Order feed not connected</span>
+          )}
         </div>
-        <p className="muted-copy snapshot-note">
-          Closing a form is not a problem: this dashboard keeps existing totals
-          and simply stops receiving new responses for that event.
-        </p>
       </section>
 
-      <section className="snapshot-grid">
-        {schoolStats.map((school) => (
-          <article key={school.school} className="content-card snapshot-school">
-            <h2>{school.school}</h2>
+      {/* Chronological event table */}
+      <section className="content-card">
+        <h2>Full Event Calendar</h2>
+        <p className="muted-copy" style={{ marginBottom: "1.5rem" }}>
+          All 6 schools · sorted by date · {ALL_EVENTS.filter(e => e.cmacTable === "Yes").length} events with CMAC table
+        </p>
 
-            <p className="section-label">Event Calendar</p>
-            <div className="snapshot-events">
-              {school.events.map((event, index) => (
-                <div
-                  key={`${school.school}-${event.name}-${event.date}-${index}`}
-                  className="snapshot-event-row"
-                >
-                  <p>
-                    <strong>{event.name}</strong>
-                    <span>{event.date}</span>
-                    <span>{event.time}</span>
-                    <span>{event.location}</span>
-                  </p>
-                  <span
-                    className={
-                      event.formStatus === "Open"
-                        ? "snapshot-status snapshot-status--open"
-                        : "snapshot-status snapshot-status--closed"
-                    }
-                  >
-                    {event.formStatus}
-                  </span>
-                </div>
-              ))}
+        {Array.from(grouped.entries()).map(([month, events]) => (
+          <div key={month} className="cal-month-block">
+            <h3 className="cal-month-heading">{month}</h3>
+            <div className="cal-table-wrap">
+              <table className="cal-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th>School</th>
+                    <th>Location</th>
+                    <th>CMAC Table</th>
+                    <th>Form</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {events.map((ev, i) => {
+                    const { label } = formatDate(ev.isoDate);
+                    const isPast = new Date(ev.isoDate) < today;
+                    return (
+                      <tr key={i} className={isPast ? "cal-row cal-row--past" : "cal-row"}>
+                        <td className="cal-date">{label}</td>
+                        <td className="cal-time">{ev.time}</td>
+                        <td className="cal-name">
+                          <strong>{ev.name}</strong>
+                        </td>
+                        <td>
+                          <span className={`school-badge ${SCHOOL_COLORS[ev.schoolShort] ?? ""}`}>
+                            {ev.schoolShort}
+                          </span>
+                        </td>
+                        <td className="cal-location">{ev.location}</td>
+                        <td>
+                          <span className={
+                            ev.cmacTable === "Yes" ? "snapshot-status snapshot-status--open" :
+                            ev.cmacTable === "No"  ? "snapshot-status snapshot-status--closed" :
+                            "snapshot-status snapshot-status--tbd"
+                          }>
+                            {ev.cmacTable}
+                          </span>
+                        </td>
+                        <td>
+                          <span className={
+                            ev.formStatus === "Open"   ? "snapshot-status snapshot-status--open" :
+                            ev.formStatus === "Closed" ? "snapshot-status snapshot-status--closed" :
+                            "snapshot-status snapshot-status--tbd"
+                          }>
+                            {ev.formStatus}
+                          </span>
+                        </td>
+                        <td className="cal-notes">{ev.notes ?? ""}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-
-            <p className="section-label">Order Summary</p>
-            <div className="snapshot-summary">
-              <p>
-                Orders: <strong>{school.totalOrders}</strong>
-              </p>
-              <p>
-                Items: <strong>{school.totalItems}</strong>
-              </p>
-            </div>
-
-            {Object.keys(school.itemCounts).length > 0 ? (
-              <ul className="snapshot-item-list">
-                {Object.entries(school.itemCounts).map(([item, count]) => (
-                  <li key={item}>
-                    <span>{item}</span>
-                    <strong>{count}</strong>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="muted-copy">No submitted orders for this school yet.</p>
-            )}
-          </article>
+          </div>
         ))}
       </section>
     </main>
