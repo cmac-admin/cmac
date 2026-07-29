@@ -1549,6 +1549,90 @@ a {
   font-style: italic;
 }
 
+.cal-lead {
+  font-size: 0.84rem;
+  color: var(--ink);
+  min-width: 8rem;
+}
+
+.cal-items-btn {
+  background: var(--navy);
+  color: #e8dfc7;
+  border: none;
+  border-radius: var(--radius-soft);
+  padding: 0.28rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.cal-items-btn:hover {
+  background: #1f4a78;
+}
+
+/* Modal */
+.cal-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.cal-modal {
+  background: var(--card);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  max-width: 28rem;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.cal-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--muted);
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.cal-modal-close:hover { color: var(--ink); }
+
+.cal-modal-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cal-modal-items li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(23,59,99,0.06);
+  border-radius: var(--radius-soft);
+}
+
+.cal-modal-items li::before {
+  content: "🛍";
+  font-size: 1rem;
+}
+
 .snapshot-status--tbd {
   background: #5a4a1a;
   color: #f5d98a;
