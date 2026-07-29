@@ -1580,6 +1580,48 @@ a {
 .school-badge--clinton { background: #6b1a1a; color: #f0b6b6; }
 .school-badge--norwood { background: #0d4a4a; color: #a8f0ef; }
 
+.cal-past-section {
+  margin-top: 2rem;
+  border-top: 2px dashed rgba(0,0,0,0.12);
+  padding-top: 1.25rem;
+}
+
+.cal-past-summary {
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.cal-past-summary::-webkit-details-marker { display: none; }
+
+.cal-past-summary::before {
+  content: "▶";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+details[open] > .cal-past-summary::before {
+  transform: rotate(90deg);
+}
+
+.cal-past-summary:hover { color: var(--navy); }
+
+.cal-month-block--past .cal-month-heading {
+  color: var(--muted);
+  border-color: rgba(0,0,0,0.15);
+  opacity: 0.7;
+}
+
 @media (max-width: 1180px) {
   body {
     padding-top: 12.2rem;

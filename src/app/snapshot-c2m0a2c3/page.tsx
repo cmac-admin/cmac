@@ -106,6 +106,69 @@ function normalizeOrder(row: Record<string, unknown>): OrderRow | null {
   return { school, item, quantity };
 }
 
+function EventMonthBlock({ month, events, today, past = false }: {
+  month: string;
+  events: EventEntry[];
+  today: Date;
+  past?: boolean;
+}) {
+  return (
+    <div className={`cal-month-block${past ? " cal-month-block--past" : ""}`}>
+      <h3 className="cal-month-heading">{month}</h3>
+      <div className="cal-table-wrap">
+        <table className="cal-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Event</th>
+              <th>School</th>
+              <th>Location</th>
+              <th>CMAC Table</th>
+              <th>Form</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((ev, i) => {
+              const { label } = formatDate(ev.isoDate);
+              const isPast = new Date(ev.isoDate) < today;
+              return (
+                <tr key={i} className={isPast ? "cal-row cal-row--past" : "cal-row"}>
+                  <td className="cal-date">{label}</td>
+                  <td className="cal-time">{ev.time}</td>
+                  <td className="cal-name"><strong>{ev.name}</strong></td>
+                  <td>
+                    <span className={`school-badge ${SCHOOL_COLORS[ev.schoolShort] ?? ""}`}>
+                      {ev.schoolShort}
+                    </span>
+                  </td>
+                  <td className="cal-location">{ev.location}</td>
+                  <td>
+                    <span className={
+                      ev.cmacTable === "Yes" ? "snapshot-status snapshot-status--open" :
+                      ev.cmacTable === "No"  ? "snapshot-status snapshot-status--closed" :
+                      "snapshot-status snapshot-status--tbd"
+                    }>{ev.cmacTable}</span>
+                  </td>
+                  <td>
+                    <span className={
+                      ev.formStatus === "Open"   ? "snapshot-status snapshot-status--open" :
+                      ev.formStatus === "Closed" ? "snapshot-status snapshot-status--closed" :
+                      "snapshot-status snapshot-status--tbd"
+                    }>{ev.formStatus}</span>
+                  </td>
+                  <td className="cal-notes">{ev.notes ?? ""}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export default function SnapshotPage() {
   const [orders, setOrders]       = useState<OrderRow[]>([]);
   const [feedState, setFeedState] = useState<"idle"|"loading"|"ready"|"error">("idle");
@@ -133,15 +196,20 @@ export default function SnapshotPage() {
   const totalOrders = orders.length;
   const totalItems  = orders.reduce((s, r) => s + r.quantity, 0);
 
-  // Group events by month
-  const grouped = useMemo(() => {
-    const map = new Map<string, EventEntry[]>();
+  // Split into upcoming and past, each grouped by month
+  const { upcomingGrouped, pastGrouped } = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const upcoming = new Map<string, EventEntry[]>();
+    const past     = new Map<string, EventEntry[]>();
     for (const ev of ALL_EVENTS) {
       const { monthKey } = formatDate(ev.isoDate);
+      const isPast = new Date(ev.isoDate) < today;
+      const map = isPast ? past : upcoming;
       if (!map.has(monthKey)) map.set(monthKey, []);
       map.get(monthKey)!.push(ev);
     }
-    return map;
+    return { upcomingGrouped: upcoming, pastGrouped: past };
   }, []);
 
   const today = new Date();
@@ -187,67 +255,26 @@ export default function SnapshotPage() {
           All 6 schools · sorted by date · {ALL_EVENTS.filter(e => e.cmacTable === "Yes").length} events with CMAC table
         </p>
 
-        {Array.from(grouped.entries()).map(([month, events]) => (
-          <div key={month} className="cal-month-block">
-            <h3 className="cal-month-heading">{month}</h3>
-            <div className="cal-table-wrap">
-              <table className="cal-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Event</th>
-                    <th>School</th>
-                    <th>Location</th>
-                    <th>CMAC Table</th>
-                    <th>Form</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {events.map((ev, i) => {
-                    const { label } = formatDate(ev.isoDate);
-                    const isPast = new Date(ev.isoDate) < today;
-                    return (
-                      <tr key={i} className={isPast ? "cal-row cal-row--past" : "cal-row"}>
-                        <td className="cal-date">{label}</td>
-                        <td className="cal-time">{ev.time}</td>
-                        <td className="cal-name">
-                          <strong>{ev.name}</strong>
-                        </td>
-                        <td>
-                          <span className={`school-badge ${SCHOOL_COLORS[ev.schoolShort] ?? ""}`}>
-                            {ev.schoolShort}
-                          </span>
-                        </td>
-                        <td className="cal-location">{ev.location}</td>
-                        <td>
-                          <span className={
-                            ev.cmacTable === "Yes" ? "snapshot-status snapshot-status--open" :
-                            ev.cmacTable === "No"  ? "snapshot-status snapshot-status--closed" :
-                            "snapshot-status snapshot-status--tbd"
-                          }>
-                            {ev.cmacTable}
-                          </span>
-                        </td>
-                        <td>
-                          <span className={
-                            ev.formStatus === "Open"   ? "snapshot-status snapshot-status--open" :
-                            ev.formStatus === "Closed" ? "snapshot-status snapshot-status--closed" :
-                            "snapshot-status snapshot-status--tbd"
-                          }>
-                            {ev.formStatus}
-                          </span>
-                        </td>
-                        <td className="cal-notes">{ev.notes ?? ""}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ))}
+        {/* Upcoming events */}
+        {upcomingGrouped.size === 0 ? (
+          <p className="muted-copy">All events for this school year have passed.</p>
+        ) : (
+          Array.from(upcomingGrouped.entries()).map(([month, events]) => (
+            <EventMonthBlock key={month} month={month} events={events} today={today} />
+          ))
+        )}
+
+        {/* Past events — collapsed at the bottom */}
+        {pastGrouped.size > 0 && (
+          <details className="cal-past-section">
+            <summary className="cal-past-summary">
+              Past Events ({Array.from(pastGrouped.values()).flat().length})
+            </summary>
+            {Array.from(pastGrouped.entries()).map(([month, events]) => (
+              <EventMonthBlock key={month} month={month} events={events} today={today} past />
+            ))}
+          </details>
+        )}
       </section>
     </main>
   );
