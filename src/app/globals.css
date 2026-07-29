@@ -1451,6 +1451,135 @@ a {
   border-bottom: 1px solid #2b2723;
 }
 
+/* ── Snapshot: event calendar table ────────────────────────── */
+.snapshot-summary-bar {
+  padding: 1rem 1.4rem;
+}
+
+.snapshot-pill--warn {
+  background: #7a3a00;
+  color: #ffd99a;
+}
+
+.cal-month-block {
+  margin-bottom: 2rem;
+}
+
+.cal-month-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.35rem;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cal-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-soft);
+}
+
+.cal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 720px;
+}
+
+.cal-table thead tr {
+  background: var(--navy);
+  color: #e8dfc7;
+}
+
+.cal-table th {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cal-row {
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  transition: background 0.12s;
+}
+
+.cal-row:hover {
+  background: rgba(180,138,52,0.07);
+}
+
+.cal-row--past {
+  opacity: 0.45;
+}
+
+.cal-table td {
+  padding: 0.55rem 0.75rem;
+  vertical-align: middle;
+}
+
+.cal-date {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 0.84rem;
+}
+
+.cal-time {
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.cal-name strong {
+  font-size: 0.9rem;
+}
+
+.cal-location {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.cal-notes {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.snapshot-status--tbd {
+  background: #5a4a1a;
+  color: #f5d98a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* School color badges */
+.school-badge {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.school-badge--chs     { background: #173b63; color: #c8daf5; }
+.school-badge--jfk     { background: #1a4d2e; color: #b6f0c8; }
+.school-badge--boyle   { background: #6b3000; color: #ffd4a8; }
+.school-badge--terry   { background: #3b1a6b; color: #ddb6f0; }
+.school-badge--clinton { background: #6b1a1a; color: #f0b6b6; }
+.school-badge--norwood { background: #0d4a4a; color: #a8f0ef; }
+
 @media (max-width: 1180px) {
   body {
     padding-top: 12.2rem;
