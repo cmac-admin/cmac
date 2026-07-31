@@ -72,15 +72,7 @@ export default function Home() {
         </article>
         <article>
           <p className="impact-stats__value">X</p>
-          <p className="impact-stats__label">Scholarships Awarded</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">X</p>
-          <p className="impact-stats__label">Senior Scholarships Awarded</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">$X</p>
-          <p className="impact-stats__label">Scholarship Amount Awarded</p>
+          <p className="impact-stats__label">Scholarships Granted</p>
         </article>
         <article>
           <p className="impact-stats__value">2</p>
