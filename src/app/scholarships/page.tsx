@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { STATS } from "@/lib/stats";
 
 export const metadata: Metadata = {
   title: "Scholarships",
@@ -26,12 +27,12 @@ export default function ScholarshipsPage() {
 
       <section className="scholarship-impact-bar" aria-label="Scholarship impact">
         <div className="scholarship-impact-bar__stat">
-          <span className="scholarship-impact-bar__value">X</span>
+          <span className="scholarship-impact-bar__value">{STATS.scholarshipsGranted}</span>
           <span className="scholarship-impact-bar__label">Scholarships Granted</span>
         </div>
         <div className="scholarship-impact-bar__divider" aria-hidden="true" />
         <div className="scholarship-impact-bar__stat">
-          <span className="scholarship-impact-bar__value">$X</span>
+          <span className="scholarship-impact-bar__value">{STATS.totalAwarded}</span>
           <span className="scholarship-impact-bar__label">Total Awarded</span>
         </div>
       </section>

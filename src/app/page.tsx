@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { STATS } from "@/lib/stats";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -63,19 +64,19 @@ export default function Home() {
 
       <section className="impact-stats" aria-label="CMAC impact at a glance">
         <article>
-          <p className="impact-stats__value">2023</p>
+          <p className="impact-stats__value">{STATS.foundedYear}</p>
           <p className="impact-stats__label">Founded</p>
         </article>
         <article>
-          <p className="impact-stats__value">4 Schools</p>
+          <p className="impact-stats__value">{STATS.schoolsCount}</p>
           <p className="impact-stats__label">Active Event Support</p>
         </article>
         <article>
-          <p className="impact-stats__value">X</p>
+          <p className="impact-stats__value">{STATS.scholarshipsGranted}</p>
           <p className="impact-stats__label">Scholarships Granted</p>
         </article>
         <article>
-          <p className="impact-stats__value">2</p>
+          <p className="impact-stats__value">{STATS.teacherGrants}</p>
           <p className="impact-stats__label">Teacher Grants Awarded</p>
         </article>
       </section>
