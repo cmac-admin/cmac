@@ -10,11 +10,49 @@ export const metadata: Metadata = {
       "Join CMAC through membership, donations, volunteering, or corporate sponsorship. Your support funds scholarships and teacher grants for Comsewogue students.",
     url: "https://www.comsewoguemusicandarts.org/get-involved",
   },
+  alternates: {
+    canonical: "https://www.comsewoguemusicandarts.org/get-involved",
+  },
+};
+
+const donationFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the fastest way to donate to CMAC?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Use the Donate with Venmo button or scan the Zelle QR code on the Get Involved page.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where does CMAC donation money go?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Donations support student scholarships, teacher grants, and arts event support across the Comsewogue School District.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I support CMAC without making a payment online?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. You can donate by check, volunteer at events, or join as a yearly member.",
+      },
+    },
+  ],
 };
 
 export default function GetInvolvedPage() {
   return (
     <main className="subpage">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donationFaqJsonLd) }}
+      />
       <section className="subpage-hero">
         <p className="subpage-kicker">Get Involved</p>
         <h1>Join CMAC</h1>
@@ -161,7 +199,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <section className="content-card">
+      <section className="content-card" id="direct-donate">
         <h2>Direct Donation Methods</h2>
         <p className="muted-copy">
           Prefer quick digital giving? Use the buttons below.
@@ -222,6 +260,33 @@ export default function GetInvolvedPage() {
               Port Jefferson Station, NY 11776
             </p>
           </article>
+        </div>
+      </section>
+
+      <section className="content-card">
+        <h2>Donation Questions</h2>
+        <div className="faq-list">
+          <details>
+            <summary>What is the fastest way to donate?</summary>
+            <p>
+              Use the <strong>Donate with Venmo</strong> button above, or open
+              the Zelle QR code and scan it in your banking app.
+            </p>
+          </details>
+          <details>
+            <summary>What does my donation support?</summary>
+            <p>
+              CMAC donations support student scholarships, teacher grants, and
+              arts-event support throughout the district.
+            </p>
+          </details>
+          <details>
+            <summary>Can I donate without paying online?</summary>
+            <p>
+              Yes. You can donate by check, join as a member, or volunteer at
+              events.
+            </p>
+          </details>
         </div>
       </section>
 
