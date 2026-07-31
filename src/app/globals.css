@@ -53,6 +53,28 @@ a {
   text-decoration: none;
 }
 
+.skip-link {
+  position: absolute;
+  left: 0.8rem;
+  top: -4rem;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.35rem;
+  background: #0d1f35;
+  color: #f7f3eb;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.skip-link:focus-visible {
+  top: 0.8rem;
+}
+
+:focus-visible {
+  outline: 3px solid #e1c27b;
+  outline-offset: 2px;
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -214,6 +236,17 @@ a {
 .join-button:hover {
   transform: translateY(-1px);
   background: var(--navy);
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.join-button--secondary {
+  background: #102742;
 }
 
 .hero {
@@ -907,6 +940,27 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+.faq-list details {
+  border: 1px solid #d2ccc0;
+  border-radius: var(--radius-soft);
+  background: #f8f5ef;
+  padding: 0.7rem 0.9rem;
+}
+
+.faq-list details + details {
+  margin-top: 0.55rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #1b3654;
+}
+
+.faq-list p {
+  margin: 0.55rem 0 0;
 }
 
 .event-list {
@@ -1671,6 +1725,31 @@ a {
 .school-badge--clinton { background: #6b1a1a; color: #f0b6b6; }
 .school-badge--norwood { background: #0d4a4a; color: #a8f0ef; }
 
+.category-badge {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.category-badge--music {
+  background: #173b63;
+  color: #d0e2ff;
+}
+
+.category-badge--drama {
+  background: #5e2a63;
+  color: #f4d3ff;
+}
+
+.category-badge--arts {
+  background: #5a4710;
+  color: #f9e7a5;
+}
+
 .cal-past-section {
   margin-top: 2rem;
   border-top: 2px dashed rgba(0,0,0,0.12);
@@ -1726,8 +1805,21 @@ details[open] > .cal-past-summary::before {
     padding-left: clamp(1rem, 3vw, 2rem);
   }
 
+  .header-actions {
+    justify-content: center;
+  }
+
   .menu-bar {
     padding-left: clamp(1rem, 3vw, 2rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   .hero {

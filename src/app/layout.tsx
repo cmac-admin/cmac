@@ -43,6 +43,16 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Comsewogue Music & Arts Corp.",
+    description:
+      "Support student artists in the Comsewogue School District through scholarships, teacher grants, and community arts events.",
+    images: ["/cmac/cmac-logo.png"],
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({
@@ -50,9 +60,43 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NonprofitOrganization",
+    name: "Comsewogue Music & Arts Corp.",
+    alternateName: "CMAC",
+    url: siteUrl,
+    logo: `${siteUrl}/cmac/cmac-logo.png`,
+    sameAs: [
+      "https://www.facebook.com/groups/1267469880589912/",
+      "https://www.instagram.com/comsewogue_music_and_arts/",
+    ],
+    areaServed: "Comsewogue School District, New York",
+    nonprofitStatus: "Nonprofit501c3",
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Comsewogue Music & Arts Corp.",
+    url: siteUrl,
+    inLanguage: "en-US",
+  };
+
   return (
     <html lang="en">
       <body className={`${bodyFont.variable} ${headingFont.variable}`}>
+        <a className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <Link href="/" className="floating-logo" aria-label="CMAC Home">
           <img
             src="/cmac/cmac-logo.png"
@@ -71,9 +115,14 @@ export default function RootLayout({
               </p>
             </div>
 
-            <Link className="join-button" href="/get-involved">
-              Join CMAC <span aria-hidden="true">→</span>
-            </Link>
+            <div className="header-actions">
+              <Link className="join-button" href="/get-involved#direct-donate">
+                Donate Now <span aria-hidden="true">→</span>
+              </Link>
+              <Link className="join-button join-button--secondary" href="/get-involved">
+                Join CMAC <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
 
           <nav className="menu-bar main-nav" aria-label="Primary">
@@ -84,11 +133,17 @@ export default function RootLayout({
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/news">News</Link>
             <Link href="/sponsors">Sponsors</Link>
+            <Link href="/get-involved#direct-donate">Donate</Link>
             <Link href="/order-here">Order Here</Link>
           </nav>
         </header>
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
         <footer className="site-footer">
+          <p className="site-footer__mailing">
+            <Link href="/get-involved#direct-donate">DONATE NOW</Link>
+          </p>
           <p className="site-footer__mailing">
             <Link href="/get-involved#mailing-list">JOIN OUR MAILING LIST</Link>
           </p>
