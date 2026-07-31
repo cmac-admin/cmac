@@ -82,29 +82,70 @@ export default function AboutPage() {
       </section>
 
       <section className="content-card">
-        <h2>2026–2027 Board Members & Representatives</h2>
-        <div className="about-groups">
-          <div className="about-group">
-            <h3 className="section-label">Board Members</h3>
-            <ul className="info-list">
-              <li>President: Johanna Kosak</li>
-              <li>Vice President: —</li>
-              <li>Treasurer: Debra Andersen</li>
-              <li>Recording Secretary: Michelle Dvorsky</li>
-            </ul>
+        <h2>2026–2027 Board of Directors</h2>
+
+        <h3 className="section-label board-section-label">Officers</h3>
+        <div className="board-grid">
+          <div className="board-card">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">JK</span>
+            </div>
+            <p className="board-card__name">Johanna Kosak</p>
+            <p className="board-card__title">President</p>
           </div>
 
-          <div className="about-divider" aria-hidden="true" />
+          <div className="board-card board-card--vacant">
+            <div className="board-card__photo board-card__photo--vacant" aria-hidden="true">
+              <span className="board-card__vacant-icon">?</span>
+            </div>
+            <p className="board-card__name">Vice President</p>
+            <p className="board-card__title board-card__title--open">Position Open</p>
+          </div>
 
-          <div className="about-group">
-            <h3 className="section-label">Student Representatives</h3>
-            <ul className="info-list">
-              <li>Annmarie Kosak</li>
-              <li>James Perrone</li>
-              <li>Michael Provenzale</li>
-            </ul>
+          <div className="board-card">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">DA</span>
+            </div>
+            <p className="board-card__name">Debra Andersen</p>
+            <p className="board-card__title">Treasurer</p>
+          </div>
+
+          <div className="board-card">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">MD</span>
+            </div>
+            <p className="board-card__name">Michelle Dvorsky</p>
+            <p className="board-card__title">Recording Secretary</p>
           </div>
         </div>
+
+        <h3 className="section-label board-section-label" style={{ marginTop: "2.25rem" }}>
+          Student Representatives
+        </h3>
+        <div className="board-grid board-grid--students">
+          <div className="board-card board-card--student">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">AK</span>
+            </div>
+            <p className="board-card__name">Annmarie Kosak</p>
+            <p className="board-card__title">Student Rep</p>
+          </div>
+          <div className="board-card board-card--student">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">JP</span>
+            </div>
+            <p className="board-card__name">James Perrone</p>
+            <p className="board-card__title">Student Rep</p>
+          </div>
+          <div className="board-card board-card--student">
+            <div className="board-card__photo" aria-hidden="true">
+              <span className="board-card__initials">MP</span>
+            </div>
+            <p className="board-card__name">Michael Provenzale</p>
+            <p className="board-card__title">Student Rep</p>
+          </div>
+        </div>
+
         <p className="subpage-link">
           <a href="https://www.comsewoguemusicandarts.org/about-us/">
             View previous About page
