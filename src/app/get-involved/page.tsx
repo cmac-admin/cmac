@@ -163,6 +163,27 @@ export default function GetInvolvedPage() {
 
       <section className="content-card">
         <h2>Direct Donation Methods</h2>
+        <p className="muted-copy">
+          Prefer quick digital giving? Use the buttons below.
+        </p>
+        <div className="direct-donate-cta">
+          <a
+            className="apply-btn"
+            href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Donate with Venmo
+          </a>
+          <a
+            className="apply-btn"
+            href="/cmac/cmac-zelle-qr.png"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Donate with Zelle
+          </a>
+        </div>
         <div className="split-grid">
           <article>
             <h3>Venmo</h3>
@@ -180,7 +201,7 @@ export default function GetInvolvedPage() {
               alt="CMAC Venmo QR code"
             />
           </article>
-          <article>
+          <article id="zelle-qr">
             <h3>Zelle</h3>
             <p>Scan this code in your banking app to donate via Zelle.</p>
             <img
