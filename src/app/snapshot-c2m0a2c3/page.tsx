@@ -109,6 +109,17 @@ function normalizeOrder(row: Record<string, unknown>): OrderRow | null {
   return { school, item, quantity };
 }
 
+function eventCategory(type: string): "ARTS" | "DRAMA" | "MUSIC" {
+  const normalized = type.toLowerCase();
+  if (normalized.includes("drama") || normalized.includes("musical")) {
+    return "DRAMA";
+  }
+  if (normalized.includes("art")) {
+    return "ARTS";
+  }
+  return "MUSIC";
+}
+
 function EventMonthBlock({ month, events, today, past = false, onShowItems }: {
   month: string;
   events: EventEntry[];
@@ -126,6 +137,7 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems }: {
               <th>Date</th>
               <th>Time</th>
               <th>Event</th>
+              <th>Category</th>
               <th>School</th>
               <th>Location</th>
               <th>Lead</th>
@@ -144,6 +156,13 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems }: {
                   <td className="cal-date">{label}</td>
                   <td className="cal-time">{ev.time}</td>
                   <td className="cal-name"><strong>{ev.name}</strong></td>
+                  <td>
+                    <span
+                      className={`category-badge category-badge--${eventCategory(ev.type).toLowerCase()}`}
+                    >
+                      {eventCategory(ev.type)}
+                    </span>
+                  </td>
                   <td>
                     <span className={`school-badge ${SCHOOL_COLORS[ev.schoolShort] ?? ""}`}>
                       {ev.schoolShort}
