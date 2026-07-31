@@ -108,38 +108,6 @@ export default function ScholarshipsPage() {
       </section>
 
       <section className="content-card scholarship-block">
-        <h2>Scholarships Granted by Year</h2>
-        <table className="scholarship-table">
-          <tbody>
-            <tr>
-              <th scope="row">2025 Total Scholarships Awarded</th>
-              <td>X</td>
-            </tr>
-            <tr>
-              <th scope="row">2025 Senior Scholarships Awarded</th>
-              <td>X</td>
-            </tr>
-            <tr>
-              <th scope="row">2025 Total Scholarship Amount Awarded</th>
-              <td>$X</td>
-            </tr>
-            <tr>
-              <th scope="row">2024 Total Scholarships Awarded</th>
-              <td>X</td>
-            </tr>
-            <tr>
-              <th scope="row">2024 Senior Scholarships Awarded</th>
-              <td>X</td>
-            </tr>
-            <tr>
-              <th scope="row">2024 Total Scholarship Amount Awarded</th>
-              <td>$X</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section className="content-card scholarship-block">
         <h2>Summer Music & Arts Study Scholarships (Grades 3–11)</h2>
         <table className="scholarship-table">
           <tbody>
