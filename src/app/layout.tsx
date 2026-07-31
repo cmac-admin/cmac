@@ -116,9 +116,24 @@ export default function RootLayout({
             </div>
 
             <div className="header-actions">
-              <Link className="join-button" href="/get-involved#direct-donate">
-                Donate Now <span aria-hidden="true">→</span>
-              </Link>
+              <div className="header-donate-row">
+                <a
+                  className="donate-mini-button"
+                  href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Donate with Venmo
+                </a>
+                <a
+                  className="donate-mini-button"
+                  href="/cmac/cmac-zelle-qr.png"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Donate with Zelle
+                </a>
+              </div>
               <Link className="join-button join-button--secondary" href="/get-involved">
                 Join CMAC <span aria-hidden="true">→</span>
               </Link>
