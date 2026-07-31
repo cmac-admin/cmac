@@ -28,6 +28,59 @@ export default function NewsPage() {
       <section className="content-card">
         <h2>Featured Stories</h2>
         <article className="news-item">
+          <h3>Comsewogue High School Students Recognized for Artistic Talents at Public Library</h3>
+          <p className="news-date">By CMAC | April 28, 2026</p>
+          <p>
+            The Comsewogue School District is proud to announce that several
+            Comsewogue High School students are being recognized for their
+            artistic talents through a special exhibit at the Comsewogue Public
+            Library. The installation is part of the library&apos;s ongoing art
+            gallery highlighting a new exhibit each month, with April dedicated
+            to the talents of local students.
+          </p>
+          <p>
+            The exhibit, located in the Richard Lusak Community Room gallery,
+            features an impressive variety of student work, including beautiful
+            photography, vibrant paintings, striking charcoal drawings, and a
+            selection of creative sculptures thoughtfully displayed alongside
+            the hanging pieces. The collection represents standout works chosen
+            by the District&apos;s art teachers from projects completed during the
+            school year.
+          </p>
+          <p>
+            <a href="https://www.parentsquare.com/feeds/78872980">
+              Read full story
+            </a>
+          </p>
+        </article>
+
+        <article className="news-item">
+          <h3>
+            Comsewogue Named Best Community for Music Education for 10th
+            Consecutive Year
+          </h3>
+          <p className="news-date">By CMAC | April 23, 2026</p>
+          <p>
+            Comsewogue School District has been honored with the Best
+            Communities for Music Education Award from The NAMM Foundation for
+            its outstanding support and commitment to music education for the
+            tenth consecutive year.
+          </p>
+          <p>
+            Now in its 27th year, the program continues to spotlight and
+            celebrate school districts and individual schools across the United
+            States for their exemplary dedication to music education and their
+            ongoing efforts to ensure equitable access to music learning as part
+            of a well-rounded education.
+          </p>
+          <p>
+            <a href="https://www.parentsquare.com/feeds/78368701">
+              Read full story
+            </a>
+          </p>
+        </article>
+
+        <article className="news-item">
           <h3>Our First Teacher Grant Recipient</h3>
           <p className="news-date">By Yoon Perrone | October 16, 2025</p>
           <p>
