@@ -902,6 +902,13 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+.direct-donate-cta {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
 .event-list {
   margin: 0.95rem 0 0;
   padding: 0;
