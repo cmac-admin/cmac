@@ -24,6 +24,18 @@ export default function ScholarshipsPage() {
         </p>
       </section>
 
+      <section className="scholarship-impact-bar" aria-label="Scholarship impact">
+        <div className="scholarship-impact-bar__stat">
+          <span className="scholarship-impact-bar__value">X</span>
+          <span className="scholarship-impact-bar__label">Scholarships Granted</span>
+        </div>
+        <div className="scholarship-impact-bar__divider" aria-hidden="true" />
+        <div className="scholarship-impact-bar__stat">
+          <span className="scholarship-impact-bar__value">$X</span>
+          <span className="scholarship-impact-bar__label">Total Awarded</span>
+        </div>
+      </section>
+
       <section className="content-card scholarship-block">
         <h2>Senior Scholarships (Grade 12)</h2>
         <table className="scholarship-table">
