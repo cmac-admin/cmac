@@ -41,7 +41,7 @@ export default function Home() {
 
           <div className="hero-card__visual" />
           <div className="hero-card__content">
-            <h1>Where young artists find confidence, purpose, and voice.</h1>
+            <h1>We help young artists find confidence, purpose, and voice.</h1>
             <p>
               Through music, visual arts, scholarships, and family partnership,
               CMAC helps every student shine in and beyond the classroom.
