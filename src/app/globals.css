@@ -240,9 +240,38 @@ a {
 
 .header-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 0.6rem;
-  justify-content: flex-end;
+  justify-content: center;
+}
+
+.header-donate-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.donate-mini-button {
+  min-height: 2rem;
+  padding: 0.36rem 0.62rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(23, 59, 99, 0.9);
+  color: #ead09b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.66rem;
+  font-weight: 700;
+  transition:
+    transform 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.donate-mini-button:hover {
+  transform: translateY(-1px);
+  background: rgba(31, 74, 120, 0.95);
 }
 
 .join-button--secondary {
@@ -940,6 +969,10 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+#direct-donate {
+  scroll-margin-top: 13rem;
 }
 
 .faq-list details {
@@ -1807,6 +1840,12 @@ details[open] > .cal-past-summary::before {
 
   .header-actions {
     justify-content: center;
+    align-items: center;
+  }
+
+  .header-donate-row {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .menu-bar {
@@ -1868,6 +1907,10 @@ details[open] > .cal-past-summary::before {
     min-height: 2.65rem;
     width: auto;
     font-size: 0.8rem;
+  }
+
+  .donate-mini-button {
+    font-size: 0.62rem;
   }
 
   .hero__meta {
