@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { STATS } from "@/lib/stats";
 
 export const metadata: Metadata = {
   title: "About",
@@ -29,20 +30,20 @@ export default function AboutPage() {
         aria-label="CMAC impact highlights"
       >
         <article>
-          <p className="impact-stats__value">2023</p>
+          <p className="impact-stats__value">{STATS.foundedYear}</p>
           <p className="impact-stats__label">Founded</p>
         </article>
         <article>
-          <p className="impact-stats__value">4 Schools</p>
+          <p className="impact-stats__value">{STATS.schoolsCount}</p>
           <p className="impact-stats__label">District Event Support</p>
         </article>
         <article>
-          <p className="impact-stats__value">X</p>
-          <p className="impact-stats__label">Students Supported</p>
+          <p className="impact-stats__value">{STATS.scholarshipsGranted}</p>
+          <p className="impact-stats__label">Scholarships Granted</p>
         </article>
         <article>
-          <p className="impact-stats__value">$X</p>
-          <p className="impact-stats__label">Scholarships Awarded</p>
+          <p className="impact-stats__value">{STATS.totalAwarded}</p>
+          <p className="impact-stats__label">Total Awarded</p>
         </article>
       </section>
 
