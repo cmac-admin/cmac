@@ -71,10 +71,20 @@ export default function Home() {
           <p className="impact-stats__label">Active Event Support</p>
         </article>
         <article>
-          <p className="impact-stats__value">2 Funding Paths</p>
-          <p className="impact-stats__label">
-            Student Scholarships + Teacher Grants
-          </p>
+          <p className="impact-stats__value">X</p>
+          <p className="impact-stats__label">Scholarships Awarded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">X</p>
+          <p className="impact-stats__label">Senior Scholarships Awarded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">$X</p>
+          <p className="impact-stats__label">Scholarship Amount Awarded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">2</p>
+          <p className="impact-stats__label">Teacher Grants Awarded</p>
         </article>
       </section>
 
