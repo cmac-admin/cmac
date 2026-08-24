@@ -9,6 +9,7 @@ const siteLinks = [
   { href: "/teacher-grants", label: "Teacher Grants" },
   { href: "/news", label: "News" },
   { href: "/news/logo-contest", label: "News: Logo Contest" },
+  { href: "/faq", label: "FAQ" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/order-here", label: "Order Here" },
 ];
