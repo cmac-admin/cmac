@@ -64,7 +64,13 @@ const faqGroups: FaqGroup[] = [
       {
         question: "Can I donate directly?",
         answer:
-          "Yes — donations can be made through our website using our secure donation link.",
+          "Yes, donations can be made directly through our website on the Donate page.",
+        answerNode: (
+          <>
+            Yes, donations can be made directly through our website on the{" "}
+            <Link href="/get-involved#direct-donate">Donate page</Link>.
+          </>
+        ),
       },
       {
         question: "Are donations tax-deductible?",
@@ -95,11 +101,26 @@ const faqGroups: FaqGroup[] = [
         question: "How do students apply for scholarships?",
         answer:
           "All scholarship applications are done through our website. Seniors can apply through our annual scholarship application, available in the spring. Requirements and deadlines are posted on our Scholarships page.",
+        answerNode: (
+          <>
+            All scholarship applications are done through our website. Seniors can
+            apply through our annual scholarship application, available in the
+            spring. Requirements and deadlines are posted on our{" "}
+            <Link href="/scholarships">Scholarships page</Link>.
+          </>
+        ),
       },
       {
         question: "How do teachers apply for grants?",
         answer:
-          "Teachers submit a short proposal describing how the grant will enhance student arts experiences. Applications open each fall.",
+          "Teachers submit a short proposal describing how the grant will enhance student arts experiences. Applications open each fall. Learn more and apply on our Teacher Grants page.",
+        answerNode: (
+          <>
+            Teachers submit a short proposal describing how the grant will enhance
+            student arts experiences. Applications open each fall. Learn more and
+            apply on our <Link href="/teacher-grants">Teacher Grants page</Link>.
+          </>
+        ),
       },
     ],
   },
@@ -110,7 +131,15 @@ const faqGroups: FaqGroup[] = [
       {
         question: "How can I volunteer?",
         answer:
-          "Volunteers help at event tables, assemble fundraising items, assist with displays, or support behind-the-scenes tasks. Even one hour makes a huge impact.",
+          "Volunteers help at event tables, assemble fundraising items, assist with displays, or support behind-the-scenes tasks. Even one hour makes a huge impact. Sign up on our Get Involved page.",
+        answerNode: (
+          <>
+            Volunteers help at event tables, assemble fundraising items, assist
+            with displays, or support behind-the-scenes tasks. Even one hour makes
+            a huge impact. Sign up on our{" "}
+            <Link href="/get-involved#volunteer">Get Involved page</Link>.
+          </>
+        ),
       },
       {
         question: "Do I need experience to volunteer?",
@@ -131,7 +160,15 @@ const faqGroups: FaqGroup[] = [
       {
         question: "Where can I find event dates?",
         answer:
-          "Event dates are listed on the Comsewogue School District calendar. CMAC's Events page lists the types of events we support each year.",
+          "We only list the events we support, the actual date may vary based on the Comsewogue School District Calendar and is subject to change, so please confirm with the school/district regarding specific events and dates.",
+        answerNode: (
+          <>
+            We only list the <Link href="/events">events we support</Link>, the
+            actual date may vary based on the Comsewogue School District Calendar
+            and is subject to change, so please confirm with the school/district
+            regarding specific events and dates.
+          </>
+        ),
       },
       {
         question: "Does CMAC run the school productions?",
