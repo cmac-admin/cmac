@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { STATS } from "@/lib/stats";
 
+const premierSponsors = [
+  { name: "ONE RIVER", logo: "/one-river-logo-orange.png", website: "https://portjefferson.oneriverschool.com/" },
+  { name: "CMAC COMMUNITY" },
+  { name: "LONG ISLAND ARTS" },
+  { name: "MUSIC MAKERS" },
+  { name: "LOCAL VOICES" },
+  { name: "YOUTH ARTS" },
+];
+
 export const metadata: Metadata = {
   title: "Home",
   description:
@@ -60,6 +69,25 @@ export default function Home() {
         <Link href="/get-involved" className="announcement-banner__button">
           Join Now
         </Link>
+      </section>
+
+      <section className="premier-sponsors" aria-label="Premier sponsors">
+        <div className="premier-sponsors__header">
+          <p className="premier-sponsors__kicker">Premier Sponsors</p>
+        </div>
+        <div className="premier-sponsors__marquee" aria-hidden="true">
+          <div className="premier-sponsors__track">
+            {[...premierSponsors, ...premierSponsors].map((sponsor, index) => (
+              <div key={`${sponsor.name}-${index}`} className="premier-sponsor">
+                {sponsor.logo ? (
+                  <img src={sponsor.logo} alt={`${sponsor.name} logo`} />
+                ) : (
+                  <span>{sponsor.name}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="impact-stats" aria-label="CMAC impact at a glance">

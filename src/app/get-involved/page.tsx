@@ -24,7 +24,7 @@ const donationFaqJsonLd = {
       name: "What is the fastest way to donate to CMAC?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Use the Donate with Venmo button or scan the Zelle QR code on the Get Involved page.",
+        text: "Use the Donate with Venmo, Apple Pay, or Zelle buttons on the Get Involved page.",
       },
     },
     {
@@ -201,29 +201,8 @@ export default function GetInvolvedPage() {
 
       <section className="content-card" id="direct-donate">
         <h2>Direct Donation Methods</h2>
-        <p className="muted-copy">
-          Prefer quick digital giving? Use the buttons below.
-        </p>
-        <div className="direct-donate-cta">
-          <a
-            className="apply-btn"
-            href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Donate with Venmo
-          </a>
-          <a
-            className="apply-btn"
-            href="/cmac/cmac-zelle-qr.png"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Donate with Zelle
-          </a>
-        </div>
         <div className="split-grid">
-          <article>
+          <article className="donation-qr-card">
             <h3>Venmo</h3>
             <p>
               Donate via Venmo using
@@ -238,8 +217,31 @@ export default function GetInvolvedPage() {
               src="/cmac/cmac-venmo-qr.png"
               alt="CMAC Venmo QR code"
             />
+            <a
+              className="apply-btn donation-method-button"
+              href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Donate with Venmo
+            </a>
           </article>
-          <article id="zelle-qr">
+          <article className="donation-qr-card donation-qr-card--placeholder" id="apple-pay">
+            <h3>Apple Pay</h3>
+            <p>Use Apple Pay from your iPhone or Apple Wallet to give quickly.</p>
+            <div className="donation-method-placeholder" aria-label="Apple Pay placeholder">
+              <span>Apple Pay</span>
+            </div>
+            <a
+              className="apply-btn donation-method-button"
+              href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Donate with Apple Pay
+            </a>
+          </article>
+          <article className="donation-qr-card" id="zelle-qr">
             <h3>Zelle</h3>
             <p>Scan this code in your banking app to donate via Zelle.</p>
             <img
@@ -247,9 +249,18 @@ export default function GetInvolvedPage() {
               src="/cmac/cmac-zelle-qr.png"
               alt="CMAC Zelle QR code"
             />
+            <a
+              className="apply-btn donation-method-button"
+              href="/cmac/cmac-zelle-qr.png"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Donate with Zelle
+            </a>
           </article>
-          <article>
-            <h3>Checks</h3>
+          <article className="donation-qr-card">
+            <h3>By Mail</h3>
+            <p>Make checks payable to CMAC and mail or drop off to:</p>
             <p>
               Comsewogue Music & Arts Corp.
               <br />
@@ -269,8 +280,8 @@ export default function GetInvolvedPage() {
           <details>
             <summary>What is the fastest way to donate?</summary>
             <p>
-              Use the <strong>Donate with Venmo</strong> button above, or open
-              the Zelle QR code and scan it in your banking app.
+              Use the <strong>Donate with Venmo</strong>, <strong>Apple Pay</strong>,
+              or <strong>Zelle</strong> buttons below to give quickly.
             </p>
           </details>
           <details>
