@@ -148,7 +148,7 @@ export default function RootLayout({
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/news">News</Link>
             <Link href="/faq">FAQ</Link>
-            <Link href="/sponsors">Sponsors</Link>
+            <Link href="/sponsors">Supporters</Link>
             <Link href="/get-involved#direct-donate">Donate</Link>
             <Link href="/order-here">Order Here</Link>
           </nav>

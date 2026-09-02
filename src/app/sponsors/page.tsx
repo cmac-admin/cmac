@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sponsors",
+  title: "Supporters",
   description:
-    "Thank you to the community sponsors who make CMAC's mission possible. Interested in sponsoring? Learn about partnership opportunities.",
+    "Thank you to the CMAC community supporters who make our mission possible. Interested in joining the support circle? Learn about partnership opportunities.",
   openGraph: {
-    title: "Sponsors | Comsewogue Music & Arts Corp.",
+    title: "Supporters | Comsewogue Music & Arts Corp.",
     description:
-      "CMAC thanks its community sponsors for making student scholarships and arts programs possible. Learn how your business can get involved.",
+      "CMAC thanks its community supporters for making student scholarships and arts programs possible. Learn how your business can get involved.",
     url: "https://www.comsewoguemusicandarts.org/sponsors",
   },
 };
@@ -29,16 +29,11 @@ export default function SponsorsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Sponsors</p>
-        <h1>Thank You to Our Community Sponsors</h1>
-        <p>
-          We are deeply grateful for every sponsor whose generosity helps us
-          expand arts access and student opportunity.
-        </p>
+        <h1>Thank You to Our Community Supporters</h1>
       </section>
 
       <section className="content-card">
-        <h2>Our Sponsor Logos</h2>
+        <h2>OUR PREMIERE COMMUNITY SUPPORTERS</h2>
         <p className="muted-copy">
           Thank you for investing in Comsewogue students and strengthening our
           music and arts programs.
@@ -50,7 +45,7 @@ export default function SponsorsPage() {
                 <a
                   href={sponsor.website}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="sponsor-link"
                 >
                   <div className="sponsor-logo-placeholder sponsor-logo-placeholder--image">
@@ -70,6 +65,10 @@ export default function SponsorsPage() {
             </article>
           ))}
         </div>
+        <p className="muted-copy sponsor-supporter-copy">
+          We are deeply grateful for every supporter whose generosity helps us
+          expand arts access and student opportunity.
+        </p>
       </section>
     </main>
   );

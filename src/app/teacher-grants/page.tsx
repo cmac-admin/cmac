@@ -16,12 +16,7 @@ export default function TeacherGrantsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Teacher Grants</p>
         <h1>Funding Innovative Classroom Arts Projects</h1>
-        <p>
-          CMAC teacher grants support faculty ideas that directly enrich student
-          learning in music and the arts.
-        </p>
       </section>
 
       <section className="content-card scholarship-block">
@@ -49,6 +44,8 @@ export default function TeacherGrantsPage() {
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform"
             className="apply-btn"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Apply for Teacher Grant
           </a>

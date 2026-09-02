@@ -10,7 +10,7 @@ const siteLinks = [
   { href: "/news", label: "News" },
   { href: "/news/logo-contest", label: "News: Logo Contest" },
   { href: "/faq", label: "FAQ" },
-  { href: "/sponsors", label: "Sponsors" },
+  { href: "/sponsors", label: "Supporters" },
   { href: "/order-here", label: "Order Here" },
 ];
 

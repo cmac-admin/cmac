@@ -17,12 +17,7 @@ export default function ScholarshipsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Scholarships</p>
         <h1>Scholarships</h1>
-        <p>
-          CMAC awards scholarships and grants to support student growth in
-          music, visual arts, business, and related creative fields.
-        </p>
       </section>
 
       <section className="scholarship-impact-bar" aria-label="Scholarship impact">
@@ -101,6 +96,8 @@ export default function ScholarshipsPage() {
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform"
             className="apply-btn"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Apply for Senior Scholarship
           </a>
@@ -169,6 +166,8 @@ export default function ScholarshipsPage() {
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform"
             className="apply-btn"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Apply for Summer Study Scholarship
           </a>

@@ -54,7 +54,6 @@ export default function GetInvolvedPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(donationFaqJsonLd) }}
       />
       <section className="subpage-hero">
-        <p className="subpage-kicker">Get Involved</p>
         <h1>Join CMAC</h1>
         <p>
           Membership in Comsewogue Music & Arts Corp. directly supports student
@@ -101,12 +100,30 @@ export default function GetInvolvedPage() {
           <article id="yearly-membership" className="give-detail-card">
             <h3>1. Yearly Membership</h3>
             <p>Join today to become a member of CMAC.</p>
+            <p className="subpage-link">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                target="_blank"
+                rel="noreferrer"
+                className="apply-btn"
+              >
+                JOIN CMAC
+              </a>
+            </p>
           </article>
 
           <article id="one-time-donation" className="give-detail-card">
             <h3>2. One-Time Donation</h3>
-            <p>
-              Make a single contribution to support CMAC&apos;s mission.
+            <p>Make a single contribution to support CMAC&apos;s mission.</p>
+            <p className="subpage-link">
+              <a
+                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link"
+              >
+                GIVE NOW
+              </a>
             </p>
           </article>
 
@@ -115,6 +132,17 @@ export default function GetInvolvedPage() {
             <p>
               Become a CMAC Sustaining Supporter. Your recurring gift provides
               stable funding for student scholarships and teacher grants.
+            </p>
+            <p className="subpage-link">
+              <a
+                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link text-link--disabled"
+                aria-disabled="true"
+              >
+                COMING SOON
+              </a>
             </p>
           </article>
 
@@ -129,13 +157,34 @@ export default function GetInvolvedPage() {
               <li>Community visibility</li>
               <li>Event recognition</li>
             </ul>
+            <p className="subpage-link">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                target="_blank"
+                rel="noreferrer"
+                className="apply-btn"
+              >
+                SPONSOR CMAC
+              </a>
+            </p>
           </article>
 
           <article id="tribute-gifts" className="give-detail-card">
-            <h3>5. Tribute Gifts</h3>
+            <h3>5. Honor a Loved One</h3>
             <p>
               Honor a student or loved one with a donation in their name.
               Tribute gifts can be recognized on our website or at events.
+            </p>
+            <p className="subpage-link">
+              <a
+                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link text-link--disabled"
+                aria-disabled="true"
+              >
+                COMING SOON
+              </a>
             </p>
           </article>
 
@@ -144,6 +193,17 @@ export default function GetInvolvedPage() {
             <p>
               Check with your employer about matching charitable donations.
               Contact your HR department to double your impact.
+            </p>
+            <p className="subpage-link">
+              <a
+                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link text-link--disabled"
+                aria-disabled="true"
+              >
+                COMING SOON
+              </a>
             </p>
           </article>
 
@@ -171,6 +231,16 @@ export default function GetInvolvedPage() {
                 send encouragement backstage while supporting CMAC.
               </li>
             </ul>
+            <p className="subpage-link">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link"
+              >
+                SUPPORT THE SHOW
+              </a>
+            </p>
           </article>
 
           <article id="volunteer" className="give-detail-card">
@@ -191,7 +261,12 @@ export default function GetInvolvedPage() {
               today.
             </p>
             <p className="subpage-link">
-              <a href="#membership-form" className="apply-btn">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                target="_blank"
+                rel="noreferrer"
+                className="apply-btn"
+              >
                 JOIN CMAC
               </a>
             </p>
@@ -201,13 +276,13 @@ export default function GetInvolvedPage() {
 
       <section className="content-card" id="direct-donate">
         <h2>Direct Donation Methods</h2>
-        <div className="split-grid">
+        <div className="split-grid split-grid--three">
           <article className="donation-qr-card">
             <h3>Venmo</h3>
             <p>
               Donate via Venmo using
               {" "}
-              <a href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203">
+              <a href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203" target="_blank" rel="noreferrer">
                 @CMAC-Comsewogue
               </a>
               .
@@ -224,21 +299,6 @@ export default function GetInvolvedPage() {
               rel="noreferrer"
             >
               Donate with Venmo
-            </a>
-          </article>
-          <article className="donation-qr-card donation-qr-card--placeholder" id="apple-pay">
-            <h3>Apple Pay</h3>
-            <p>Use Apple Pay from your iPhone or Apple Wallet to give quickly.</p>
-            <div className="donation-method-placeholder" aria-label="Apple Pay placeholder">
-              <span>Apple Pay</span>
-            </div>
-            <a
-              className="apply-btn donation-method-button"
-              href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Donate with Apple Pay
             </a>
           </article>
           <article className="donation-qr-card" id="zelle-qr">
@@ -258,9 +318,10 @@ export default function GetInvolvedPage() {
               Donate with Zelle
             </a>
           </article>
-          <article className="donation-qr-card">
+          <article className="donation-qr-card donation-qr-card--mail">
             <h3>By Mail</h3>
-            <p>Make checks payable to CMAC and mail or drop off to:</p>
+            <p>Please make checks payable to CMAC</p>
+            <p>mail or drop off to:</p>
             <p>
               Comsewogue Music & Arts Corp.
               <br />
@@ -271,6 +332,21 @@ export default function GetInvolvedPage() {
               Port Jefferson Station, NY 11776
             </p>
           </article>
+        </div>
+        <div className="donation-footer-row">
+          <div className="donation-apple-card">
+            <h3>Apple Pay</h3>
+            <p>Coming soon.</p>
+            <a
+              href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+              target="_blank"
+              rel="noreferrer"
+              className="text-link text-link--disabled"
+              aria-disabled="true"
+            >
+              COMING SOON
+            </a>
+          </div>
         </div>
       </section>
 
@@ -302,23 +378,41 @@ export default function GetInvolvedPage() {
       </section>
 
       <section className="content-card">
-        <h2>Membership Levels</h2>
+        <h2>Community Supporter Levels</h2>
         <div className="membership-grid">
           <article className="membership-tier">
             <h3>Individual</h3>
             <p>$25/year</p>
+            <ul>
+              <li>Free t-shirt</li>
+            </ul>
           </article>
           <article className="membership-tier">
             <h3>Family</h3>
-            <p>$40/year</p>
+            <p>$50/year</p>
+            <ul>
+              <li>2 free t-shirts</li>
+            </ul>
           </article>
           <article className="membership-tier">
-            <h3>Patron</h3>
-            <p>$75/year</p>
+            <h3>Community Supporter</h3>
+            <p>$100/year</p>
+            <ul>
+              <li>Business name in community supporter ticker</li>
+            </ul>
           </article>
-          <article className="membership-tier">
-            <h3>Corporate Sponsor</h3>
-            <p>$150/year - Business logo will appear on our website as a sponsor.</p>
+          <article className="membership-tier membership-tier--featured">
+            <h3>
+              <span className="membership-badge" aria-hidden="true" />
+              Premiere Community Supporter
+            </h3>
+            <p>$150/year</p>
+            <ul>
+              <li>Business logo + link on website Supporter page</li>
+              <li>Logo displayed at event tables throughout the school year</li>
+              <li>Digital support badge</li>
+              <li>Dedicated social media spotlight post</li>
+            </ul>
           </article>
         </div>
       </section>

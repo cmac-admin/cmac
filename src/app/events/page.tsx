@@ -16,7 +16,6 @@ export default function EventsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Events</p>
         <h1>Annual Performances & Events We Support</h1>
         <p>
           CMAC proudly supports music, theater, and visual arts events

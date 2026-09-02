@@ -17,12 +17,7 @@ export default function AboutPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">About</p>
-        <h1 className="about-title-one-line">About Comsewogue Music & Arts Corp.</h1>
-        <p>
-          We are a 501(c) non-profit organization supporting Comsewogue
-          students through music, visual arts, scholarships, and grants.
-        </p>
+        <h1 className="about-title-one-line">Comsewogue Music & Arts Corp.</h1>
       </section>
 
       <section
@@ -75,16 +70,16 @@ export default function AboutPage() {
             within the Comsewogue community
           </li>
         </ul>
-        <p>
+        <p className="mission-note">
           With board approval and based on available funds, CMAC may extend
           support to surrounding Suffolk County areas.
         </p>
       </section>
 
       <section className="content-card">
-        <h2>2026–2027 Board of Directors</h2>
+        <h2 className="center-heading board-title-line">2026–2027</h2>
+        <h3 className="section-label board-section-label board-section-label--officers">Officers</h3>
 
-        <h3 className="section-label board-section-label">Officers</h3>
         <div className="board-grid">
           <div className="board-card">
             <div className="board-card__photo" aria-hidden="true">
@@ -119,17 +114,10 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <h3 className="section-label board-section-label" style={{ marginTop: "2.25rem" }}>
+        <h3 className="section-label board-section-label board-section-label--students" style={{ marginTop: "2.25rem" }}>
           Student Representatives
         </h3>
-        <div className="board-grid board-grid--students">
-          <div className="board-card board-card--student">
-            <div className="board-card__photo" aria-hidden="true">
-              <span className="board-card__initials">AK</span>
-            </div>
-            <p className="board-card__name">Annmarie Kosak</p>
-            <p className="board-card__title">Student Rep</p>
-          </div>
+        <div className="board-grid board-grid--students board-grid--students-centered">
           <div className="board-card board-card--student">
             <div className="board-card__photo" aria-hidden="true">
               <span className="board-card__initials">JP</span>
