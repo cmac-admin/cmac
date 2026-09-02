@@ -1,19 +1,4 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Get Involved",
-  description:
-    "Join CMAC! Become a member, donate, volunteer, or sponsor. Every contribution directly supports student scholarships and teacher grants in the Comsewogue School District.",
-  openGraph: {
-    title: "Get Involved | Comsewogue Music & Arts Corp.",
-    description:
-      "Join CMAC through membership, donations, volunteering, or corporate sponsorship. Your support funds scholarships and teacher grants for Comsewogue students.",
-    url: "https://www.comsewoguemusicandarts.org/get-involved",
-  },
-  alternates: {
-    canonical: "https://www.comsewoguemusicandarts.org/get-involved",
-  },
-};
+"use client";
 
 const donationFaqJsonLd = {
   "@context": "https://schema.org",
@@ -47,6 +32,67 @@ const donationFaqJsonLd = {
 };
 
 export default function GetInvolvedPage() {
+  const getSchoolYearLabel = () => {
+    const today = new Date();
+    const startYear = today >= new Date(today.getFullYear(), 7, 15)
+      ? today.getFullYear()
+      : today.getFullYear() - 1;
+
+    return `${startYear}-${startYear + 1}`;
+  };
+
+  const openPopupWindow = (url: string) => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const popup = window.open(
+      "",
+      "cmacPopup",
+      "width=980,height=760,top=80,left=120,resizable=yes,scrollbars=yes"
+    );
+
+    if (!popup) {
+      return;
+    }
+
+    const yearLabel = getSchoolYearLabel();
+
+    popup.document.write(`<!doctype html>
+      <html>
+        <head>
+          <title>CMAC ${yearLabel} MEMBERSHIP FORM</title>
+          <style>
+            html, body { margin: 0; height: 100%; background: #f3efe7; font-family: Arial, sans-serif; }
+            body { display: flex; flex-direction: column; }
+            .popup-header {
+              padding: 1rem 1.25rem;
+              text-align: center;
+              background: #0f2037;
+              color: #f4d38d;
+              border-bottom: 3px solid #c99c3d;
+              font-size: 1.2rem;
+              font-weight: 700;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+            }
+            iframe {
+              flex: 1;
+              width: 100%;
+              min-height: 680px;
+              border: 0;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="popup-header">CMAC ${yearLabel} MEMBERSHIP FORM</div>
+          <iframe src="${url}" title="CMAC ${yearLabel} MEMBERSHIP FORM"></iframe>
+        </body>
+      </html>`);
+
+    popup.document.close();
+  };
+
   return (
     <main className="subpage">
       <script
@@ -76,8 +122,8 @@ export default function GetInvolvedPage() {
           <a className="give-nav-link" href="#monthly-giving">
             3. Monthly Giving
           </a>
-          <a className="give-nav-link" href="#corporate-sponsorships">
-            4. Corporate Sponsorships
+          <a className="give-nav-link" href="#community-supporter-levels">
+            4. Community Supporter
           </a>
           <a className="give-nav-link" href="#tribute-gifts">
             5. Tribute Gifts
@@ -106,6 +152,12 @@ export default function GetInvolvedPage() {
                 target="_blank"
                 rel="noreferrer"
                 className="apply-btn"
+                onClick={(event) => {
+                  event.preventDefault();
+                  openPopupWindow(
+                    "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                  );
+                }}
               >
                 JOIN CMAC
               </a>
@@ -146,27 +198,47 @@ export default function GetInvolvedPage() {
             </p>
           </article>
 
-          <article id="corporate-sponsorships" className="give-detail-card">
-            <h3>4. Corporate Sponsorships</h3>
-            <p>
-              Local businesses can support CMAC through sponsorship packages
-              that include:
-            </p>
-            <ul>
-              <li>Logo placement on our site</li>
-              <li>Community visibility</li>
-              <li>Event recognition</li>
-            </ul>
-            <p className="subpage-link">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
-                target="_blank"
-                rel="noreferrer"
-                className="apply-btn"
-              >
-                SPONSOR CMAC
-              </a>
-            </p>
+          <article
+            id="community-supporter-levels"
+            className="give-detail-card give-detail-card--wide"
+          >
+            <h3>4. Community Supporter</h3>
+            <div className="membership-grid">
+              <article className="membership-tier">
+                <h3>Individual</h3>
+                <p>$25/year</p>
+                <ul>
+                  <li>Free t-shirt</li>
+                </ul>
+              </article>
+              <article className="membership-tier">
+                <h3>Family</h3>
+                <p>$50/year</p>
+                <ul>
+                  <li>2 free t-shirts</li>
+                </ul>
+              </article>
+              <article className="membership-tier">
+                <h3>Community Supporter</h3>
+                <p>$100/year</p>
+                <ul>
+                  <li>Business name in community supporter ticker</li>
+                </ul>
+              </article>
+              <article className="membership-tier membership-tier--featured">
+                <h3>
+                  <span className="membership-badge" aria-hidden="true" />
+                  Premier Community Supporter
+                </h3>
+                <p>$150/year</p>
+                <ul>
+                  <li>Business logo + link on website Supporter page</li>
+                  <li>Logo displayed at event tables throughout the school year</li>
+                  <li>Digital support badge</li>
+                  <li>Dedicated social media spotlight post</li>
+                </ul>
+              </article>
+            </div>
           </article>
 
           <article id="tribute-gifts" className="give-detail-card">
@@ -266,6 +338,12 @@ export default function GetInvolvedPage() {
                 target="_blank"
                 rel="noreferrer"
                 className="apply-btn"
+                onClick={(event) => {
+                  event.preventDefault();
+                  openPopupWindow(
+                    "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                  );
+                }}
               >
                 JOIN CMAC
               </a>
@@ -279,7 +357,7 @@ export default function GetInvolvedPage() {
         <div className="split-grid split-grid--three">
           <article className="donation-qr-card">
             <h3>Venmo</h3>
-            <p>
+            <p className="donation-card-copy">
               Donate via Venmo using
               {" "}
               <a href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203" target="_blank" rel="noreferrer">
@@ -287,11 +365,13 @@ export default function GetInvolvedPage() {
               </a>
               .
             </p>
-            <img
-              className="qr-image"
-              src="/cmac/cmac-venmo-qr.png"
-              alt="CMAC Venmo QR code"
-            />
+            <div className="qr-frame">
+              <img
+                className="qr-image"
+                src="/cmac/cmac-venmo-qr.png"
+                alt="CMAC Venmo QR code"
+              />
+            </div>
             <a
               className="apply-btn donation-method-button"
               href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
@@ -303,12 +383,14 @@ export default function GetInvolvedPage() {
           </article>
           <article className="donation-qr-card" id="zelle-qr">
             <h3>Zelle</h3>
-            <p>Scan this code in your banking app to donate via Zelle.</p>
-            <img
-              className="qr-image"
-              src="/cmac/cmac-zelle-qr.png"
-              alt="CMAC Zelle QR code"
-            />
+            <p className="donation-card-copy">Scan this code in your banking app to donate via Zelle.</p>
+            <div className="qr-frame">
+              <img
+                className="qr-image"
+                src="/cmac/cmac-zelle-qr.png"
+                alt="CMAC Zelle QR code"
+              />
+            </div>
             <a
               className="apply-btn donation-method-button"
               href="/cmac/cmac-zelle-qr.png"
@@ -320,33 +402,32 @@ export default function GetInvolvedPage() {
           </article>
           <article className="donation-qr-card donation-qr-card--mail">
             <h3>By Mail</h3>
-            <p>Please make checks payable to CMAC</p>
-            <p>mail or drop off to:</p>
-            <p>
-              Comsewogue Music & Arts Corp.
-              <br />
-              c/o Comsewogue High School
-              <br />
-              565 Bicycle Path
-              <br />
-              Port Jefferson Station, NY 11776
-            </p>
+            <div className="mail-subline">Please make checks payable to CMAC</div>
+            <div className="mail-address-box">
+              <p>Mail or drop off to:</p>
+              <p>
+                Comsewogue Music & Arts Corp.
+                <br />
+                c/o Comsewogue High School
+                <br />
+                565 Bicycle Path
+                <br />
+                Port Jefferson Station, NY 11776
+              </p>
+            </div>
+            <div className="apple-pay-mini">
+              <h3>Apple Pay</h3>
+              <a
+                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
+                target="_blank"
+                rel="noreferrer"
+                className="text-link text-link--disabled"
+                aria-disabled="true"
+              >
+                COMING SOON
+              </a>
+            </div>
           </article>
-        </div>
-        <div className="donation-footer-row">
-          <div className="donation-apple-card">
-            <h3>Apple Pay</h3>
-            <p>Coming soon.</p>
-            <a
-              href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-              target="_blank"
-              rel="noreferrer"
-              className="text-link text-link--disabled"
-              aria-disabled="true"
-            >
-              COMING SOON
-            </a>
-          </div>
         </div>
       </section>
 
@@ -377,46 +458,6 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <section className="content-card">
-        <h2>Community Supporter Levels</h2>
-        <div className="membership-grid">
-          <article className="membership-tier">
-            <h3>Individual</h3>
-            <p>$25/year</p>
-            <ul>
-              <li>Free t-shirt</li>
-            </ul>
-          </article>
-          <article className="membership-tier">
-            <h3>Family</h3>
-            <p>$50/year</p>
-            <ul>
-              <li>2 free t-shirts</li>
-            </ul>
-          </article>
-          <article className="membership-tier">
-            <h3>Community Supporter</h3>
-            <p>$100/year</p>
-            <ul>
-              <li>Business name in community supporter ticker</li>
-            </ul>
-          </article>
-          <article className="membership-tier membership-tier--featured">
-            <h3>
-              <span className="membership-badge" aria-hidden="true" />
-              Premiere Community Supporter
-            </h3>
-            <p>$150/year</p>
-            <ul>
-              <li>Business logo + link on website Supporter page</li>
-              <li>Logo displayed at event tables throughout the school year</li>
-              <li>Digital support badge</li>
-              <li>Dedicated social media spotlight post</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
       <section className="content-card" id="membership-form">
         <h2>Membership Form</h2>
         <p className="muted-copy">
@@ -436,8 +477,16 @@ export default function GetInvolvedPage() {
           </iframe>
         </div>
         <p className="subpage-link">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform">
-            Open membership form in a new tab
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+            onClick={(event) => {
+              event.preventDefault();
+              openPopupWindow(
+                "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+              );
+            }}
+          >
+            Open membership form in a new window
           </a>
         </p>
       </section>

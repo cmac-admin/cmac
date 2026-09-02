@@ -3,7 +3,16 @@ import Link from "next/link";
 import { STATS } from "@/lib/stats";
 
 const premierSponsors = [
-  { name: "ONE RIVER", logo: "/one-river-logo-orange.png", website: "https://portjefferson.oneriverschool.com/" },
+  {
+    name: "ONE RIVER",
+    logo: "/cmac/one-river-logo-orange.png",
+    website: "https://portjefferson.oneriverschool.com/",
+  },
+  {
+    name: "Bellwether",
+    logo: "/cmac/bellwether-band-logo.jpg",
+    website: "https://bellwether.band/",
+  },
   { name: "CMAC COMMUNITY" },
   { name: "LONG ISLAND ARTS" },
   { name: "MUSIC MAKERS" },
@@ -75,17 +84,36 @@ export default function Home() {
         <div className="premier-sponsors__header">
           <p className="premier-sponsors__kicker">Premier Sponsors</p>
         </div>
-        <div className="premier-sponsors__marquee" aria-hidden="true">
+        <div className="premier-sponsors__marquee" aria-label="Premier sponsor marquee">
           <div className="premier-sponsors__track">
-            {[...premierSponsors, ...premierSponsors].map((sponsor, index) => (
-              <div key={`${sponsor.name}-${index}`} className="premier-sponsor">
-                {sponsor.logo ? (
-                  <img src={sponsor.logo} alt={`${sponsor.name} logo`} />
-                ) : (
-                  <span>{sponsor.name}</span>
-                )}
-              </div>
-            ))}
+            {[...premierSponsors, ...premierSponsors].map((sponsor, index) => {
+              const content = sponsor.logo ? (
+                <img src={sponsor.logo} alt={`${sponsor.name} logo`} />
+              ) : (
+                <span>{sponsor.name}</span>
+              );
+
+              if (!sponsor.website) {
+                return (
+                  <div key={`${sponsor.name}-${index}`} className="premier-sponsor">
+                    {content}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={`${sponsor.name}-${index}`}
+                  className="premier-sponsor"
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${sponsor.name}`}
+                >
+                  {content}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -18,11 +18,48 @@ const sponsors = [
     website: "https://portjefferson.oneriverschool.com/",
     logo: "/cmac/one-river-logo-orange.png",
   },
+  {
+    name: "Bellwether",
+    website: "https://bellwether.band/",
+    logo: "/cmac/bellwether-band-logo.jpg",
+  },
   { name: "Sponsor Logo 2" },
   { name: "Sponsor Logo 3" },
   { name: "Sponsor Logo 4" },
   { name: "Sponsor Logo 5" },
   { name: "Sponsor Logo 6" },
+];
+
+const communityDonors = [
+  "Class Pass Donors",
+  "Gift Card Contributors",
+  "Community Family Supporters",
+  "Neighborhood Arts Boosters",
+  "Student Program Backers",
+  "Friends of CMAC",
+  "Season Supporters",
+  "Music & Arts Helpers",
+];
+
+const familySupporters = [
+  "THE ANDERSEN FAMILY",
+  "THE KOSAK FAMILY",
+  "THE PERRONE FAMILY",
+  "THE DVORSKY FAMILY",
+  "THE JAKLITSCH FAMILY",
+  "THE PROVENZALE FAMILY",
+  "C. ANDERSEN",
+  "M. SMITH",
+  "L. JONES",
+  "THE ANDERSEN FAMILY",
+  "THE KOSAK FAMILY",
+  "THE PERRONE FAMILY",
+  "THE DVORSKY FAMILY",
+  "THE JAKLITSCH FAMILY",
+  "THE PROVENZALE FAMILY",
+  "C. ANDERSEN",
+  "M. SMITH",
+  "L. JONES",
 ];
 
 export default function SponsorsPage() {
@@ -33,12 +70,17 @@ export default function SponsorsPage() {
       </section>
 
       <section className="content-card">
-        <h2>OUR PREMIERE COMMUNITY SUPPORTERS</h2>
+        <div className="supporter-heading-row">
+          <span className="supporter-badge" aria-label="Premier supporter badge">
+            PREM
+          </span>
+          <h2>OUR PREMIER COMMUNITY SPONSORS</h2>
+        </div>
         <p className="muted-copy">
           Thank you for investing in Comsewogue students and strengthening our
           music and arts programs.
         </p>
-        <div className="sponsor-grid">
+        <div className="sponsor-grid sponsor-grid--featured">
           {sponsors.map((sponsor) => (
             <article key={sponsor.name} className="sponsor-tile">
               {sponsor.website ? (
@@ -69,6 +111,40 @@ export default function SponsorsPage() {
           We are deeply grateful for every supporter whose generosity helps us
           expand arts access and student opportunity.
         </p>
+      </section>
+
+      <section className="content-card community-support-card">
+        <h2>COMMUNITY SUPPORTERS</h2>
+        <p className="muted-copy community-support-copy">
+          We also thank the many local community businesses that contribute class
+          passes, gift cards, merchandise and other support that goes to our raffle
+          baskets to help keep CMAC accessible and thriving.
+        </p>
+        <div className="community-donor-list" aria-label="Community donor thank-you list">
+          {communityDonors.map((donor) => (
+            <span key={donor} className="community-donor-pill">
+              {donor}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-card community-support-card">
+        <h2>COMSEWOGUE FAMILY SUPPORTERS</h2>
+        <p className="muted-copy community-support-copy">
+          We are grateful to the individuals and families whose continued support
+          makes it possible to offer students the scholarships to help them learn,
+          perform and thrive.
+        </p>
+        <div className="family-supporter-ticker" aria-label="Comsewogue Family Supporters list">
+          <div className="family-supporter-ticker__track">
+            {[...familySupporters, ...familySupporters].map((name, index) => (
+              <span key={`${name}-${index}`} className="family-supporter-ticker__item">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );

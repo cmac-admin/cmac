@@ -603,18 +603,20 @@ a {
   flex: 0 0 auto;
   min-width: 160px;
   height: 90px;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.8rem 1rem;
   border: 1px solid rgba(20, 56, 94, 0.12);
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.84);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-decoration: none;
 }
 
 .premier-sponsor img {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 140px;
   max-height: 52px;
   object-fit: contain;
@@ -1294,37 +1296,122 @@ a {
 .donation-qr-card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  padding: 1rem 0.9rem;
   border: 1px solid #d2ccc0;
   border-radius: var(--radius-soft);
   background: #f8f5ef;
   min-height: 100%;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(23, 59, 99, 0.04);
+}
+
+.donation-qr-card h3 {
+  margin: 0;
+  font-size: 0.96rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.donation-qr-card p,
+.donation-qr-card a {
+  width: 100%;
+}
+
+.donation-card-copy {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .donation-qr-card--mail {
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.donation-qr-card--mail > h3 {
+  text-align: center;
+}
+
+.qr-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 188px;
+  padding: 0.2rem;
+}
+
+.mail-address-box,
+.apple-pay-mini {
+  width: 100%;
+  border: 1px solid #d2ccc0;
+  border-radius: 0.75rem;
+  background: #f2efe9;
+  padding: 0.85rem 0.7rem;
+  text-align: center;
+}
+
+.mail-address-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mail-address-box p,
+.mail-subline {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.mail-subline {
+  text-align: center;
+  font-weight: 700;
+  color: #1b3654;
+}
+
+.apple-pay-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  text-align: center;
+}
+
+.apple-pay-mini h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.apple-pay-mini p {
+  margin: 0;
+}
+
+.apple-pay-mini a {
+  text-align: center;
+}
+
+.qr-image {
+  display: block;
+  width: min(170px, 100%);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.3rem;
+  border: 1px solid #ddd4c7;
 }
 
 .donation-method-button {
   margin-top: auto;
   width: 100%;
-}
-
-.donation-footer-row {
-  margin-top: 1rem;
-}
-
-.donation-apple-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.65rem;
-  padding: 1rem;
-  border: 1px solid #d2ccc0;
-  border-radius: var(--radius-soft);
-  background: #f8f5ef;
+  font-size: 0.9rem;
 }
 
 .donation-method-placeholder {
@@ -1426,6 +1513,27 @@ a {
   color: var(--muted);
 }
 
+.supporter-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.supporter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #dfba61 0%, #c79635 100%);
+  color: #15314e;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 14px rgba(24, 51, 83, 0.12);
+}
+
 .sponsor-grid {
   margin-top: 1rem;
   display: grid;
@@ -1433,23 +1541,31 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 
+.sponsor-grid--featured {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .sponsor-tile {
   margin: 0;
-  padding: 0.95rem;
-  background: #f8f5ef;
+  padding: 1rem;
+  background: linear-gradient(180deg, #fffdf9 0%, #f4efe8 100%);
   border: 1px solid #d4cec4;
+  border-radius: 1rem;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(21, 49, 78, 0.04);
 }
 
 .sponsor-logo-placeholder {
   display: grid;
   place-items: center;
-  height: 90px;
+  height: 130px;
   border: 1px dashed #b4ab9f;
+  border-radius: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #6a6156;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .sponsor-logo-placeholder--image {
@@ -1467,8 +1583,18 @@ a {
 }
 
 .sponsor-tile p {
-  margin: 0.55rem 0 0;
+  margin: 0.7rem 0 0;
   font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .supporter-heading-row {
+    align-items: center;
+  }
+
+  .sponsor-grid--featured {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
 }
 
 .sponsor-link {
@@ -1479,6 +1605,89 @@ a {
 .sponsor-link p {
   color: #183a61;
   font-weight: 700;
+}
+
+.community-support-card {
+  margin-top: 1rem;
+  border-top: 3px solid rgba(180, 138, 52, 0.5);
+}
+
+.community-support-copy {
+  margin-top: 0.6rem;
+}
+
+.community-donor-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.community-donor-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #d5d0c7;
+  border-radius: 999px;
+  background: #f3efe8;
+  color: #334155;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.family-supporter-ticker {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  border: 1px solid #d7d0c5;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f7f3ed 0%, #f0e8df 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.family-supporter-ticker__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  animation: familySupporterTicker 38s linear infinite;
+}
+
+.family-supporter-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.1rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #d0c7bb;
+  background: rgba(255, 255, 255, 0.55);
+  color: #183a61;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes familySupporterTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-supporter-ticker__track {
+    animation: none;
+  }
 }
 
 .school-grid {

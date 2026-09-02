@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { HeaderJoinButton } from "../components/HeaderJoinButton";
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -134,9 +135,7 @@ export default function RootLayout({
                   Donate with Zelle
                 </a>
               </div>
-              <Link className="join-button join-button--secondary" href="/get-involved">
-                Join CMAC <span aria-hidden="true">→</span>
-              </Link>
+              <HeaderJoinButton />
             </div>
           </div>
 
