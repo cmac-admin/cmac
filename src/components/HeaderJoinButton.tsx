@@ -12,7 +12,7 @@ const getSchoolYearLabel = () => {
 export function HeaderJoinButton() {
   const handleClick = () => {
     const url =
-      "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform";
+      "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform";
 
     const popup = window.open(
       "",
@@ -39,10 +39,11 @@ export function HeaderJoinButton() {
               background: #0f2037;
               color: #f4d38d;
               border-bottom: 3px solid #c99c3d;
-              font-size: 1.2rem;
-              font-weight: 700;
-              letter-spacing: 0.08em;
+              font-size: 1.35rem;
+              font-weight: 800;
+              letter-spacing: 0.06em;
               text-transform: uppercase;
+              line-height: 1.3;
             }
             iframe {
               flex: 1;
@@ -53,7 +54,7 @@ export function HeaderJoinButton() {
           </style>
         </head>
         <body>
-          <div class="popup-header">CMAC ${yearLabel}</div>
+          <div class="popup-header">CMAC ${yearLabel} Membership Form</div>
           <iframe src="${url}" title="CMAC Membership Form ${yearLabel}"></iframe>
         </body>
       </html>`);

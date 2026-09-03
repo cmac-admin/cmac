@@ -19,9 +19,14 @@ const sponsors = [
     logo: "/cmac/one-river-logo-orange.png",
   },
   {
+    name: "School of Rock Port Jefferson",
+    website: "https://www.schoolofrock.com/locations/portjefferson",
+    logo: "/cmac/school-of-rock-port-jefferson-logo.png",
+  },
+  {
     name: "Bellwether",
     website: "https://bellwether.band/",
-    logo: "/cmac/bellwether-band-logo.jpg",
+    logo: "/cmac/bellwether-band-logo.png",
   },
   { name: "Sponsor Logo 2" },
   { name: "Sponsor Logo 3" },
@@ -130,13 +135,13 @@ export default function SponsorsPage() {
       </section>
 
       <section className="content-card community-support-card">
-        <h2>COMSEWOGUE FAMILY SUPPORTERS</h2>
+        <h2>INDIVIDUAL/FAMILY SUPPORTERS</h2>
         <p className="muted-copy community-support-copy">
           We are grateful to the individuals and families whose continued support
           makes it possible to offer students the scholarships to help them learn,
           perform and thrive.
         </p>
-        <div className="family-supporter-ticker" aria-label="Comsewogue Family Supporters list">
+        <div className="family-supporter-ticker" aria-label="Individual/Family Supporters list">
           <div className="family-supporter-ticker__track">
             {[...familySupporters, ...familySupporters].map((name, index) => (
               <span key={`${name}-${index}`} className="family-supporter-ticker__item">

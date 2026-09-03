@@ -132,6 +132,13 @@ export default function AboutPage() {
             <p className="board-card__name">Michael Provenzale</p>
             <p className="board-card__title">Student Rep</p>
           </div>
+          <div className="board-card board-card--student board-card--vacant">
+            <div className="board-card__photo board-card__photo--vacant" aria-hidden="true">
+              <span className="board-card__vacant-icon">?</span>
+            </div>
+            <p className="board-card__name">Student Rep</p>
+            <p className="board-card__title board-card__title--open">Position Open</p>
+          </div>
         </div>
 
         <p className="subpage-link">

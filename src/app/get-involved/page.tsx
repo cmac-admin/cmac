@@ -148,14 +148,14 @@ export default function GetInvolvedPage() {
             <p>Join today to become a member of CMAC.</p>
             <p className="subpage-link">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
                 target="_blank"
                 rel="noreferrer"
                 className="apply-btn"
                 onClick={(event) => {
                   event.preventDefault();
                   openPopupWindow(
-                    "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
                   );
                 }}
               >
@@ -305,7 +305,7 @@ export default function GetInvolvedPage() {
             </ul>
             <p className="subpage-link">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
                 target="_blank"
                 rel="noreferrer"
                 className="text-link"
@@ -334,14 +334,14 @@ export default function GetInvolvedPage() {
             </p>
             <p className="subpage-link">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
                 target="_blank"
                 rel="noreferrer"
                 className="apply-btn"
                 onClick={(event) => {
                   event.preventDefault();
                   openPopupWindow(
-                    "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
                   );
                 }}
               >
@@ -465,7 +465,7 @@ export default function GetInvolvedPage() {
         </p>
         <div className="form-embed form-embed--membership">
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform?embedded=true"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform?embedded=true"
             width="100%"
             height="1850"
             frameBorder="0"
@@ -478,11 +478,11 @@ export default function GetInvolvedPage() {
         </div>
         <p className="subpage-link">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
             onClick={(event) => {
               event.preventDefault();
               openPopupWindow(
-                "https://docs.google.com/forms/d/e/1FAIpQLSd3H1Sqc-KhiCq5U9LUeACC7AUIQQnyPMifdTXLea3xW8oJHw/viewform"
+                "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
               );
             }}
           >

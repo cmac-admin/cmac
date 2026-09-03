@@ -9,8 +9,13 @@ const premierSponsors = [
     website: "https://portjefferson.oneriverschool.com/",
   },
   {
+    name: "School of Rock Port Jefferson",
+    logo: "/cmac/school-of-rock-port-jefferson-logo.png",
+    website: "https://www.schoolofrock.com/locations/portjefferson",
+  },
+  {
     name: "Bellwether",
-    logo: "/cmac/bellwether-band-logo.jpg",
+    logo: "/cmac/bellwether-band-logo.png",
     website: "https://bellwether.band/",
   },
   { name: "CMAC COMMUNITY" },
