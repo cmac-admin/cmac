@@ -17,7 +17,7 @@ export default function TestPage() {
         </p>
       </section>
 
-      <section className="test-page__grid" aria-label="Test page showcase">
+      <section className="test-page__grid" aria-label="Current CMAC logo palette">
         <article className="test-page__card test-page__card--primary">
           <p className="test-page__eyebrow">Primary Color</p>
           <div className="test-page__swatch test-page__swatch--yellow" />
@@ -38,6 +38,32 @@ export default function TestPage() {
           <h2>Sky Blue</h2>
           <p>#EAF3FF</p>
         </article>
+      </section>
+
+      <section className="test-page__compare" aria-label="Legacy CMAC colors to compare">
+        <h2 className="test-page__subheading">Legacy CMAC palette</h2>
+        <div className="test-page__grid test-page__grid--legacy">
+          <article className="test-page__card test-page__card--legacy">
+            <p className="test-page__eyebrow">Original Gold</p>
+            <div className="test-page__swatch test-page__swatch--old-gold" />
+            <h2>Muted Gold</h2>
+            <p>#F4D77D</p>
+          </article>
+
+          <article className="test-page__card test-page__card--legacy">
+            <p className="test-page__eyebrow">Original Navy</p>
+            <div className="test-page__swatch test-page__swatch--old-navy" />
+            <h2>Deep Navy</h2>
+            <p>#0F2037</p>
+          </article>
+
+          <article className="test-page__card test-page__card--legacy">
+            <p className="test-page__eyebrow">Warm Tone</p>
+            <div className="test-page__swatch test-page__swatch--old-cream" />
+            <h2>Warm Cream</h2>
+            <p>#F3EFE7</p>
+          </article>
+        </div>
       </section>
 
       <section className="test-page__panel">

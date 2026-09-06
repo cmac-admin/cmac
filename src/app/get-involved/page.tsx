@@ -1,5 +1,6 @@
 "use client";
 
+import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
 const donationFaqJsonLd = {
@@ -125,9 +126,9 @@ export default function GetInvolvedPage() {
           <p>
             Your bank statement or canceled check serves as a receipt. If you
             need an official letter for tax deduction, please
-            <a className="text-link" href="mailto:comsewoguemusicandarts@gmail.com">
+            <ContactPopupLink className="text-link" href="/cmac/contact">
               CONTACT CMAC
-            </a>
+            </ContactPopupLink>
             with your request.
           </p>
           <p>
@@ -362,9 +363,10 @@ export default function GetInvolvedPage() {
                 Port Jefferson Station, NY 11776
               </p>
             </div>
-            <div className="apple-pay-mini" aria-label="Apple Pay coming soon">
-              <span>COMING SOON</span>
+            <div className="apple-pay-mini" aria-label="Apple Pay available soon">
+              <span>Apple Pay</span>
             </div>
+            <p className="donation-card-copy donation-card-copy--small">Coming soon</p>
           </article>
         </div>
       </section>

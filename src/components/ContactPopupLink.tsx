@@ -14,7 +14,17 @@ export function ContactPopupLink({ children, href = "/cmac/contact", ...props }:
     }
 
     event.preventDefault();
-    window.open(href, "cmac-contact-popup", "width=960,height=760,resizable=yes,scrollbars=yes");
+
+    const width = 760;
+    const height = 680;
+    const left = Math.max(20, (window.screen.width - width) / 2);
+    const top = Math.max(40, (window.screen.height - height) / 2);
+
+    window.open(
+      href,
+      "cmac-contact-popup",
+      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,noopener,noreferrer`
+    );
   };
 
   return (

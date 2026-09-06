@@ -1731,8 +1731,10 @@ a {
   margin-top: 0.95rem;
   padding: 1rem;
   border: 1px solid #d6d1c8;
+  border-left: 4px solid var(--brand-yellow);
   background: #f7f4ed;
   border-radius: 0.35rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .news-item h3 {
@@ -3105,6 +3107,23 @@ details[open] > .cal-past-summary::before {
   gap: 1.25rem;
 }
 
+.test-page__compare {
+  margin-top: 2rem;
+}
+
+.test-page__subheading {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+
+.test-page__grid--legacy {
+  margin-top: 1rem;
+}
+
 .test-page__card {
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(23, 59, 99, 0.14);
@@ -3123,6 +3142,10 @@ details[open] > .cal-past-summary::before {
 
 .test-page__card--soft {
   background: linear-gradient(180deg, #f8fbff 0%, #ecf5ff 100%);
+}
+
+.test-page__card--legacy {
+  background: linear-gradient(180deg, #fffdfb 0%, #f4efe6 100%);
 }
 
 .test-page__eyebrow {
@@ -3152,6 +3175,18 @@ details[open] > .cal-past-summary::before {
 
 .test-page__swatch--sky {
   background: var(--brand-sky);
+}
+
+.test-page__swatch--old-gold {
+  background: #f4d77d;
+}
+
+.test-page__swatch--old-navy {
+  background: #0f2037;
+}
+
+.test-page__swatch--old-cream {
+  background: #f3efe7;
 }
 
 .test-page__card h2 {
