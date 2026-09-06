@@ -15,10 +15,10 @@ export function ContactPopupLink({ children, href = "/cmac/contact", ...props }:
 
     event.preventDefault();
 
-    const width = 760;
-    const height = 680;
+    const width = 620;
+    const height = 560;
     const left = Math.max(20, (window.screen.width - width) / 2);
-    const top = Math.max(40, (window.screen.height - height) / 2);
+    const top = Math.max(30, (window.screen.height - height) / 2);
 
     window.open(
       href,

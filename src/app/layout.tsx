@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { HeaderJoinButton } from "../components/HeaderJoinButton";
+import { BoardFeedbackForm } from "@/components/BoardFeedbackForm";
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -170,6 +171,7 @@ export default function RootLayout({
         <div id="main-content" tabIndex={-1}>
           {children}
         </div>
+        <BoardFeedbackForm />
         <footer className="site-footer">
           <p className="site-footer__mailing">
             <Link href="/get-involved#direct-donate">DONATE NOW</Link>

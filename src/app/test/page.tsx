@@ -47,7 +47,7 @@ export default function TestPage() {
             <p className="test-page__eyebrow">Original Gold</p>
             <div className="test-page__swatch test-page__swatch--old-gold" />
             <h2>Muted Gold</h2>
-            <p>#F4D77D</p>
+            <p>#C9A75A</p>
           </article>
 
           <article className="test-page__card test-page__card--legacy">

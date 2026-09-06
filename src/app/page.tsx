@@ -78,17 +78,6 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="announcement-banner">
-        <p>
-          Membership applications are now open for the 2026–2027 school year.
-          Join a community of musicians, educators, and patrons sustaining arts
-          education on Long Island.
-        </p>
-        <Link href="/get-involved" className="announcement-banner__button">
-          Join Now
-        </Link>
-      </section>
-
       <section className="premier-sponsors" aria-label="Premier sponsors">
         <div className="premier-sponsors__header">
           <p className="premier-sponsors__kicker">Premier Sponsors</p>
