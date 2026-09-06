@@ -33,6 +33,21 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
+  const pageLocation = useMemo(() => {
+    if (typeof window === "undefined") {
+      return "Unknown page";
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const rawPage = params.get("page");
+
+    if (rawPage) {
+      return rawPage;
+    }
+
+    return `${window.location.pathname}${window.location.search}${window.location.hash}` || "Unknown page";
+  }, []);
+
   const subjectLabel = useMemo(() => {
     if (category === "Other") {
       return customSubject.trim() || "Other";
@@ -68,12 +83,13 @@ export default function ContactForm() {
       "Email: " + (email || "N/A"),
       "Category: " + subjectLabel,
       "School/Program: " + schoolProgram,
+      "Page: " + pageLocation,
       "",
       "Message:",
       message || "N/A",
     ].join("\n");
 
-    const payload = { name, email, schoolProgram, message, subject, body };
+    const payload = { name, email, schoolProgram, message, subject, body, page: pageLocation };
 
     if (formEndpoint) {
       setStatus("sending");
@@ -94,6 +110,7 @@ export default function ContactForm() {
             message,
             subject,
             body,
+            page: pageLocation,
             _replyto: email,
             _cc: email,
           }),
@@ -133,6 +150,11 @@ export default function ContactForm() {
         <label>
           Email Address
           <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+
+        <label>
+          Page
+          <input type="text" value={pageLocation} readOnly aria-readonly="true" />
         </label>
 
         <label>
