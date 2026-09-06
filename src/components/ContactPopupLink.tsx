@@ -19,9 +19,12 @@ export function ContactPopupLink({ children, href = "/cmac/contact", ...props }:
     const height = 560;
     const left = Math.max(20, (window.screen.width - width) / 2);
     const top = Math.max(30, (window.screen.height - height) / 2);
+    const currentPage = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    const popupUrl = new URL(href, window.location.origin);
+    popupUrl.searchParams.set("page", currentPage);
 
     window.open(
-      href,
+      popupUrl.toString(),
       "cmac-contact-popup",
       `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,noopener,noreferrer`
     );
