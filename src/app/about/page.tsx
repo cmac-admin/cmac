@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { STATS } from "@/lib/stats";
+import { AboutImpactStats } from "@/components/LiveStats";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,27 +20,7 @@ export default function AboutPage() {
         <h1 className="about-title-one-line">Comsewogue Music & Arts Corp.</h1>
       </section>
 
-      <section
-        className="impact-stats impact-stats--compact"
-        aria-label="CMAC impact highlights"
-      >
-        <article>
-          <p className="impact-stats__value">{STATS.foundedYear}</p>
-          <p className="impact-stats__label">Founded</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.schoolsCount}</p>
-          <p className="impact-stats__label">District Event Support</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.scholarshipsGranted}</p>
-          <p className="impact-stats__label">Scholarships Granted</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.totalAwarded}</p>
-          <p className="impact-stats__label">Total Awarded</p>
-        </article>
-      </section>
+      <AboutImpactStats />
 
       <section className="content-card">
         <h2>Our Mission</h2>

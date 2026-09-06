@@ -1,3 +1,5 @@
+"use client";
+
 type School = {
   name: string;
   longTitle?: boolean;
@@ -37,6 +39,18 @@ const schools: School[] = [
   },
 ];
 
+const openOrderPopup = (url: string) => {
+  const popup = window.open(
+    url,
+    "cmacOrderPopup",
+    "width=960,height=760,top=100,left=140,resizable=yes,scrollbars=yes"
+  );
+
+  if (popup) {
+    popup.focus();
+  }
+};
+
 function OrderButton({
   href,
   label,
@@ -55,15 +69,15 @@ function OrderButton({
       </button>
     );
   }
+
   return (
-    <a
-      href={href}
+    <button
+      type="button"
       className="order-button"
-      target="_blank"
-      rel="noopener noreferrer"
+      onClick={() => openOrderPopup(href)}
     >
       {label}
-    </a>
+    </button>
   );
 }
 
@@ -71,7 +85,6 @@ export default function OrderHerePage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Order Here</p>
         <h1>School Event Orders</h1>
         <p>
           Select your school and choose an item to order for upcoming music and

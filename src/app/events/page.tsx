@@ -16,7 +16,7 @@ export default function EventsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <h1>Annual Performances & Events We Support</h1>
+        <h1>School Arts Events</h1>
         <p>
           CMAC proudly supports music, theater, and visual arts events
           throughout the school year. Our presence at these performances helps
@@ -35,7 +35,7 @@ export default function EventsPage() {
       </section>
 
       <section className="content-card">
-        <h2>Annual Musical Events We Support</h2>
+        <h2>Music Performances</h2>
         <p className="muted-copy">
           These concerts happen every year across the district and represent
           the heart of our music community.
@@ -56,7 +56,7 @@ export default function EventsPage() {
       </section>
 
       <section className="content-card">
-        <h2>Annual Drama Events We Support</h2>
+        <h2>Theater Productions</h2>
         <p>
           CMAC is proud to support the dramatic arts by uplifting talented
           student performers who bring each production to life. Our goal is to
@@ -71,7 +71,7 @@ export default function EventsPage() {
       </section>
 
       <section className="content-card">
-        <h2>Annual Art Events We Support</h2>
+        <h2>Art Shows & Exhibitions</h2>
         <p>
           CMAC celebrates student creativity through district-wide art events
           and community showcases. These events give students a platform to

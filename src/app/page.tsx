@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { STATS } from "@/lib/stats";
+import { HomeImpactStats } from "@/components/LiveStats";
 
 const premierSponsors = [
   {
@@ -62,7 +62,11 @@ export default function Home() {
             <time>2026 — 27</time>
           </header>
 
-          <div className="hero-card__visual" />
+          <div
+            className="hero-card__visual"
+            aria-hidden="true"
+            title="Music sheet artwork"
+          />
           <div className="hero-card__content">
             <h1>We help young artists find confidence, purpose, and voice.</h1>
             <p>
@@ -123,24 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="impact-stats" aria-label="CMAC impact at a glance">
-        <article>
-          <p className="impact-stats__value">{STATS.foundedYear}</p>
-          <p className="impact-stats__label">Founded</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.schoolsCount}</p>
-          <p className="impact-stats__label">Active Event Support</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.scholarshipsGranted}</p>
-          <p className="impact-stats__label">Scholarships Granted</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{STATS.teacherGrants}</p>
-          <p className="impact-stats__label">Teacher Grants Awarded</p>
-        </article>
-      </section>
+      <HomeImpactStats />
 
       <section className="grid">
         <article>

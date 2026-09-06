@@ -1,5 +1,7 @@
 "use client";
 
+import { getSchoolYearInfo } from "@/lib/school-year";
+
 const donationFaqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -32,15 +34,6 @@ const donationFaqJsonLd = {
 };
 
 export default function GetInvolvedPage() {
-  const getSchoolYearLabel = () => {
-    const today = new Date();
-    const startYear = today >= new Date(today.getFullYear(), 7, 15)
-      ? today.getFullYear()
-      : today.getFullYear() - 1;
-
-    return `${startYear}-${startYear + 1}`;
-  };
-
   const openPopupWindow = (url: string) => {
     if (typeof window === "undefined") {
       return;
@@ -56,7 +49,7 @@ export default function GetInvolvedPage() {
       return;
     }
 
-    const yearLabel = getSchoolYearLabel();
+    const { label: yearLabel } = getSchoolYearInfo();
 
     popup.document.write(`<!doctype html>
       <html>
@@ -108,34 +101,60 @@ export default function GetInvolvedPage() {
       </section>
 
       <section className="content-card">
-        <h2>Ways to Give</h2>
-        <p className="muted-copy">
-          Select an option below to jump to details.
-        </p>
+        <h2>Membership & Giving</h2>
+        <div className="give-intro-copy">
+          <p>
+            Participation in CMAC is free. Anyone (parents, students, and
+            community members) who love music and arts can join the CMAC Facebook
+            group to participate and share the news.
+          </p>
+          <p>Suggested donation is $10.</p>
+          <p>
+            With a $25 donation, you will receive a free CMAC T-shirt (pick up at
+            winter concerts).
+          </p>
+          <p>
+            With membership, you will receive notifications about the meetings,
+            get to vote for elections, influence our decisions, and receive
+            minutes of the meeting via email.
+          </p>
+          <p>
+            Your donation is tax deductible (as we are a 501(c) nonprofit
+            organization).
+          </p>
+          <p>
+            Your bank statement or canceled check serves as a receipt. If you
+            need an official letter for tax deduction, please
+            <a className="text-link" href="mailto:comsewoguemusicandarts@gmail.com">
+              CONTACT CMAC
+            </a>
+            with your request.
+          </p>
+          <p>
+            Your donations will go towards scholarships, grants program support,
+            and summer programs for students.
+          </p>
+          <p>All meetings will be held via Google Meet.</p>
+          <p>
+            Student Members: Please provide your personal email address. We cannot
+            send the email to the school account.
+          </p>
+        </div>
+      </section>
+
+      <section className="content-card">
         <div className="give-nav-grid">
           <a className="give-nav-link" href="#yearly-membership">
             1. Yearly Membership
           </a>
-          <a className="give-nav-link" href="#one-time-donation">
-            2. One-Time Donation
-          </a>
-          <a className="give-nav-link" href="#monthly-giving">
-            3. Monthly Giving
-          </a>
           <a className="give-nav-link" href="#community-supporter-levels">
-            4. Community Supporter
-          </a>
-          <a className="give-nav-link" href="#tribute-gifts">
-            5. Tribute Gifts
-          </a>
-          <a className="give-nav-link" href="#matching-gifts">
-            6. Matching Gifts
+            2. Community Supporter
           </a>
           <a className="give-nav-link" href="#fundraising-sales">
-            7. Fundraising Sales
+            3. Fundraising Sales
           </a>
           <a className="give-nav-link" href="#volunteer">
-            8. Volunteer
+            4. Volunteer
           </a>
         </div>
       </section>
@@ -145,7 +164,7 @@ export default function GetInvolvedPage() {
         <div className="give-detail-grid">
           <article id="yearly-membership" className="give-detail-card">
             <h3>1. Yearly Membership</h3>
-            <p>Join today to become a member of CMAC.</p>
+            <p>Join CMAC and help support student artists across our community.</p>
             <p className="subpage-link">
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
@@ -164,45 +183,11 @@ export default function GetInvolvedPage() {
             </p>
           </article>
 
-          <article id="one-time-donation" className="give-detail-card">
-            <h3>2. One-Time Donation</h3>
-            <p>Make a single contribution to support CMAC&apos;s mission.</p>
-            <p className="subpage-link">
-              <a
-                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link"
-              >
-                GIVE NOW
-              </a>
-            </p>
-          </article>
-
-          <article id="monthly-giving" className="give-detail-card">
-            <h3>3. Monthly Giving</h3>
-            <p>
-              Become a CMAC Sustaining Supporter. Your recurring gift provides
-              stable funding for student scholarships and teacher grants.
-            </p>
-            <p className="subpage-link">
-              <a
-                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link text-link--disabled"
-                aria-disabled="true"
-              >
-                COMING SOON
-              </a>
-            </p>
-          </article>
-
           <article
             id="community-supporter-levels"
             className="give-detail-card give-detail-card--wide"
           >
-            <h3>4. Community Supporter</h3>
+            <h3>2. Community Supporter</h3>
             <div className="membership-grid">
               <article className="membership-tier">
                 <h3>Individual</h3>
@@ -241,46 +226,8 @@ export default function GetInvolvedPage() {
             </div>
           </article>
 
-          <article id="tribute-gifts" className="give-detail-card">
-            <h3>5. Honor a Loved One</h3>
-            <p>
-              Honor a student or loved one with a donation in their name.
-              Tribute gifts can be recognized on our website or at events.
-            </p>
-            <p className="subpage-link">
-              <a
-                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link text-link--disabled"
-                aria-disabled="true"
-              >
-                COMING SOON
-              </a>
-            </p>
-          </article>
-
-          <article id="matching-gifts" className="give-detail-card">
-            <h3>6. Matching Gifts</h3>
-            <p>
-              Check with your employer about matching charitable donations.
-              Contact your HR department to double your impact.
-            </p>
-            <p className="subpage-link">
-              <a
-                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link text-link--disabled"
-                aria-disabled="true"
-              >
-                COMING SOON
-              </a>
-            </p>
-          </article>
-
           <article id="fundraising-sales" className="give-detail-card">
-            <h3>7. Fundraising Sales</h3>
+            <h3>3. Fundraising Sales</h3>
             <p>
               At most concerts and drama productions, CMAC offers handcrafted
               performance-night gifts that directly support our scholarships and
@@ -305,8 +252,8 @@ export default function GetInvolvedPage() {
             </ul>
             <p className="subpage-link">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-                target="_blank"
+                href="/cmac/order-here"
+                target="_self"
                 rel="noreferrer"
                 className="text-link"
               >
@@ -316,7 +263,7 @@ export default function GetInvolvedPage() {
           </article>
 
           <article id="volunteer" className="give-detail-card">
-            <h3>8. Volunteer</h3>
+            <h3>4. Volunteer</h3>
             <p>
               Volunteering is one of the most meaningful ways to support CMAC
               and the talented students who bring art, music, and theater to
@@ -415,17 +362,8 @@ export default function GetInvolvedPage() {
                 Port Jefferson Station, NY 11776
               </p>
             </div>
-            <div className="apple-pay-mini">
-              <h3>Apple Pay</h3>
-              <a
-                href="https://www.comsewoguemusicandarts.org/get-involved#direct-donate"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link text-link--disabled"
-                aria-disabled="true"
-              >
-                COMING SOON
-              </a>
+            <div className="apple-pay-mini" aria-label="Apple Pay coming soon">
+              <span>COMING SOON</span>
             </div>
           </article>
         </div>
@@ -437,8 +375,8 @@ export default function GetInvolvedPage() {
           <details>
             <summary>What is the fastest way to donate?</summary>
             <p>
-              Use the <strong>Donate with Venmo</strong>, <strong>Apple Pay</strong>,
-              or <strong>Zelle</strong> buttons below to give quickly.
+              Use the <strong>Venmo</strong>, <strong>Apple Pay</strong>, or
+              <strong> Zelle</strong> options for fast digital giving.
             </p>
           </details>
           <details>

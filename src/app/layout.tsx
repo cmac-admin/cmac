@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { HeaderJoinButton } from "../components/HeaderJoinButton";
 import "./globals.css";
 
@@ -27,6 +29,11 @@ export const metadata: Metadata = {
   description:
     "Comsewogue Music & Arts Corp. (CMAC) is a 501(c) non-profit supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/cmac/cmac-favicon.png",
+    shortcut: "/cmac/cmac-favicon.png",
+    apple: "/cmac/cmac-favicon.png",
+  },
   openGraph: {
     siteName: "Comsewogue Music & Arts Corp.",
     type: "website",
@@ -37,9 +44,9 @@ export const metadata: Metadata = {
       "Supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
     images: [
       {
-        url: "/cmac/cmac-logo.png",
-        width: 400,
-        height: 400,
+        url: "/cmac/cmac-social-preview.png",
+        width: 1200,
+        height: 630,
         alt: "Comsewogue Music and Arts Connection logo",
       },
     ],
@@ -49,7 +56,7 @@ export const metadata: Metadata = {
     title: "Comsewogue Music & Arts Corp.",
     description:
       "Support student artists in the Comsewogue School District through scholarships, teacher grants, and community arts events.",
-    images: ["/cmac/cmac-logo.png"],
+    images: ["/cmac/cmac-social-preview.png"],
   },
   alternates: {
     canonical: siteUrl,
@@ -87,6 +94,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bodyFont.variable} ${headingFont.variable}`}>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="847f9c9f-5da8-4839-8558-d32676dcc213"
+          data-domains="comsewoguemusicandarts.org,www.comsewoguemusicandarts.org,localhost"
+        />
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
@@ -147,7 +160,9 @@ export default function RootLayout({
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/news">News</Link>
             <Link href="/faq">FAQ</Link>
+            <ContactPopupLink href="/cmac/contact">Contact</ContactPopupLink>
             <Link href="/sponsors">Community Sponsors</Link>
+            <Link href="/test">Test</Link>
             <Link href="/get-involved#direct-donate">Donate</Link>
             <Link href="/order-here">Order Here</Link>
           </nav>
@@ -161,6 +176,9 @@ export default function RootLayout({
           </p>
           <p className="site-footer__mailing">
             <Link href="/get-involved#mailing-list">JOIN OUR MAILING LIST</Link>
+          </p>
+          <p className="site-footer__mailing">
+            <Link href="/contact">CONTACT CMAC</Link>
           </p>
           <div className="site-footer__social">
             <p>Follow Us</p>
@@ -189,8 +207,7 @@ export default function RootLayout({
           </div>
 
           <p className="site-footer__copyright">
-            © Copyright Comsewogue Music and Arts. All Rights Reserved. Privacy
-            Policy {"|"} <Link href="/sitemap">Sitemap</Link>
+            © Copyright Comsewogue Music and Arts. All Rights Reserved. <Link href="/privacy-policy">Privacy Policy</Link>{" | "}<Link href="/sitemap">Sitemap</Link>
             <br />
             Webmaster:{" "}
             <a href="mailto:webmaster@webmaster.com">webmaster@webmaster.com</a>

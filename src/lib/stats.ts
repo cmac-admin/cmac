@@ -1,11 +1,25 @@
+export type Stats = {
+  foundedYear: string;
+  schoolsCount: string;
+  scholarshipsGranted: string;
+  totalAwarded: string;
+  studentsTeachersSupported: string;
+  studentsTeachersAwarded: string;
+  teacherGrants: string;
+};
+
 /**
- * CMAC impact statistics — single source of truth.
- * Update the values here and every page that displays them updates automatically.
+ * CMAC impact statistics — fallback values used while the live sheet loads.
+ * The About and Scholarships pages read the Google Sheet directly for live updates.
  */
-export const STATS = {
+export const DEFAULT_STATS: Stats = {
   foundedYear: "2023",
   schoolsCount: "4 Schools",
-  scholarshipsGranted: "X",   // e.g. "12"
-  totalAwarded: "$X",         // e.g. "$4,500"
+  scholarshipsGranted: "50",
+  totalAwarded: "$1,000.00",
+  studentsTeachersSupported: "50",
+  studentsTeachersAwarded: "$1,000.00",
   teacherGrants: "2",
-} as const;
+};
+
+export const STATS: Stats = DEFAULT_STATS;
