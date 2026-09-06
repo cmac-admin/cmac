@@ -505,6 +505,77 @@ a {
   border-bottom: 1px solid #24201c;
 }
 
+.legacy-homepage {
+  --background: #f3efe7;
+  --ink: #0f2037;
+  --muted: #4a5865;
+  --gold: #c9a75a;
+  --brand-yellow: #c9a75a;
+  --brand-blue: #0f2037;
+  --brand-sky: #f3efe7;
+  --navy: #0f2037;
+  --deep: #0d1e34;
+  --card: #f5f1ea;
+}
+
+.legacy-homepage .hero-card,
+.legacy-homepage .impact-stats article,
+.legacy-homepage .grid article,
+.legacy-homepage .content-card,
+.legacy-homepage .premier-sponsor,
+.legacy-homepage .premier-sponsors__marquee,
+.legacy-homepage .announcement-banner {
+  background: linear-gradient(180deg, #f8f4ef 0%, #f0eae2 100%);
+  color: #0f2037;
+  border-color: rgba(15, 32, 55, 0.18);
+}
+
+.legacy-homepage .hero-card__content h1,
+.legacy-homepage .grid h2,
+.legacy-homepage .hero-card__header,
+.legacy-homepage .premier-sponsors__kicker,
+.legacy-homepage .premier-sponsor span,
+.legacy-homepage .content-card h2,
+.legacy-homepage .section-label {
+  color: #0f2037;
+}
+
+.legacy-homepage .hero-card__header p,
+.legacy-homepage .hero__meta,
+.legacy-homepage .premier-sponsor span,
+.legacy-homepage .subpage-kicker {
+  color: #c9a75a;
+}
+
+.legacy-homepage .hero-card__content a,
+.legacy-homepage .text-link,
+.legacy-homepage .donate-mini-button,
+.legacy-homepage .announcement-banner__button,
+.legacy-homepage .apply-btn {
+  color: #f3efe7;
+  background: #0f2037;
+}
+
+.legacy-homepage .premier-sponsors__marquee::before,
+.legacy-homepage .premier-sponsors__marquee::after {
+  background: linear-gradient(90deg, rgba(243, 239, 231, 1), rgba(243, 239, 231, 0));
+}
+
+.legacy-homepage__banner {
+  width: min(1200px, 100% - 2rem);
+  margin: 0 auto 1rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(15, 32, 55, 0.25);
+  border-top: 4px solid #c9a75a;
+  background: linear-gradient(180deg, #f6f2ec 0%, #efe7dc 100%);
+  color: #0f2037;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  font-size: 0.72rem;
+  border-radius: 0.35rem;
+}
+
 .premier-sponsors {
   width: min(1200px, 100% - 2rem);
   margin: 0 auto;

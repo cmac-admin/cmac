@@ -154,6 +154,7 @@ export default function RootLayout({
           </div>
 
           <nav className="menu-bar main-nav" aria-label="Primary">
+            <Link href="/old-colors">OLD COLORS</Link>
             <Link href="/about">About</Link>
             <Link href="/get-involved">Get Involved</Link>
             <Link href="/events">Events</Link>
