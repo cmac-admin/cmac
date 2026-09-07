@@ -160,23 +160,25 @@ export function HomeImpactStats() {
   const stats = useLiveStats("general");
 
   return (
-    <section className="impact-stats" aria-label="CMAC impact at a glance">
-      <article>
-        <p className="impact-stats__value">{stats.foundedYear}</p>
-        <p className="impact-stats__label">Founded</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.schoolsCount}</p>
-        <p className="impact-stats__label">Active Event Support</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
-        <p className="impact-stats__label">Students &amp; Teachers Supported</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.studentsTeachersAwarded}</p>
-        <p className="impact-stats__label">Awarded to Students &amp; Teachers</p>
-      </article>
+    <section className="impact-stats home-impact-stats" aria-label="CMAC impact at a glance">
+      <div className="impact-stats__header">
+        <p className="section-kicker">Our impact</p>
+        <h2>Real support for students, teachers, and creative growth.</h2>
+      </div>
+      <div className="impact-stats__grid">
+        <article>
+          <p className="impact-stats__value">{stats.scholarshipsGranted}</p>
+          <p className="impact-stats__label">Scholarships Funded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">{stats.teacherGrants}</p>
+          <p className="impact-stats__label">Teacher Grants Awarded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
+          <p className="impact-stats__label">Students Supported</p>
+        </article>
+      </div>
     </section>
   );
 }

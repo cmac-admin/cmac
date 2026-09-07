@@ -8,6 +8,7 @@ const seniorStories = [
     visual: "sunset",
     image:
       "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80",
+    result: "Helped fund her next step in music study.",
     quote:
       "I’m so grateful for the support from CMAC. The scholarship helped me pursue my music degree and gave me the confidence to keep growing as a performer.",
   },
@@ -18,6 +19,7 @@ const seniorStories = [
     visual: "violet",
     image:
       "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80",
+    result: "Helped cover the cost of College Art Study.",
     quote:
       "This funding made it possible for me to continue my studies in art and design. I am truly thankful for a community that believes in young artists.",
   },
@@ -28,6 +30,7 @@ const seniorStories = [
     visual: "forest",
     image:
       "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80",
+    result: "Opened new creative career pathways.",
     quote:
       "CMAC helped open doors that I thought were out of reach. I’m grateful for the encouragement and the belief that the arts can be a life path.",
   },
@@ -42,6 +45,7 @@ const gradesStories = [
     visual: "gold",
     image:
       "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80",
+    result: "Kept her piano lessons going all summer.",
     quote:
       "The scholarship helped me keep taking piano lessons and build confidence in my playing. I’m thankful for the chance to keep improving.",
   },
@@ -53,6 +57,7 @@ const gradesStories = [
     visual: "teal",
     image:
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
+    result: "Gave him access to an art program that may not have been possible otherwise.",
     quote:
       "I was able to attend a visual arts program I never thought I could afford, and it changed how I see my future. I’m grateful every day.",
   },
@@ -64,6 +69,7 @@ const gradesStories = [
     visual: "rose",
     image:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+    result: "Helped her grow in confidence through performance.",
     quote:
       "CMAC gave me the chance to learn, perform, and grow with other student musicians. I’m grateful for the support that kept me moving forward.",
   },
@@ -77,6 +83,7 @@ const teacherStories = [
     visual: "navy",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+    result: "Expanded creative studio experiences for students.",
     quote:
       "The CMAC grant let us build a stronger studio experience for our students, and the impact was immediate. We’re grateful for the investment in creativity.",
   },
@@ -87,6 +94,7 @@ const teacherStories = [
     visual: "silver",
     image:
       "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=900&q=80",
+    result: "Broadened student access to instruments and materials.",
     quote:
       "This support gave students access to materials and opportunities they otherwise would not have had. It made a meaningful difference in our program.",
   },
@@ -97,6 +105,7 @@ const teacherStories = [
     visual: "amber",
     image:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80",
+    result: "Created a more immersive and memorable music experience.",
     quote:
       "The grant helped us bring a more immersive music experience to our students. We are so thankful to CMAC for supporting hands-on learning.",
   },
@@ -122,6 +131,7 @@ function ImpactQuoteCard({
   image,
   quote,
   grade,
+  result,
 }: {
   name: string;
   meta: string;
@@ -130,6 +140,7 @@ function ImpactQuoteCard({
   image?: string;
   quote: string;
   grade?: string;
+  result?: string;
 }) {
   return (
     <article className="impact-story-card">
@@ -144,6 +155,7 @@ function ImpactQuoteCard({
         <p className="impact-story-card__quote">“{quote}”</p>
         <p className="impact-story-card__name">{name}</p>
         <p className="impact-story-card__meta">{grade ? `${grade} • ` : ""}{meta}</p>
+        {result ? <p className="impact-story-card__result">Impact: {result}</p> : null}
       </div>
     </article>
   );

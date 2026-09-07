@@ -169,7 +169,6 @@ export default function RootLayout({
             <Link href="/faq">FAQ</Link>
             <Link href="/sponsors">Community Sponsors</Link>
             <Link href="/get-involved#direct-donate">Donate</Link>
-            <Link href="/order-here">Order Here</Link>
           </nav>
         </header>
         <div id="main-content" tabIndex={-1}>
