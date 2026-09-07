@@ -349,7 +349,7 @@ export default function GetInvolvedPage() {
             </a>
           </article>
           <article className="donation-qr-card donation-qr-card--mail">
-            <h3>By Mail</h3>
+            <h3>Mail or Drop Off</h3>
             <div className="mail-subline">Please make checks payable to CMAC</div>
             <div className="mail-address-box">
               <p>Mail or drop off to:</p>

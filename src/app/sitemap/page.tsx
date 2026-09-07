@@ -3,6 +3,7 @@ import Link from "next/link";
 const siteLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About CMAC" },
+  { href: "/our-impact", label: "Our Impact" },
   { href: "/contact", label: "Contact" },
   { href: "/get-involved", label: "Get Involved" },
   { href: "/get-involved#direct-donate", label: "Direct Donation Methods" },

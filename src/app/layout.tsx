@@ -149,22 +149,25 @@ export default function RootLayout({
                   Donate with Zelle
                 </a>
               </div>
+              <div className="header-utility-links" aria-label="Utility navigation">
+                <Link href="/old-colors">Old Colors</Link>
+                <Link href="/test">Test</Link>
+                <ContactPopupLink href="/cmac/contact">Contact</ContactPopupLink>
+              </div>
               <HeaderJoinButton />
             </div>
           </div>
 
           <nav className="menu-bar main-nav" aria-label="Primary">
-            <Link href="/old-colors">OLD COLORS</Link>
             <Link href="/about">About</Link>
+            <Link href="/our-impact">OUR IMPACT</Link>
             <Link href="/get-involved">Get Involved</Link>
             <Link href="/events">Events</Link>
             <Link href="/scholarships">Scholarships</Link>
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/news">News</Link>
             <Link href="/faq">FAQ</Link>
-            <ContactPopupLink href="/cmac/contact">Contact</ContactPopupLink>
             <Link href="/sponsors">Community Sponsors</Link>
-            <Link href="/test">Test</Link>
             <Link href="/get-involved#direct-donate">Donate</Link>
             <Link href="/order-here">Order Here</Link>
           </nav>
