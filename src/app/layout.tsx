@@ -160,8 +160,8 @@ export default function RootLayout({
 
           <nav className="menu-bar main-nav" aria-label="Primary">
             <Link href="/about">About</Link>
-            <Link href="/our-impact">OUR IMPACT</Link>
             <Link href="/get-involved">Get Involved</Link>
+            <Link href="/our-impact">OUR IMPACT</Link>
             <Link href="/events">Events</Link>
             <Link href="/scholarships">Scholarships</Link>
             <Link href="/teacher-grants">Teacher Grants</Link>
