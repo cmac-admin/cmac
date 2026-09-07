@@ -14,11 +14,11 @@ export type Stats = {
  */
 export const DEFAULT_STATS: Stats = {
   foundedYear: "2023",
-  schoolsCount: "4 Schools",
+  schoolsCount: "Grades 3-12",
   scholarshipsGranted: "50",
-  totalAwarded: "$1,000.00",
+  totalAwarded: "$1,000.00+",
   studentsTeachersSupported: "50",
-  studentsTeachersAwarded: "$1,000.00",
+  studentsTeachersAwarded: "$1,000.00+",
   teacherGrants: "2",
 };
 

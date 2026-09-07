@@ -37,17 +37,27 @@ function parseCsvLine(line: string): string[] {
   return values.map((value) => value.replace(/^"|"$/g, ""));
 }
 
+const formatAwardValue = (value: string) => {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  return trimmed.endsWith("+") ? trimmed : `${trimmed}+`;
+};
+
 const PAGE_FALLBACKS = {
   general: DEFAULT_STATS,
   scholarships: {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,000.00",
+    studentsTeachersAwarded: "$1,000.00+",
   },
   "teacher-grants": {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,000.00",
+    studentsTeachersAwarded: "$1,000.00+",
   },
 } as const;
 
@@ -80,7 +90,7 @@ function parseSheetData(csv: string, mode: StatsMode): typeof DEFAULT_STATS {
 
   const firstRow = dataRows[0] ?? [];
   const supported = firstRow[supportedIndex] ?? fallback.studentsTeachersSupported;
-  const awarded = firstRow[awardedIndex] ?? fallback.studentsTeachersAwarded;
+  const awarded = formatAwardValue(firstRow[awardedIndex] ?? fallback.studentsTeachersAwarded);
 
   return {
     ...fallback,
