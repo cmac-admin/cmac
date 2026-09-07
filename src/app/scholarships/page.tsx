@@ -23,152 +23,134 @@ export default function ScholarshipsPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <h1>Scholarships</h1>
+        <p>
+          CMAC scholarships help Comsewogue students continue growing in music,
+          visual arts, and related creative fields. We offer two programs: one
+          for graduating seniors and one for students in grades 3–11 who want to
+          keep studying over the summer.
+        </p>
       </section>
 
       <ScholarshipImpactBar />
 
       <section className="content-card scholarship-block">
-        <h2>CMAC Senior Scholarships (Grade 12)</h2>
-        <table className="scholarship-table">
-          <tbody>
-            <tr>
-              <th scope="row">Overview</th>
-              <td>
-                The CMAC Senior Scholarship supports graduating Comsewogue High
-                School students pursuing college studies in music, art, or
-                related creative fields.
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Application Deadline</th>
-              <td>{`April 30, ${endYear}`}</td>
-            </tr>
-            <tr>
-              <th scope="row">Award</th>
-              <td>Selected student(s) will receive a $500 CMAC Senior Scholarship.</td>
-            </tr>
-            <tr>
-              <th scope="row">Eligibility</th>
-              <td>
-                <ol className="table-list">
-                  <li>
-                    Must be a senior or junior graduating in June {endYear} from
-                    Comsewogue High School.
-                  </li>
-                  <li>Must be in good standing with no school suspensions.</li>
-                  <li>
-                    Must be applying to colleges majoring in one of the following
-                    fields:
-                    <ul className="table-sublist">
-                      <li>Music-related fields</li>
-                      <li>Art-related fields</li>
-                      <li>Business/Engineering fields related to the arts (Marketing, Architecture)</li>
-                    </ul>
-                  </li>
-                </ol>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Requirements</th>
-              <td>
-                Scholarship winners must submit an official college acceptance
-                letter. Funds will not be released until the acceptance letter is
-                received.
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Notification</th>
-              <td>Selected students will be notified directly by CMAC.</td>
-            </tr>
-            <tr>
-              <th scope="row">Questions</th>
-              <td>
-                <ContactPopupLink className="text-link">
-                  CONTACT CMAC
-                </ContactPopupLink>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="center-link">
+        <div className="scholarship-header">
+          <p className="scholarship-kicker">CMAC Senior Scholarship</p>
+          <h2>CMAC Senior Scholarships (Grade 12)</h2>
+        </div>
+
+        <div className="scholarship-metadata">
+          <article className="scholarship-meta">
+            <span>Overview</span>
+            <p>
+              The CMAC Senior Scholarship supports graduating Comsewogue High
+              School students who plan to continue their studies in music, art,
+              or a related creative field in college.
+            </p>
+          </article>
+          <article className="scholarship-meta">
+            <span>Award</span>
+            <p>$500</p>
+          </article>
+          <article className="scholarship-meta">
+            <span>Application Deadline</span>
+            <p>{`April 30, ${endYear}`}</p>
+          </article>
+        </div>
+
+        <div className="scholarship-details">
+          <h3>Eligibility</h3>
+          <ul>
+            <li>Graduating senior from Comsewogue High School</li>
+            <li>In good standing</li>
+            <li>
+              Planning to pursue a music-related field, art-related field, or a
+              business or engineering field connected to the arts
+            </li>
+          </ul>
+        </div>
+
+        <div className="scholarship-details">
+          <h3>Requirements</h3>
+          <p>
+            Scholarship recipients must submit an official college acceptance
+            letter before funds are released.
+          </p>
+        </div>
+
+        <div className="scholarship-actions">
           <ScholarshipApplicationButton
             href="https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform"
             label="Apply for Senior Scholarship"
           />
-        </p>
+          <ContactPopupLink className="text-link">CONTACT CMAC</ContactPopupLink>
+        </div>
       </section>
 
       <section className="content-card scholarship-block">
-        <h2>CMAC Summer Music & Arts Study Scholarships (Grades 3–11)</h2>
-        <table className="scholarship-table">
-          <tbody>
-            <tr>
-              <th scope="row">Overview</th>
-              <td>
-                This scholarship supports students who wish to continue studying
-                music or art over the summer. Funds help offset the cost of
-                summer programs, lessons, camps, or workshops.
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Application Deadline</th>
-              <td>{`April 1, ${endYear}`}</td>
-            </tr>
-            <tr>
-              <th scope="row">Award</th>
-              <td>Selected student(s) will receive a $100 Summer Study Scholarship.</td>
-            </tr>
-            <tr>
-              <th scope="row">Up to 5 students per school building may be awarded.</th>
-              <td>Schools Covered: Boyle Road Elementary, Terryville Road Elementary, John F. Kennedy Middle School, and Comsewogue High School.</td>
-            </tr>
-            <tr>
-              <th scope="row">Eligibility</th>
-              <td>
-                <ol className="table-list">
-                  <li>
-                    Must be a student in grades 3–11 during the {schoolYearLabel} school
-                    year.
-                  </li>
-                  <li>Must attend a school in the Comsewogue School District.</li>
-                  <li>Must be in good standing with no school suspensions.</li>
-                </ol>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Requirements</th>
-              <td>
-                Applications must be completed by students, not parents/guardians.
-                (Adults may assist only with technology issues.) Students should be
-                pursuing one of the following areas: Music-related fields;
-                Art-related fields; Business/Engineering fields related to the arts.
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Notification</th>
-              <td>Winners will be contacted in June.</td>
-            </tr>
-            <tr>
-              <th scope="row">Questions</th>
-              <td>
-                <ContactPopupLink className="text-link">
-                  CONTACT CMAC
-                </ContactPopupLink>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p className="center-link">
+        <div className="scholarship-header">
+          <p className="scholarship-kicker">Summer Study Scholarship</p>
+          <h2>CMAC Summer Music & Arts Study Scholarships (Grades 3–11)</h2>
+        </div>
+
+        <div className="scholarship-metadata">
+          <article className="scholarship-meta">
+            <span>Overview</span>
+            <p>
+              These scholarships help students continue their music or art study
+              over the summer by offsetting the cost of programs, lessons,
+              camps, or workshops.
+            </p>
+          </article>
+          <article className="scholarship-meta">
+            <span>Award</span>
+            <p>$100</p>
+          </article>
+          <article className="scholarship-meta">
+            <span>Application Deadline</span>
+            <p>{`April 1, ${endYear}`}</p>
+          </article>
+        </div>
+
+        <div className="scholarship-details">
+          <h3>Eligibility</h3>
+          <ul>
+            <li>Student in grades 3–11 during the {schoolYearLabel} school year</li>
+            <li>Attends a school in the Comsewogue School District</li>
+            <li>In good standing</li>
+          </ul>
+        </div>
+
+        <div className="scholarship-details">
+          <h3>Selection</h3>
+          <p>
+            Up to five students may be selected from each school building:
+            Boyle Road Elementary, Terryville Road Elementary, John F. Kennedy
+            Middle School, and Comsewogue High School.
+          </p>
+        </div>
+
+        <div className="scholarship-details">
+          <h3>Requirements</h3>
+          <p>
+            Applications must be completed by the student. Adults may assist only
+            with technology. Students should be pursuing music, visual arts, or a
+            related creative field.
+          </p>
+        </div>
+
+        <div className="scholarship-actions">
           <ScholarshipApplicationButton
             href="https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform"
             label="Apply for Summer Study Scholarship"
           />
-        </p>
-        <p className="subpage-link">
-          <a href="https://www.comsewoguemusicandarts.org/scholarshipsANDGRANTS/">
-            View previous Scholarships page
-          </a>
-        </p>
+          <ContactPopupLink className="text-link">CONTACT CMAC</ContactPopupLink>
+        </div>
+      </section>
+
+      <section className="content-card scholarship-contact">
+        <h2>Questions?</h2>
+        <p>We’re happy to help. Contact CMAC and we’ll answer your questions.</p>
       </section>
     </main>
   );

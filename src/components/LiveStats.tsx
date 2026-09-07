@@ -42,12 +42,12 @@ const PAGE_FALLBACKS = {
   scholarships: {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,111.11",
+    studentsTeachersAwarded: "$1,000.00",
   },
   "teacher-grants": {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,111.11",
+    studentsTeachersAwarded: "$1,000.00",
   },
 } as const;
 
@@ -191,7 +191,7 @@ export function TeacherGrantImpactBar() {
   return (
     <ImpactMetricsBar
       ariaLabel="Teacher grant impact"
-      secondLabel="$ Awarded"
+      secondLabel="Awarded"
       mode="teacher-grants"
     />
   );

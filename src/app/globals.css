@@ -1158,7 +1158,81 @@ a {
   height: 100%;
 }
 
+.scholarship-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.scholarship-kicker {
+  margin: 0;
+  color: #173b63;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .scholarship-block h2 {
+  text-align: center;
+}
+
+.scholarship-metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.scholarship-meta {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(23, 59, 99, 0.18);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.scholarship-meta span {
+  display: block;
+  color: #173b63;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scholarship-meta p {
+  margin: 0.45rem 0 0;
+  color: #2a3542;
+  line-height: 1.6;
+}
+
+.scholarship-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(23, 59, 99, 0.15);
+}
+
+.scholarship-details h3 {
+  margin-bottom: 0.5rem;
+}
+
+.scholarship-details ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.7;
+}
+
+.scholarship-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.scholarship-contact {
   text-align: center;
 }
 
@@ -1176,11 +1250,26 @@ a {
   text-align: center;
 }
 
+.mission-list {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  color: #2c3743;
+  line-height: 1.7;
+}
+
+.mission-list li + li {
+  margin-top: 0.45rem;
+}
+
 .mission-note {
   margin-top: 0.9rem;
   font-size: 0.78rem;
   line-height: 1.45;
   color: var(--muted);
+}
+
+.about-impact-card .impact-stats {
+  margin-top: 0.75rem;
 }
 
 .board-title-line {
@@ -1208,6 +1297,55 @@ a {
   border-bottom: 1px solid #2b2723;
 }
 
+.cta-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.cta-button-row .apply-btn {
+  margin: 0;
+}
+
+.apply-btn--secondary {
+  background: transparent;
+  color: var(--brand-blue);
+  border-color: rgba(15, 32, 55, 0.25);
+}
+
+.membership-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.membership-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.membership-table th,
+.membership-table td {
+  padding: 0.9rem 0.85rem;
+  border: 1px solid rgba(15, 32, 55, 0.15);
+  text-align: left;
+  vertical-align: top;
+}
+
+.membership-table th {
+  background: rgba(15, 32, 55, 0.04);
+  color: var(--brand-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+.membership-table td {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -1222,6 +1360,29 @@ a {
 
 .text-link:hover {
   color: #0b2744;
+}
+
+.family-supporter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.family-supporter-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #d5d0c7;
+  border-radius: 999px;
+  background: #f3efe8;
+  color: #15314e;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .contact-form {
@@ -1413,6 +1574,20 @@ a {
   margin-right: auto;
 }
 
+.about-join {
+  text-align: center;
+}
+
+.about-join p {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-join .apply-btn {
+  margin-top: 0.5rem;
+}
+
 .about-group {
   padding: 0.6rem 0.4rem;
 }
@@ -1555,9 +1730,30 @@ a {
   font-weight: 700;
 }
 
+.board-card__note {
+  margin: 0.45rem 0 0;
+  color: #536374;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .board-card__title--open {
   color: var(--brand-yellow);
   letter-spacing: 0.06em;
+}
+
+.board-callout {
+  margin: 1.4rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(23, 59, 99, 0.18);
+  color: #2d3d4e;
+  line-height: 1.7;
+}
+
+.board-callout a {
+  margin-left: 0.35rem;
+  color: #173b63;
+  font-weight: 700;
 }
 
 .subpage-link {
@@ -2330,6 +2526,10 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+.community-supporter-ticker {
+  margin-top: 1rem;
 }
 
 .family-supporter-ticker {

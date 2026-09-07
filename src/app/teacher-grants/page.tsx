@@ -28,7 +28,13 @@ export default function TeacherGrantsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <h1>Funding Innovative Classroom Arts Projects</h1>
+        <h1>CMAC Teacher Grants</h1>
+        <p>
+          CMAC Teacher Grants help music and art teachers in the Comsewogue
+          School District bring creative ideas to life in the classroom. These
+          grants support projects that increase student learning, participation,
+          and excitement in the arts.
+        </p>
       </section>
 
       <TeacherGrantImpactBar />
@@ -49,63 +55,56 @@ export default function TeacherGrantsPage() {
         </aside>
 
         <section className="content-card scholarship-block teacher-grants-details">
-          <h2>CMAC Teacher Grants</h2>
-          <table className="scholarship-table">
-            <tbody>
-              <tr>
-                <th scope="row">Overview</th>
-                <td>
-                  CMAC Teacher Grants support music and art teachers in the
-                  Comsewogue School District by funding projects that enhance
-                  student learning, creativity, and arts participation.
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Application Deadline</th>
-                <td>{`June 30, ${endYear}`}</td>
-              </tr>
-              <tr>
-                <th scope="row">Award</th>
-                <td>Selected teacher(s) may receive a CMAC grant up to $1,000.</td>
-              </tr>
-              <tr>
-                <th scope="row">Eligibility</th>
-                <td>
-                  Must be a full-time music or art teacher in the Comsewogue
-                  School District. Must continue in this position during the
-                  {schoolYearLabel} school year.
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Purpose of the Grant</th>
-                <td>
-                  Funds may be used for guest artists, workshops, career
-                  development, equipment purchases, or other creative ideas that
-                  support student learning in the arts.
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Requirements</th>
-                <td>
-                  Proposed projects must demonstrate clear benefit to student
-                  learning and arts participation.
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Notification</th>
-                <td>Selected teachers will be contacted directly by CMAC.</td>
-              </tr>
-              <tr>
-                <th scope="row">Questions</th>
-                <td>
-                  <ContactPopupLink className="text-link">
-                    CONTACT CMAC
-                  </ContactPopupLink>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <p className="center-link">
+          <div className="scholarship-header">
+            <p className="scholarship-kicker">Teacher Grant Overview</p>
+            <h2>Support for Creative Classroom Ideas</h2>
+          </div>
+
+          <div className="scholarship-metadata">
+            <article className="scholarship-meta">
+              <span>Overview</span>
+              <p>
+                We support full-time music and art teachers who want to try new
+                approaches, bring in guest artists, purchase needed materials,
+                or create meaningful experiences for their students.
+              </p>
+            </article>
+            <article className="scholarship-meta">
+              <span>Award</span>
+              <p>Up to $1,000</p>
+            </article>
+            <article className="scholarship-meta">
+              <span>Application Deadline</span>
+              <p>{`June 30, ${endYear}`}</p>
+            </article>
+          </div>
+
+          <div className="scholarship-details">
+            <h3>Eligibility</h3>
+            <ul>
+              <li>Full-time music or art teacher in the Comsewogue School District</li>
+              <li>Continuing in that position during the {schoolYearLabel} school year</li>
+            </ul>
+          </div>
+
+          <div className="scholarship-details">
+            <h3>What the Grant Can Support</h3>
+            <p>
+              Funds may be used for guest artists, workshops, equipment,
+              materials, professional development, or other creative projects
+              that clearly benefit student learning and arts participation.
+            </p>
+          </div>
+
+          <div className="scholarship-details">
+            <h3>How to Apply</h3>
+            <p>
+              Applications are submitted through the CMAC Teacher Grant form.
+              Selected teachers will be contacted directly by CMAC.
+            </p>
+          </div>
+
+          <div className="scholarship-actions">
             <a
               href="https://docs.google.com/document/d/1NEmmvCaJiTQ7hQDIYkMWc2D85RBUprq-Iq7pR4WUqkM/edit?tab=t.0"
               className="apply-btn"
@@ -114,7 +113,8 @@ export default function TeacherGrantsPage() {
             >
               Apply for Teacher Grant
             </a>
-          </p>
+            <ContactPopupLink className="text-link">CONTACT CMAC</ContactPopupLink>
+          </div>
         </section>
       </div>
     </main>

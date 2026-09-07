@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -16,66 +17,73 @@ export default function EventsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
+        <p className="subpage-kicker">Events</p>
         <h1>School Arts Events</h1>
         <p>
-          CMAC proudly supports music, theater, and visual arts events
-          throughout the school year. Our presence at these performances helps
-          celebrate student creativity while raising funds for scholarships and
-          grants.
+          CMAC proudly supports the concerts, productions, and showcases that
+          bring music, theater, and visual arts to life across the Comsewogue
+          School District.
         </p>
-        <p>
-          At many events, families will find our custom ornaments, Kisses for
-          the Cast, and fresh flowers - thoughtful gifts that make performance
-          nights special and directly support CMAC&apos;s mission.
-        </p>
-        <p>
-          Every year, we raffle off a themed basket to help kick off the school
-          year.
+      </section>
+
+      <section className="content-card">
+        <div className="cta-button-row">
+          <Link href="/order-here" className="apply-btn">
+            Support an Event
+          </Link>
+          <Link href="/get-involved" className="apply-btn apply-btn--secondary">
+            Become a Member
+          </Link>
+        </div>
+        <p className="muted-copy">
+          At many events, families can purchase our handcrafted ornaments,
+          fresh flower bouquets, and “Kisses for the Cast” items, with proceeds
+          directly supporting CMAC scholarships and grants.
         </p>
       </section>
 
       <section className="content-card">
         <h2>Music Performances</h2>
         <p className="muted-copy">
-          These concerts happen every year across the district and represent
-          the heart of our music community.
+          These concerts happen throughout the year and highlight the energy,
+          discipline, and artistry of our student musicians.
         </p>
         <ul className="event-list">
-          <li>Winter Concert @ CHS</li>
-          <li>Winter Concert Group 1 @ JFK</li>
-          <li>Winter Concert Group 2 @ JFK</li>
-          <li>Winter Concert @ Terryville Elementary</li>
-          <li>Winter Concert @ Boyle Elementary</li>
-          <li>Spring Concert @ CHS</li>
-          <li>Spring Concert @ JFK Group 1</li>
-          <li>Spring Concert @ JFK Group 2</li>
-          <li>Spring Concert @ Terryville Elementary</li>
-          <li>Spring Concert @ Boyle Elementary</li>
-          <li>POPS Concert @ CHS</li>
+          <li>Winter Concert @ Comsewogue High School</li>
+          <li>Winter Concert Group 1 @ JFK Middle School</li>
+          <li>Winter Concert Group 2 @ JFK Middle School</li>
+          <li>Winter Concert @ Terryville Road Elementary</li>
+          <li>Winter Concert @ Boyle Road Elementary</li>
+          <li>Spring Concert @ Comsewogue High School</li>
+          <li>Spring Concert Group 1 @ JFK Middle School</li>
+          <li>Spring Concert Group 2 @ JFK Middle School</li>
+          <li>Spring Concert @ Terryville Road Elementary</li>
+          <li>Spring Concert @ Boyle Road Elementary</li>
+          <li>POPS Concert @ Comsewogue High School</li>
         </ul>
       </section>
 
       <section className="content-card">
         <h2>Theater Productions</h2>
         <p>
-          CMAC is proud to support the dramatic arts by uplifting talented
-          student performers who bring each production to life. Our goal is to
-          celebrate their creativity, dedication, and hard work on stage.
+          CMAC is proud to support the dramatic arts and celebrate the student
+          performers, designers, and crew members who bring each production to
+          life.
         </p>
         <ul className="event-list">
-          <li>CHS Drama Production (TBA)</li>
-          <li>JFK Drama Production (TBA)</li>
-          <li>Terryville Drama Show (TBA)</li>
-          <li>Boyle Drama Show (TBA)</li>
+          <li>Comsewogue High School Drama Production (TBA)</li>
+          <li>JFK Middle School Drama Production (TBA)</li>
+          <li>Terryville Road Drama Show (TBA)</li>
+          <li>Boyle Road Drama Show (TBA)</li>
         </ul>
       </section>
 
       <section className="content-card">
         <h2>Art Shows & Exhibitions</h2>
         <p>
-          CMAC celebrates student creativity through district-wide art events
-          and community showcases. These events give students a platform to
-          share their artistic voice with families and the community.
+          CMAC celebrates student creativity through district-wide displays and
+          community showcases that give young artists a platform to share their
+          work with families, peers, and the community.
         </p>
         <ul className="event-list">
           <li>High School Art Show</li>
