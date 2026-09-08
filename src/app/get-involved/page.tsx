@@ -137,6 +137,9 @@ export default function GetInvolvedPage() {
           </a>
         </div>
         <p className="muted-copy">
+          Looking to make a donation? Use the direct giving options below, or join as a member to support scholarships, teacher grants, and summer arts opportunities.
+        </p>
+        <p className="muted-copy">
           Students and Honor Society members are welcome to volunteer and earn
           documented service hours while helping CMAC support the arts in our
           community.

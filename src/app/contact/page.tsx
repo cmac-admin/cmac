@@ -29,7 +29,7 @@ export default function ContactPage() {
       <section className="content-card">
         <h2>Send a Message</h2>
         <p>
-          Use the form below to draft a message through your email app and send it to CMAC. You can also
+          Use the form below to draft a message through your email app and send it to CMAC. We typically respond within 3 business days. You can also
           email us directly at <a className="text-link" href={`mailto:${emailAddress}`}>CONTACT CMAC</a>.
         </p>
 

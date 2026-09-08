@@ -94,6 +94,9 @@ export default function Home() {
           confidence through music and the arts — whether through a scholarship, a classroom grant,
           or a community donation.
         </p>
+        <p className="home-upcoming-events">
+          Looking for upcoming performances or ways to support a show? Visit our <Link href="/events">Events</Link> page or <Link href="/get-involved#direct-donate">Support an Event</Link>.
+        </p>
       </section>
 
       {premierSponsors.length > 0 && (
