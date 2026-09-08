@@ -113,7 +113,12 @@ export default function QRWhatIsCMACPage() {
           A volunteer-led nonprofit supporting music, drama, and visual arts in the Comsewogue School District.
         </p>
 
-        <a className="cta-button" href="/get-involved">
+        <a
+          className="cta-button"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
+          target="_blank"
+          rel="noreferrer"
+        >
           Join CMAC
         </a>
 
