@@ -54,7 +54,10 @@ export default function Home() {
               <span />
               Now Playing
             </p>
-            <time>2026 — 27</time>
+            <div className="hero-card__season-wrap">
+              <time>2026 — 27</time>
+              <span className="hero-card__season">SEASON</span>
+            </div>
           </header>
 
           <div

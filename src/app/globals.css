@@ -486,9 +486,25 @@ a {
   background: var(--gold);
 }
 
+.hero-card__season-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
 .hero-card__header time {
   font-size: 2rem;
   font-family: var(--font-heading);
+}
+
+.hero-card__season {
+  display: block;
+  color: var(--brand-blue);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .hero-card__visual {
