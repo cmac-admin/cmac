@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
-import { ScholarshipImpactBar } from "@/components/LiveStats";
 import { ScholarshipApplicationButton } from "@/components/ScholarshipApplicationButton";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
@@ -30,8 +29,6 @@ export default function ScholarshipsPage() {
           keep studying over the summer.
         </p>
       </section>
-
-      <ScholarshipImpactBar />
 
       <section className="content-card scholarship-block">
         <div className="scholarship-header">

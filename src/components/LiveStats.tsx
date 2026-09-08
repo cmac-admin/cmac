@@ -47,6 +47,28 @@ const formatAwardValue = (value: string) => {
   return trimmed.endsWith("+") ? trimmed : `${trimmed}+`;
 };
 
+const formatMoreThan = (value: string) => {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  if (trimmed.toLowerCase().startsWith("more than")) {
+    const numericPortion = trimmed.slice("more than".length).trim();
+
+    if (!numericPortion) {
+      return trimmed;
+    }
+
+    return numericPortion.endsWith("+")
+      ? `More than ${numericPortion}`
+      : `More than ${numericPortion}+`;
+  }
+
+  return trimmed.endsWith("+") ? `More than ${trimmed}` : `More than ${trimmed}+`;
+};
+
 const PAGE_FALLBACKS = {
   general: DEFAULT_STATS,
   scholarships: {
@@ -143,6 +165,7 @@ function useLiveStats(mode: StatsMode = "general") {
 
 export function AboutImpactStats() {
   const stats = useLiveStats("general");
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="impact-stats impact-stats--compact" aria-label="CMAC impact highlights">
@@ -155,7 +178,7 @@ export function AboutImpactStats() {
         <p className="impact-stats__label">District Event Support</p>
       </article>
       <article>
-        <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
+        <p className="impact-stats__value">{supportedValue}</p>
         <p className="impact-stats__label">Students &amp; Teachers Supported</p>
       </article>
       <article>
@@ -168,6 +191,7 @@ export function AboutImpactStats() {
 
 export function HomeImpactStats() {
   const stats = useLiveStats("general");
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="impact-stats home-impact-stats" aria-label="CMAC impact at a glance">
@@ -185,7 +209,7 @@ export function HomeImpactStats() {
           <p className="impact-stats__label">Teacher Grants Awarded</p>
         </article>
         <article>
-          <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
+          <p className="impact-stats__value">{supportedValue}</p>
           <p className="impact-stats__label">Students Supported</p>
         </article>
       </div>
@@ -217,11 +241,12 @@ function ImpactMetricsBar({
   mode: StatsMode;
 }) {
   const stats = useLiveStats(mode);
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="scholarship-impact-bar" aria-label={ariaLabel}>
       <div className="scholarship-impact-bar__stat">
-        <span className="scholarship-impact-bar__value">{stats.studentsTeachersSupported}</span>
+        <span className="scholarship-impact-bar__value">{supportedValue}</span>
         <span className="scholarship-impact-bar__label">Students &amp; Teachers Supported</span>
       </div>
       <div className="scholarship-impact-bar__divider" aria-hidden="true" />

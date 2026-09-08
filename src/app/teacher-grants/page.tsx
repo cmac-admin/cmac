@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
-import { TeacherGrantImpactBar } from "@/components/LiveStats";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
 export const metadata: Metadata = {
@@ -36,8 +35,6 @@ export default function TeacherGrantsPage() {
           and excitement in the arts.
         </p>
       </section>
-
-      <TeacherGrantImpactBar />
 
       <div className="teacher-grants-layout">
         <aside className="grant-winner-ticker" aria-label="Previous grant winners">
