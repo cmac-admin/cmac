@@ -25,26 +25,24 @@ const sponsors = [
     logo: "/cmac/school-of-rock-port-jefferson-logo.png",
   },
   {
+    name: "Theatre Three",
+    website: "https://theatrethree.com/",
+    logo: "/cmac/theatre-three-logo.png",
+  },
+  {
     name: "Bellwether",
     website: "https://bellwether.band/",
     logo: "/cmac/bellwether-band-logo.png",
   },
-  { name: "Sponsor Logo 2" },
-  { name: "Sponsor Logo 3" },
-  { name: "Sponsor Logo 4" },
-  { name: "Sponsor Logo 5" },
-  { name: "Sponsor Logo 6" },
 ];
 
 const communityDonors = [
   "Class Pass Donors",
   "Gift Card Contributors",
-  "Community Family Supporters",
+  "Merchandise Supporters",
+  "Raffle Basket Donors",
   "Neighborhood Arts Boosters",
-  "Student Program Backers",
   "Friends of CMAC",
-  "Season Supporters",
-  "Music & Arts Helpers",
 ];
 
 export default function SponsorsPage() {
@@ -52,6 +50,11 @@ export default function SponsorsPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <h1>Thank You to Our Community Supporters</h1>
+        <p>
+          We are grateful to every individual, family, and business that invests
+          in Comsewogue students and helps keep music, drama, and visual arts
+          strong in our district.
+        </p>
       </section>
 
       <section className="content-card">
@@ -59,69 +62,85 @@ export default function SponsorsPage() {
           <span className="supporter-badge" aria-label="Premier supporter badge">
             PREM
           </span>
-          <h2>OUR PREMIER COMMUNITY SPONSORS</h2>
+          <h2>Premier Community Sponsors</h2>
         </div>
         <p className="muted-copy">
-          Thank you for investing in Comsewogue students and strengthening our
-          music and arts programs.
+          Thank you to our Premier Community Sponsors for their generous support
+          of student scholarships and teacher grants.
         </p>
         <div className="sponsor-grid sponsor-grid--featured">
           {sponsors.map((sponsor) => (
             <article key={sponsor.name} className="sponsor-tile">
-              {sponsor.website ? (
-                <a
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sponsor-link"
-                >
-                  <div className="sponsor-logo-placeholder sponsor-logo-placeholder--image">
-                    <img
-                      src={sponsor.logo}
-                      alt={`${sponsor.name} logo`}
-                      className="sponsor-logo-image"
-                    />
-                  </div>
-                </a>
-              ) : (
-                <>
-                  <div className="sponsor-logo-placeholder">Logo</div>
-                  <p>{sponsor.name}</p>
-                </>
-              )}
+              <a
+                href={sponsor.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sponsor-link"
+              >
+                <div className="sponsor-logo-placeholder sponsor-logo-placeholder--image">
+                  <img
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    className="sponsor-logo-image"
+                  />
+                </div>
+              </a>
             </article>
           ))}
         </div>
-        <p className="muted-copy sponsor-supporter-copy">
-          We are deeply grateful for every supporter whose generosity helps us
-          expand arts access and student opportunity.
-        </p>
       </section>
 
       <section className="content-card community-support-card">
-        <h2>COMMUNITY SUPPORTERS</h2>
+        <h2>Community Supporters</h2>
         <p className="muted-copy community-support-copy">
-          We also thank the many local community businesses that contribute class
-          passes, gift cards, merchandise and other support that goes to our raffle
-          baskets to help keep CMAC accessible and thriving.
+          We also thank the local businesses and organizations that contribute
+          class passes, gift cards, merchandise, and other items for our raffle
+          baskets and fundraising efforts. Your support helps keep CMAC
+          accessible and thriving.
         </p>
-        <div className="community-donor-list" aria-label="Community donor thank-you list">
-          {communityDonors.map((donor) => (
-            <span key={donor} className="community-donor-pill">
-              {donor}
-            </span>
-          ))}
+        <div className="family-supporter-ticker community-supporter-ticker" aria-label="Community supporter thank-you list">
+          <div className="family-supporter-ticker__track">
+            {[...communityDonors, ...communityDonors].map((donor, index) => (
+              <span key={`${donor}-${index}`} className="family-supporter-ticker__item">
+                {donor}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="content-card community-support-card">
-        <h2>INDIVIDUAL/FAMILY SUPPORTERS</h2>
+        <h2>Individual &amp; Family Supporters</h2>
         <p className="muted-copy community-support-copy">
-          We are grateful to the individuals and families whose continued support
-          makes it possible to offer students the scholarships to help them learn,
-          perform and thrive.
+          We are deeply grateful to the individuals and families whose continued
+          support makes student scholarships possible.
         </p>
         <FamilySupporterTicker />
+      </section>
+
+      <section className="content-card community-support-card">
+        <h2>Become a Supporter</h2>
+        <p className="muted-copy community-support-copy">
+          Your support directly funds scholarships for students in grades 3–12
+          and grants for music and art teachers.
+        </p>
+        <p className="muted-copy community-support-copy">
+          <strong>Community Supporter</strong> — $100/year
+          <br />
+          <strong>Premier Community Supporter</strong> — $150+/year
+        </p>
+        <p className="muted-copy community-support-copy">
+          Benefits can include recognition on this page, logo placement at
+          events, and social media highlights.
+        </p>
+        <div className="scholarship-actions">
+          <Link href="/get-involved" className="apply-btn">
+            Join as a Supporter
+          </Link>
+          <Link href="/contact" className="text-link">
+            Contact CMAC
+          </Link>
+        </div>
       </section>
     </main>
   );

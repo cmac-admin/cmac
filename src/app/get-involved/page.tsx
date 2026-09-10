@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
@@ -74,6 +76,7 @@ export default function GetInvolvedPage() {
       />
 
       <section className="subpage-hero">
+        <p className="subpage-kicker">Get Involved</p>
         <h1>Join CMAC</h1>
         <p>
           Membership in Comsewogue Music &amp; Arts Corp. directly supports

@@ -33,49 +33,69 @@ const faqGroups: FaqGroup[] = [
       {
         question: "What is CMAC?",
         answer:
-          "CMAC is a volunteer-run nonprofit that supports music, art, and theater programs across the Comsewogue School District. We provide scholarships, teacher grants, and event-night support for student performances and exhibitions.",
+          "CMAC is a volunteer-run 501(c)(3) nonprofit that supports music, art, and theater programs in the Comsewogue School District. We provide student scholarships, teacher grants, and fundraising support at performances and events.",
       },
       {
         question: "Who does CMAC support?",
         answer:
-          "We support all student music, art & drama artists — from 3rd grade through high school.",
+          "We support Comsewogue students in grades 3–12 and the music, art, and drama teachers who work with them.",
       },
       {
-        question: "How does CMAC choose what events to attend?",
+        question: "How can I become a member?",
         answer:
-          "We attend district concerts, drama productions, art shows, and community arts events where our presence enhances the student experience and supports fundraising.",
+          "Membership is open to parents, community members, and students. Join through our Get Involved page. Your support directly funds scholarships and teacher grants.",
+        answerNode: (
+          <>
+            Membership is open to parents, community members, and students. Join
+            through our <Link href="/get-involved">Get Involved page</Link>. Your
+            support directly funds scholarships and teacher grants.
+          </>
+        ),
+      },
+      {
+        question: "What are the membership levels?",
+        answer:
+          "Suggested levels begin at $10. Individual membership is $25 (includes a t-shirt), Family is $50, and higher supporter levels are also available. Full details are on the Get Involved page.",
+        answerNode: (
+          <>
+            Suggested levels begin at $10. Individual membership is $25 (includes a
+            t-shirt), Family is $50, and higher supporter levels are also
+            available. Full details are on the <Link href="/get-involved">Get
+            Involved page</Link>.
+          </>
+        ),
       },
     ],
   },
   {
     icon: "💵",
-    title: "Fundraising & Purchases",
+    title: "Fundraising & Donations",
     items: [
       {
         question: "What items does CMAC sell at events?",
         answer:
-          "We offer many things to help raise funds for scholarships and teacher grants. Kisses for the Cast is one of our newest and most popular items! During drama shows, we offer Hershey Kisses in a bag for sale that you can write a note to your performer, and they receive them after the show. We also sell flowers, candy, and a balloon at the drama shows and concerts. We also offer pre-orders for custom themed ornaments for the drama shows — the ornaments are hand-made and customized for your star.",
+          "At concerts and drama productions we offer performance-night items such as personalized ornaments, flower bouquets, candy, balloons, and 'Kisses for the Cast.' All proceeds support scholarships and teacher grants.",
       },
       {
         question: "Where does the money go?",
         answer:
-          "All proceeds fund student scholarships, teacher grants, and arts program support across the district.",
+          "100% of proceeds fund student scholarships, teacher grants, and arts program support across the district.",
       },
       {
         question: "Can I donate directly?",
         answer:
-          "Yes, donations can be made directly through our website on the Donate page.",
+          "Yes. You can donate through Venmo, Zelle, check, or the options listed on our Get Involved page.",
         answerNode: (
           <>
-            Yes, donations can be made directly through our website on the{" "}
-            <Link href="/get-involved#direct-donate">Donate page</Link>.
+            Yes. You can donate through Venmo, Zelle, check, or the options listed
+            on our <Link href="/get-involved">Get Involved page</Link>.
           </>
         ),
       },
       {
         question: "Are donations tax-deductible?",
         answer:
-          "Yes. CMAC is a registered nonprofit, and donations are tax-deductible to the extent allowed by law.",
+          "Yes. CMAC is a registered 501(c)(3) nonprofit. Donations are tax-deductible to the extent allowed by law.",
       },
     ],
   },
@@ -84,41 +104,39 @@ const faqGroups: FaqGroup[] = [
     title: "Scholarships & Grants",
     items: [
       {
-        question: "What type of scholarships do you offer?",
+        question: "What scholarships does CMAC offer?",
         answer:
-          "We offer $500 Senior scholarships to students in 12th grade. We also offer $100 scholarships to students in grades 3–11. For more detailed information and eligibility, visit our Scholarships page. All scholarships must be applied for from our website.",
+          "We offer a $500 Senior Scholarship for graduating seniors and $100 Summer Study Scholarships for students in grades 3–11. Details, eligibility, and applications are on our Scholarships page.",
         answerNode: (
           <>
-            We offer $500 Senior scholarships to students in 12th grade. We also
-            offer $100 scholarships to students in grades 3–11. For more detailed
-            information and eligibility, visit our{" "}
-            <Link href="/scholarships">Scholarships page</Link>. All scholarships
-            must be applied for from our website.
+            We offer a $500 Senior Scholarship for graduating seniors and $100
+            Summer Study Scholarships for students in grades 3–11. Details,
+            eligibility, and applications are on our{" "}
+            <Link href="/scholarships">Scholarships page</Link>.
           </>
         ),
       },
       {
         question: "How do students apply for scholarships?",
         answer:
-          "All scholarship applications are done through our website. Seniors can apply through our annual scholarship application, available in the spring. Requirements and deadlines are posted on our Scholarships page.",
+          "All applications are submitted online through the Scholarships page. Deadlines and requirements are posted there each year.",
         answerNode: (
           <>
-            All scholarship applications are done through our website. Seniors can
-            apply through our annual scholarship application, available in the
-            spring. Requirements and deadlines are posted on our{" "}
-            <Link href="/scholarships">Scholarships page</Link>.
+            All applications are submitted online through the{" "}
+            <Link href="/scholarships">Scholarships page</Link>. Deadlines and
+            requirements are posted there each year.
           </>
         ),
       },
       {
         question: "How do teachers apply for grants?",
         answer:
-          "Teachers submit a short proposal describing how the grant will enhance student arts experiences. Applications open each fall. Learn more and apply on our Teacher Grants page.",
+          "Teachers submit a short proposal describing how the grant will enhance student learning in the arts. Information and the application are on our Teacher Grants page.",
         answerNode: (
           <>
             Teachers submit a short proposal describing how the grant will enhance
-            student arts experiences. Applications open each fall. Learn more and
-            apply on our <Link href="/teacher-grants">Teacher Grants page</Link>.
+            student learning in the arts. Information and the application are on
+            our <Link href="/teacher-grants">Teacher Grants page</Link>.
           </>
         ),
       },
@@ -131,25 +149,25 @@ const faqGroups: FaqGroup[] = [
       {
         question: "How can I volunteer?",
         answer:
-          "Volunteers help at event tables, assemble fundraising items, assist with displays, or support behind-the-scenes tasks. Even one hour makes a huge impact. Sign up on our Get Involved page.",
+          "Volunteers help at event tables, prepare fundraising items, assist with communications, or support other tasks. Even a few hours makes a difference. Sign up on our Get Involved page.",
         answerNode: (
           <>
-            Volunteers help at event tables, assemble fundraising items, assist
-            with displays, or support behind-the-scenes tasks. Even one hour makes
-            a huge impact. Sign up on our{" "}
-            <Link href="/get-involved#volunteer">Get Involved page</Link>.
+            Volunteers help at event tables, prepare fundraising items, assist
+            with communications, or support other tasks. Even a few hours makes a
+            difference. Sign up on our <Link href="/get-involved">Get Involved
+            page</Link>.
           </>
         ),
       },
       {
         question: "Do I need experience to volunteer?",
         answer:
-          "Not at all — we welcome all helping hands. We'll show you everything you need to know.",
+          "No experience is needed. We’ll show you everything you need to know.",
       },
       {
         question: "Can students volunteer?",
         answer:
-          "Yes! Students can help with setup, greeting guests, or assisting with art-related tasks. It's a great way to earn service hours.",
+          "Yes. Students, including Honor Society members, are welcome and can earn documented service hours while helping at events or serving as student representatives.",
       },
     ],
   },
@@ -160,20 +178,19 @@ const faqGroups: FaqGroup[] = [
       {
         question: "Where can I find event dates?",
         answer:
-          "We only list the events we support, the actual date may vary based on the Comsewogue School District Calendar and is subject to change, so please confirm with the school/district regarding specific events and dates.",
+          "We list the events we support on our Events page. Specific dates follow the Comsewogue School District calendar and may change, so please confirm with the school or district.",
         answerNode: (
           <>
-            We only list the <Link href="/events">events we support</Link>, the
-            actual date may vary based on the Comsewogue School District Calendar
-            and is subject to change, so please confirm with the school/district
-            regarding specific events and dates.
+            We list the events we support on our <Link href="/events">Events page</Link>.
+            Specific dates follow the Comsewogue School District calendar and may
+            change, so please confirm with the school or district.
           </>
         ),
       },
       {
         question: "Does CMAC run the school productions?",
         answer:
-          "No — CMAC supports the talented students and teachers who create the productions. We provide fundraising items and arts-program support.",
+          "No. CMAC supports the students and teachers who create the productions by providing fundraising items and arts-program support.",
       },
     ],
   },
@@ -237,6 +254,16 @@ export default function FaqPage() {
           </div>
         </section>
       ))}
+
+      <section className="content-card faq-group faq-group--cta">
+        <h2 className="faq-group__title">Still have questions?</h2>
+        <div className="faq-item__answer">
+          <p>
+            We’re happy to help.<br />
+            <Link href="/contact">Contact CMAC</Link>
+          </p>
+        </div>
+      </section>
     </main>
   );
 }

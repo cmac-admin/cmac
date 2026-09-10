@@ -37,17 +37,49 @@ function parseCsvLine(line: string): string[] {
   return values.map((value) => value.replace(/^"|"$/g, ""));
 }
 
+const formatAwardValue = (value: string) => {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  return trimmed.endsWith("+") ? trimmed : `${trimmed}+`;
+};
+
+const formatMoreThan = (value: string) => {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  if (trimmed.toLowerCase().startsWith("more than")) {
+    const numericPortion = trimmed.slice("more than".length).trim();
+
+    if (!numericPortion) {
+      return trimmed;
+    }
+
+    return numericPortion.endsWith("+")
+      ? `More than ${numericPortion}`
+      : `More than ${numericPortion}+`;
+  }
+
+  return trimmed.endsWith("+") ? `More than ${trimmed}` : `More than ${trimmed}+`;
+};
+
 const PAGE_FALLBACKS = {
   general: DEFAULT_STATS,
   scholarships: {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,111.11",
+    studentsTeachersAwarded: "$1,000.00+",
   },
   "teacher-grants": {
     ...DEFAULT_STATS,
     studentsTeachersSupported: "67",
-    studentsTeachersAwarded: "$1,111.11",
+    studentsTeachersAwarded: "$1,000.00+",
   },
 } as const;
 
@@ -80,7 +112,7 @@ function parseSheetData(csv: string, mode: StatsMode): typeof DEFAULT_STATS {
 
   const firstRow = dataRows[0] ?? [];
   const supported = firstRow[supportedIndex] ?? fallback.studentsTeachersSupported;
-  const awarded = firstRow[awardedIndex] ?? fallback.studentsTeachersAwarded;
+  const awarded = formatAwardValue(firstRow[awardedIndex] ?? fallback.studentsTeachersAwarded);
 
   return {
     ...fallback,
@@ -133,6 +165,7 @@ function useLiveStats(mode: StatsMode = "general") {
 
 export function AboutImpactStats() {
   const stats = useLiveStats("general");
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="impact-stats impact-stats--compact" aria-label="CMAC impact highlights">
@@ -145,7 +178,7 @@ export function AboutImpactStats() {
         <p className="impact-stats__label">District Event Support</p>
       </article>
       <article>
-        <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
+        <p className="impact-stats__value">{supportedValue}</p>
         <p className="impact-stats__label">Students &amp; Teachers Supported</p>
       </article>
       <article>
@@ -158,25 +191,28 @@ export function AboutImpactStats() {
 
 export function HomeImpactStats() {
   const stats = useLiveStats("general");
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
-    <section className="impact-stats" aria-label="CMAC impact at a glance">
-      <article>
-        <p className="impact-stats__value">{stats.foundedYear}</p>
-        <p className="impact-stats__label">Founded</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.schoolsCount}</p>
-        <p className="impact-stats__label">Active Event Support</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.studentsTeachersSupported}</p>
-        <p className="impact-stats__label">Students &amp; Teachers Supported</p>
-      </article>
-      <article>
-        <p className="impact-stats__value">{stats.studentsTeachersAwarded}</p>
-        <p className="impact-stats__label">Awarded to Students &amp; Teachers</p>
-      </article>
+    <section className="impact-stats home-impact-stats" aria-label="CMAC impact at a glance">
+      <div className="impact-stats__header">
+        <p className="section-kicker">Our impact</p>
+        <h2>Real support for students, teachers, and creative growth.</h2>
+      </div>
+      <div className="impact-stats__grid">
+        <article>
+          <p className="impact-stats__value">{stats.scholarshipsGranted}</p>
+          <p className="impact-stats__label">Scholarships Funded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">{stats.teacherGrants}</p>
+          <p className="impact-stats__label">Teacher Grants Awarded</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">{supportedValue}</p>
+          <p className="impact-stats__label">Students Supported</p>
+        </article>
+      </div>
     </section>
   );
 }
@@ -189,7 +225,7 @@ export function TeacherGrantImpactBar() {
   return (
     <ImpactMetricsBar
       ariaLabel="Teacher grant impact"
-      secondLabel="$ Awarded"
+      secondLabel="Awarded"
       mode="teacher-grants"
     />
   );
@@ -205,11 +241,12 @@ function ImpactMetricsBar({
   mode: StatsMode;
 }) {
   const stats = useLiveStats(mode);
+  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="scholarship-impact-bar" aria-label={ariaLabel}>
       <div className="scholarship-impact-bar__stat">
-        <span className="scholarship-impact-bar__value">{stats.studentsTeachersSupported}</span>
+        <span className="scholarship-impact-bar__value">{supportedValue}</span>
         <span className="scholarship-impact-bar__label">Students &amp; Teachers Supported</span>
       </div>
       <div className="scholarship-impact-bar__divider" aria-hidden="true" />

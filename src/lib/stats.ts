@@ -14,7 +14,7 @@ export type Stats = {
  */
 export const DEFAULT_STATS: Stats = {
   foundedYear: "2023",
-  schoolsCount: "4 Schools",
+  schoolsCount: "Grades 3-12",
   scholarshipsGranted: "50",
   totalAwarded: "$1,000+",
   studentsTeachersSupported: "50",
