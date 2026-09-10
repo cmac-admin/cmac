@@ -72,7 +72,7 @@ export default function Home() {
               students keep creating, performing, and believing in what the arts can do.
             </p>
             <div className="hero-card__actions">
-              <Link href="/get-involved#direct-donate" className="hero-card__button hero-card__button--primary">
+              <Link href="/get-involved" className="hero-card__button hero-card__button--primary">
                 Join CMAC
               </Link>
               <Link href="/our-impact" className="hero-card__button hero-card__button--secondary">
@@ -84,25 +84,10 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="home-why-support">
-        <div className="home-why-support__header">
-          <p className="section-kicker">Why support CMAC?</p>
-          <h2>When arts education is supported, students grow with confidence, creativity, and belonging.</h2>
-        </div>
-        <p>
-          CMAC helps remove barriers so students can keep learning, performing, and building
-          confidence through music and the arts — whether through a scholarship, a classroom grant,
-          or a community donation.
-        </p>
-        <p className="home-upcoming-events">
-          Looking for upcoming performances or ways to support a show? Visit our <Link href="/events">Events</Link> page or <Link href="/get-involved#direct-donate">Support an Event</Link>.
-        </p>
-      </section>
-
       {premierSponsors.length > 0 && (
         <section className="premier-sponsors" aria-label="Premier sponsors">
           <div className="premier-sponsors__header">
-            <p className="premier-sponsors__kicker">Community support</p>
+            <p className="premier-sponsors__kicker">Premier Sponsors</p>
           </div>
           <div className="premier-sponsors__marquee" aria-label="Premier sponsor marquee">
             <div className="premier-sponsors__track">
@@ -122,6 +107,22 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      <section className="home-why-support">
+        <div className="home-why-support__header">
+          <p className="section-kicker">Why support CMAC?</p>
+          <h2>When arts education is supported, students grow with confidence, creativity, and belonging.</h2>
+        </div>
+        <p>
+          CMAC helps remove barriers so students can keep learning, performing, and building
+          confidence through music and the arts — whether through a scholarship, a classroom grant,
+          or a community donation.
+        </p>
+        <p className="home-upcoming-events">
+          Looking for upcoming performances or ways to support a show? Visit our <Link href="/events">Events</Link> page or <Link href="/get-involved#direct-donate">Support an Event</Link>.
+        </p>
+      </section>
+
 
       <HomeImpactStats />
       <p className="impact-stats__cta">
@@ -169,7 +170,7 @@ export default function Home() {
           <h2>Support the next generation of CMAC artists.</h2>
         </div>
         <div className="home-cta-banner__actions">
-          <Link href="/get-involved#direct-donate" className="hero-card__button hero-card__button--primary">
+          <Link href="/get-involved" className="hero-card__button hero-card__button--primary">
             Join CMAC
           </Link>
           <Link href="/our-impact" className="hero-card__button hero-card__button--secondary">

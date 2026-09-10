@@ -131,7 +131,7 @@ export default function AboutPage() {
           We are actively looking for new adult volunteers and student
           representatives to help lead CMAC into the future. If you are
           interested in serving, please reach out or join through our
-          <a href="/get-involved">Get Involved</a> page.
+          <Link href="/get-involved">Get Involved</Link> page.
         </p>
       </section>
 

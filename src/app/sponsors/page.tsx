@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { FamilySupporterTicker } from "@/components/FamilySupporterTicker";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function SponsorsPage() {
       <section className="content-card">
         <div className="supporter-heading-row">
           <span className="supporter-badge" aria-label="Premier supporter badge">
-            PREM
+            ★
           </span>
           <h2>Premier Community Sponsors</h2>
         </div>

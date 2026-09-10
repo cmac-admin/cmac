@@ -48,25 +48,13 @@ const formatAwardValue = (value: string) => {
 };
 
 const formatMoreThan = (value: string) => {
-  const trimmed = value.trim();
+  const trimmed = value.trim().replace(/^more than\s*/i, "");
 
   if (!trimmed) {
     return trimmed;
   }
 
-  if (trimmed.toLowerCase().startsWith("more than")) {
-    const numericPortion = trimmed.slice("more than".length).trim();
-
-    if (!numericPortion) {
-      return trimmed;
-    }
-
-    return numericPortion.endsWith("+")
-      ? `More than ${numericPortion}`
-      : `More than ${numericPortion}+`;
-  }
-
-  return trimmed.endsWith("+") ? `More than ${trimmed}` : `More than ${trimmed}+`;
+  return trimmed.endsWith("+") ? trimmed : `${trimmed}+`;
 };
 
 const PAGE_FALLBACKS = {
