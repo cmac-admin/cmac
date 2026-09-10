@@ -4,7 +4,6 @@ import Script from "next/script";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { HeaderJoinButton } from "../components/HeaderJoinButton";
-import { BoardFeedbackForm } from "@/components/BoardFeedbackForm";
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -137,12 +136,10 @@ export default function RootLayout({
 
           <nav className="menu-bar main-nav" aria-label="Primary">
             <Link href="/about">About</Link>
-            <Link href="/get-involved">Get Involved</Link>
             <Link href="/scholarships">Scholarships</Link>
             <Link href="/teacher-grants">Teacher Grants</Link>
             <Link href="/events">Events</Link>
             <Link href="/news">News</Link>
-            <Link href="/sponsors">Sponsors</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/order-here">Order Here</Link>
             <Link href="/get-involved#direct-donate">Donate</Link>
@@ -151,7 +148,6 @@ export default function RootLayout({
         <div id="main-content" tabIndex={-1}>
           {children}
         </div>
-        <BoardFeedbackForm />
         <footer className="site-footer">
           <nav className="site-footer__links" aria-label="Footer">
             <Link href="/get-involved#direct-donate">Donate</Link>
