@@ -16,9 +16,9 @@ export const DEFAULT_STATS: Stats = {
   foundedYear: "2023",
   schoolsCount: "4 Schools",
   scholarshipsGranted: "50",
-  totalAwarded: "$1,000.00",
+  totalAwarded: "$1,000+",
   studentsTeachersSupported: "50",
-  studentsTeachersAwarded: "$1,000.00",
+  studentsTeachersAwarded: "$1,000+",
   teacherGrants: "2",
 };
 

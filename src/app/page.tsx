@@ -117,6 +117,11 @@ export default function Home() {
       </section>
 
       <HomeImpactStats />
+      <p className="impact-stats__cta">
+        <Link href="/our-impact" className="text-link">
+          See our impact →
+        </Link>
+      </p>
 
       <section className="grid">
         <article>

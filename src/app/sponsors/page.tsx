@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FamilySupporterTicker } from "@/components/FamilySupporterTicker";
 
 export const metadata: Metadata = {
   title: "Supporters",
@@ -44,27 +45,6 @@ const communityDonors = [
   "Friends of CMAC",
   "Season Supporters",
   "Music & Arts Helpers",
-];
-
-const familySupporters = [
-  "THE ANDERSEN FAMILY",
-  "THE KOSAK FAMILY",
-  "THE PERRONE FAMILY",
-  "THE DVORSKY FAMILY",
-  "THE JAKLITSCH FAMILY",
-  "THE PROVENZALE FAMILY",
-  "C. ANDERSEN",
-  "M. SMITH",
-  "L. JONES",
-  "THE ANDERSEN FAMILY",
-  "THE KOSAK FAMILY",
-  "THE PERRONE FAMILY",
-  "THE DVORSKY FAMILY",
-  "THE JAKLITSCH FAMILY",
-  "THE PROVENZALE FAMILY",
-  "C. ANDERSEN",
-  "M. SMITH",
-  "L. JONES",
 ];
 
 export default function SponsorsPage() {
@@ -141,15 +121,7 @@ export default function SponsorsPage() {
           makes it possible to offer students the scholarships to help them learn,
           perform and thrive.
         </p>
-        <div className="family-supporter-ticker" aria-label="Individual/Family Supporters list">
-          <div className="family-supporter-ticker__track">
-            {[...familySupporters, ...familySupporters].map((name, index) => (
-              <span key={`${name}-${index}`} className="family-supporter-ticker__item">
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
+        <FamilySupporterTicker />
       </section>
     </main>
   );

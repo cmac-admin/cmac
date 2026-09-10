@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -13,8 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-const emailAddress = "comsewoguemusicandarts@gmail.com";
-
 export default function ContactPage() {
   return (
     <main className="subpage">
@@ -27,10 +26,9 @@ export default function ContactPage() {
       </section>
 
       <section className="content-card">
-        <h2>Send a Message</h2>
         <p>
-          Use the form below to draft a message through your email app and send it to CMAC. You can also
-          email us directly at <a className="text-link" href={`mailto:${emailAddress}`}>CONTACT CMAC</a>.
+          Questions about scholarships, teacher grants, programs, or sponsorships?
+          Check our <Link href="/faq" className="text-link">FAQ</Link> first, or use the form below.
         </p>
 
         <ContactForm />

@@ -63,10 +63,10 @@ export default function EventsPage() {
           celebrate their creativity, dedication, and hard work on stage.
         </p>
         <ul className="event-list">
-          <li>CHS Drama Production (TBA)</li>
-          <li>JFK Drama Production (TBA)</li>
-          <li>Terryville Drama Show (TBA)</li>
-          <li>Boyle Drama Show (TBA)</li>
+          <li>CHS Drama Production</li>
+          <li>JFK Drama Production</li>
+          <li>Terryville Drama Show</li>
+          <li>Boyle Drama Show</li>
         </ul>
       </section>
 

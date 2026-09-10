@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AboutImpactStats } from "@/components/LiveStats";
 
 export const metadata: Metadata = {
@@ -21,6 +22,11 @@ export default function AboutPage() {
       </section>
 
       <AboutImpactStats />
+      <p className="impact-stats__cta">
+        <Link href="/our-impact" className="text-link">
+          See our impact →
+        </Link>
+      </p>
 
       <section className="content-card">
         <h2>Our Mission</h2>

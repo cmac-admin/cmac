@@ -35,420 +35,236 @@ const donationFaqJsonLd = {
 };
 
 export default function GetInvolvedPage() {
-  const openPopupWindow = (url: string) => {
-    if (typeof window === "undefined") {
-      return;
-    }
+  const membershipFormUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform";
 
-    const popup = window.open(
-      "",
-      "cmacPopup",
-      "width=980,height=760,top=80,left=120,resizable=yes,scrollbars=yes"
-    );
-
-    if (!popup) {
-      return;
-    }
-
-    const { label: yearLabel } = getSchoolYearInfo();
-
-    popup.document.write(`<!doctype html>
-      <html>
-        <head>
-          <title>CMAC ${yearLabel} MEMBERSHIP FORM</title>
-          <style>
-            html, body { margin: 0; height: 100%; background: #f3efe7; font-family: Arial, sans-serif; }
-            body { display: flex; flex-direction: column; }
-            .popup-header {
-              padding: 1rem 1.25rem;
-              text-align: center;
-              background: #0f2037;
-              color: #f4d38d;
-              border-bottom: 3px solid #c99c3d;
-              font-size: 1.2rem;
-              font-weight: 700;
-              letter-spacing: 0.08em;
-              text-transform: uppercase;
-            }
-            iframe {
-              flex: 1;
-              width: 100%;
-              min-height: 680px;
-              border: 0;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="popup-header">CMAC ${yearLabel} MEMBERSHIP FORM</div>
-          <iframe src="${url}" title="CMAC ${yearLabel} MEMBERSHIP FORM"></iframe>
-        </body>
-      </html>`);
-
-    popup.document.close();
-  };
+  const membershipLevels = [
+    {
+      level: "Friend of CMAC",
+      amount: "$10 suggested",
+      benefits: "Membership status, meeting notifications, voting rights, and meeting minutes by email",
+    },
+    {
+      level: "Individual",
+      amount: "$25/year",
+      benefits: "All of the above + free CMAC t-shirt (pickup at winter concerts)",
+    },
+    {
+      level: "Family",
+      amount: "$50/year",
+      benefits: "All of the above + 2 free t-shirts",
+    },
+    {
+      level: "Community Supporter",
+      amount: "$100/year",
+      benefits: "Family benefits + business or family name recognition",
+    },
+    {
+      level: "Premier Community Supporter",
+      amount: "$150/year",
+      benefits: "Logo and link on the website, logo displayed at event tables, digital support badge, and a dedicated social media spotlight",
+    },
+  ];
 
   return (
-    <main className="subpage">
+    <main className="subpage get-involved-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(donationFaqJsonLd) }}
       />
+
       <section className="subpage-hero">
         <h1>Join CMAC</h1>
         <p>
-          Membership in Comsewogue Music & Arts Corp. directly supports student
-          musicians, artists, performers, and creators.
+          Membership in Comsewogue Music &amp; Arts Corp. directly supports
+          student musicians, artists, performers, and creators through
+          scholarships, teacher grants, and summer arts programs.
+        </p>
+        <div className="primary-cta-row">
+          <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
+            Become a Member
+          </a>
+          <a href={membershipFormUrl} className="secondary-btn" target="_blank" rel="noreferrer">
+            Volunteer / Student Representative
+          </a>
+        </div>
+        <p className="tiny-note">
+          Students and Honor Society members are welcome and can earn documented
+          volunteer hours.
         </p>
       </section>
 
       <section className="content-card">
-        <h2>Membership & Giving</h2>
-        <div className="give-intro-copy">
-          <p>
-            Participation in CMAC is free. Anyone (parents, students, and
-            community members) who love music and arts can join the CMAC Facebook
-            group to participate and share the news.
-          </p>
-          <p>Suggested donation is $10.</p>
-          <p>
-            With a $25 donation, you will receive a free CMAC T-shirt (pick up at
-            winter concerts).
-          </p>
-          <p>
-            With membership, you will receive notifications about the meetings,
-            get to vote for elections, influence our decisions, and receive
-            minutes of the meeting via email.
-          </p>
-          <p>
-            Your donation is tax deductible (as we are a 501(c) nonprofit
-            organization).
-          </p>
-          <p>
-            Your bank statement or canceled check serves as a receipt. If you
-            need an official letter for tax deduction, please
-            <ContactPopupLink className="text-link" href="/cmac/contact">
-              CONTACT CMAC
-            </ContactPopupLink>
-            with your request.
-          </p>
-          <p>
-            Your donations will go towards scholarships, grants program support,
-            and summer programs for students.
-          </p>
-          <p>All meetings will be held via Google Meet.</p>
-          <p>
-            Student Members: Please provide your personal email address. We cannot
-            send the email to the school account.
-          </p>
+        <h2>Membership Levels</h2>
+        <div className="membership-grid membership-grid--compact">
+          {membershipLevels.map(({ level, amount, benefits }) => (
+            <article key={level} className="membership-tier">
+              <h3>{level}</h3>
+              <p>{amount}</p>
+              <ul>
+                <li>{benefits}</li>
+              </ul>
+            </article>
+          ))}
         </div>
+        <p className="muted-copy membership-tax-note">
+          All donations are tax-deductible. Your bank statement or canceled check
+          serves as a receipt. For an official tax letter, please contact CMAC.
+        </p>
       </section>
 
       <section className="content-card">
-        <div className="give-nav-grid">
-          <a className="give-nav-link" href="#yearly-membership">
-            1. Yearly Membership
-          </a>
-          <a className="give-nav-link" href="#community-supporter-levels">
-            2. Community Supporter
-          </a>
-          <a className="give-nav-link" href="#fundraising-sales">
-            3. Fundraising Sales
-          </a>
-          <a className="give-nav-link" href="#volunteer">
-            4. Volunteer
-          </a>
+        <h2>What Your Support Makes Possible</h2>
+        <p className="muted-copy">
+          Your membership and donations fund student scholarships, teacher grants
+          for music, art, and drama projects, and summer arts programs for
+          Comsewogue students in grades 3–12.
+        </p>
+      </section>
+
+      <section className="content-card" id="volunteer">
+        <h2>Volunteer Opportunities</h2>
+        <p className="muted-copy">
+          Volunteering is one of the most meaningful ways to support CMAC and the
+          students who bring music, art, and theater to life in our district.
+        </p>
+        <div className="volunteer-grid">
+          <article className="volunteer-card">
+            <h3>Adult Volunteers</h3>
+            <p>
+              Help at the CMAC table during concerts and productions, assist with
+              fundraising items, support communications, or help review
+              scholarship and grant applications. Every role makes a difference.
+            </p>
+          </article>
+          <article className="volunteer-card">
+            <h3>Student Representatives &amp; Honor Society Volunteers</h3>
+            <p>
+              High school students, including Tri-M and Arts Honor Society members,
+              are encouraged to get involved. Earn documented volunteer hours and
+              gain leadership experience while helping promote scholarships,
+              assisting at events, and supporting the arts in our community.
+            </p>
+            <p className="volunteer-note">
+              Simply note your volunteer interest when you complete the membership
+              form.
+            </p>
+          </article>
         </div>
       </section>
 
-      <section className="content-card">
-        <h2>Giving Option Details</h2>
-        <div className="give-detail-grid">
-          <article id="yearly-membership" className="give-detail-card">
-            <h3>1. Yearly Membership</h3>
-            <p>Join CMAC and help support student artists across our community.</p>
-            <p className="subpage-link">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-                target="_blank"
-                rel="noreferrer"
-                className="apply-btn"
-                onClick={(event) => {
-                  event.preventDefault();
-                  openPopupWindow(
-                    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-                  );
-                }}
-              >
-                JOIN CMAC
-              </a>
-            </p>
-          </article>
-
-          <article
-            id="community-supporter-levels"
-            className="give-detail-card give-detail-card--wide"
-          >
-            <h3>2. Community Supporter</h3>
-            <div className="membership-grid">
-              <article className="membership-tier">
-                <h3>Individual</h3>
-                <p>$25/year</p>
-                <ul>
-                  <li>Free t-shirt</li>
-                </ul>
-              </article>
-              <article className="membership-tier">
-                <h3>Family</h3>
-                <p>$50/year</p>
-                <ul>
-                  <li>2 free t-shirts</li>
-                </ul>
-              </article>
-              <article className="membership-tier">
-                <h3>Community Supporter</h3>
-                <p>$100/year</p>
-                <ul>
-                  <li>Business name in community supporter ticker</li>
-                </ul>
-              </article>
-              <article className="membership-tier membership-tier--featured">
-                <h3>
-                  <span className="membership-badge" aria-hidden="true" />
-                  Premier Community Supporter
-                </h3>
-                <p>$150/year</p>
-                <ul>
-                  <li>Business logo + link on website Supporter page</li>
-                  <li>Logo displayed at event tables throughout the school year</li>
-                  <li>Digital support badge</li>
-                  <li>Dedicated social media spotlight post</li>
-                </ul>
-              </article>
-            </div>
-          </article>
-
-          <article id="fundraising-sales" className="give-detail-card">
-            <h3>3. Fundraising Sales</h3>
-            <p>
-              At most concerts and drama productions, CMAC offers handcrafted
-              performance-night gifts that directly support our scholarships and
-              grants. These items celebrate your performer while fueling the
-              arts in our district.
-            </p>
-            <p>A few examples include:</p>
-            <ul>
-              <li>
-                <strong>Personalized Ornaments:</strong> themed keepsakes
-                created for each show to commemorate your student&apos;s
-                performance.
-              </li>
-              <li>
-                <strong>Fresh Flower Bouquets:</strong> ready for pickup at the
-                show, making concert night effortless and memorable.
-              </li>
-              <li>
-                <strong>Kisses for the Cast:</strong> a fun, heartfelt way to
-                send encouragement backstage while supporting CMAC.
-              </li>
-            </ul>
-            <p className="subpage-link">
-              <a
-                href="/cmac/order-here"
-                target="_self"
-                rel="noreferrer"
-                className="text-link"
-              >
-                SUPPORT THE SHOW
-              </a>
-            </p>
-          </article>
-
-          <article id="volunteer" className="give-detail-card">
-            <h3>4. Volunteer</h3>
-            <p>
-              Volunteering is one of the most meaningful ways to support CMAC
-              and the talented students who bring art, music, and theater to
-              life in our district.
-            </p>
-            <p>
-              Whether you help at the CMAC table or assist with fundraising
-              items, every volunteer makes a difference - and every role helps
-              CMAC continue to provide scholarships and grants within our
-              district.
-            </p>
-            <p>
-              Fill out our membership application to become a part of CMAC
-              today.
-            </p>
-            <p className="subpage-link">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-                target="_blank"
-                rel="noreferrer"
-                className="apply-btn"
-                onClick={(event) => {
-                  event.preventDefault();
-                  openPopupWindow(
-                    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-                  );
-                }}
-              >
-                JOIN CMAC
-              </a>
-            </p>
-          </article>
-        </div>
+      <section className="content-card" id="other-ways-to-give">
+        <h2>Performance-Night Fundraising</h2>
+        <p className="muted-copy">
+          At most concerts and drama productions, CMAC offers handcrafted items
+          that directly support scholarships and grants. These include
+          personalized ornaments, fresh flower bouquets, and “Kisses for the
+          Cast.”
+        </p>
+        <p className="subpage-link">
+          <a href="/cmac/order-here" className="text-link">
+            Support the Show
+          </a>
+        </p>
       </section>
 
       <section className="content-card" id="direct-donate">
         <h2>Direct Donation Methods</h2>
-        <div className="split-grid split-grid--three">
-          <article className="donation-qr-card">
-            <h3>Venmo</h3>
-            <p className="donation-card-copy">
-              Donate via Venmo using
-              {" "}
-              <a href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203" target="_blank" rel="noreferrer">
-                @CMAC-Comsewogue
-              </a>
-              .
-            </p>
-            <div className="qr-frame">
+        <div className="donation-compact-list donation-compact-list--full">
+          <div className="donation-compact-item donation-compact-item--split">
+            <div className="donation-compact-method">
+              <strong>Venmo</strong>
+              <p>
+                <a
+                  href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @CMAC-Comsewogue
+                </a>
+              </p>
               <img
-                className="qr-image"
+                className="qr-image qr-image--small"
                 src="/cmac/cmac-venmo-qr.png"
                 alt="CMAC Venmo QR code"
               />
             </div>
-            <a
-              className="apply-btn donation-method-button"
-              href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Donate with Venmo
-            </a>
-          </article>
-          <article className="donation-qr-card" id="zelle-qr">
-            <h3>Zelle</h3>
-            <p className="donation-card-copy">Scan this code in your banking app to donate via Zelle.</p>
-            <div className="qr-frame">
+            <div className="donation-compact-method">
+              <strong>Zelle</strong>
+              <p>Scan the code in your banking app or use the QR code on this page.</p>
               <img
-                className="qr-image"
+                className="qr-image qr-image--small"
                 src="/cmac/cmac-zelle-qr.png"
                 alt="CMAC Zelle QR code"
               />
             </div>
-            <a
-              className="apply-btn donation-method-button"
-              href="/cmac/cmac-zelle-qr.png"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Donate with Zelle
-            </a>
-          </article>
-          <article className="donation-qr-card donation-qr-card--mail">
-            <h3>By Mail</h3>
-            <div className="mail-subline">Please make checks payable to CMAC</div>
-            <div className="mail-address-box">
-              <p>Mail or drop off to:</p>
-              <p>
-                Comsewogue Music & Arts Corp.
-                <br />
-                c/o Comsewogue High School
-                <br />
-                565 Bicycle Path
-                <br />
-                Port Jefferson Station, NY 11776
-              </p>
-            </div>
-            <div className="apple-pay-mini" aria-label="Apple Pay available soon">
-              <span>Apple Pay</span>
-            </div>
-            <p className="donation-card-copy donation-card-copy--small">Coming soon</p>
-          </article>
+          </div>
+          <div className="donation-compact-item donation-compact-item--mail">
+            <strong>By Mail</strong>
+            <p>Make checks payable to CMAC.</p>
+            <p>
+              Comsewogue Music &amp; Arts Corp.
+              <br />
+              c/o Comsewogue High School
+              <br />
+              565 Bicycle Path
+              <br />
+              Port Jefferson Station, NY 11776
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="content-card">
-        <h2>Donation Questions</h2>
+        <h2>Practical Details</h2>
+        <ul className="table-list">
+          <li>All meetings are held via Google Meet.</li>
+          <li>
+            Student members: Please use a personal email address. School email
+            accounts are blocked.
+          </li>
+          <li>
+            Participation in the CMAC Facebook group is free for anyone who wants
+            to stay connected and share news.
+          </li>
+        </ul>
+      </section>
+
+      <section className="content-card">
+        <h2>Quick Questions</h2>
         <div className="faq-list">
           <details>
             <summary>What is the fastest way to donate?</summary>
-            <p>
-              Use the <strong>Venmo</strong>, <strong>Apple Pay</strong>, or
-              <strong> Zelle</strong> options for fast digital giving.
-            </p>
+            <p>Venmo or Zelle.</p>
           </details>
           <details>
             <summary>What does my donation support?</summary>
             <p>
-              CMAC donations support student scholarships, teacher grants, and
-              arts-event support throughout the district.
+              Student scholarships, teacher grants, and arts-event support
+              throughout the district.
             </p>
           </details>
           <details>
-            <summary>Can I donate without paying online?</summary>
+            <summary>Can I support CMAC without donating online?</summary>
             <p>
-              Yes. You can donate by check, join as a member, or volunteer at
-              events.
+              Yes. You can join as a member, volunteer at events, or send a
+              check.
             </p>
           </details>
         </div>
-      </section>
-
-      <section className="content-card" id="membership-form">
-        <h2>Membership Form</h2>
-        <p className="muted-copy">
-          Complete the full official CMAC membership form below.
-        </p>
-        <div className="form-embed form-embed--membership">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform?embedded=true"
-            width="100%"
-            height="1850"
-            frameBorder="0"
-            marginHeight={0}
-            marginWidth={0}
-            title="CMAC Membership Form"
-          >
-            Loading membership form…
-          </iframe>
-        </div>
         <p className="subpage-link">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-            onClick={(event) => {
-              event.preventDefault();
-              openPopupWindow(
-                "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
-              );
-            }}
-          >
-            Open membership form in a new window
+          <a href="/cmac/faq" className="text-link">
+            More questions? Visit our FAQ
           </a>
         </p>
       </section>
 
-      <section className="content-card" id="mailing-list">
-        <h2>Join Our Mailing List</h2>
-        <p className="muted-copy">
-          Get updates on fundraisers, student events, scholarship windows, and
-          new CMAC announcements.
-        </p>
-        <p className="coming-soon-banner">COMING SOON</p>
-        <form className="membership-form mailing-list-form">
-          <label>
-            Name
-            <input type="text" name="mailName" placeholder="Your name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="mailEmail" placeholder="you@email.com" />
-          </label>
-          <button type="button" disabled>Join Mailing List</button>
-        </form>
+      <section className="content-card">
+        <div className="primary-cta-row primary-cta-row--bottom">
+          <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
+            Join CMAC Today
+          </a>
+        </div>
       </section>
     </main>
   );

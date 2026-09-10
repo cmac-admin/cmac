@@ -131,42 +131,21 @@ export default function RootLayout({
             </div>
 
             <div className="header-actions">
-              <div className="header-donate-row">
-                <a
-                  className="donate-mini-button"
-                  href="https://venmo.com/code?user_id=4464015279392318341&created=1764440203"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Donate with Venmo
-                </a>
-                <a
-                  className="donate-mini-button"
-                  href="/cmac/cmac-zelle-qr.png"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Donate with Zelle
-                </a>
-              </div>
               <HeaderJoinButton />
             </div>
           </div>
 
           <nav className="menu-bar main-nav" aria-label="Primary">
-            <Link href="/old-colors">OLD COLORS</Link>
             <Link href="/about">About</Link>
             <Link href="/get-involved">Get Involved</Link>
-            <Link href="/events">Events</Link>
             <Link href="/scholarships">Scholarships</Link>
             <Link href="/teacher-grants">Teacher Grants</Link>
+            <Link href="/events">Events</Link>
             <Link href="/news">News</Link>
-            <Link href="/faq">FAQ</Link>
-            <ContactPopupLink href="/cmac/contact">Contact</ContactPopupLink>
-            <Link href="/sponsors">Community Sponsors</Link>
-            <Link href="/test">Test</Link>
-            <Link href="/get-involved#direct-donate">Donate</Link>
+            <Link href="/sponsors">Sponsors</Link>
+            <Link href="/contact">Contact</Link>
             <Link href="/order-here">Order Here</Link>
+            <Link href="/get-involved#direct-donate">Donate</Link>
           </nav>
         </header>
         <div id="main-content" tabIndex={-1}>
@@ -174,15 +153,12 @@ export default function RootLayout({
         </div>
         <BoardFeedbackForm />
         <footer className="site-footer">
-          <p className="site-footer__mailing">
-            <Link href="/get-involved#direct-donate">DONATE NOW</Link>
-          </p>
-          <p className="site-footer__mailing">
-            <Link href="/get-involved#mailing-list">JOIN OUR MAILING LIST</Link>
-          </p>
-          <p className="site-footer__mailing">
-            <Link href="/contact">CONTACT CMAC</Link>
-          </p>
+          <nav className="site-footer__links" aria-label="Footer">
+            <Link href="/get-involved#direct-donate">Donate</Link>
+            <Link href="/our-impact">Our Impact</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/contact">Contact CMAC</Link>
+          </nav>
           <div className="site-footer__social">
             <p>Follow Us</p>
             <div className="site-footer__icons">
@@ -211,9 +187,6 @@ export default function RootLayout({
 
           <p className="site-footer__copyright">
             © Copyright Comsewogue Music and Arts. All Rights Reserved. <Link href="/privacy-policy">Privacy Policy</Link>{" | "}<Link href="/sitemap">Sitemap</Link>
-            <br />
-            Webmaster:{" "}
-            <a href="mailto:webmaster@webmaster.com">webmaster@webmaster.com</a>
           </p>
         </footer>
       </body>

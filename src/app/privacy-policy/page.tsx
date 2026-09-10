@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
 
         <p>
           If you have questions about this policy or how we handle information,
-          please <a className="text-link" href="mailto:comsewoguemusicandarts@gmail.com">CONTACT CMAC</a>.
+          please <a className="text-link" href="/cmac/contact">CONTACT CMAC</a>.
         </p>
       </section>
     </main>
