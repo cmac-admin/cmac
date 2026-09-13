@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "QR_WhatIsCMAC",
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function QRWhatIsCMACPage() {
+export default async function QRWhatIsCMACPage() {
+  const joinUrl = await resolveFormLink("membership", DEFAULT_FORM_LINKS);
   return (
     <main className="qr-page">
       <style>{`
@@ -115,7 +117,7 @@ export default function QRWhatIsCMACPage() {
 
         <a
           className="cta-button"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
+          href={joinUrl}
           target="_blank"
           rel="noreferrer"
         >

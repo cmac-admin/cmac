@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AboutImpactStats } from "@/components/LiveStats";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "About",
@@ -14,7 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const joinUrl = await resolveFormLink("membership", DEFAULT_FORM_LINKS);
+
   return (
     <main className="subpage">
       <section className="subpage-hero">
@@ -43,20 +46,36 @@ export default function AboutPage() {
       <section className="content-card">
         <h2>Our Mission</h2>
         <p>
-          CMAC supports students and teachers throughout the Comsewogue School
-          District by providing opportunities that make the arts more accessible,
-          more inclusive, and more inspiring.
+          CMAC is committed to ensuring that music, drama, and visual arts
+          remain accessible, vibrant, and deeply valued in the Comsewogue School
+          District.
         </p>
         <ul className="mission-list">
-          <li>Providing scholarships so students can pursue music and arts opportunities</li>
-          <li>Offering partial or full financial support for summer and academic-year music and arts programs</li>
-          <li>Funding classroom projects and district-wide initiatives led by music and arts teachers</li>
-          <li>Creating community outreach and leadership opportunities for student representatives and Tri-M / Arts Honor Society members</li>
-          <li>Building greater awareness and appreciation of music and arts programs in our community</li>
+          <li>
+            Providing scholarships and program support so students can pursue
+            meaningful music and arts opportunities.
+          </li>
+          <li>
+            Funding classroom and district initiatives that expand creative
+            learning and enrich student experience.
+          </li>
+          <li>
+            Supporting summer and academic-year arts programs through financial
+            assistance and community resources.
+          </li>
+          <li>
+            Creating leadership and outreach opportunities for student
+            representatives and arts organizations such as Tri-M and Arts Honor
+            Society.
+          </li>
+          <li>
+            Strengthening community awareness and appreciation for the arts as an
+            essential part of student development.
+          </li>
         </ul>
         <p className="mission-note">
-          With board approval and available funds, CMAC may also extend support
-          to surrounding areas in Suffolk County.
+          With board approval and available funding, CMAC may also extend support
+          to surrounding communities in Suffolk County.
         </p>
       </section>
 
@@ -146,7 +165,7 @@ export default function AboutPage() {
         <p className="subpage-link">
           <a
             className="apply-btn"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform"
+            href={joinUrl}
             target="_blank"
             rel="noreferrer"
           >

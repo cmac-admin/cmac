@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
+
 const getSchoolYearLabel = () => {
   const today = new Date();
   const startYear = today >= new Date(today.getFullYear(), 7, 15)
@@ -10,9 +13,29 @@ const getSchoolYearLabel = () => {
 };
 
 export function HeaderJoinButton() {
+  const [membershipUrl, setMembershipUrl] = useState(DEFAULT_FORM_LINKS.membership ?? "");
+
+  useEffect(() => {
+    let active = true;
+
+    const loadMembershipUrl = async () => {
+      const url = await resolveFormLink("membership", DEFAULT_FORM_LINKS);
+      if (active) {
+        setMembershipUrl(url || DEFAULT_FORM_LINKS.membership || "");
+      }
+    };
+
+    loadMembershipUrl();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const handleClick = () => {
-    const url =
-      "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform";
+    if (!membershipUrl) {
+      return;
+    }
 
     const popup = window.open(
       "",
@@ -55,7 +78,7 @@ export function HeaderJoinButton() {
         </head>
         <body>
           <div class="popup-header">CMAC ${yearLabel} Membership Form</div>
-          <iframe src="${url}" title="CMAC Membership Form ${yearLabel}"></iframe>
+          <iframe src="${membershipUrl}" title="CMAC Membership Form ${yearLabel}"></iframe>
         </body>
       </html>`);
 

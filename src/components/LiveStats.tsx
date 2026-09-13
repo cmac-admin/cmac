@@ -1,10 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  buildGoogleSheetQueryUrl,
+  CMAC_METRICS_SHEET_NAME,
+  CMAC_SITE_DATA_SHEET_ID,
+} from "@/lib/site-data";
 import { DEFAULT_STATS } from "@/lib/stats";
 
-const SHEET_EXPORT_URL =
-  "https://docs.google.com/spreadsheets/d/1yVY7Hv8X4PRwO0lGPTioiuUaIQr-18FUGhhpDd35hl8/export?format=csv&gid=0";
+const SHEET_QUERY_URL = buildGoogleSheetQueryUrl(
+  CMAC_METRICS_SHEET_NAME,
+  CMAC_SITE_DATA_SHEET_ID
+);
 
 function parseCsvLine(line: string): string[] {
   const values: string[] = [];
@@ -73,40 +80,106 @@ const PAGE_FALLBACKS = {
 
 type StatsMode = keyof typeof PAGE_FALLBACKS;
 
-function parseSheetData(csv: string, mode: StatsMode): typeof DEFAULT_STATS {
-  const rows = csv
-    .split(/\r?\n/)
-    .map((row) => row.trim())
-    .filter(Boolean)
-    .map(parseCsvLine);
+const normalizeMetricKey = (value: string) =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "")
+    .replace(/^_|_$/g, "");
 
+function parseSheetData(raw: string, mode: StatsMode): typeof DEFAULT_STATS {
   const fallback = PAGE_FALLBACKS[mode];
+  const trimmed = raw.trim();
 
-  if (rows.length < 2) {
+  if (!trimmed) {
     return fallback;
   }
 
-  const [header, ...dataRows] = rows;
-  const supportedIndex = header.findIndex((cell) =>
-    cell.toLowerCase().includes("students") || cell.toLowerCase().includes("teachers")
-  );
-  const awardedIndex = header.findIndex((cell) =>
-    cell.toLowerCase().includes("awarded")
-  );
+  const payload = trimmed.startsWith("/*O_o*/")
+    ? trimmed.replace(/^\/\*O_o\*\/\s*google\.visualization\.Query\.setResponse\(/, "").replace(/\);?\s*$/, "")
+    : trimmed;
 
-  if (supportedIndex === -1 || awardedIndex === -1) {
+  try {
+    const parsed = JSON.parse(payload) as {
+      table?: {
+        rows?: Array<{
+          c?: Array<{ v?: string | number | null } | null>;
+        }>;
+      };
+    };
+
+    const metricMap = new Map<string, string>();
+
+    for (const row of parsed.table?.rows ?? []) {
+      const cells = row.c ?? [];
+      const metricName = String(cells[0]?.v ?? "").trim();
+      const rawValue = cells[1]?.v;
+      const displayValue = cells[2]?.v;
+
+      if (!metricName) {
+        continue;
+      }
+
+      const finalValue = displayValue != null ? String(displayValue).trim() : rawValue != null ? String(rawValue).trim() : "";
+      if (finalValue) {
+        metricMap.set(normalizeMetricKey(metricName), finalValue);
+      }
+    }
+
+    const findMetricValue = (...candidates: string[]) => {
+      for (const candidate of candidates) {
+        const value = metricMap.get(candidate);
+        if (value) {
+          return value;
+        }
+      }
+
+      for (const [key, value] of metricMap.entries()) {
+        if (candidates.some((candidate) => key.includes(candidate) || candidate.includes(key))) {
+          return value;
+        }
+      }
+
+      return "";
+    };
+
+    const supported = findMetricValue(
+      "studentteacherssupported",
+      "studentsteacherssupported",
+      "studentteacherssupport",
+      "studentssupport",
+      "studentssupported",
+      "studentssupported"
+    ) || fallback.studentsTeachersSupported;
+
+    const awarded = formatAwardValue(
+      findMetricValue(
+        "studentteachersawarded",
+        "studentsteachersawarded",
+        "studentteachersaward",
+        "studentsawarded",
+        "studentsaward"
+      ) || fallback.studentsTeachersAwarded
+    );
+
+    const totalAwarded =
+      findMetricValue(
+        "totalamountawarded",
+        "totalaward",
+        "amountawarded",
+        "totalawarded",
+        "awardedamount"
+      ) || fallback.totalAwarded;
+
+    return {
+      ...fallback,
+      studentsTeachersSupported: supported,
+      studentsTeachersAwarded: awarded,
+      totalAwarded,
+    };
+  } catch {
     return fallback;
   }
-
-  const firstRow = dataRows[0] ?? [];
-  const supported = firstRow[supportedIndex] ?? fallback.studentsTeachersSupported;
-  const awarded = formatAwardValue(firstRow[awardedIndex] ?? fallback.studentsTeachersAwarded);
-
-  return {
-    ...fallback,
-    studentsTeachersSupported: supported,
-    studentsTeachersAwarded: awarded,
-  };
 }
 
 function useLiveStats(mode: StatsMode = "general") {
@@ -117,10 +190,10 @@ function useLiveStats(mode: StatsMode = "general") {
 
     const loadStats = async () => {
       try {
-        const response = await fetch(SHEET_EXPORT_URL, {
+        const response = await fetch(SHEET_QUERY_URL, {
           cache: "no-store",
           headers: {
-            Accept: "text/csv",
+            Accept: "application/json",
           },
         });
 
@@ -128,8 +201,8 @@ function useLiveStats(mode: StatsMode = "general") {
           return;
         }
 
-        const csv = await response.text();
-        const parsed = parseSheetData(csv, mode);
+        const raw = await response.text();
+        const parsed = parseSheetData(raw, mode);
 
         if (active) {
           setStats(parsed);
@@ -189,16 +262,16 @@ export function HomeImpactStats() {
       </div>
       <div className="impact-stats__grid">
         <article>
-          <p className="impact-stats__value">{stats.scholarshipsGranted}</p>
-          <p className="impact-stats__label">Scholarships Funded</p>
-        </article>
-        <article>
-          <p className="impact-stats__value">{stats.teacherGrants}</p>
-          <p className="impact-stats__label">Teacher Grants Awarded</p>
-        </article>
-        <article>
           <p className="impact-stats__value">{supportedValue}</p>
-          <p className="impact-stats__label">Students Supported</p>
+          <p className="impact-stats__label">Students &amp; Teachers Supported</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">21</p>
+          <p className="impact-stats__label">School Events Supported</p>
+        </article>
+        <article>
+          <p className="impact-stats__value">{stats.totalAwarded}</p>
+          <p className="impact-stats__label">Total Amount Awarded</p>
         </article>
       </div>
     </section>

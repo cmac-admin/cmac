@@ -1,4 +1,8 @@
-export default function OrderFormPage() {
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
+
+export default async function OrderFormPage() {
+  const orderFormUrl = await resolveFormLink("order-form", DEFAULT_FORM_LINKS);
+
   return (
     <main className="subpage">
       <section className="subpage-hero">
@@ -10,7 +14,7 @@ export default function OrderFormPage() {
       <section className="content-card">
         <div className="form-embed form-embed--order">
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScrd01PmvNBLsV4ZRqhlKSNRGCgykUOClM61xDVlFGhrXjKiA/viewform?embedded=true"
+            src={orderFormUrl}
             width="100%"
             height="2150"
             frameBorder="0"

@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 
 import { ContactPopupLink } from "@/components/ContactPopupLink";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
 const donationFaqJsonLd = {
@@ -36,9 +35,8 @@ const donationFaqJsonLd = {
   ],
 };
 
-export default function GetInvolvedPage() {
-  const membershipFormUrl =
-    "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform";
+export default async function GetInvolvedPage() {
+  const membershipFormUrl = await resolveFormLink("membership", DEFAULT_FORM_LINKS);
 
   const membershipLevels = [
     {

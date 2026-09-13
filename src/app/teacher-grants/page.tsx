@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
 export const metadata: Metadata = {
@@ -14,8 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TeacherGrantsPage() {
+export default async function TeacherGrantsPage() {
   const { label: schoolYearLabel, endYear } = getSchoolYearInfo();
+  const teacherGrantUrl = await resolveFormLink("teacher-grant", DEFAULT_FORM_LINKS);
   const grantWinners = [
     { year: "2026", description: "To be announced." },
     {
@@ -103,7 +105,7 @@ export default function TeacherGrantsPage() {
 
           <div className="scholarship-actions">
             <a
-              href="https://docs.google.com/document/d/1NEmmvCaJiTQ7hQDIYkMWc2D85RBUprq-Iq7pR4WUqkM/edit?tab=t.0"
+              href={teacherGrantUrl}
               className="apply-btn"
               target="_blank"
               rel="noopener noreferrer"

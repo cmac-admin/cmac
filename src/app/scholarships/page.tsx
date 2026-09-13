@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { ScholarshipApplicationButton } from "@/components/ScholarshipApplicationButton";
+import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 import { getSchoolYearInfo } from "@/lib/school-year";
 
 export const metadata: Metadata = {
@@ -15,8 +16,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ScholarshipsPage() {
+export default async function ScholarshipsPage() {
   const { label: schoolYearLabel, endYear } = getSchoolYearInfo();
+  const seniorScholarshipUrl = await resolveFormLink("senior-scholarship", DEFAULT_FORM_LINKS);
+  const summerScholarshipUrl = await resolveFormLink("summer-scholarship", DEFAULT_FORM_LINKS);
 
   return (
     <main className="subpage">
@@ -77,7 +80,7 @@ export default function ScholarshipsPage() {
 
         <div className="scholarship-actions">
           <ScholarshipApplicationButton
-            href="https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform"
+            href={seniorScholarshipUrl}
             label="Apply for Senior Scholarship"
           />
           <ContactPopupLink className="text-link">CONTACT CMAC</ContactPopupLink>
@@ -138,7 +141,7 @@ export default function ScholarshipsPage() {
 
         <div className="scholarship-actions">
           <ScholarshipApplicationButton
-            href="https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform"
+            href={summerScholarshipUrl}
             label="Apply for Summer Study Scholarship"
           />
           <ContactPopupLink className="text-link">CONTACT CMAC</ContactPopupLink>
