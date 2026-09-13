@@ -29,7 +29,7 @@ const donationFaqJsonLd = {
       name: "Can I support CMAC without making a payment online?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. You can donate by check, volunteer at events, or join as a yearly member.",
+        text: "Yes. You can donate by check, drop off a contribution at Comsewogue High School, or join as a yearly member.",
       },
     },
   ],
@@ -40,30 +40,61 @@ export default async function GetInvolvedPage() {
 
   const membershipLevels = [
     {
-      level: "Friend of CMAC",
+      level: "Student Supporter",
       amount: "$10 suggested",
-      benefits: "Membership status, meeting notifications, voting rights, and meeting minutes by email",
+      benefits: [
+        "Event updates via email",
+        "Outreach opportunities",
+        "Volunteer participation",
+      ],
     },
     {
-      level: "Individual",
-      amount: "$25/year",
-      benefits: "All of the above + free CMAC t-shirt (pickup at winter concerts)",
+      level: "Individual Supporter",
+      amount: "$25 suggested",
+      benefits: [
+        "One free CMAC t-shirt",
+        "Membership status",
+        "Optional sponsor-page recognition",
+      ],
     },
     {
-      level: "Family",
-      amount: "$50/year",
-      benefits: "All of the above + 2 free t-shirts",
+      level: "FAMILY\nSUPPORTER",
+      amount: "$50 suggested",
+      benefits: [
+        "Two free CMAC t-shirts",
+        "Membership status",
+        "Optional sponsor-page recognition",
+      ],
     },
     {
       level: "Community Supporter",
-      amount: "$100/year",
-      benefits: "Family benefits + business or family name recognition",
+      amount: "$100 suggested",
+      benefits: [
+        "Recognition for supporting district arts programs",
+        "Optional sponsor-page visibility",
+        "Community arts impact recognition",
+      ],
     },
     {
       level: "Premier Community Supporter",
-      amount: "$150/year",
-      benefits: "Logo and link on the website, logo displayed at event tables, digital support badge, and a dedicated social media spotlight",
+      amount: "$200 suggested",
+      benefits: [
+        "Website recognition",
+        "Event-table visibility",
+        "Digital support badge",
+        "Social media shout-out",
+        "Prime visibility on sponsor page and CMAC homepage",
+      ],
     },
+  ];
+
+  const quickNavItems = [
+    { label: "Membership", href: "#membership" },
+    { label: "Student Member", href: "#student-member" },
+    { label: "Volunteer", href: "#volunteer" },
+    { label: "Support the Show", href: "#other-ways-to-give" },
+    { label: "Donate", href: "#direct-donate" },
+    { label: "FAQ", href: "/cmac/faq" },
   ];
 
   return (
@@ -73,13 +104,12 @@ export default async function GetInvolvedPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(donationFaqJsonLd) }}
       />
 
-      <section className="subpage-hero">
-        <p className="subpage-kicker">Get Involved</p>
+      <section className="subpage-hero" id="membership">
         <h1>Join CMAC</h1>
         <p>
-          Membership in Comsewogue Music &amp; Arts Corp. directly supports
-          student musicians, artists, performers, and creators through
-          scholarships, teacher grants, and summer arts programs.
+          Membership in Comsewogue Music &amp; Arts Corp. directly supports student musicians,
+          artists, performers, and creators through scholarships, teacher grants, and summer arts
+          programs.
         </p>
         <div className="primary-cta-row">
           <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
@@ -90,65 +120,121 @@ export default async function GetInvolvedPage() {
           </a>
         </div>
         <p className="tiny-note">
-          Students and Honor Society members are welcome and can earn documented
-          volunteer hours.
+          Students and Honor Society members are welcome and can earn documented volunteer hours.
         </p>
       </section>
 
+      <nav className="get-involved-page-nav" aria-label="Quick navigation">
+        <span className="get-involved-page-nav__label">Quick nav</span>
+        {quickNavItems.map((item) => (
+          <a key={item.href} href={item.href} className="get-involved-page-nav__link">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
       <section className="content-card">
-        <h2>Membership Levels</h2>
+        <h2>Membership Levels (Suggested Donations)</h2>
+        <p className="muted-copy">
+          Your membership and donations fund student scholarships, teacher grants for music, art, and
+          drama projects, and summer arts programs for Comsewogue students in grades 3–12.
+        </p>
         <div className="membership-grid membership-grid--compact">
           {membershipLevels.map(({ level, amount, benefits }) => (
             <article key={level} className="membership-tier">
               <h3>{level}</h3>
               <p>{amount}</p>
               <ul>
-                <li>{benefits}</li>
+                {benefits.map((benefit) => (
+                  <li key={`${level}-${benefit}`}>{benefit}</li>
+                ))}
               </ul>
             </article>
           ))}
         </div>
         <p className="muted-copy membership-tax-note">
-          All donations are tax-deductible. Your bank statement or canceled check
+          <strong>All donations are tax-deductible.</strong> Your bank statement or canceled check
           serves as a receipt. For an official tax letter, please contact CMAC.
         </p>
       </section>
 
-      <section className="content-card">
-        <h2>What Your Support Makes Possible</h2>
+      <section className="content-card" id="student-member">
+        <h2>CMAC Student Member</h2>
         <p className="muted-copy">
-          Your membership and donations fund student scholarships, teacher grants
-          for music, art, and drama projects, and summer arts programs for
-          Comsewogue students in grades 3–12.
+          Looking for a welcoming place to grow your skills, meet other creative students, and be part
+          of something bigger? CMAC&apos;s Student membership is designed just for you.
         </p>
+        <p className="muted-copy">
+          <strong>Suggested donation: $10</strong>
+        </p>
+
+        <h3>Why Join as a Student?</h3>
+        <ul className="table-list">
+          <li>
+            <strong>Be a connector</strong> — Serve as a bridge between CMAC and your school,
+            including JFK and high school level, helping share opportunities with fellow students.
+          </li>
+          <li>
+            <strong>Volunteer and represent</strong> — Help at volunteer tables and events while
+            representing CMAC in your school community.
+          </li>
+          <li>
+            <strong>Open doors for collaboration</strong> — Support future art and music projects
+            between CMAC and your school, such as student art contests, collaborative artwork, or
+            performance-based projects.
+          </li>
+          <li>
+            <strong>College &amp; résumé boost</strong> — Show colleges and future employers that you&apos;re
+            committed to your craft and community.
+          </li>
+          <li>
+            <strong>Build community experience</strong> — Gain real-world experience in outreach,
+            communication, and community engagement.
+          </li>
+          <li>
+            <strong>Be part of something larger</strong> — Join a creative network beyond your school
+            and help grow arts opportunities for other students.
+          </li>
+        </ul>
+
+        <h3>How to Join</h3>
+        <p className="muted-copy">
+          Simply select the CMAC Student membership option when you sign up and contribute the
+          suggested $10 donation (or any amount that works for you).
+        </p>
+
+        <div className="primary-cta-row primary-cta-row--bottom">
+          <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
+            Join as a Student Member
+          </a>
+        </div>
       </section>
 
       <section className="content-card" id="volunteer">
         <h2>Volunteer Opportunities</h2>
         <p className="muted-copy">
-          Volunteering is one of the most meaningful ways to support CMAC and the
-          students who bring music, art, and theater to life in our district.
+          Volunteering is one of the most meaningful ways to support CMAC and the students who bring
+          music, art, and theater to life in our district.
         </p>
         <div className="volunteer-grid">
           <article className="volunteer-card">
             <h3>Adult Volunteers</h3>
             <p>
-              Help at the CMAC table during concerts and productions, assist with
-              fundraising items, support communications, or help review
-              scholarship and grant applications. Every role makes a difference.
+              Help at the CMAC table during concerts and productions, assist with fundraising items,
+              support communications, or help review scholarship and grant applications. Every role
+              makes a difference.
             </p>
           </article>
           <article className="volunteer-card">
             <h3>Student Representatives &amp; Honor Society Volunteers</h3>
             <p>
-              High school students, including Tri-M and Arts Honor Society members,
-              are encouraged to get involved. Earn documented volunteer hours and
-              gain leadership experience while helping promote scholarships,
-              assisting at events, and supporting the arts in our community.
+              High school students, including Tri-M and Arts Honor Society members, are encouraged to
+              get involved. Earn documented volunteer hours and gain leadership experience while helping
+              promote scholarships, assisting at events, and supporting the arts in our community.
             </p>
             <p className="volunteer-note">
-              Simply note your volunteer interest when you complete the membership
-              form.
+              For volunteer questions or to get involved, email
+              <a href="mailto:Comsewoguemusicandarts@gmail.com">Comsewoguemusicandarts@gmail.com</a>.
             </p>
           </article>
         </div>
@@ -157,10 +243,9 @@ export default async function GetInvolvedPage() {
       <section className="content-card" id="other-ways-to-give">
         <h2>Performance-Night Fundraising</h2>
         <p className="muted-copy">
-          At most concerts and drama productions, CMAC offers handcrafted items
-          that directly support scholarships and grants. These include
-          personalized ornaments, fresh flower bouquets, and “Kisses for the
-          Cast.”
+          At most concerts and drama productions, CMAC offers handcrafted items that directly support
+          scholarships and grants. These include personalized ornaments, fresh flower bouquets, and
+          “Kisses for the Cast.”
         </p>
         <p className="subpage-link">
           <a href="/cmac/order-here" className="text-link">
@@ -202,11 +287,13 @@ export default async function GetInvolvedPage() {
           </div>
           <div className="donation-compact-item donation-compact-item--mail">
             <strong>By Mail</strong>
-            <p>Make checks payable to CMAC.</p>
+            <p>Make checks payable to CMAC and send to:</p>
             <p>
               Comsewogue Music &amp; Arts Corp.
               <br />
-              c/o Comsewogue High School
+              c/o CMAC
+              <br />
+              Comsewogue High School
               <br />
               565 Bicycle Path
               <br />
@@ -214,50 +301,6 @@ export default async function GetInvolvedPage() {
             </p>
           </div>
         </div>
-      </section>
-
-      <section className="content-card">
-        <h2>Practical Details</h2>
-        <ul className="table-list">
-          <li>All meetings are held via Google Meet.</li>
-          <li>
-            Student members: Please use a personal email address. School email
-            accounts are blocked.
-          </li>
-          <li>
-            Participation in the CMAC Facebook group is free for anyone who wants
-            to stay connected and share news.
-          </li>
-        </ul>
-      </section>
-
-      <section className="content-card">
-        <h2>Quick Questions</h2>
-        <div className="faq-list">
-          <details>
-            <summary>What is the fastest way to donate?</summary>
-            <p>Venmo or Zelle.</p>
-          </details>
-          <details>
-            <summary>What does my donation support?</summary>
-            <p>
-              Student scholarships, teacher grants, and arts-event support
-              throughout the district.
-            </p>
-          </details>
-          <details>
-            <summary>Can I support CMAC without donating online?</summary>
-            <p>
-              Yes. You can join as a member, volunteer at events, or send a
-              check.
-            </p>
-          </details>
-        </div>
-        <p className="subpage-link">
-          <a href="/cmac/faq" className="text-link">
-            More questions? Visit our FAQ
-          </a>
-        </p>
       </section>
 
       <section className="content-card">
