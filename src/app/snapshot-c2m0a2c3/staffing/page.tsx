@@ -32,6 +32,7 @@ type StaffingRecord = {
   school: string;
   location: string;
   time: string;
+  setupTime: string;
   lead: string;
   boardMember: string;
   volunteerTeam: string;
@@ -52,6 +53,7 @@ const BLANK_RECORD: StaffingRecord = {
   school: "",
   location: "",
   time: "",
+  setupTime: "",
   lead: "",
   boardMember: "",
   volunteerTeam: "",
@@ -243,6 +245,7 @@ function parseStaffingRows(raw: string): Record<string, StaffingRecord> {
       const name = getValue(cells, "event_name") || getValue(cells, "name") || getValue(cells, "event") || getValue(cells, "title") || "";
       const school = getValue(cells, "school") || getValue(cells, "school_name") || "";
       const location = getValue(cells, "location") || getValue(cells, "venue") || "";
+      const setupTime = getValue(cells, "setup_time") || getValue(cells, "setuptime") || getValue(cells, "setup") || "";
       const boardMember = getValue(cells, "board_member") || getValue(cells, "boardmember") || "";
       const volunteerTeam = getValue(cells, "volunteer_team") || getValue(cells, "volunteers") || "";
       const checkInStaff = getValue(cells, "check_in_staff") || getValue(cells, "checkinstaff") || "";
@@ -262,6 +265,7 @@ function parseStaffingRows(raw: string): Record<string, StaffingRecord> {
         school,
         location,
         time: "",
+        setupTime,
         lead,
         boardMember,
         volunteerTeam,
@@ -478,6 +482,7 @@ export default function StaffingDashboardPage() {
         school: event.school,
         location: event.location || source?.location || "",
         time: event.time,
+        setupTime: source?.setupTime ?? "",
         lead: source?.lead ?? "",
         boardMember: source?.boardMember ?? "",
         volunteerTeam: source?.volunteerTeam ?? "",
@@ -550,6 +555,7 @@ export default function StaffingDashboardPage() {
       school: selectedRecord.school,
       location: selectedRecord.location,
       time: selectedRecord.time,
+      setupTime: selectedRecord.setupTime,
       lead: selectedRecord.lead,
       boardMember: selectedRecord.boardMember,
       volunteerTeam: selectedRecord.volunteerTeam,
@@ -690,6 +696,15 @@ export default function StaffingDashboardPage() {
               <label className="staffing-field">
                 <span>School</span>
                 <input value={selectedRecord.school} onChange={(event) => updateField("school", event.target.value)} />
+              </label>
+
+              <label className="staffing-field">
+                <span>Set-Up Time</span>
+                <input
+                  type="time"
+                  value={selectedRecord.setupTime}
+                  onChange={(event) => updateField("setupTime", event.target.value)}
+                />
               </label>
 
               <SelectField
