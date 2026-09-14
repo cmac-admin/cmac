@@ -10,6 +10,7 @@ export type FormLinkName =
   | "senior-scholarship"
   | "summer-scholarship"
   | "teacher-grant"
+  | "scholarship-grant-feedback"
   | "order-form";
 
 export type FormLinkMap = Partial<Record<FormLinkName, string>>;
@@ -27,6 +28,21 @@ export const CMAC_METRICS_SHEET_GID =
 export const CMAC_METRICS_SHEET_NAME =
   process.env.NEXT_PUBLIC_CMAC_METRICS_SHEET_NAME ?? "METRICS";
 
+export const CMAC_EVENT_STAFFING_SHEET_NAME =
+  process.env.NEXT_PUBLIC_CMAC_EVENT_STAFFING_SHEET_NAME ?? "CMAC_EVENT_STAFFING";
+
+export const CMAC_EVENT_STAFFING_WRITE_URL =
+  process.env.NEXT_PUBLIC_CMAC_EVENT_STAFFING_WRITE_URL ?? "";
+
+export const CMAC_INVENTORY_SHEET_ID =
+  process.env.NEXT_PUBLIC_CMAC_INVENTORY_SHEET_ID ?? "1taIg--51jB1fJ2a5S072F-0HWGpq3RHexVUE94yDCGo";
+
+export const CMAC_INVENTORY_SHEET_NAME =
+  process.env.NEXT_PUBLIC_CMAC_INVENTORY_SHEET_NAME ?? "CMAC_INVENTORY";
+
+export const CMAC_INVENTORY_WRITE_URL =
+  process.env.NEXT_PUBLIC_CMAC_INVENTORY_WRITE_URL ?? "";
+
 export const CMAC_FORMS_SHEET_NAME =
   process.env.NEXT_PUBLIC_CMAC_FORMS_SHEET_NAME ?? "FORMS/LINKS";
 
@@ -39,6 +55,8 @@ export const DEFAULT_FORM_LINKS: FormLinkMap = {
     "https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform",
   "teacher-grant":
     "https://docs.google.com/document/d/1NEmmvCaJiTQ7hQDIYkMWc2D85RBUprq-Iq7pR4WUqkM/edit?tab=t.0",
+  "scholarship-grant-feedback":
+    "https://docs.google.com/forms/d/1_BzbL5t77ZvvjKDEjAaNElxbBsbH1u6Qqn5yEtM_PdY/edit",
   "order-form":
     "https://docs.google.com/forms/d/e/1FAIpQLScrd01PmvNBLsV4ZRqhlKSNRGCgykUOClM61xDVlFGhrXjKiA/viewform?embedded=true",
 };
@@ -282,6 +300,12 @@ const formAliases: Record<FormLinkName, string[]> = {
     "summer-music-and-arts-study-scholarship",
   ],
   "teacher-grant": ["teacher-grant", "teacher-grant-application"],
+  "scholarship-grant-feedback": [
+    "scholarship-grant-feedback",
+    "scholarship-feedback",
+    "grant-feedback",
+    "cmac-scholarship-grant-feedback",
+  ],
   "order-form": ["order-form", "cmac-order-form"],
 };
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { ScholarshipApplicationButton } from "@/components/ScholarshipApplicationButton";
 import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
@@ -151,6 +152,11 @@ export default async function ScholarshipsPage() {
       <section className="content-card scholarship-contact">
         <h2>Questions?</h2>
         <p>We’re happy to help. Contact CMAC and we’ll answer your questions.</p>
+        <div className="scholarship-actions" style={{ marginTop: "1rem" }}>
+          <Link href="/scholarships/feedback" className="text-link">
+            Scholarship & Grant Feedback Form
+          </Link>
+        </div>
       </section>
     </main>
   );

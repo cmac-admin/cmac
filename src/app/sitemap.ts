@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${base}/get-involved/board-review/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${base}/events/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -35,6 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,
+    },
+    {
+      url: `${base}/scholarships/feedback/`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.6,
     },
     {
       url: `${base}/teacher-grants/`,
