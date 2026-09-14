@@ -1,0 +1,316 @@
+[
+  {
+    "school": "Boyle Road Elementary",
+    "events": [
+      {
+        "name": "Boyle Winter Concert",
+        "date": "December 9, 2026",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Boyle Drama Production",
+        "date": "March 18, 2027",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Boyle Drama Production",
+        "date": "March 19, 2027",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Boyle PTA Talent Show",
+        "date": "April 9, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Boyle PTA Basket Auction, Bingo Night, Art Show and Evening Book Fair",
+        "date": "April 28, 2027",
+        "time": "5:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Boyle Spring Concert",
+        "date": "May 19, 2027",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "Terryville Road Elementary",
+    "events": [
+      {
+        "name": "Terryville Winter Concert",
+        "date": "December 15, 2026",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Terryville Art Show and Evening Book Fair",
+        "date": "March 17, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Terryville Drama Performance",
+        "date": "May 6, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Terryville Drama Performance",
+        "date": "May 7, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Terryville 4th Grade Spring Concert",
+        "date": "May 18, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Terryville 5th Grade Spring Concert",
+        "date": "May 18, 2027",
+        "time": "7:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "John F. Kennedy Middle School",
+    "events": [
+      {
+        "name": "JFK Fall Fine Art Showcase",
+        "date": "November 24, 2026",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Winter Concert, Group 1",
+        "date": "December 14, 2026",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Winter Concert, Group 2",
+        "date": "December 17, 2026",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Art Honor Society Friendship Bracelet Sale",
+        "date": "February 1, 2027",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Drama Senior Citizen's Dinner and Show",
+        "date": "March 3, 2027",
+        "time": "4:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Drama Production",
+        "date": "March 4, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Drama Production",
+        "date": "March 5, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Drama Production",
+        "date": "March 6, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Interactive Spring Art Show",
+        "date": "April 13, 2027",
+        "time": "5:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Spring Concert, Group 1",
+        "date": "May 24, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Spring Concert, Group 2",
+        "date": "May 26, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "JFK Ensembles Concert",
+        "date": "June 3, 2027",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "Comsewogue High School",
+    "events": [
+      {
+        "name": "NYSCAME All-County Concert",
+        "date": "November 13, 2026",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Winter & Chamber Concert",
+        "date": "December 16, 2026",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Musical: TBA",
+        "date": "February 26, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Musical: TBA",
+        "date": "February 27, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Spring Concert",
+        "date": "April 6, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Performing Arts Show",
+        "date": "April 29, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Art Show",
+        "date": "May 18, 2027",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Performing Arts Show",
+        "date": "May 20, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "CHS Pops & Chamber Concert",
+        "date": "June 8, 2027",
+        "time": "7:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "Clinton Avenue Elementary",
+    "events": [
+      {
+        "name": "Clinton Talent Show",
+        "date": "March 5, 2027",
+        "time": "6:30 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Clinton Art Show",
+        "date": "May 13, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "Norwood Avenue Elementary",
+    "events": [
+      {
+        "name": "Norwood Art Show and Evening Book Fair",
+        "date": "April 7, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Norwood Talent Show Rehearsal - Daytime",
+        "date": "April 26, 2027",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Norwood Talent Show",
+        "date": "April 30, 2027",
+        "time": "6:00 PM",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Norwood 2nd Grade Ukulele Concert",
+        "date": "June 3, 2027",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      },
+      {
+        "name": "Norwood 2nd Grade Ukulele Concert",
+        "date": "June 4, 2027",
+        "time": "TBD",
+        "location": "",
+        "formStatus": "Open"
+      }
+    ]
+  },
+  {
+    "school": "District-wide",
+    "events": []
+  }
+]

@@ -166,6 +166,34 @@ a {
   font-family: var(--font-heading);
 }
 
+@media (max-width: 760px) {
+  :root {
+    --logo-size: 5.5rem;
+    --logo-left: 0.5rem;
+    --logo-safe-space: calc(var(--logo-size) + var(--logo-left) + 1.1rem);
+  }
+
+  body {
+    padding-top: 8.6rem;
+  }
+
+  .masthead {
+    min-height: 4.3rem;
+    padding-left: max(var(--logo-safe-space), 6.2rem);
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .brand-title {
+    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.06em;
+    max-width: 10.5rem;
+  }
+
+  .floating-logo {
+    top: 0.45rem;
+  }
+}
+
 .main-nav {
   display: flex;
   flex-wrap: wrap;
@@ -478,6 +506,14 @@ a {
   align-items: center;
   gap: 0.7rem;
   font-size: 1.7rem;
+  line-height: 1.1;
+  color: var(--gold);
+  text-shadow:
+    -1px -1px 0 rgba(10, 18, 30, 0.8),
+    1px -1px 0 rgba(10, 18, 30, 0.8),
+    -1px 1px 0 rgba(10, 18, 30, 0.8),
+    1px 1px 0 rgba(10, 18, 30, 0.8),
+    0 2px 8px rgba(10, 18, 30, 0.55);
 }
 
 .hero-card__header p span {
@@ -494,8 +530,16 @@ a {
 }
 
 .hero-card__header time {
-  font-size: 2rem;
+  font-size: 1.7rem;
+  line-height: 1.1;
   font-family: var(--font-heading);
+  color: var(--gold);
+  text-shadow:
+    -1px -1px 0 rgba(10, 18, 30, 0.8),
+    1px -1px 0 rgba(10, 18, 30, 0.8),
+    -1px 1px 0 rgba(10, 18, 30, 0.8),
+    1px 1px 0 rgba(10, 18, 30, 0.8),
+    0 2px 8px rgba(10, 18, 30, 0.55);
 }
 
 .hero-card__season {
@@ -505,6 +549,7 @@ a {
   letter-spacing: 0.2em;
   font-weight: 800;
   text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(10, 18, 30, 0.22);
 }
 
 .hero-card__visual {
@@ -649,7 +694,7 @@ a {
 
 .home-pathways__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -658,6 +703,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+  min-height: 20rem;
   padding: 1.5rem;
   border: 1px solid rgba(23, 59, 99, 0.15);
   border-radius: 1rem;
@@ -676,7 +722,7 @@ a {
 
 .home-pathway-card h3 {
   margin: 0;
-  font-size: clamp(1.5rem, 2vw, 2.1rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
   line-height: 1.2;
   font-family: var(--font-heading);
   color: var(--brand-blue);
@@ -686,6 +732,7 @@ a {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+  font-size: 0.96rem;
 }
 
 .mini-cta-link {
@@ -1877,6 +1924,437 @@ a {
 
 .board-feedback .apply-btn {
   width: min(100%, 18rem);
+}
+
+.snapshot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.snapshot-actions .apply-btn {
+  margin: 0;
+}
+
+.staffing-page .content-card {
+  margin-top: 1.25rem;
+}
+
+.staffing-status {
+  margin: 0 0 1rem;
+  color: var(--brand-blue);
+  font-weight: 700;
+}
+
+.staffing-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.staffing-list-panel,
+.staffing-form-panel {
+  border: 1px solid rgba(15, 32, 55, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.26);
+  padding: 1rem;
+}
+
+.staffing-list-panel h2,
+.staffing-form-header h2 {
+  margin: 0;
+  color: var(--brand-blue);
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+}
+
+.staffing-filters {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.staffing-filters input[type="search"],
+.staffing-filters select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(15, 32, 55, 0.2);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  font: inherit;
+}
+
+.staffing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--brand-blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.staffing-toggle input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--brand-blue);
+}
+
+.staffing-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  max-height: 32rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.staffing-list-item {
+  width: 100%;
+  border: 1px solid rgba(15, 32, 55, 0.12);
+  border-radius: 0.7rem;
+  background: linear-gradient(180deg, #fffdf9 0%, #f0ecdf 100%);
+  color: var(--brand-blue);
+  text-align: left;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.staffing-list-item:hover,
+.staffing-list-item:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(23, 59, 99, 0.25);
+  box-shadow: 0 8px 16px rgba(15, 32, 55, 0.06);
+}
+
+.staffing-list-item--active {
+  border-color: rgba(23, 59, 99, 0.35);
+  background: linear-gradient(180deg, #f8f0d7 0%, #f4e4a4 100%);
+}
+
+.staffing-list-item .school-badge {
+  align-self: flex-start;
+  margin-top: 0.15rem;
+}
+
+.staffing-date {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.staffing-form-header {
+  margin-bottom: 0.9rem;
+}
+
+.staffing-form-header .subpage-kicker {
+  margin-bottom: 0.35rem;
+}
+
+.staffing-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.staffing-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: var(--brand-blue);
+  font-weight: 700;
+}
+
+.staffing-field--wide {
+  grid-column: 1 / -1;
+}
+
+.staffing-field input,
+.staffing-field textarea {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(15, 32, 55, 0.2);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  font: inherit;
+}
+
+.staffing-field textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.staffing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.staffing-actions .apply-btn {
+  margin: 0;
+}
+
+.inventory-status {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid rgba(23, 59, 99, 0.35);
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--brand-blue);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.inventory-status--ok {
+  border-left-color: #2f7d4f;
+}
+
+.inventory-status--warn {
+  border-left-color: #c08a1e;
+}
+
+.inventory-status--error {
+  border-left-color: #b3452f;
+}
+
+.inventory-status--idle {
+  border-left-color: rgba(23, 59, 99, 0.35);
+  font-weight: 600;
+}
+
+.inventory-quick-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(15, 32, 55, 0.12);
+}
+
+.inventory-quick-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 32, 55, 0.6);
+  margin-right: 0.25rem;
+}
+
+.inventory-quick-btn {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(23, 59, 99, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--brand-blue);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.inventory-quick-btn:hover {
+  background: rgba(23, 59, 99, 0.1);
+  border-color: rgba(23, 59, 99, 0.5);
+}
+
+.inventory-setup-note {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(15, 32, 55, 0.12);
+  font-size: 0.9rem;
+}
+
+.inventory-form {
+  margin-top: 0.5rem;
+}
+
+.staffing-field select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(15, 32, 55, 0.2);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  font: inherit;
+}
+
+.inventory-totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.inventory-total-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(15, 32, 55, 0.12);
+  border-radius: 0.8rem;
+  background: linear-gradient(180deg, #f8f0d7 0%, #f2e2a6 100%);
+}
+
+.inventory-total-card--muted {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.inventory-total-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.inventory-total-card strong {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--brand-blue);
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.inventory-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.inventory-list-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 12rem);
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(15, 32, 55, 0.12);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.inventory-list-main {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.inventory-list-main strong {
+  color: var(--brand-blue);
+  font-size: 1.02rem;
+}
+
+.inventory-list-qty {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.inventory-list-qty strong {
+  color: var(--brand-blue);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.inventory-list-qty span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.inventory-list-meta {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.inventory-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(23, 59, 99, 0.1);
+  color: var(--brand-blue);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.inventory-chip--ok {
+  background: rgba(47, 125, 79, 0.15);
+  color: #245f3c;
+}
+
+.inventory-chip--warn {
+  background: rgba(192, 138, 30, 0.18);
+  color: #8a6212;
+}
+
+.inventory-session-log {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.inventory-session-log li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(15, 32, 55, 0.1);
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.inventory-session-log strong {
+  color: var(--brand-blue);
+  font-family: var(--font-heading);
+}
+
+.inventory-time {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 840px) {
+  .staffing-layout,
+  .staffing-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-list-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .inventory-list-meta {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
 }
 
 .text-link--disabled {
@@ -4697,3 +5175,748 @@ details[open] > .cal-past-summary::before {
   letter-spacing: 0.04em;
 }
 
+
+/* ==========================================================================
+   Inventory + staffing board tools — mobile-first.
+   These screens are used on a phone while standing around at a school event,
+   so every control is at least a 44px tap target.
+   ========================================================================== */
+
+.inv-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+  padding: 0.35rem;
+  background: rgba(15, 32, 55, 0.06);
+  border-radius: 0.75rem;
+}
+
+.inv-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0.7rem 0.75rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: rgba(15, 32, 55, 0.65);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.inv-tab:hover {
+  color: var(--brand-blue);
+}
+
+.inv-tab--active {
+  background: #fff;
+  color: var(--brand-blue);
+  box-shadow: 0 2px 8px rgba(23, 59, 99, 0.18);
+}
+
+.inv-tab--remove {
+  background: #fff;
+  color: #9c3c25;
+  box-shadow: 0 2px 8px rgba(156, 60, 37, 0.2);
+}
+
+.inv-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: currentColor;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.inv-tab--active .inv-tab-icon,
+.inv-tab--remove .inv-tab-icon {
+  color: #fff;
+}
+
+.inv-tab-icon::before {
+  color: #fff;
+}
+
+.inv-tab-hint {
+  margin: 0 0 1.1rem;
+  color: rgba(15, 32, 55, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.inv-link-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 800;
+  color: var(--brand-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- Used-at-event picker ------------------------------------------------ */
+
+.inv-use-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.inv-use-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(15, 32, 55, 0.14);
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.inv-use-row--active {
+  border-color: rgba(156, 60, 37, 0.55);
+  background: rgba(156, 60, 37, 0.06);
+}
+
+.inv-use-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.inv-use-info strong {
+  color: var(--brand-blue);
+  font-size: 1.02rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.inv-use-onhand {
+  font-size: 0.85rem;
+  color: rgba(15, 32, 55, 0.65);
+  font-weight: 600;
+}
+
+.inv-use-onhand em {
+  font-style: normal;
+  font-weight: 800;
+  color: #9c3c25;
+}
+
+.inv-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.inv-step-btn {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid rgba(23, 59, 99, 0.3);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--brand-blue);
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.12s ease, opacity 0.12s ease;
+}
+
+.inv-step-btn:hover:not(:disabled) {
+  background: rgba(23, 59, 99, 0.1);
+}
+
+.inv-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.inv-step-input {
+  width: 62px;
+  height: 44px;
+  padding: 0 0.4rem;
+  border: 1px solid rgba(15, 32, 55, 0.22);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Hide the native number spinners — the +/- buttons replace them. */
+.inv-step-input::-webkit-outer-spin-button,
+.inv-step-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inv-step-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.inv-sticky-save {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.85rem 0 0.25rem;
+  background: linear-gradient(to top, var(--paper, #fdfbf7) 72%, rgba(253, 251, 247, 0));
+  border-top: 1px solid rgba(15, 32, 55, 0.12);
+}
+
+.inv-sticky-summary {
+  font-weight: 800;
+  color: rgba(15, 32, 55, 0.7);
+  font-size: 0.92rem;
+}
+
+.inv-sticky-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.inv-delta-up {
+  color: #2f7d4f;
+}
+
+.inv-delta-down {
+  color: #9c3c25;
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .inventory-page .subpage-hero h1 {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+  }
+
+  .inventory-page .content-card {
+    padding: 1.1rem 0.95rem;
+  }
+
+  /* Stack the staffing/inventory form fields into a single column. */
+  .inventory-page .staffing-form-grid,
+  .staffing-page .staffing-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-quick-row {
+    gap: 0.4rem;
+  }
+
+  .inventory-quick-btn {
+    min-height: 40px;
+    flex: 1 1 auto;
+  }
+
+  /* Full-width, thumb-friendly action buttons. */
+  .inventory-page .staffing-actions,
+  .inventory-page .snapshot-actions,
+  .staffing-page .staffing-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inventory-page .apply-btn,
+  .staffing-page .apply-btn {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+  }
+
+  .inv-sticky-save {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inv-sticky-buttons {
+    flex-direction: column;
+  }
+
+  .inv-sticky-buttons .apply-btn {
+    width: 100%;
+  }
+
+  .inv-use-list {
+    max-height: none;
+  }
+
+  .inventory-totals {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-session-log li {
+    flex-wrap: wrap;
+  }
+
+  /* iOS zooms the page when a focused input is under 16px. */
+  .inventory-page input,
+  .inventory-page select,
+  .inventory-page textarea,
+  .staffing-page input,
+  .staffing-page select,
+  .staffing-page textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .inv-tab {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.4rem;
+  }
+
+  .inv-use-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .inv-stepper {
+    justify-content: space-between;
+  }
+
+  .inv-step-input {
+    flex: 1;
+    width: auto;
+  }
+}
+
+/* ==========================================================================
+   Board tools bar (snapshot page)
+   ========================================================================== */
+
+.board-toolbar {
+  width: min(1200px, 100% - 2rem);
+  margin: -1.25rem auto 1.5rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid rgba(15, 32, 55, 0.12);
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 20px rgba(23, 59, 99, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.board-toolbar-label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(15, 32, 55, 0.5);
+}
+
+.board-toolbar-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.6rem;
+}
+
+.board-tool {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 60px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(23, 59, 99, 0.18);
+  border-radius: 0.6rem;
+  background: rgba(23, 59, 99, 0.03);
+  text-decoration: none;
+  color: var(--brand-blue);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.board-tool:hover {
+  background: rgba(23, 59, 99, 0.09);
+  border-color: rgba(23, 59, 99, 0.42);
+  transform: translateY(-1px);
+}
+
+.board-tool-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.board-tool-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.board-tool-text strong {
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.board-tool-text em {
+  font-style: normal;
+  font-size: 0.8rem;
+  color: rgba(15, 32, 55, 0.6);
+}
+
+/* Lead column: name plus a count of other assigned staff. */
+.cal-lead-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cal-support-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(23, 59, 99, 0.12);
+  color: var(--brand-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: help;
+}
+
+/* ==========================================================================
+   Inventory report (printable)
+   ========================================================================== */
+
+.report-sheet {
+  background: #fff;
+}
+
+.report-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 2px solid var(--brand-blue);
+}
+
+.report-head-main h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--brand-blue);
+}
+
+.report-subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(15, 32, 55, 0.6);
+}
+
+.report-head-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  text-align: right;
+}
+
+.report-head-meta span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15, 32, 55, 0.5);
+}
+
+.report-head-meta strong {
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.report-table thead th {
+  padding: 0.6rem 0.7rem;
+  border-bottom: 1.5px solid rgba(15, 32, 55, 0.3);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(15, 32, 55, 0.65);
+  text-align: left;
+}
+
+.report-table tbody td {
+  padding: 0.62rem 0.7rem;
+  border-bottom: 1px solid rgba(15, 32, 55, 0.1);
+  vertical-align: top;
+}
+
+.report-table tbody tr:nth-child(even) {
+  background: rgba(23, 59, 99, 0.025);
+}
+
+.report-col-num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.report-table thead .report-col-num {
+  text-align: right;
+}
+
+.report-qty {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.report-col-desc {
+  color: rgba(15, 32, 55, 0.72);
+}
+
+.report-row--empty {
+  color: #9c3c25;
+}
+
+.report-row--empty .report-qty {
+  color: #9c3c25;
+}
+
+.report-table tfoot th,
+.report-table tfoot td {
+  padding: 0.7rem;
+  border-top: 2px solid var(--brand-blue);
+  font-weight: 800;
+  color: var(--brand-blue);
+  text-align: left;
+}
+
+.report-table tfoot .report-col-num {
+  text-align: right;
+}
+
+.report-flag {
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.85rem;
+  border-left: 4px solid #c08a1e;
+  background: rgba(192, 138, 30, 0.08);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.report-foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(15, 32, 55, 0.14);
+  font-size: 0.75rem;
+  color: rgba(15, 32, 55, 0.55);
+}
+
+@media (max-width: 720px) {
+  .board-toolbar {
+    margin-top: -0.75rem;
+  }
+
+  .board-toolbar-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .report-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .report-head-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Drop the description column on narrow screens so the numbers stay readable. */
+  .report-col-desc {
+    display: none;
+  }
+
+  .report-table {
+    font-size: 0.88rem;
+  }
+}
+
+/* --- Print ---------------------------------------------------------------
+   The report should come off the printer as a clean document: no site chrome,
+   no buttons, no background washes. */
+@media print {
+  @page {
+    margin: 0.6in;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .site-header,
+  .site-footer,
+  .report-screen-only,
+  .board-toolbar,
+  .skip-link {
+    display: none !important;
+  }
+
+  .inventory-report .content-card,
+  .report-sheet {
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+  }
+
+  .inventory-report {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .report-table {
+    font-size: 10.5pt;
+  }
+
+  .report-col-desc {
+    display: table-cell !important;
+  }
+
+  .report-table thead {
+    display: table-header-group; /* repeat headers on every printed page */
+  }
+
+  .report-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .report-table tbody tr:nth-child(even) {
+    background: #f4f6f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-flag {
+    border-left: 3px solid #999;
+    background: #f7f7f7 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Sheet-driven multi-select chips on the staffing form
+   --------------------------------------------------------------------------- */
+
+.staffing-field-label {
+  color: var(--brand-blue);
+  font-weight: 700;
+}
+
+.staffing-field-hint {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(15, 32, 55, 0.62);
+}
+
+.staffing-empty-list {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.chip-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(15, 32, 55, 0.16);
+  border-radius: 0.55rem;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.chip-toggle {
+  min-height: 40px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(15, 32, 55, 0.22);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.chip-toggle:hover {
+  border-color: var(--brand-blue);
+}
+
+.chip-toggle--on {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #fff;
+}
+
+.chip-toggle--on::before {
+  content: "\2713\00a0";
+}
+
+@media (max-width: 720px) {
+  .chip-toggle {
+    min-height: 44px;
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+}

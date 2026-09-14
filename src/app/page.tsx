@@ -140,25 +140,33 @@ export default function Home() {
           <article className="home-pathway-card">
             <p className="home-pathway-card__eyebrow">Get involved</p>
             <h3>Volunteer with CMAC</h3>
-            <p>Help at events, share our mission, and support the students and teachers who make the arts thrive.</p>
-            <Link href="/get-involved" className="mini-cta-link">
+            <p>Help at events, welcome families, and support the students, teachers, and programs that make the arts thrive.</p>
+            <Link href="/get-involved/volunteer" className="mini-cta-link">
               Learn how
             </Link>
           </article>
           <article className="home-pathway-card">
-            <p className="home-pathway-card__eyebrow">Scholarships</p>
-            <h3>Open doors for students</h3>
-            <p>Help fund creative learning and opportunities that keep young artists moving forward.</p>
-            <Link href="/scholarships" className="mini-cta-link">
-              Explore scholarships
+            <p className="home-pathway-card__eyebrow">Membership</p>
+            <h3>Become a CMAC Member</h3>
+            <p>Join as a member and help provide year-round support for music and arts education in our community.</p>
+            <Link href="/get-involved/membership" className="mini-cta-link">
+              Become a member
             </Link>
           </article>
           <article className="home-pathway-card">
-            <p className="home-pathway-card__eyebrow">Teacher grants</p>
-            <h3>Power classroom creativity</h3>
-            <p>Support projects that bring music, performance, and artistic exploration into everyday learning.</p>
-            <Link href="/teacher-grants" className="mini-cta-link">
-              See teacher grants
+            <p className="home-pathway-card__eyebrow">Sponsorship</p>
+            <h3>Become a Sponsor</h3>
+            <p>Partner with CMAC to strengthen student programs, annual events, and creative learning opportunities.</p>
+            <Link href="/sponsors" className="mini-cta-link">
+              Explore sponsorship
+            </Link>
+          </article>
+          <article className="home-pathway-card">
+            <p className="home-pathway-card__eyebrow">Fundraising</p>
+            <h3>Support our Fundraisers</h3>
+            <p>Help fund scholarships, teacher grants, and student-centered arts opportunities through CMAC events and campaigns.</p>
+            <Link href="/get-involved#direct-donate" className="mini-cta-link">
+              Give today
             </Link>
           </article>
         </div>

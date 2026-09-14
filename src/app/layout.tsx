@@ -21,6 +21,7 @@ const headingFont = Merriweather({
 });
 
 const siteUrl = "https://www.comsewoguemusicandarts.org";
+const BOARD_REVIEW_ENABLED = false;
 
 export const metadata: Metadata = {
   title: {
@@ -143,15 +144,13 @@ export default function RootLayout({
             <Link href="/events">Events</Link>
             <Link href="/news">News</Link>
             <Link href="/sponsors">Sponsors</Link>
-            <Link href="/contact">Contact</Link>
             <Link href="/order-here">Order Here</Link>
-            <Link href="/get-involved#direct-donate">Donate</Link>
           </nav>
         </header>
         <div id="main-content" tabIndex={-1}>
           {children}
         </div>
-        <BoardFeedbackForm />
+        {BOARD_REVIEW_ENABLED && <BoardFeedbackForm />}
         <footer className="site-footer">
           <nav className="site-footer__links" aria-label="Footer">
             <Link href="/get-involved#direct-donate">Donate</Link>
