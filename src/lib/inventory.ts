@@ -1,5 +1,6 @@
 import {
   buildGoogleSheetQueryUrl,
+  CMAC_INVENTORY_LOG_SHEET_NAME,
   CMAC_INVENTORY_SHEET_ID,
   CMAC_INVENTORY_SHEET_NAME,
 } from "@/lib/site-data";
@@ -15,6 +16,18 @@ export type InventoryItem = {
   quantity: number;
   price: number | null;
   notes: string;
+};
+
+export type InventoryUsageRecord = {
+  date: string;
+  itemName: string;
+  school: string;
+  eventName: string;
+  notes: string;
+  quantityIn: number;
+  quantityOut: number;
+  quantityTotal: number;
+  updatedAt: string;
 };
 
 export function normalizeText(value: unknown): string {
@@ -133,4 +146,100 @@ export async function fetchInventory(): Promise<InventoryItem[]> {
   }
 
   return parseInventoryRows(await response.text());
+}
+
+export function parseInventoryUsageRows(raw: string): InventoryUsageRecord[] {
+  const payload = stripGoogleJsonWrapper(raw);
+
+  try {
+    const parsed = JSON.parse(payload) as {
+      table?: {
+        cols?: Array<{ label?: string | null } | null>;
+        rows?: Array<{ c?: Array<{ v?: string | number | null } | null> | undefined }>;
+      };
+    };
+
+    const rows = parsed.table?.rows ?? [];
+    const colLabels = (parsed.table?.cols ?? []).map((col) => normalizeHeader(normalizeText(col?.label ?? "")));
+    const firstRow = (rows[0]?.c ?? []).map((cell) => normalizeHeader(normalizeText(cell?.v ?? "")));
+    const headerInFirstRow =
+      firstRow.includes("date") ||
+      firstRow.includes("itemname") ||
+      firstRow.includes("school") ||
+      firstRow.includes("eventname");
+
+    const headers = headerInFirstRow ? firstRow : colLabels;
+    const dataRows = headerInFirstRow ? rows.slice(1) : rows;
+    const indexOf = (aliases: string[]) => {
+      const normalized = aliases.map(normalizeHeader);
+      return headers.findIndex((header) => normalized.includes(header));
+    };
+
+    const dateIndex = indexOf(["date", "transaction_date"]);
+    const itemIndex = indexOf(["item_name", "itemname", "item", "name"]);
+    const schoolIndex = indexOf(["school", "school_name"]);
+    const eventIndex = indexOf(["event_name", "event", "event_name_text", "eventtitle"]);
+    const notesIndex = indexOf(["notes", "note", "comments"]);
+    const inIndex = indexOf(["quantity_in", "qty_in", "in_qty", "in"]);
+    const outIndex = indexOf(["quantity_out", "qty_out", "out_qty", "out"]);
+    const totalIndex = indexOf(["quantity_total", "qty_total", "total", "on_hand_after"]);
+    const updatedIndex = indexOf(["updated_at", "last_updated", "updated"]);
+
+    const cellAt = (
+      cells: Array<{ v?: string | number | null } | null> | undefined,
+      index: number
+    ) => (index >= 0 ? cells?.[index]?.v ?? "" : "");
+
+    return dataRows
+      .map((row) => {
+        const cells = row.c ?? [];
+        const date = normalizeText(cellAt(cells, dateIndex));
+        const itemName = normalizeText(cellAt(cells, itemIndex));
+        const school = normalizeText(cellAt(cells, schoolIndex));
+        const eventName = normalizeText(cellAt(cells, eventIndex));
+        const notes = normalizeText(cellAt(cells, notesIndex));
+        const quantityIn = toNumber(cellAt(cells, inIndex)) ?? 0;
+        const quantityOut = toNumber(cellAt(cells, outIndex)) ?? 0;
+        const quantityTotal = toNumber(cellAt(cells, totalIndex)) ?? 0;
+        const updatedAt = normalizeText(cellAt(cells, updatedIndex));
+
+        if (!itemName && !date && !school && !eventName) {
+          return null;
+        }
+
+        return {
+          date,
+          itemName,
+          school,
+          eventName,
+          notes,
+          quantityIn,
+          quantityOut,
+          quantityTotal,
+          updatedAt,
+        } satisfies InventoryUsageRecord;
+      })
+      .filter((entry): entry is InventoryUsageRecord => !!entry)
+      .sort((a, b) => {
+        const dateCompare = (a.date || "").localeCompare(b.date || "");
+        if (dateCompare !== 0) return dateCompare;
+        return (a.updatedAt || "").localeCompare(b.updatedAt || "");
+      });
+  } catch {
+    return [];
+  }
+}
+
+export async function fetchInventoryUsage(): Promise<InventoryUsageRecord[]> {
+  const sheetUrl = buildGoogleSheetQueryUrl(CMAC_INVENTORY_LOG_SHEET_NAME, CMAC_INVENTORY_SHEET_ID);
+  const response = await fetch(sheetUrl, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Inventory usage sheet request failed with ${response.status}`);
+  }
+
+  return parseInventoryUsageRows(await response.text());
 }

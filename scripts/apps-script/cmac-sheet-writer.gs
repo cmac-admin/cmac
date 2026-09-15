@@ -51,6 +51,7 @@
 
 var INVENTORY_SHEET_ID = '1taIg--51jB1fJ2a5S072F-0HWGpq3RHexVUE94yDCGo';
 var INVENTORY_SHEET_NAME = 'CMAC_INVENTORY';
+var INVENTORY_LOG_SHEET_NAME = 'CMAC_INVENTORY_LOG';
 
 var STAFFING_SHEET_ID = '1GPw8ETp8-lrBQHoaGg5MshrCM2di96fxJzbnSnJHMiU';
 var STAFFING_SHEET_NAME = 'CMAC_EVENT_STAFFING';
@@ -63,6 +64,20 @@ var INVENTORY_HEADERS = [
   'Item_qty',
   'Item_Price',
   'Item_Notes'
+];
+
+// The live board workbook uses a more compact ledger header set.
+// Keep the aliases wide so the app still works if the board later renames a
+// column or uses a slightly different column title in the same tab.
+var INVENTORY_LOG_HEADERS = [
+  'date',
+  'item',
+  'IN',
+  'OUT',
+  'TOTAL',
+  'NOTES',
+  'events',
+  'school'
 ];
 
 var STAFFING_HEADERS = [
@@ -181,6 +196,9 @@ function saveInventory(record) {
     var description = trimmed(record.description || record.Item_description);
     var notes = trimmed(record.notes || record.Item_Notes);
     var price = record.price != null && record.price !== '' ? Number(record.price) : null;
+    var transactionDate = trimmed(record.date || new Date().toISOString().slice(0, 10));
+    var school = trimmed(record.school || record.location || '');
+    var eventName = trimmed(record.event || record.event_name || '');
 
     if (matchedRow > 0) {
       // A negative quantity is a removal (stock used or sold at an event).
@@ -200,6 +218,17 @@ function saveInventory(record) {
       if (notes && notesCol !== -1) {
         sheet.getRange(matchedRow, notesCol + 1).setValue(notes);
       }
+
+      logInventoryTransaction({
+        date: transactionDate,
+        item: name,
+        school: school,
+        eventName: eventName,
+        notes: notes || description,
+        quantityIn: quantity > 0 ? quantity : 0,
+        quantityOut: quantity < 0 ? Math.abs(quantity) : 0,
+        quantityTotal: newQty
+      });
 
       return {
         ok: true,
@@ -235,6 +264,17 @@ function saveInventory(record) {
 
     sheet.appendRow(row);
 
+    logInventoryTransaction({
+      date: transactionDate,
+      item: name,
+      school: school,
+      eventName: eventName,
+      notes: notes || description,
+      quantityIn: quantity,
+      quantityOut: 0,
+      quantityTotal: quantity
+    });
+
     return {
       ok: true,
       action: 'created',
@@ -246,6 +286,48 @@ function saveInventory(record) {
   } finally {
     lock.releaseLock();
   }
+}
+
+function logInventoryTransaction(details) {
+  var logSheet = getSheet(INVENTORY_SHEET_ID, INVENTORY_LOG_SHEET_NAME, INVENTORY_LOG_HEADERS);
+  var headers = readHeaders(logSheet, INVENTORY_LOG_HEADERS);
+  var map = {
+    date: columnIndex(headers, ['date', 'transaction_date']),
+    item_name: columnIndex(headers, ['item_name', 'itemname', 'item', 'name']),
+    school: columnIndex(headers, ['school', 'school_name']),
+    event_name: columnIndex(headers, ['event_name', 'event', 'events', 'event_name_text', 'eventtitle']),
+    notes: columnIndex(headers, ['notes', 'note', 'comments', 'notes_text']),
+    quantity_in: columnIndex(headers, ['quantity_in', 'qty_in', 'in_qty', 'in', 'IN']),
+    quantity_out: columnIndex(headers, ['quantity_out', 'qty_out', 'out_qty', 'out', 'OUT']),
+    quantity_total: columnIndex(headers, ['quantity_total', 'qty_total', 'total', 'TOTAL']),
+    updated_at: columnIndex(headers, ['updated_at', 'last_updated', 'updated'])
+  };
+
+  var row = [];
+  for (var i = 0; i < headers.length; i++) {
+    row.push('');
+  }
+
+  var values = {
+    date: trimmed(details.date || new Date().toISOString().slice(0, 10)),
+    item_name: trimmed(details.item || ''),
+    school: trimmed(details.school || ''),
+    event_name: trimmed(details.eventName || ''),
+    notes: trimmed(details.notes || ''),
+    quantity_in: Number(details.quantityIn || 0),
+    quantity_out: Number(details.quantityOut || 0),
+    quantity_total: Number(details.quantityTotal || 0),
+    updated_at: new Date().toISOString()
+  };
+
+  Object.keys(map).forEach(function (key) {
+    var col = map[key];
+    if (col !== -1) {
+      row[col] = values[key];
+    }
+  });
+
+  logSheet.appendRow(row);
 }
 
 // ---------------------------------------------------------------------------

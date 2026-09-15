@@ -16,11 +16,20 @@ type SavedEntry = {
   synced: boolean;
 };
 
+const TODAY = new Date().toISOString().slice(0, 10);
+
 const BLANK_FORM = {
   name: "",
   description: "",
   quantity: "",
   price: "",
+  notes: "",
+};
+
+const BLANK_REMOVE_META = {
+  date: TODAY,
+  school: "",
+  event: "",
   notes: "",
 };
 
@@ -47,6 +56,7 @@ export default function InventoryPage() {
 
   // Add-stock form state.
   const [form, setForm] = useState(BLANK_FORM);
+  const [removeMeta, setRemoveMeta] = useState(BLANK_REMOVE_META);
 
   // Remove-stock state: the real item list, plus how many of each were used.
   const [items, setItems] = useState<InventoryItem[]>([]);
@@ -92,6 +102,10 @@ export default function InventoryPage() {
   const setUsedCount = (name: string, value: number, max: number) => {
     const clamped = Math.max(0, Math.min(Number.isFinite(value) ? value : 0, max));
     setUsed((current) => ({ ...current, [name]: clamped }));
+  };
+
+  const updateRemoveMeta = (field: keyof typeof BLANK_REMOVE_META, value: string) => {
+    setRemoveMeta((current) => ({ ...current, [field]: value }));
   };
 
   // -------------------------------------------------------------------------
@@ -182,12 +196,37 @@ export default function InventoryPage() {
       return;
     }
 
+    if (!removeMeta.date) {
+      setStatusTone("error");
+      setStatusMessage("Choose the date for this event usage.");
+      return;
+    }
+
+    if (!removeMeta.school.trim()) {
+      setStatusTone("error");
+      setStatusMessage("Enter the school where the items were used.");
+      return;
+    }
+
+    if (!removeMeta.event.trim()) {
+      setStatusTone("error");
+      setStatusMessage("Enter the event name for this usage record.");
+      return;
+    }
+
     setSaving(true);
 
     if (!CMAC_INVENTORY_WRITE_URL) {
       pendingRemovals.forEach(([name, count]) => {
-        holdLocally({ name, quantity: -count });
-        logEntry(name, -count, "Held in browser", false);
+        holdLocally({
+          name,
+          quantity: -count,
+          date: removeMeta.date,
+          school: removeMeta.school,
+          event: removeMeta.event,
+          notes: removeMeta.notes,
+        });
+        logEntry(name, -count, `${removeMeta.school} · ${removeMeta.event}`, false);
       });
       setStatusTone("warn");
       setStatusMessage("Held in this browser — the Google Sheet connection is not set up yet.");
@@ -203,27 +242,47 @@ export default function InventoryPage() {
       try {
         const result = await postToSheet(CMAC_INVENTORY_WRITE_URL, {
           target: "inventory",
-          record: { name, quantity: -count },
+          record: {
+            name,
+            quantity: -count,
+            date: removeMeta.date,
+            school: removeMeta.school,
+            event: removeMeta.event,
+            notes: removeMeta.notes,
+          },
         });
         const remaining = typeof result.quantity === "number" ? result.quantity : null;
         succeeded += 1;
-        logEntry(name, -count, remaining !== null ? `${remaining} left` : "Removed", true);
+        logEntry(
+          name,
+          -count,
+          `${removeMeta.school} · ${removeMeta.event} · ${remaining !== null ? `${remaining} left` : "Removed"}`,
+          true
+        );
       } catch {
-        holdLocally({ name, quantity: -count });
+        holdLocally({
+          name,
+          quantity: -count,
+          date: removeMeta.date,
+          school: removeMeta.school,
+          event: removeMeta.event,
+          notes: removeMeta.notes,
+        });
         failures.push(name);
-        logEntry(name, -count, "Held in browser", false);
+        logEntry(name, -count, `${removeMeta.school} · ${removeMeta.event} · Held in browser`, false);
       }
     }
 
     if (failures.length === 0) {
       setStatusTone("ok");
-      setStatusMessage(`Recorded usage for ${succeeded} item${succeeded === 1 ? "" : "s"}.`);
+      setStatusMessage(`Recorded usage for ${succeeded} item${succeeded === 1 ? "" : "s"} at ${removeMeta.school}.`);
     } else {
       setStatusTone("error");
       setStatusMessage(`Could not save: ${failures.join(", ")}. Held in this browser so nothing was lost.`);
     }
 
     setUsed({});
+    setRemoveMeta((current) => ({ ...current, date: TODAY, notes: "" }));
     setSaving(false);
     void loadItems();
   };
@@ -240,6 +299,9 @@ export default function InventoryPage() {
         <div className="snapshot-actions">
           <a className="apply-btn apply-btn--secondary" href="/cmac/snapshot-c2m0a2c3/inventory/view/">
             View Current Inventory
+          </a>
+          <a className="apply-btn apply-btn--secondary" href="/cmac/snapshot-c2m0a2c3/inventory/usage/">
+            View Usage Ledger
           </a>
         </div>
       </section>
@@ -399,6 +461,46 @@ export default function InventoryPage() {
 
             {itemsState === "ready" && items.length > 0 && (
               <>
+                <div className="staffing-form-grid">
+                  <label className="staffing-field">
+                    <span>Date *</span>
+                    <input
+                      type="date"
+                      value={removeMeta.date}
+                      onChange={(event) => updateRemoveMeta("date", event.target.value)}
+                    />
+                  </label>
+
+                  <label className="staffing-field">
+                    <span>School *</span>
+                    <input
+                      value={removeMeta.school}
+                      onChange={(event) => updateRemoveMeta("school", event.target.value)}
+                      placeholder="JFK Middle School"
+                      autoComplete="off"
+                    />
+                  </label>
+
+                  <label className="staffing-field staffing-field--wide">
+                    <span>Event *</span>
+                    <input
+                      value={removeMeta.event}
+                      onChange={(event) => updateRemoveMeta("event", event.target.value)}
+                      placeholder="Winter Concert / Drama Night / Art Show"
+                      autoComplete="off"
+                    />
+                  </label>
+
+                  <label className="staffing-field staffing-field--wide">
+                    <span>Notes</span>
+                    <textarea
+                      value={removeMeta.notes}
+                      onChange={(event) => updateRemoveMeta("notes", event.target.value)}
+                      placeholder="Used for the event, students assigned, any special notes"
+                    />
+                  </label>
+                </div>
+
                 <ul className="inv-use-list">
                   {items.map((entry) => {
                     const count = used[entry.name] ?? 0;
@@ -424,7 +526,7 @@ export default function InventoryPage() {
                           </button>
                           <input
                             type="number"
-                            className="inv-step-input"
+                            className={`inv-step-input ${count > 0 ? "inv-step-input--subtract" : ""}`}
                             inputMode="numeric"
                             min="0"
                             max={entry.quantity}

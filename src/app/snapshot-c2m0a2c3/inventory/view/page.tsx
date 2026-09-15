@@ -64,6 +64,9 @@ export default function ViewInventoryPage() {
           <a className="apply-btn apply-btn--secondary" href="/cmac/snapshot-c2m0a2c3/inventory/">
             Update Inventory
           </a>
+          <a className="apply-btn apply-btn--secondary" href="/cmac/snapshot-c2m0a2c3/inventory/usage/">
+            View Usage Ledger
+          </a>
         </div>
       </section>
 

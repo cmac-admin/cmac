@@ -2311,6 +2311,19 @@ a {
   color: #8a6212;
 }
 
+.inv-use-row--active {
+  background: linear-gradient(135deg, rgba(180, 38, 38, 0.09) 0%, rgba(180, 38, 38, 0.18) 100%);
+  border-color: rgba(180, 38, 38, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(180, 38, 38, 0.14);
+}
+
+.inv-step-input--subtract {
+  background: linear-gradient(180deg, #fff6f6 0%, #ffe1e1 100%);
+  border-color: #ca3b3b;
+  color: #7c1d1d;
+  box-shadow: inset 0 0 0 1px rgba(202, 59, 59, 0.18);
+}
+
 .inventory-session-log {
   list-style: none;
   margin: 1rem 0 0;

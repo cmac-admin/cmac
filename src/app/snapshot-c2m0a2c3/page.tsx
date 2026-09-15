@@ -35,6 +35,7 @@ type StaffingRow = {
   name: string;
   school: string;
   location: string;
+  setupTime: string;
   boardMember: string;
   volunteerTeam: string;
   checkInStaff: string;
@@ -167,26 +168,28 @@ function parseStaffingRows(raw: string): Record<string, StaffingRow> {
       const name = getValue(cells, "event_name") || getValue(cells, "name") || getValue(cells, "event") || getValue(cells, "title") || "";
       const school = getValue(cells, "school") || getValue(cells, "school_name") || "";
       const location = getValue(cells, "location") || getValue(cells, "venue") || "";
+      const setupTime = getValue(cells, "setup_time") || getValue(cells, "setuptime") || getValue(cells, "setup") || "";
       const boardMember = getValue(cells, "board_member") || getValue(cells, "boardmember") || "";
       const volunteerTeam = getValue(cells, "volunteer_team") || getValue(cells, "volunteers") || "";
       const checkInStaff = getValue(cells, "check_in_staff") || getValue(cells, "checkinstaff") || "";
       const studentReps = getValue(cells, "student_reps") || getValue(cells, "studentreps") || "";
       const notes = getValue(cells, "notes") || getValue(cells, "comments") || "";
 
-      if (!name && !date && !school && !eventId) continue;
+        if (!name && !date && !school && !eventId) continue;
 
-      const record: StaffingRow = {
-        eventId: eventId || normalizeLookupToken(`${school}-${date}-${name}`),
-        date,
-        name,
-        school,
-        location,
-        boardMember,
-        volunteerTeam,
-        checkInStaff,
-        studentReps,
-        notes,
-      };
+        const record: StaffingRow = {
+          eventId: eventId || normalizeLookupToken(`${school}-${date}-${name}`),
+          date,
+          name,
+          school,
+          location,
+          setupTime,
+          boardMember,
+          volunteerTeam,
+          checkInStaff,
+          studentReps,
+          notes,
+        };
 
       const lookupKeys = [
         record.eventId,
@@ -483,6 +486,7 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems, staf
             <tr>
               <th>Date</th>
               <th>Time</th>
+              <th>Setup Time</th>
               <th>Event</th>
               <th>Category</th>
               <th>School</th>
@@ -504,6 +508,7 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems, staf
                 <tr key={i} className={isPast ? "cal-row cal-row--past" : "cal-row"}>
                   <td className="cal-date">{label}</td>
                   <td className="cal-time">{ev.time}</td>
+                  <td className="cal-time">{staffingRow?.setupTime || "TBD"}</td>
                   <td className="cal-name"><strong>{ev.name}</strong></td>
                   <td>
                     <span
