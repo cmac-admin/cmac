@@ -17,7 +17,7 @@ import { buildGoogleSheetQueryUrl, CMAC_SITE_DATA_SHEET_ID } from "./site-data";
  */
 
 export const CMAC_LISTS_SHEET_NAME =
-  process.env.NEXT_PUBLIC_CMAC_LISTS_SHEET_NAME ?? "CMAC_LISTS";
+  process.env.NEXT_PUBLIC_CMAC_LISTS_SHEET_NAME ?? "Sheet1";
 
 export type ListName =
   | "lead"
@@ -80,6 +80,7 @@ const HEADER_ALIASES: Record<string, ListName> = {
   studentrep: "studentRep",
   studentreps: "studentRep",
   studentrepresentative: "studentRep",
+  student: "studentRep",
   cmactable: "cmacTable",
   table: "cmacTable",
   formstatus: "formStatus",

@@ -40,6 +40,7 @@ type StaffingRow = {
   volunteerTeam: string;
   checkInStaff: string;
   studentReps: string;
+  selling: string;
   notes: string;
 };
 
@@ -128,6 +129,53 @@ function normalizeText(value: unknown): string {
   return String(value).trim();
 }
 
+function readLocalStaffingDrafts(): Record<string, StaffingRow> {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const raw = window.localStorage.getItem("cmac-staffing-drafts");
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw) as Record<string, Partial<StaffingRow>>;
+    return Object.entries(parsed).reduce<Record<string, StaffingRow>>((accumulator, [key, value]) => {
+      if (!value || typeof value !== "object") return accumulator;
+
+      const record: StaffingRow = {
+        eventId: String(value.eventId ?? key),
+        date: String(value.date ?? ""),
+        name: String(value.name ?? ""),
+        school: String(value.school ?? ""),
+        location: String(value.location ?? ""),
+        setupTime: String(value.setupTime ?? ""),
+        boardMember: String(value.boardMember ?? ""),
+        volunteerTeam: String(value.volunteerTeam ?? ""),
+        checkInStaff: String(value.checkInStaff ?? ""),
+        studentReps: String(value.studentReps ?? ""),
+        selling: String(value.selling ?? ""),
+        notes: String(value.notes ?? ""),
+      };
+
+      accumulator[record.eventId] = record;
+      return accumulator;
+    }, {});
+  } catch {
+    return {};
+  }
+}
+
+function normalizeSellingItems(value: string | string[] | undefined): string[] {
+  if (Array.isArray(value)) {
+    return value.map((item) => item.trim()).filter(Boolean);
+  }
+
+  if (!value) return [];
+
+  return value
+    .split(/[\n,;]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 function normalizeLookupToken(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
@@ -173,23 +221,25 @@ function parseStaffingRows(raw: string): Record<string, StaffingRow> {
       const volunteerTeam = getValue(cells, "volunteer_team") || getValue(cells, "volunteers") || "";
       const checkInStaff = getValue(cells, "check_in_staff") || getValue(cells, "checkinstaff") || "";
       const studentReps = getValue(cells, "student_reps") || getValue(cells, "studentreps") || "";
+      const selling = getValue(cells, "selling") || getValue(cells, "selling_items") || getValue(cells, "items") || "";
       const notes = getValue(cells, "notes") || getValue(cells, "comments") || "";
 
-        if (!name && !date && !school && !eventId) continue;
+          if (!name && !date && !school && !eventId) continue;
 
-        const record: StaffingRow = {
-          eventId: eventId || normalizeLookupToken(`${school}-${date}-${name}`),
-          date,
-          name,
-          school,
-          location,
-          setupTime,
-          boardMember,
-          volunteerTeam,
-          checkInStaff,
-          studentReps,
-          notes,
-        };
+          const record: StaffingRow = {
+            eventId: eventId || normalizeLookupToken(`${school}-${date}-${name}`),
+            date,
+            name,
+            school,
+            location,
+            setupTime,
+            boardMember,
+            volunteerTeam,
+            checkInStaff,
+            studentReps,
+            selling,
+            notes,
+          };
 
       const lookupKeys = [
         record.eventId,
@@ -212,12 +262,18 @@ function parseStaffingRows(raw: string): Record<string, StaffingRow> {
 
 function findStaffingForEvent(event: EventEntry, staffing: Record<string, StaffingRow>): StaffingRow | null {
   const dateKey = event.isoDate || "";
+  const eventNameKey = normalizeLookupToken(event.name);
+  const eventSchoolKey = normalizeLookupToken(event.school);
+
   const candidates = [
     normalizeLookupToken(`${event.school}|${dateKey}|${event.name}`),
     normalizeLookupToken(`${event.name}|${dateKey}`),
     normalizeLookupToken(`${event.name}|${event.school}`),
     normalizeLookupToken(`${event.school}|${dateKey}`),
-    normalizeLookupToken(`${event.name}`),
+    eventNameKey,
+    eventSchoolKey,
+    normalizeLookupToken(`${event.name.replace(/\s*[-–—]\s*/g, " ")}|${dateKey}`),
+    normalizeLookupToken(`${event.name.replace(/\s*[,]+\s*/g, " ")}|${dateKey}`),
   ];
 
   for (const candidate of candidates) {
@@ -225,7 +281,19 @@ function findStaffingForEvent(event: EventEntry, staffing: Record<string, Staffi
     if (match) return match;
   }
 
-  return null;
+  const fallback = Object.values(staffing).find((row) => {
+    if (!row.name || !row.school) return false;
+    const sameDate = !dateKey || !row.date || dateKey === row.date;
+    const sameSchool = !row.school || !event.school || normalizeLookupToken(row.school) === eventSchoolKey;
+    const sameName =
+      eventNameKey === normalizeLookupToken(row.name) ||
+      eventNameKey === normalizeLookupToken(row.name.replace(/\s*[-–—]\s*/g, " ")) ||
+      normalizeLookupToken(row.name.replace(/\s*[,]+\s*/g, " ")) === normalizeLookupToken(event.name.replace(/\s*[,]+\s*/g, " "));
+
+    return sameDate && sameSchool && sameName;
+  });
+
+  return fallback ?? null;
 }
 
 /**
@@ -504,6 +572,10 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems, staf
               const { label } = formatDate(ev.isoDate);
               const isPast = new Date(ev.isoDate) < today;
               const staffingRow = findStaffingForEvent(ev, staffing);
+              const sellingItems = normalizeSellingItems(staffingRow?.selling || "")
+                .length > 0
+                ? normalizeSellingItems(staffingRow?.selling || "")
+                : ev.selling ?? [];
               return (
                 <tr key={i} className={isPast ? "cal-row cal-row--past" : "cal-row"}>
                   <td className="cal-date">{label}</td>
@@ -561,9 +633,9 @@ function EventMonthBlock({ month, events, today, past = false, onShowItems, staf
                     }>{ev.cmacTable}</span>
                   </td>
                   <td>
-                    {ev.selling && ev.selling.length > 0 ? (
-                      <button className="cal-items-btn" onClick={() => onShowItems(ev)}>
-                        View Items ({ev.selling.length})
+                    {sellingItems.length > 0 ? (
+                      <button className="cal-items-btn" onClick={() => onShowItems({ ...ev, selling: sellingItems })}>
+                        View Items ({sellingItems.length})
                       </button>
                     ) : (
                       <span className="muted-copy" style={{fontSize:"0.8rem"}}>—</span>
@@ -650,17 +722,27 @@ export default function SnapshotPage() {
       try {
         const staffingUrl = buildGoogleSheetQueryUrl(CMAC_EVENT_STAFFING_SHEET_NAME, CMAC_SITE_DATA_SHEET_ID);
         const res = await fetch(staffingUrl, { cache: "no-store", headers: { Accept: "application/json" } });
-        if (!res.ok) return;
-        const raw = await res.text();
-        const parsed = parseStaffingRows(raw);
-        if (active) setStaffing(parsed);
+        let parsed: Record<string, StaffingRow> = {};
+
+        if (res.ok) {
+          const raw = await res.text();
+          parsed = parseStaffingRows(raw);
+        }
+
+        const merged = { ...parsed, ...readLocalStaffingDrafts() };
+        if (active) setStaffing(merged);
       } catch {
-        // Ignore staffing fetch failures; snapshot keeps working without staffing data.
+        const merged = readLocalStaffingDrafts();
+        if (active) setStaffing(merged);
       }
     };
 
     loadStaffing();
-    return () => { active = false; };
+    const interval = window.setInterval(loadStaffing, 15000);
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+    };
   }, []);
 
   useEffect(() => {

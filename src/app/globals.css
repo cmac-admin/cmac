@@ -1942,9 +1942,14 @@ a {
 }
 
 .staffing-status {
-  margin: 0 0 1rem;
+  margin: 1rem 0 0;
   color: var(--brand-blue);
   font-weight: 700;
+  line-height: 1.5;
+}
+
+.staffing-status--saving {
+  color: #7a4d00;
 }
 
 .staffing-layout {

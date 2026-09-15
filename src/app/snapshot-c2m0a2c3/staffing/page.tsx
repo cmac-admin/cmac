@@ -46,6 +46,8 @@ type StaffingRecord = {
 
 const DISTRICT_EVENT_DATA_URL = "/cmac/snapshot-c2m0a2c3/events-data.json";
 
+const STAFFING_DRAFT_KEY = "cmac-staffing-drafts";
+
 const BLANK_RECORD: StaffingRecord = {
   eventId: "",
   date: "",
@@ -64,6 +66,67 @@ const BLANK_RECORD: StaffingRecord = {
   selling: "",
   notes: "",
 };
+
+function readStaffingDrafts(): Record<string, StaffingRecord> {
+  try {
+    const raw = localStorage.getItem(STAFFING_DRAFT_KEY);
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw) as Record<string, Partial<StaffingRecord>>;
+    return Object.entries(parsed).reduce<Record<string, StaffingRecord>>((accumulator, [eventId, value]) => {
+      if (!value || typeof value !== "object") {
+        return accumulator;
+      }
+
+      const record: StaffingRecord = {
+        eventId: String(value.eventId ?? eventId),
+        date: String(value.date ?? ""),
+        name: String(value.name ?? ""),
+        school: String(value.school ?? ""),
+        location: String(value.location ?? ""),
+        time: String(value.time ?? ""),
+        setupTime: String(value.setupTime ?? ""),
+        lead: String(value.lead ?? ""),
+        boardMember: String(value.boardMember ?? ""),
+        volunteerTeam: String(value.volunteerTeam ?? ""),
+        checkInStaff: String(value.checkInStaff ?? ""),
+        studentReps: String(value.studentReps ?? ""),
+        cmacTable: String(value.cmacTable ?? ""),
+        formStatus: String(value.formStatus ?? ""),
+        selling: String(value.selling ?? ""),
+        notes: String(value.notes ?? ""),
+      };
+
+      if (record.eventId) {
+        accumulator[record.eventId] = record;
+      }
+
+      return accumulator;
+    }, {});
+  } catch {
+    return {};
+  }
+}
+
+function writeStaffingDraft(record: StaffingRecord) {
+  try {
+    const current = readStaffingDrafts();
+    current[record.eventId || makeEventId(record)] = record;
+    localStorage.setItem(STAFFING_DRAFT_KEY, JSON.stringify(current));
+  } catch {
+    // Ignore full or disabled localStorage; the rest of the page still works.
+  }
+}
+
+function clearStaffingDraft(eventId: string) {
+  try {
+    const current = readStaffingDrafts();
+    delete current[eventId];
+    localStorage.setItem(STAFFING_DRAFT_KEY, JSON.stringify(current));
+  } catch {
+    // Ignore full or disabled localStorage.
+  }
+}
 
 const FALLBACK_EVENTS: EventRecord[] = [
   { eventId: "boyle-road-elementary-2026-12-09-boyle-winter-concert", date: "2026-12-09", name: "Boyle Winter Concert", school: "Boyle Road Elementary", location: "JFK Middle School", time: "6:30 PM", type: "Concert" },
@@ -399,6 +462,7 @@ export default function StaffingDashboardPage() {
   const [districtEvents, setDistrictEvents] = useState<EventRecord[]>(FALLBACK_EVENTS);
   const [staffingMap, setStaffingMap] = useState<Record<string, StaffingRecord>>({});
   const [statusMessage, setStatusMessage] = useState("Loading events and staffing...");
+  const [isSaving, setIsSaving] = useState(false);
   const [selectedId, setSelectedId] = useState<string>(FALLBACK_EVENTS[0]?.eventId ?? "");
   const [search, setSearch] = useState("");
   const [schoolFilter, setSchoolFilter] = useState("all");
@@ -434,15 +498,29 @@ export default function StaffingDashboardPage() {
         });
 
         if (!res.ok) {
-          setStatusMessage("Using the fallback event list and local staffing data");
+          const merged = readStaffingDrafts();
+          if (active) {
+            setStaffingMap(merged);
+            setStatusMessage(
+              merged && Object.keys(merged).length
+                ? `Loaded ${Object.keys(merged).length} locally saved staffing updates.`
+                : "Using the fallback event list and local staffing data"
+            );
+          }
           return;
         }
 
         const raw = await res.text();
         const parsed = parseStaffingRows(raw);
+        const merged = { ...parsed, ...readStaffingDrafts() };
         if (active) {
-          setStaffingMap(parsed);
-          setStatusMessage(`Loaded ${Object.keys(parsed).length} staffing records from ${CMAC_EVENT_STAFFING_SHEET_NAME}.`);
+          setStaffingMap(merged);
+          const draftCount = Object.keys(readStaffingDrafts()).length;
+          setStatusMessage(
+            draftCount > 0
+              ? `Loaded ${Object.keys(merged).length} staffing records (${draftCount} local draft update${draftCount === 1 ? "" : "s"} included).`
+              : `Loaded ${Object.keys(parsed).length} staffing records from ${CMAC_EVENT_STAFFING_SHEET_NAME}.`
+          );
         }
       } catch {
         if (active) {
@@ -568,26 +646,31 @@ export default function StaffingDashboardPage() {
       updatedAt: new Date().toISOString(),
     };
 
+    setIsSaving(true);
+    setStatusMessage(`Saving staffing for ${payload.name || "this event"}...`);
     setStaffingMap((current) => ({ ...current, [selectedRecord.eventId]: payload }));
 
-    if (!CMAC_EVENT_STAFFING_WRITE_URL) {
-      localStorage.setItem("cmac-staffing-draft", JSON.stringify(payload));
-      setStatusMessage("Saved locally in this browser only. Add NEXT_PUBLIC_CMAC_EVENT_STAFFING_WRITE_URL to write back to Google Sheets.");
-      return;
-    }
-
     try {
+      if (!CMAC_EVENT_STAFFING_WRITE_URL) {
+        writeStaffingDraft(payload);
+        setStatusMessage("Saved locally in this browser only. Add NEXT_PUBLIC_CMAC_EVENT_STAFFING_WRITE_URL to write back to Google Sheets.");
+        return;
+      }
+
       await postToSheet(CMAC_EVENT_STAFFING_WRITE_URL, {
         target: "staffing",
         record: payload,
       });
 
+      clearStaffingDraft(payload.eventId);
       setStatusMessage(`Saved staffing for ${payload.name} to ${CMAC_EVENT_STAFFING_SHEET_NAME}.`);
     } catch (error) {
-      localStorage.setItem("cmac-staffing-draft", JSON.stringify(payload));
+      writeStaffingDraft(payload);
       setStatusMessage(
         `Could not reach the sheet (${error instanceof Error ? error.message : "unknown error"}). The draft was saved locally in this browser.`
       );
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -608,7 +691,16 @@ export default function StaffingDashboardPage() {
       </section>
 
       <section className="content-card">
-        <p className="staffing-status">{statusMessage}</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+          <div style={{ flex: 1 }} />
+          <a href="/cmac/snapshot-c2m0a2c3/" className="board-tool" style={{ textDecoration: "none", minWidth: "fit-content" }}>
+            <span className="board-tool-icon" aria-hidden="true">←</span>
+            <span className="board-tool-text">
+              <strong>Back to Snapshot</strong>
+              <em>Board dashboard</em>
+            </span>
+          </a>
+        </div>
 
         <div className="staffing-layout">
           <aside className="staffing-list-panel">
@@ -779,8 +871,13 @@ export default function StaffingDashboardPage() {
             </div>
 
             <div className="staffing-actions">
-              <button type="button" className="apply-btn" onClick={handleSave}>Save Staffing Row</button>
+              <button type="button" className="apply-btn" onClick={() => void handleSave()} disabled={isSaving}>
+                {isSaving ? "Saving..." : "Save Staffing Row"}
+              </button>
             </div>
+            <p className={`staffing-status${isSaving ? " staffing-status--saving" : ""}`} aria-live="polite">
+              {statusMessage}
+            </p>
           </div>
         </div>
       </section>
