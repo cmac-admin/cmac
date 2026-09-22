@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Events",
+  title: "Comsewogue District Music, Arts & Drama Events",
   description:
     "CMAC supports music concerts, drama productions, and art shows across all four Comsewogue schools every year. See the full list of annual performances and events.",
   openGraph: {
-    title: "Events | Comsewogue Music & Arts Corp.",
+    title: "Comsewogue District Music, Arts & Drama Events | Comsewogue Music & Arts Corp.",
     description:
       "Explore the concerts, drama productions, and art shows CMAC proudly supports each year across the Comsewogue School District.",
     url: "https://www.comsewoguemusicandarts.org/events",
@@ -17,8 +17,7 @@ export default function EventsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Events</p>
-        <h1>School Arts Events</h1>
+        <h1>Comsewogue District Music, Arts &amp; Drama Events</h1>
         <p>
           CMAC proudly supports the concerts, productions, and showcases that
           bring music, theater, and visual arts to life across the Comsewogue
