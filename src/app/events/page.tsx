@@ -27,12 +27,9 @@ export default function EventsPage() {
       </section>
 
       <section className="content-card">
-        <div className="cta-button-row">
+        <div className="cta-button-row events-page__cta">
           <Link href="/order-here" className="apply-btn">
-            Support an Event
-          </Link>
-          <Link href="/get-involved" className="apply-btn apply-btn--secondary">
-            Become a Member
+            Pre-Order for Event
           </Link>
         </div>
         <p className="muted-copy">

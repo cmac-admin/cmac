@@ -851,9 +851,18 @@ export default function SnapshotPage() {
         </p>
         <div className="draft-page-list" aria-label="Internal draft pages">
           {[
+            { href: "/cmac/impact-coming-soon", label: "Impact Coming Soon", description: "Placeholder for the future impact page" },
+            { href: "/cmac/old-colors", label: "Old Colors", description: "Board review / visual comparison page" },
             { href: "/cmac/order-here", label: "Order Here", description: "School event order portal" },
             { href: "/cmac/order-form", label: "Order Form", description: "Checkout and form embed" },
             { href: "/cmac/our-impact", label: "Our Impact", description: "Internal impact archive" },
+            { href: "/cmac/test", label: "Test Page", description: "Design and style preview" },
+            { href: "/cmac/QR_WhatIsCMAC", label: "QR / What Is CMAC", description: "QR-linked informational page" },
+            { href: "/cmac/snapshot-c2m0a2c3", label: "Snapshot Dashboard", description: "Main board snapshot landing page" },
+            { href: "/cmac/snapshot-c2m0a2c3/staffing", label: "Staffing Sheet", description: "Event staffing assignment board" },
+            { href: "/cmac/snapshot-c2m0a2c3/inventory", label: "Inventory Dashboard", description: "Inventory overview and tools" },
+            { href: "/cmac/snapshot-c2m0a2c3/inventory/view", label: "Inventory View", description: "Full on-hand inventory report" },
+            { href: "/cmac/snapshot-c2m0a2c3/inventory/usage", label: "Inventory Usage", description: "Usage and stock tracking" },
           ].map((page) => (
             <a key={page.href} className="draft-page-item" href={page.href} target="_blank" rel="noopener noreferrer">
               <span className="draft-page-item__label">{page.label}</span>

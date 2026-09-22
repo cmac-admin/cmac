@@ -2088,6 +2088,16 @@ section[id],
   margin: 0;
 }
 
+.events-page__cta .apply-btn {
+  min-width: min(20rem, 100%);
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+  box-shadow: 0 12px 22px rgba(21, 44, 70, 0.18);
+}
+
 .apply-btn--secondary {
   background: transparent;
   color: var(--brand-blue);
