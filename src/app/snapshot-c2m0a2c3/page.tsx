@@ -841,6 +841,28 @@ export default function SnapshotPage() {
         </div>
       </nav>
 
+      <section className="content-card draft-page-panel">
+        <div className="draft-page-panel__header">
+          <p className="subpage-kicker">Website in progress</p>
+          <h2>Pages under construction</h2>
+        </div>
+        <p className="muted-copy">
+          These pages are intentionally kept off the live navigation while they are still in draft form.
+        </p>
+        <div className="draft-page-list" aria-label="Internal draft pages">
+          {[
+            { href: "/cmac/order-here", label: "Order Here", description: "School event order portal" },
+            { href: "/cmac/order-form", label: "Order Form", description: "Checkout and form embed" },
+            { href: "/cmac/our-impact", label: "Our Impact", description: "Internal impact archive" },
+          ].map((page) => (
+            <a key={page.href} className="draft-page-item" href={page.href} target="_blank" rel="noopener noreferrer">
+              <span className="draft-page-item__label">{page.label}</span>
+              <span className="draft-page-item__meta">{page.description}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="content-card snapshot-summary-bar">
         <div className="snapshot-pill-row">
           <span className="snapshot-pill">📅 {events.length} Total Events</span>

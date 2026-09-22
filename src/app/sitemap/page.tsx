@@ -3,7 +3,7 @@ import Link from "next/link";
 const siteLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About CMAC" },
-  { href: "/our-impact", label: "Our Impact" },
+  { href: "/impact-coming-soon", label: "Our Impact" },
   { href: "/contact", label: "Contact" },
   { href: "/get-involved", label: "Get Involved" },
   { href: "/get-involved/board-review", label: "Get Involved Board Review" },
@@ -17,8 +17,6 @@ const siteLinks = [
   { href: "/faq", label: "FAQ" },
   { href: "/sponsors", label: "Community Sponsors" },
   { href: "/test", label: "Brand Test Page" },
-  { href: "/order-form", label: "Order Form" },
-  { href: "/order-here", label: "Order Here" },
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 

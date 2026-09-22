@@ -4,19 +4,19 @@ import { HomeImpactStats } from "@/components/LiveStats";
 
 const premierSponsors = [
   {
-    name: "ONE RIVER",
-    logo: "/cmac/one-river-logo-orange.png",
-    website: "https://portjefferson.oneriverschool.com/",
+    name: "Partner with CMAC",
+    logo: "/cmac/cmac-logo.png",
+    website: "/sponsors",
   },
   {
-    name: "School of Rock Port Jefferson",
-    logo: "/cmac/school-of-rock-port-jefferson-logo.png",
-    website: "https://www.schoolofrock.com/locations/portjefferson",
+    name: "Support the Arts",
+    logo: "/cmac/cmac-logo.png",
+    website: "/sponsors",
   },
   {
-    name: "Bellwether",
-    logo: "/cmac/bellwether-band-logo.png",
-    website: "https://bellwether.band/",
+    name: "Community Partnership",
+    logo: "/cmac/cmac-logo.png",
+    website: "/sponsors",
   },
 ];
 
@@ -50,12 +50,9 @@ export default function Home() {
 
         <article className="hero-card">
           <header className="hero-card__header">
-            <p>
-              <span />
-              Now Playing
-            </p>
-            <div className="hero-card__season-wrap">
-              <time>2026 — 27</time>
+            <div className="hero-card__titleline" aria-label="Now playing 2026 to 2027 season">
+              <span className="hero-card__label">NOW PLAYING</span>
+              <time dateTime="2026-2027">2026–27</time>
               <span className="hero-card__season">SEASON</span>
             </div>
           </header>
@@ -75,7 +72,7 @@ export default function Home() {
               <Link href="/get-involved" className="hero-card__button hero-card__button--primary">
                 Join CMAC
               </Link>
-              <Link href="/our-impact" className="hero-card__button hero-card__button--secondary">
+              <Link href="/impact-coming-soon" className="hero-card__button hero-card__button--secondary">
                 See our impact
               </Link>
             </div>
@@ -100,6 +97,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   aria-label={`Visit ${sponsor.name}`}
                 >
+                  <span className="premier-sponsor__label">YOUR LOGO HERE</span>
                   <img src={sponsor.logo} alt={`${sponsor.name} logo`} />
                 </a>
               ))}
@@ -108,25 +106,9 @@ export default function Home() {
         </section>
       )}
 
-      <section className="home-why-support">
-        <div className="home-why-support__header">
-          <p className="section-kicker">Why support CMAC?</p>
-          <h2>When arts education is supported, students grow with confidence, creativity, and belonging.</h2>
-        </div>
-        <p>
-          CMAC helps remove barriers so students can keep learning, performing, and building
-          confidence through music and the arts — whether through a scholarship, a classroom grant,
-          or a community donation.
-        </p>
-        <p className="home-upcoming-events">
-          Looking for upcoming performances or ways to support a show? Visit our <Link href="/events">Events</Link> page or <Link href="/get-involved#direct-donate">Support an Event</Link>.
-        </p>
-      </section>
-
-
       <HomeImpactStats />
       <p className="impact-stats__cta">
-        <Link href="/our-impact" className="text-link">
+        <Link href="/impact-coming-soon" className="text-link">
           See our impact →
         </Link>
       </p>
@@ -163,7 +145,7 @@ export default function Home() {
           </article>
           <article className="home-pathway-card">
             <p className="home-pathway-card__eyebrow">Fundraising</p>
-            <h3>Support our Fundraisers</h3>
+            <h3>Support CMAC Fundraisers</h3>
             <p>Help fund scholarships, teacher grants, and student-centered arts opportunities through CMAC events and campaigns.</p>
             <Link href="/get-involved#direct-donate" className="mini-cta-link">
               Give today
@@ -181,7 +163,7 @@ export default function Home() {
           <Link href="/get-involved" className="hero-card__button hero-card__button--primary">
             Join CMAC
           </Link>
-          <Link href="/our-impact" className="hero-card__button hero-card__button--secondary">
+          <Link href="/impact-coming-soon" className="hero-card__button hero-card__button--secondary">
             See our impact
           </Link>
         </div>

@@ -144,7 +144,6 @@ export default function RootLayout({
             <Link href="/events">Events</Link>
             <Link href="/news">News</Link>
             <Link href="/sponsors">Sponsors</Link>
-            <Link href="/order-here">Order Here</Link>
           </nav>
         </header>
         <div id="main-content" tabIndex={-1}>
@@ -154,7 +153,7 @@ export default function RootLayout({
         <footer className="site-footer">
           <nav className="site-footer__links" aria-label="Footer">
             <Link href="/get-involved#direct-donate">Donate</Link>
-            <Link href="/our-impact">Our Impact</Link>
+            <Link href="/impact-coming-soon">Our Impact</Link>
             <Link href="/faq">FAQ</Link>
             <Link href="/contact">Contact CMAC</Link>
           </nav>

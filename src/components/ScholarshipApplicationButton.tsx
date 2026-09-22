@@ -13,6 +13,10 @@ export function ScholarshipApplicationButton({ href, label }: ScholarshipApplica
       return;
     }
 
+    const popupTarget = href.includes("docs.google.com/forms") && !href.includes("embedded=true")
+      ? `${href}${href.includes("?") ? "&" : "?"}embedded=true`
+      : href;
+
     const popup = window.open(
       "",
       "cmacScholarshipPopup",
@@ -52,7 +56,7 @@ export function ScholarshipApplicationButton({ href, label }: ScholarshipApplica
         </head>
         <body>
           <div class="popup-header">CMAC Scholarship Application</div>
-          <iframe src="${href}" title="CMAC Scholarship Application"></iframe>
+          <iframe src="${popupTarget}" title="CMAC Scholarship Application"></iframe>
         </body>
       </html>`);
 

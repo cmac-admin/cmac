@@ -14,26 +14,24 @@ export const metadata: Metadata = {
   },
 };
 
-const sponsors = [
+const sponsorshipLevels = [
   {
-    name: "ONE RIVER - Port Jefferson",
-    website: "https://portjefferson.oneriverschool.com/",
-    logo: "/cmac/one-river-logo-orange.png",
+    title: "Community Supporter",
+    detail: "$100 donation or class passes, gift cards, or other items for an art-themed or music-themed basket.",
+    benefits: [
+      "Supports student scholarships and teacher grants",
+      "Ideal for family or business contributions",
+      "Recognition as a CMAC community supporter",
+    ],
   },
   {
-    name: "School of Rock Port Jefferson",
-    website: "https://www.schoolofrock.com/locations/portjefferson",
-    logo: "/cmac/school-of-rock-port-jefferson-logo.png",
-  },
-  {
-    name: "Theatre Three",
-    website: "https://theatrethree.com/",
-    logo: "/cmac/theatre-three-logo.png",
-  },
-  {
-    name: "Bellwether",
-    website: "https://bellwether.band/",
-    logo: "/cmac/bellwether-band-logo.png",
+    title: "Premier Community Supporter",
+    detail: "$200 donation to help underwrite student arts opportunities and community programming.",
+    benefits: [
+      "Higher visibility on CMAC recognition materials",
+      "Featured support for community arts initiatives",
+      "Priority recognition for business sponsors",
+    ],
   },
 ];
 
@@ -50,42 +48,33 @@ export default function SponsorsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <h1>Thank You to Our Community Supporters</h1>
+        <h1>Support the Arts in Comsewogue</h1>
         <p>
-          We are grateful to every individual, family, and business that invests
-          in Comsewogue students and helps keep music, drama, and visual arts
-          strong in our district.
+          CMAC is building a stronger future for student musicians, artists, and
+          performers through scholarships, teacher grants, and community support.
+          We welcome partnerships from businesses and community members who want to
+          invest in the arts.
         </p>
       </section>
 
       <section className="content-card">
-        <div className="supporter-heading-row">
-          <span className="supporter-badge" aria-label="Premier supporter badge">
-            ★
-          </span>
-          <h2>Premier Community Sponsors</h2>
-        </div>
+        <h2>Sponsorship Opportunities</h2>
         <p className="muted-copy">
-          Thank you to our Premier Community Sponsors for their generous support
-          of student scholarships and teacher grants.
+          We are currently welcoming businesses, families, and community partners
+          who want to help fund student opportunities and strengthen arts education
+          in our schools.
         </p>
-        <div className="sponsor-grid sponsor-grid--featured">
-          {sponsors.map((sponsor) => (
-            <article key={sponsor.name} className="sponsor-tile">
-              <a
-                href={sponsor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sponsor-link"
-              >
-                <div className="sponsor-logo-placeholder sponsor-logo-placeholder--image">
-                  <img
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    className="sponsor-logo-image"
-                  />
-                </div>
-              </a>
+
+        <div className="membership-grid membership-grid--compact">
+          {sponsorshipLevels.map((level) => (
+            <article key={level.title} className="membership-tier">
+              <h3>{level.title}</h3>
+              <p>{level.detail}</p>
+              <ul>
+                {level.benefits.map((benefit) => (
+                  <li key={benefit}>{benefit}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
@@ -94,10 +83,10 @@ export default function SponsorsPage() {
       <section className="content-card community-support-card">
         <h2>Community Supporters</h2>
         <p className="muted-copy community-support-copy">
-          We also thank the local businesses and organizations that contribute
-          class passes, gift cards, merchandise, and other items for our raffle
-          baskets and fundraising efforts. Your support helps keep CMAC
-          accessible and thriving.
+          We appreciate the businesses and community members who contribute time,
+          materials, class passes, gift cards, merchandise, and raffle items to
+          help CMAC thrive. Your support creates more opportunities for students
+          across the district.
         </p>
         <div className="family-supporter-ticker community-supporter-ticker" aria-label="Community supporter thank-you list">
           <div className="family-supporter-ticker__track">
@@ -113,30 +102,27 @@ export default function SponsorsPage() {
       <section className="content-card community-support-card">
         <h2>Individual &amp; Family Supporters</h2>
         <p className="muted-copy community-support-copy">
-          We are deeply grateful to the individuals and families whose continued
-          support makes student scholarships possible.
+          We are grateful to the individuals and families whose generous support
+          helps make scholarships and arts-learning opportunities possible.
         </p>
         <FamilySupporterTicker />
       </section>
 
       <section className="content-card community-support-card">
-        <h2>Become a Supporter</h2>
+        <h2>Become a Partner</h2>
         <p className="muted-copy community-support-copy">
-          Your support directly funds scholarships for students in grades 3–12
-          and grants for music and art teachers.
+          Your support helps fund scholarships for students in grades 3–12 and
+          grants for teachers who are creating meaningful arts experiences in the
+          classroom.
         </p>
         <p className="muted-copy community-support-copy">
-          <strong>Community Supporter</strong> — $100/year
-          <br />
-          <strong>Premier Community Supporter</strong> — $150+/year
-        </p>
-        <p className="muted-copy community-support-copy">
-          Benefits can include recognition on this page, logo placement at
-          events, and social media highlights.
+          Partnership levels can include recognition on our website, event visibility,
+          social media highlights, and in-kind or sponsor-based support tailored to
+          your business or family goals.
         </p>
         <div className="scholarship-actions">
           <Link href="/get-involved" className="apply-btn">
-            Join as a Supporter
+            Explore Partnership
           </Link>
           <Link href="/contact" className="text-link">
             Contact CMAC

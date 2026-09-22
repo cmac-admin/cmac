@@ -3,7 +3,7 @@
 import { useMemo, useState, type FormEvent } from "react";
 
 const emailAddress = "comsewoguemusicandarts@gmail.com";
-const formEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT;
+const formEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ?? "https://formspree.io/f/mppzjqjo";
 const schoolOptions = [
   "Comsewogue High School",
   "JFK Middle School",
@@ -63,7 +63,7 @@ export default function ContactForm() {
     subject: string;
     body: string;
   }) => {
-    const mailtoHref = `mailto:${emailAddress}?subject=${encodeURIComponent(payload.subject)}&cc=${encodeURIComponent(payload.email)}&body=${encodeURIComponent(payload.body)}`;
+    const mailtoHref = `mailto:${emailAddress}?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(payload.body)}`;
     window.location.href = mailtoHref;
   };
 
@@ -112,7 +112,6 @@ export default function ContactForm() {
             body,
             page: pageLocation,
             _replyto: email,
-            _cc: email,
           }),
         });
 
@@ -126,7 +125,7 @@ export default function ContactForm() {
         setSchool("");
         setCustomSchool("");
         setStatus("success");
-        setStatusMessage("Message Sent. A copy has been sent to the email address you entered.");
+        setStatusMessage("Thanks! Your message has been sent. We will be in touch soon.");
         return;
       } catch (error) {
         setStatus("error");

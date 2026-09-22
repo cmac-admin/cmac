@@ -38,7 +38,7 @@ export default async function AboutPage() {
 
       <AboutImpactStats />
       <p className="impact-stats__cta">
-        <Link href="/our-impact" className="text-link">
+        <Link href="/impact-coming-soon" className="text-link">
           See our impact →
         </Link>
       </p>
@@ -122,20 +122,24 @@ export default async function AboutPage() {
           Student Representatives
         </h3>
         <div className="board-grid board-grid--students board-grid--students-centered">
-          <div className="board-card board-card--student">
-            <div className="board-card__photo" aria-hidden="true">
-              <span className="board-card__initials">JP</span>
+          <div className="board-card board-card--student board-card--vacant">
+            <div className="board-card__photo board-card__photo--vacant" aria-hidden="true">
+              <span className="board-card__vacant-icon">SR</span>
             </div>
-            <p className="board-card__name">James Perrone</p>
-            <p className="board-card__title">Student Rep</p>
+            <p className="board-card__name">Student Representative</p>
+            <p className="board-card__title board-card__title--open">Open role</p>
+            <p className="board-card__note">We are actively seeking student leaders who want to help shape the future of CMAC.</p>
           </div>
-          <div className="board-card board-card--student">
-            <div className="board-card__photo" aria-hidden="true">
-              <span className="board-card__initials">MP</span>
+
+          <div className="board-card board-card--student board-card--vacant">
+            <div className="board-card__photo board-card__photo--vacant" aria-hidden="true">
+              <span className="board-card__vacant-icon">SR</span>
             </div>
-            <p className="board-card__name">Michael Provenzale</p>
-            <p className="board-card__title">Student Rep</p>
+            <p className="board-card__name">Student Representative</p>
+            <p className="board-card__title board-card__title--open">Open role</p>
+            <p className="board-card__note">We are actively seeking student leaders who want to help shape the future of CMAC.</p>
           </div>
+
           <div className="board-card board-card--student board-card--vacant">
             <div className="board-card__photo board-card__photo--vacant" aria-hidden="true">
               <span className="board-card__vacant-icon">SR</span>

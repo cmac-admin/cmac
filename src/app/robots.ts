@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/snapshot-c2m0a2c3/", "/order-form/"],
+      disallow: ["/snapshot-c2m0a2c3/", "/order-form/", "/order-here/", "/our-impact/"],
     },
     sitemap: "https://www.comsewoguemusicandarts.org/sitemap.xml",
   };

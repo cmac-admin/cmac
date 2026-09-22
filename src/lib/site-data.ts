@@ -55,11 +55,11 @@ export const DEFAULT_FORM_LINKS: FormLinkMap = {
   "senior-scholarship":
     "https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform",
   "summer-scholarship":
-    "https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform",
+    "https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform?usp=sharing&ouid=110434350721644737538",
   "teacher-grant":
     "https://docs.google.com/document/d/1NEmmvCaJiTQ7hQDIYkMWc2D85RBUprq-Iq7pR4WUqkM/edit?tab=t.0",
   "scholarship-grant-feedback":
-    "https://docs.google.com/forms/d/1_BzbL5t77ZvvjKDEjAaNElxbBsbH1u6Qqn5yEtM_PdY/edit",
+    "https://docs.google.com/forms/d/1_BzbL5t77ZvvjKDEjAaNElxbBsbH1u6Qqn5yEtM_PdY/viewform",
   "order-form":
     "https://docs.google.com/forms/d/e/1FAIpQLScrd01PmvNBLsV4ZRqhlKSNRGCgykUOClM61xDVlFGhrXjKiA/viewform?embedded=true",
 };
@@ -204,6 +204,11 @@ export function parseOrderSchoolsCsv(csv: string): OrderSchool[] {
         "ornament_url",
       ]);
 
+    const hasOrderUrls = Boolean(flowersUrl || ornamentsUrl);
+    if (!hasOrderUrls) {
+      return [];
+    }
+
     const longTitleCell = findCell(row, headers, [
       "long_title",
       "use_long_title",
@@ -221,7 +226,15 @@ export function parseOrderSchoolsCsv(csv: string): OrderSchool[] {
     ];
   });
 
-  return parsedSchools.length > 0 ? parsedSchools : DEFAULT_ORDER_SCHOOLS;
+  const dedupedMap = new Map<string, OrderSchool>();
+  for (const school of parsedSchools) {
+    const normalizedKey = school.name.trim();
+    if (!dedupedMap.has(normalizedKey)) {
+      dedupedMap.set(normalizedKey, school);
+    }
+  }
+
+  return dedupedMap.size > 0 ? Array.from(dedupedMap.values()) : DEFAULT_ORDER_SCHOOLS;
 }
 
 export async function fetchOrderSchools(): Promise<OrderSchool[]> {

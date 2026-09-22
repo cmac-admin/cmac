@@ -173,7 +173,7 @@ export default async function MembershipPage() {
       </section>
 
       <section className="content-card" id="other-ways-to-give">
-        <h2>Performance-Night Fundraising</h2>
+        <h2>Support CMAC Fundraisers</h2>
         <p className="muted-copy">
           At most concerts and drama productions, CMAC offers handcrafted items that directly support
           scholarships and grants. These include personalized ornaments, fresh flower bouquets, and
