@@ -22,6 +22,10 @@ export default async function AboutPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <p className="subpage-kicker">What is CMAC?</p>
+        <p className="subpage-hero__statement">
+          A volunteer-run nonprofit dedicated to keeping music, drama, and visual
+          arts strong and accessible for every student in the Comsewogue School District.
+        </p>
         <p>
           Comsewogue Music & Arts Corp. (CMAC) is a volunteer-run 501(c)(3)
           nonprofit dedicated to keeping music, drama, and visual arts strong for
