@@ -21,6 +21,7 @@ export default async function AboutPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
+        <p className="subpage-kicker">What is CMAC?</p>
         <h1 className="about-title-one-line">Comsewogue Music & Arts Corp.</h1>
         <p>
           Comsewogue Music & Arts Corp. (CMAC) is a volunteer-run 501(c)(3)
