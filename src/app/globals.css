@@ -1428,18 +1428,11 @@ a {
 }
 
 .subpage-kicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
-  padding: 0.35rem 0.75rem;
-  border: 1px solid rgba(245, 209, 22, 0.55);
-  border-radius: 999px;
-  background: rgba(245, 209, 22, 0.12);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: var(--gold);
-  font-size: clamp(0.82rem, 1.1vw, 1rem);
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
   font-weight: 900;
 }
 
