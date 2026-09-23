@@ -40,7 +40,6 @@ export default function Home() {
         <div className="hero__slideshow" aria-hidden="true">
           <div className="hero__slide hero__slide--one" />
           <div className="hero__slide hero__slide--two" />
-          <div className="hero__slide hero__slide--three" />
         </div>
 
         <div className="hero__meta">
@@ -56,9 +55,6 @@ export default function Home() {
               <time dateTime="2026-2027">2026–27</time>
               <span className="hero-card__season">SEASON</span>
             </div>
-            <Link href="/get-involved" className="hero-card__support-cta">
-              Support This Season
-            </Link>
           </header>
 
           <div
