@@ -55,6 +55,9 @@ export default function Home() {
               <time dateTime="2026-2027">2026–27</time>
               <span className="hero-card__season">SEASON</span>
             </div>
+            <Link href="/get-involved" className="hero-card__support-cta">
+              Support This Season
+            </Link>
           </header>
 
           <div
@@ -76,7 +79,10 @@ export default function Home() {
                 See our impact
               </Link>
             </div>
-            <p className="hero-card__footnote">Volunteer. Donate. Help students thrive.</p>
+            <p className="hero-card__footnote">
+              Volunteer. Donate. Help students thrive.
+              <span className="hero-card__footnote--accent"> SUPPORT THE SEASON.</span>
+            </p>
           </div>
         </article>
       </section>

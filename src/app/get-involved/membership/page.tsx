@@ -67,6 +67,7 @@ export default async function MembershipPage() {
   return (
     <main className="subpage get-involved-page">
       <section className="subpage-hero" id="membership-levels">
+        <p className="subpage-kicker">Why support CMAC?</p>
         <h1>CMAC Membership</h1>
         <p>
           Membership in Comsewogue Music &amp; Arts Corp. directly supports student musicians,
@@ -102,17 +103,32 @@ export default async function MembershipPage() {
           drama projects, and summer arts programs for Comsewogue students in grades 3–12.
         </p>
         <div className="membership-grid membership-grid--compact">
-          {membershipLevels.map(({ level, amount, benefits }) => (
-            <article key={level} className="membership-tier">
-              <h3>{level}</h3>
-              <p>{amount}</p>
-              <ul>
-                {benefits.map((benefit) => (
-                  <li key={`${level}-${benefit}`}>{benefit}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          {membershipLevels.map(({ level, amount, benefits }) => {
+            const normalizedLevel = level.toLowerCase().replace(/\s+/g, " ").trim();
+            const isCommunitySupporter = normalizedLevel.includes("community supporter");
+            const isPremierCommunitySupporter = normalizedLevel.includes("premier community supporter");
+
+            return (
+              <article
+                key={level}
+                className={[
+                  "membership-tier",
+                  isCommunitySupporter ? "membership-tier--business" : "",
+                  isPremierCommunitySupporter ? "membership-tier--business-premier" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <h3>{level}</h3>
+                <p>{amount}</p>
+                <ul>
+                  {benefits.map((benefit) => (
+                    <li key={`${level}-${benefit}`}>{benefit}</li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
         </div>
         <p className="muted-copy membership-tax-note">
           <strong>All donations are tax-deductible.</strong> Your bank statement or canceled check

@@ -73,7 +73,7 @@ export default async function GetInvolvedPage() {
       business: false,
     },
     {
-      level: "Community\nSupporter",
+      level: "Community Supporter",
       amount: "$100 suggested",
       ctaWords: ["JOIN", "COMMUNITY", "SUPPORTER"],
       benefits: [
@@ -84,7 +84,7 @@ export default async function GetInvolvedPage() {
       business: true,
     },
     {
-      level: "Premier Community\nSupporter",
+      level: "Premier Community Supporter",
       amount: "$200 suggested",
       ctaWords: ["JOIN", "PREMIER", "COMMUNITY", "SUPPORTER"],
       benefits: [
@@ -118,9 +118,8 @@ export default async function GetInvolvedPage() {
           When arts education is supported, students grow with confidence, creativity, and belonging.
         </p>
         <p>
-          Membership in Comsewogue Music &amp; Arts Corp. directly supports student musicians,
-          artists, performers, and creators through scholarships, teacher grants, and summer arts
-          programs.
+          Membership in Comsewogue Music &amp; Arts Corp. directly supports musicians, artists,
+          performers and creators through teacher grants and scholarships.
         </p>
 
         <nav className="get-involved-page-nav" aria-label="Quick navigation">
@@ -142,46 +141,18 @@ export default async function GetInvolvedPage() {
           drama projects, and summer arts programs for Comsewogue Students.
         </p>
         <div className="membership-grid membership-grid--compact">
-          {membershipLevels.map(({ level, amount, benefits, ctaWords, business }) => (
-            <article
-              key={level}
-              className={[
-                "membership-tier",
-                business ? "membership-tier--business" : "",
-                level === "Premier Community Supporter" ? "membership-tier--business-premier" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <h3>{level}</h3>
-              <p>{amount}</p>
-              <ul>
-                {benefits.map((benefit) => (
-                  <li key={`${level}-${benefit}`}>{benefit}</li>
-                ))}
-              </ul>
-              <a href={membershipFormUrl} className="membership-tier__button" target="_blank" rel="noreferrer">
-                {ctaWords.map((word) => (
-                  <span key={`${level}-${word}`} className="membership-tier__button-word">
-                    {word}
-                  </span>
-                ))}
-              </a>
-            </article>
-          ))}
-        </div>
+          {membershipLevels.map(({ level, amount, benefits, ctaWords, business }) => {
+            const normalizedLevel = level.toLowerCase().replace(/\s+/g, " ").trim();
+            const isCommunitySupporter = normalizedLevel.includes("community supporter");
+            const isPremierCommunitySupporter = normalizedLevel.includes("premier community supporter");
 
-        <div className="membership-legacy-block">
-          <p className="membership-legacy-block__label">Previous look</p>
-          <div className="membership-grid membership-grid--legacy">
-            {membershipLevels.map(({ level, amount, benefits, ctaWords, business }) => (
+            return (
               <article
-                key={`${level}-legacy`}
+                key={level}
                 className={[
                   "membership-tier",
-                  "membership-tier--legacy",
-                  business ? "membership-tier--business" : "",
-                  level === "Premier Community Supporter" ? "membership-tier--business-premier" : "",
+                  business || isCommunitySupporter ? "membership-tier--business" : "",
+                  isPremierCommunitySupporter ? "membership-tier--business-premier" : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -190,20 +161,21 @@ export default async function GetInvolvedPage() {
                 <p>{amount}</p>
                 <ul>
                   {benefits.map((benefit) => (
-                    <li key={`${level}-legacy-${benefit}`}>{benefit}</li>
+                    <li key={`${level}-${benefit}`}>{benefit}</li>
                   ))}
                 </ul>
                 <a href={membershipFormUrl} className="membership-tier__button" target="_blank" rel="noreferrer">
                   {ctaWords.map((word) => (
-                    <span key={`${level}-legacy-${word}`} className="membership-tier__button-word">
+                    <span key={`${level}-${word}`} className="membership-tier__button-word">
                       {word}
                     </span>
                   ))}
                 </a>
               </article>
-            ))}
-          </div>
+            );
+          })}
         </div>
+
 
         <p className="membership-benefits__prompt">Want more details on each level?</p>
         <p className="subpage-link">

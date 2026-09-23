@@ -25,6 +25,7 @@ export default async function ScholarshipsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
+        <p className="subpage-kicker">Apply Here</p>
         <h1>Scholarships</h1>
         <p>
           CMAC scholarships help Comsewogue students continue growing in music,
@@ -32,11 +33,22 @@ export default async function ScholarshipsPage() {
           for graduating seniors and one for students in grades 3–11 who want to
           keep studying over the summer.
         </p>
+
+        <nav className="get-involved-page-nav scholarship-picker" aria-label="Scholarship navigation">
+          <span className="get-involved-page-nav__label">Choose Your Scholarship</span>
+          <div className="get-involved-page-nav__link-group scholarship-picker__links">
+            <a href="#senior-scholarship" className="get-involved-page-nav__link">
+              Senior
+            </a>
+            <a href="#grades-3-11-scholarship" className="get-involved-page-nav__link">
+              Grades 3-11
+            </a>
+          </div>
+        </nav>
       </section>
 
-      <section className="content-card scholarship-block">
+      <section className="content-card scholarship-block" id="senior-scholarship">
         <div className="scholarship-header">
-          <p className="scholarship-kicker">CMAC Senior Scholarship</p>
           <h2>CMAC Senior Scholarships (Grade 12)</h2>
         </div>
 
@@ -88,7 +100,7 @@ export default async function ScholarshipsPage() {
         </div>
       </section>
 
-      <section className="content-card scholarship-block">
+      <section className="content-card scholarship-block" id="grades-3-11-scholarship">
         <div className="scholarship-header">
           <p className="scholarship-kicker">Summer Study Scholarship</p>
           <h2>CMAC Summer Music & Arts Study Scholarships (Grades 3–11)</h2>
