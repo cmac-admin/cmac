@@ -18,7 +18,6 @@ export default function NewsPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <p className="subpage-kicker">What&rsquo;s new with CMAC?</p>
-        <h1>Latest Updates from CMAC</h1>
         <p>
           Follow announcements, highlights, and student achievements from
           programs across the district.
