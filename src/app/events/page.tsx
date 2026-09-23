@@ -18,6 +18,10 @@ export default function EventsPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <p className="subpage-kicker">Where does CMAC show up?</p>
+        <p className="subpage-hero__statement">
+          At concerts, drama productions, art shows, and celebrations across the
+          district — supporting the moments that matter most.
+        </p>
         <p>
           CMAC proudly supports the concerts, productions, and showcases that
           bring music, theater, and visual arts to life across the Comsewogue
