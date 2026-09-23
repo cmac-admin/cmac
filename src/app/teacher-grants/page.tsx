@@ -29,7 +29,7 @@ export default async function TeacherGrantsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Inspire</p>
+        <p className="subpage-kicker">How does CMAC inspire?</p>
         <h1>CMAC Teacher Grants</h1>
         <p>
           CMAC Teacher Grants help music and art teachers in the Comsewogue

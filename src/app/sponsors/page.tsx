@@ -48,6 +48,7 @@ export default function SponsorsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
+        <p className="subpage-kicker">Who supports CMAC?</p>
         <h1>Support the Arts in Comsewogue</h1>
         <p>
           CMAC is building a stronger future for student musicians, artists, and

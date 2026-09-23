@@ -25,7 +25,7 @@ export default async function ScholarshipsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Apply Here</p>
+        <p className="subpage-kicker">Who does CMAC help?</p>
         <h1>Scholarships</h1>
         <p>
           CMAC scholarships help Comsewogue students continue growing in music,
