@@ -133,7 +133,8 @@ export default async function GetInvolvedPage() {
       </section>
 
       <section className="content-card">
-        <h2>Membership Levels (Suggested Donations)</h2>
+        <h2>Membership Levels</h2>
+        <p className="membership-levels-note">Suggested Donations</p>
         <p className="muted-copy">
           Your membership and donations fund student scholarships, teacher grants for music, art, and
           drama projects, and summer arts programs for Comsewogue Students.
