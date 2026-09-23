@@ -4006,6 +4006,15 @@ section[id],
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.membership-levels-note {
+  margin: -0.35rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .donation-qr-card {
   display: flex;
   flex-direction: column;
