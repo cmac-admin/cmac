@@ -25,8 +25,7 @@ export default async function ScholarshipsPage() {
   return (
     <main className="subpage">
       <section className="subpage-hero">
-        <p className="subpage-kicker">Who does CMAC help?</p>
-        <h1>Scholarships</h1>
+        <p className="subpage-kicker">Who does CMAC support?</p>
         <p>
           CMAC scholarships help Comsewogue students continue growing in music,
           visual arts, and related creative fields. We offer two programs: one

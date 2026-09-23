@@ -30,7 +30,6 @@ export default async function TeacherGrantsPage() {
     <main className="subpage">
       <section className="subpage-hero">
         <p className="subpage-kicker">How does CMAC inspire?</p>
-        <h1>CMAC Teacher Grants</h1>
         <p>
           CMAC Teacher Grants help music and art teachers in the Comsewogue
           School District bring creative ideas to life in the classroom. These
