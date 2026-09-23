@@ -13,37 +13,6 @@ const SHEET_QUERY_URL = buildGoogleSheetQueryUrl(
   CMAC_SITE_DATA_SHEET_ID
 );
 
-function parseCsvLine(line: string): string[] {
-  const values: string[] = [];
-  let current = "";
-  let inQuotes = false;
-
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-
-    if (char === '"') {
-      if (inQuotes && line[index + 1] === '"') {
-        current += '"';
-        index += 1;
-      } else {
-        inQuotes = !inQuotes;
-      }
-      continue;
-    }
-
-    if (char === "," && !inQuotes) {
-      values.push(current.trim());
-      current = "";
-      continue;
-    }
-
-    current += char;
-  }
-
-  values.push(current.trim());
-  return values.map((value) => value.replace(/^"|"$/g, ""));
-}
-
 const formatAwardValue = (value: string) => {
   const trimmed = value.trim();
 
@@ -212,12 +181,36 @@ function useLiveStats(mode: StatsMode = "general") {
       }
     };
 
-    loadStats();
-    const intervalId = window.setInterval(loadStats, 5 * 60 * 1000);
+    let intervalId: number | undefined;
+    const startPolling = () => {
+      if (document.hidden || intervalId !== undefined) {
+        return;
+      }
+
+      void loadStats();
+      intervalId = window.setInterval(loadStats, 5 * 60 * 1000);
+    };
+    const stopPolling = () => {
+      if (intervalId !== undefined) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopPolling();
+      } else {
+        startPolling();
+      }
+    };
+
+    startPolling();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       active = false;
-      window.clearInterval(intervalId);
+      stopPolling();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [mode]);
 

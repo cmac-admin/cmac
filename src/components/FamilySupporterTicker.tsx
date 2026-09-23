@@ -141,12 +141,36 @@ export function FamilySupporterTicker() {
       }
     };
 
-    loadSupporters();
-    const intervalId = window.setInterval(loadSupporters, 5 * 60 * 1000);
+    let intervalId: number | undefined;
+    const startPolling = () => {
+      if (document.hidden || intervalId !== undefined) {
+        return;
+      }
+
+      void loadSupporters();
+      intervalId = window.setInterval(loadSupporters, 5 * 60 * 1000);
+    };
+    const stopPolling = () => {
+      if (intervalId !== undefined) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopPolling();
+      } else {
+        startPolling();
+      }
+    };
+
+    startPolling();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       active = false;
-      window.clearInterval(intervalId);
+      stopPolling();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

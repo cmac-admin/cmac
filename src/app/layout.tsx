@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
-import { ContactPopupLink } from "@/components/ContactPopupLink";
 import { HeaderJoinButton } from "../components/HeaderJoinButton";
-import { BoardFeedbackForm } from "@/components/BoardFeedbackForm";
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -21,7 +20,6 @@ const headingFont = Merriweather({
 });
 
 const siteUrl = "https://www.comsewoguemusicandarts.org";
-const BOARD_REVIEW_ENABLED = false;
 
 export const metadata: Metadata = {
   title: {
@@ -114,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <Link href="/" className="floating-logo" aria-label="CMAC Home">
-          <img
+          <Image
             src="/cmac/cmac-logo.png"
             alt="Comsewogue Music and Arts Connection logo"
             width={92}
@@ -149,7 +147,6 @@ export default function RootLayout({
         <div id="main-content" tabIndex={-1}>
           {children}
         </div>
-        {BOARD_REVIEW_ENABLED && <BoardFeedbackForm />}
         <footer className="site-footer">
           <nav className="site-footer__links" aria-label="Footer">
             <Link href="/get-involved#direct-donate">Donate</Link>

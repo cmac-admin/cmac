@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Logo Contest",
@@ -31,17 +32,23 @@ export default function LogoContestStoryPage() {
         </p>
 
         <div className="news-images story-images">
-          <img
+          <Image
             src="https://www.comsewoguemusicandarts.org/wp-content/uploads/2025/03/IMG_1099-Geana-Ottenwalder.jpeg"
             alt="Logo contest winner Geana Ottenwalder"
+            width={1200}
+            height={900}
           />
-          <img
+          <Image
             src="https://www.comsewoguemusicandarts.org/wp-content/uploads/2025/03/CMAC-logo.jpg"
             alt="Winning CMAC logo graphic"
+            width={1200}
+            height={900}
           />
-          <img
+          <Image
             src="https://www.comsewoguemusicandarts.org/wp-content/uploads/2025/03/Winning-Poster-1.jpg"
             alt="Winning poster featuring the CMAC logo"
+            width={1200}
+            height={900}
           />
         </div>
 

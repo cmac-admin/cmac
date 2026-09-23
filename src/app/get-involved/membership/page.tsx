@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 
@@ -217,19 +218,23 @@ export default async function MembershipPage() {
                   @CMAC-Comsewogue
                 </a>
               </p>
-              <img
+              <Image
                 className="qr-image qr-image--small"
                 src="/cmac/cmac-venmo-qr.png"
                 alt="CMAC Venmo QR code"
+                width={180}
+                height={180}
               />
             </div>
             <div className="donation-compact-method">
               <strong>Zelle</strong>
               <p>Scan the code in your banking app or use the QR code on this page.</p>
-              <img
+              <Image
                 className="qr-image qr-image--small"
                 src="/cmac/cmac-zelle-qr.png"
                 alt="CMAC Zelle QR code"
+                width={180}
+                height={180}
               />
             </div>
           </div>

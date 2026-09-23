@@ -7,18 +7,6 @@ import {
   type OrderSchool,
 } from "@/lib/site-data";
 
-const openOrderPopup = (url: string) => {
-  const popup = window.open(
-    url,
-    "cmacOrderPopup",
-    "width=960,height=760,top=100,left=140,resizable=yes,scrollbars=yes"
-  );
-
-  if (popup) {
-    popup.focus();
-  }
-};
-
 function OrderButton({
   href,
   label,
@@ -39,13 +27,14 @@ function OrderButton({
   }
 
   return (
-    <button
-      type="button"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="order-button"
-      onClick={() => openOrderPopup(href)}
     >
       {label}
-    </button>
+    </a>
   );
 }
 

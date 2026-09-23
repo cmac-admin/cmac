@@ -16,7 +16,6 @@ const siteLinks = [
   { href: "/news/logo-contest", label: "News: Logo Contest" },
   { href: "/faq", label: "FAQ" },
   { href: "/sponsors", label: "Community Sponsors" },
-  { href: "/test", label: "Brand Test Page" },
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
