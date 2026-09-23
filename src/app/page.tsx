@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { HomeImpactStats } from "@/components/LiveStats";
 
 const premierSponsors = [
@@ -81,7 +82,9 @@ export default function Home() {
             </div>
             <p className="hero-card__footnote">
               Volunteer. Donate. Help students thrive.
-              <span className="hero-card__footnote--accent"> SUPPORT THE SEASON.</span>
+              <Link href="/get-involved" className="hero-card__footnote--accent">
+                {" "}SUPPORT THE SEASON.
+              </Link>
             </p>
           </div>
         </article>
@@ -104,7 +107,12 @@ export default function Home() {
                   aria-label={`Visit ${sponsor.name}`}
                 >
                   <span className="premier-sponsor__label">YOUR LOGO HERE</span>
-                  <img src={sponsor.logo} alt={`${sponsor.name} logo`} />
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} logo`}
+                    width={96}
+                    height={96}
+                  />
                 </a>
               ))}
             </div>

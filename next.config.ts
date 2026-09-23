@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   trailingSlash: true,
   basePath: "/cmac",
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.comsewoguemusicandarts.org",
+      },
+    ],
+  },
   turbopack: {
     root: process.cwd(),
   },

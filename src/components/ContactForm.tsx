@@ -127,7 +127,7 @@ export default function ContactForm() {
         setStatus("success");
         setStatusMessage("Thanks! Your message has been sent. We will be in touch soon.");
         return;
-      } catch (error) {
+      } catch {
         setStatus("error");
         setStatusMessage("Your message could not be sent automatically. Opening your email app instead.");
         fallbackMailto(payload);

@@ -13,8 +13,6 @@ export function ContactPopupLink({ children, href = "/cmac/contact", ...props }:
       return;
     }
 
-    event.preventDefault();
-
     const width = 620;
     const height = 560;
     const left = Math.max(20, (window.screen.width - width) / 2);
@@ -23,11 +21,18 @@ export function ContactPopupLink({ children, href = "/cmac/contact", ...props }:
     const popupUrl = new URL(href, window.location.origin);
     popupUrl.searchParams.set("page", currentPage);
 
-    window.open(
+    const popup = window.open(
       popupUrl.toString(),
       "cmac-contact-popup",
-      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,noopener,noreferrer`
+      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
     );
+
+    // Only intercept the click if the popup actually opened; otherwise let the
+    // browser follow the ordinary href so the link never silently no-ops
+    // (e.g. when a popup blocker prevents window.open, or JS is unavailable).
+    if (popup) {
+      event.preventDefault();
+    }
   };
 
   return (
