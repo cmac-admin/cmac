@@ -25,12 +25,10 @@ const previewAreas = [
 export default function ImpactComingSoonPage() {
   return (
     <main className="subpage impact-coming-soon-page">
-      <section className="subpage-hero impact-coming-soon-hero">
-        <p className="subpage-kicker">Coming Soon</p>
-        <h1>Our Impact</h1>
-        <p>
-          We’re preparing a fuller story of the ways CMAC supports young artists,
-          teachers, and families across the Comsewogue School District.
+      <section className="subpage-hero">
+        <p className="subpage-kicker">Coming Soon - How does CMAC make a difference?</p>
+        <p className="subpage-hero__statement">
+          Hear it through the voices of students and teachers —stories that show the real impact of supporting the arts.
         </p>
       </section>
 
