@@ -25,13 +25,6 @@ export default async function AboutPage() {
         <p className="subpage-hero__statement">
           A volunteer-run nonprofit dedicated to keeping music, drama, and visual arts strong.
         </p>
-        <p>
-          Founded in 2023, we provide scholarships for students in grades 3–12
-          and grants that help music, art, and drama teachers create meaningful
-          classroom and performance experiences. Everything we do is made
-          possible by parents, community members, and student representatives
-          who believe the arts are essential.
-        </p>
       </section>
 
       <AboutImpactStats />
@@ -43,6 +36,13 @@ export default async function AboutPage() {
 
       <section className="content-card">
         <h2>Our Mission</h2>
+        <p>
+          Founded in 2023, we provide scholarships for students in grades 3–12
+          and grants that help music, art, and drama teachers create meaningful
+          classroom and performance experiences. Everything we do is made
+          possible by parents, community members, and student representatives
+          who believe the arts are essential.
+        </p>
         <p>
           CMAC is committed to ensuring that music, drama, and visual arts
           remain accessible, vibrant, and deeply valued in the Comsewogue School
