@@ -19,8 +19,7 @@ export default function EventsPage() {
       <section className="subpage-hero">
         <p className="subpage-kicker">Where does CMAC show up?</p>
         <p className="subpage-hero__statement">
-          At concerts, drama productions, art shows, and celebrations across the
-          district — supporting the moments that matter most.
+          At concerts, drama productions, art shows, and celebrations across the district — supporting the moments that matter most.
         </p>
         <p>
           CMAC proudly supports the concerts, productions, and showcases that

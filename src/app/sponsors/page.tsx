@@ -50,14 +50,7 @@ export default function SponsorsPage() {
       <section className="subpage-hero">
         <p className="subpage-kicker">Who supports CMAC?</p>
         <p className="subpage-hero__statement">
-          Families, businesses, and community partners who believe every young
-          artist deserves the chance to thrive.
-        </p>
-        <p>
-          CMAC is building a stronger future for student musicians, artists, and
-          performers through scholarships, teacher grants, and community support.
-          We welcome partnerships from businesses and community members who want to
-          invest in the arts.
+          Families, businesses, and community partners who believe every young artist deserves the chance to thrive.
         </p>
       </section>
 

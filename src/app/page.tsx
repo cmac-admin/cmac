@@ -68,14 +68,6 @@ export default function Home() {
               Through scholarships, teacher grants, and community support, we help
               students keep creating, performing, and believing in what the arts can do.
             </p>
-            <div className="hero-card__actions">
-              <Link href="/get-involved" className="hero-card__button hero-card__button--primary">
-                Join CMAC
-              </Link>
-              <Link href="/impact-coming-soon" className="hero-card__button hero-card__button--secondary">
-                See our impact
-              </Link>
-            </div>
             <p className="hero-card__footnote">
               Volunteer. Donate. Help students thrive.
               <Link href="/get-involved" className="hero-card__footnote--accent">

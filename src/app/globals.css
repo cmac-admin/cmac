@@ -174,7 +174,11 @@ a {
   }
 
   body {
-    padding-top: 8.6rem;
+    padding-top: 0;
+  }
+
+  .site-header {
+    position: sticky;
   }
 
   .masthead {
@@ -1452,13 +1456,20 @@ a {
 
 .subpage-hero__statement {
   margin: 0.8rem 0 0;
-  max-width: 48rem;
+  max-width: 100%;
   color: #f7f1e6;
-  font-size: clamp(1.6rem, 2.2vw, 2.5rem);
-  line-height: 1.18;
+  font-size: clamp(1rem, 1.3vw, 1.5rem);
+  line-height: 1.2;
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+@media (max-width: 760px) {
+  .subpage-hero__statement {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
 }
 
 .subpage-hero {
@@ -1645,9 +1656,9 @@ a {
 }
 
 .scholarship-picker__links .get-involved-page-nav__link {
-  min-height: 3.9rem;
-  padding: 1rem 1.2rem;
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  min-height: 0;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
 }
 
 .get-involved-page-nav__link {
@@ -5203,7 +5214,7 @@ details[open] > .cal-past-summary::before {
 
 @media (max-width: 760px) {
   body {
-    padding-top: 13.8rem;
+    padding-top: 0;
   }
 
   .floating-logo {
