@@ -266,7 +266,7 @@ export default async function GetInvolvedPage() {
           </article>
         </div>
         <p className="volunteer-note">
-          To get involved, email
+          To get involved, email:{" "}
           <a href="mailto:comsewoguemusicandarts@gmail.com">comsewoguemusicandarts@gmail.com</a>.
         </p>
       </section>

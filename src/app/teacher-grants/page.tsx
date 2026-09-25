@@ -33,12 +33,6 @@ export default async function TeacherGrantsPage() {
         <p className="subpage-hero__statement">
           By giving teachers the resources and freedom to bring creative ideas to life in the classroom and on stage.
         </p>
-        <p>
-          CMAC Teacher Grants help music and art teachers in the Comsewogue
-          School District bring creative ideas to life in the classroom. These
-          grants support projects that increase student learning, participation,
-          and excitement in the arts.
-        </p>
       </section>
 
       <div className="teacher-grants-layout">

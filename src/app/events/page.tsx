@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ART_EVENTS, MUSIC_EVENTS, THEATER_EVENTS } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Comsewogue District Music, Arts & Drama Events",
@@ -20,11 +21,6 @@ export default function EventsPage() {
         <p className="subpage-kicker">Where does CMAC show up?</p>
         <p className="subpage-hero__statement">
           At concerts, drama productions, art shows, and celebrations across the district — supporting the moments that matter most.
-        </p>
-        <p>
-          CMAC proudly supports the concerts, productions, and showcases that
-          bring music, theater, and visual arts to life across the Comsewogue
-          School District.
         </p>
       </section>
 
@@ -48,17 +44,9 @@ export default function EventsPage() {
           discipline, and artistry of our student musicians.
         </p>
         <ul className="event-list">
-          <li>Winter Concert @ Comsewogue High School</li>
-          <li>Winter Concert Group 1 @ JFK Middle School</li>
-          <li>Winter Concert Group 2 @ JFK Middle School</li>
-          <li>Winter Concert @ Terryville Road Elementary</li>
-          <li>Winter Concert @ Boyle Road Elementary</li>
-          <li>Spring Concert @ Comsewogue High School</li>
-          <li>Spring Concert Group 1 @ JFK Middle School</li>
-          <li>Spring Concert Group 2 @ JFK Middle School</li>
-          <li>Spring Concert @ Terryville Road Elementary</li>
-          <li>Spring Concert @ Boyle Road Elementary</li>
-          <li>POPS Concert @ Comsewogue High School</li>
+          {MUSIC_EVENTS.map((event) => (
+            <li key={event}>{event}</li>
+          ))}
         </ul>
       </section>
 
@@ -70,10 +58,9 @@ export default function EventsPage() {
           life.
         </p>
         <ul className="event-list">
-          <li>CHS Drama Production</li>
-          <li>JFK Drama Production</li>
-          <li>Terryville Drama Show</li>
-          <li>Boyle Drama Show</li>
+          {THEATER_EVENTS.map((event) => (
+            <li key={event}>{event}</li>
+          ))}
         </ul>
       </section>
 
@@ -85,12 +72,9 @@ export default function EventsPage() {
           work with families, peers, and the community.
         </p>
         <ul className="event-list">
-          <li>High School Art Show</li>
-          <li>JFK Art Show</li>
-          <li>Boyle Road Art Show</li>
-          <li>Terryville Road Art Show</li>
-          <li>Library Art Exhibition</li>
-          <li>One River Exhibition</li>
+          {ART_EVENTS.map((event) => (
+            <li key={event}>{event}</li>
+          ))}
         </ul>
       </section>
     </main>

@@ -98,7 +98,6 @@ export default async function ScholarshipsPage() {
 
       <section className="content-card scholarship-block" id="grades-3-11-scholarship">
         <div className="scholarship-header">
-          <p className="scholarship-kicker">Summer Study Scholarship</p>
           <h2>CMAC Summer Music & Arts Study Scholarships (Grades 3–11)</h2>
         </div>
 

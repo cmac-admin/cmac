@@ -5602,3 +5602,68 @@ details[open] > .cal-past-summary::before {
   font-weight: 700;
   letter-spacing: 0.04em;
 }
+
+
+/* ---------------------------------------------------------------------------
+   Get Involved membership levels: every card shares the same row heights
+   (header, amount, benefits, button) so all five line up, and the two
+   Community Supporter tiers get a matching gold treatment.
+   --------------------------------------------------------------------------- */
+
+.get-involved-page .membership-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  align-items: stretch;
+}
+
+.get-involved-page .membership-grid--compact > .membership-tier {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0.8rem;
+  padding: 0 0 1rem;
+  transform: none;
+  overflow: hidden;
+}
+
+.get-involved-page .membership-grid--compact > .membership-tier h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 5.25rem;
+  padding: 1rem 0.85rem 0.9rem;
+}
+
+.get-involved-page .membership-grid--compact > .membership-tier > p {
+  align-self: center;
+  text-align: center;
+}
+
+.get-involved-page .membership-grid--compact > .membership-tier ul {
+  align-self: start;
+}
+
+.get-involved-page .membership-grid--compact > .membership-tier .membership-tier__button {
+  align-self: end;
+  margin: 0 1rem;
+}
+
+.get-involved-page .membership-tier--business,
+.get-involved-page .membership-tier--business-premier {
+  border: 1px solid #c9902d;
+  background: linear-gradient(180deg, #fffaf0 0%, #fbf1d6 100%);
+  box-shadow: 0 0 0 1px #c9902d, 0 16px 30px rgba(184, 130, 28, 0.2);
+}
+
+.get-involved-page .membership-tier--business::before,
+.get-involved-page .membership-tier--business-premier::before {
+  content: none;
+}
+
+.get-involved-page .membership-tier--business h3,
+.get-involved-page .membership-tier--business-premier h3 {
+  border-bottom: 5px solid #173b63;
+  background: linear-gradient(135deg, #f6d978 0%, #d9a73f 100%);
+  color: #12233d;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+}

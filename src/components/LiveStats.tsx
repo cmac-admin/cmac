@@ -6,6 +6,7 @@ import {
   CMAC_METRICS_SHEET_NAME,
   CMAC_SITE_DATA_SHEET_ID,
 } from "@/lib/site-data";
+import { EVENTS_SUPPORTED_COUNT } from "@/lib/events";
 import { DEFAULT_STATS } from "@/lib/stats";
 
 const SHEET_QUERY_URL = buildGoogleSheetQueryUrl(
@@ -228,8 +229,8 @@ export function AboutImpactStats() {
         <p className="impact-stats__label">Founded</p>
       </article>
       <article>
-        <p className="impact-stats__value">{stats.schoolsCount}</p>
-        <p className="impact-stats__label">District Event Support</p>
+        <p className="impact-stats__value">{EVENTS_SUPPORTED_COUNT}</p>
+        <p className="impact-stats__label">Events Supported</p>
       </article>
       <article>
         <p className="impact-stats__value">{supportedValue}</p>
@@ -259,7 +260,7 @@ export function HomeImpactStats() {
           <p className="impact-stats__label">Students &amp; Teachers Supported</p>
         </article>
         <article>
-          <p className="impact-stats__value">21</p>
+          <p className="impact-stats__value">{EVENTS_SUPPORTED_COUNT}</p>
           <p className="impact-stats__label">School Events Supported</p>
         </article>
         <article>
