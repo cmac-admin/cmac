@@ -1494,12 +1494,6 @@ a {
   gap: 1.25rem;
 }
 
-.impact-coming-soon-hero {
-  background:
-    linear-gradient(135deg, rgba(13, 24, 38, 0.96) 0%, rgba(20, 46, 74, 0.96) 100%),
-    linear-gradient(135deg, rgba(245, 209, 22, 0.15), rgba(245, 209, 22, 0));
-}
-
 .impact-coming-soon-card {
   background: linear-gradient(180deg, rgba(249, 247, 242, 0.98), rgba(240, 235, 226, 0.98));
 }
