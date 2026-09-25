@@ -115,10 +115,6 @@ export default async function GetInvolvedPage() {
         <p className="subpage-hero__statement">
           When arts education is supported, students grow with confidence, creativity, and belonging.
         </p>
-        <p>
-          Membership in Comsewogue Music &amp; Arts Corp. directly supports musicians, artists,
-          performers and creators through teacher grants and scholarships.
-        </p>
 
         <nav className="get-involved-page-nav" aria-label="Quick navigation">
           <span className="get-involved-page-nav__label">Choose a Way to Support</span>

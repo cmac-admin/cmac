@@ -27,14 +27,7 @@ export default async function ScholarshipsPage() {
       <section className="subpage-hero">
         <p className="subpage-kicker">Who does CMAC support?</p>
         <p className="subpage-hero__statement">
-          Students in grades 3–12 who want to keep creating, performing, and
-          pursuing their passion for music and the arts.
-        </p>
-        <p>
-          CMAC scholarships help Comsewogue students continue growing in music,
-          visual arts, and related creative fields. We offer two programs: one
-          for graduating seniors and one for students in grades 3–11 who want to
-          keep studying over the summer.
+          Students in grades 3–12 who want to keep creating, performing, and pursuing their passion for music and the arts.
         </p>
 
         <nav className="get-involved-page-nav scholarship-picker" aria-label="Scholarship navigation">
