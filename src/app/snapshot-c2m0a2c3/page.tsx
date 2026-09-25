@@ -516,14 +516,6 @@ export default function SnapshotPage() {
         </p>
       </section>
 
-      {/* Board tools sit directly under the hero so they read as an action bar
-          rather than competing with the page title. */}
-      <nav className="board-toolbar" aria-label="Board tools">
-        <span className="board-toolbar-label">Board Tools</span>
-        <div className="board-toolbar-actions">
-        </div>
-      </nav>
-
       <section className="content-card draft-page-panel">
         <div className="draft-page-panel__header">
           <p className="subpage-kicker">Website in progress</p>
