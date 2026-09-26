@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { SITE_PAGE_GROUPS } from "@/lib/site-pages";
 
 type EventEntry = {
   isoDate: string;
@@ -518,27 +519,37 @@ export default function SnapshotPage() {
 
       <section className="content-card draft-page-panel">
         <div className="draft-page-panel__header">
-          <p className="subpage-kicker">Website in progress</p>
-          <h2>Pages under construction</h2>
+          <p className="subpage-kicker">Website Directory</p>
+          <h2>All Website Pages</h2>
         </div>
         <p className="muted-copy">
-          These pages are intentionally kept off the live navigation while they are still in draft form.
+          Every page on the site, grouped by category. <strong>Main menu</strong> and{" "}
+          <strong>Footer</strong> pages are in the site navigation, <strong>Linked</strong> pages are
+          reachable from another page, and <strong>Hidden</strong> pages are kept off the public site
+          until they are finished.
         </p>
-        <div className="draft-page-list" aria-label="Internal draft pages">
-          {[
-            { href: "/cmac/impact-coming-soon", label: "Impact Coming Soon", description: "Placeholder for the future impact page" },
-            { href: "/cmac/order-here", label: "Order Here", description: "School event order portal" },
-            { href: "/cmac/order-form", label: "Order Form", description: "Checkout and form embed" },
-            { href: "/cmac/our-impact", label: "Our Impact", description: "Internal impact archive" },
-            { href: "/cmac/QR_WhatIsCMAC", label: "QR / What Is CMAC", description: "QR-linked informational page" },
-            { href: "/cmac/snapshot-c2m0a2c3", label: "Snapshot Dashboard", description: "Main board snapshot landing page" },
-          ].map((page) => (
-            <a key={page.href} className="draft-page-item" href={page.href} target="_blank" rel="noopener noreferrer">
-              <span className="draft-page-item__label">{page.label}</span>
-              <span className="draft-page-item__meta">{page.description}</span>
-            </a>
-          ))}
-        </div>
+        {SITE_PAGE_GROUPS.map((group) => (
+          <div key={group.category} className="site-page-group">
+            <h3 className="site-page-group__title">{group.category}</h3>
+            <div className="draft-page-list" aria-label={`${group.category} pages`}>
+              {group.pages.map((page) => (
+                <a
+                  key={page.path}
+                  className={`draft-page-item${page.status === "Hidden" ? " draft-page-item--hidden" : ""}`}
+                  href={`/cmac${page.path === "/" ? "/" : `${page.path}/`}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="draft-page-item__label">{page.label}</span>
+                  <span className="draft-page-item__meta">{page.description}</span>
+                  <span className={`site-page-status site-page-status--${page.status.toLowerCase().replace(" ", "-")}`}>
+                    {page.status}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       <section className="content-card snapshot-summary-bar">
