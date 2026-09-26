@@ -1599,6 +1599,59 @@ a {
   line-height: 1.5;
 }
 
+.draft-page-item--hidden {
+  border-left-color: rgba(23, 59, 99, 0.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(230, 226, 218, 0.9));
+}
+
+.site-page-group {
+  margin-top: 1.4rem;
+}
+
+.site-page-group__title {
+  margin: 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--gold);
+  color: var(--brand-blue);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site-page-group .draft-page-list {
+  margin-top: 0.75rem;
+}
+
+.site-page-status {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(23, 59, 99, 0.1);
+  color: var(--brand-blue);
+}
+
+.site-page-status--main-menu {
+  background: rgba(47, 125, 79, 0.16);
+  color: #245f3c;
+}
+
+.site-page-status--footer,
+.site-page-status--linked {
+  background: rgba(217, 172, 77, 0.22);
+  color: #7a5a12;
+}
+
+.site-page-status--hidden {
+  background: rgba(15, 32, 55, 0.12);
+  color: rgba(15, 32, 55, 0.75);
+}
+
 .get-involved-page-nav {
   position: sticky;
   top: 1rem;
