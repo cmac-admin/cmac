@@ -1,25 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { HomeImpactStats } from "@/components/LiveStats";
-
-const premierSponsors = [
-  {
-    name: "Partner with CMAC",
-    logo: "/cmac/cmac-logo.png",
-    website: "/sponsors",
-  },
-  {
-    name: "Support the Arts",
-    logo: "/cmac/cmac-logo.png",
-    website: "/sponsors",
-  },
-  {
-    name: "Community Partnership",
-    logo: "/cmac/cmac-logo.png",
-    website: "/sponsors",
-  },
-];
 
 export const metadata: Metadata = {
   title: "Home",
@@ -77,36 +58,6 @@ export default function Home() {
           </div>
         </article>
       </section>
-
-      {premierSponsors.length > 0 && (
-        <section className="premier-sponsors" aria-label="Premier sponsors">
-          <div className="premier-sponsors__header">
-            <p className="premier-sponsors__kicker">Premier Sponsors</p>
-          </div>
-          <div className="premier-sponsors__marquee" aria-label="Premier sponsor marquee">
-            <div className="premier-sponsors__track">
-              {[...premierSponsors, ...premierSponsors].map((sponsor, index) => (
-                <a
-                  key={`${sponsor.name}-${index}`}
-                  className="premier-sponsor"
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit ${sponsor.name}`}
-                >
-                  <span className="premier-sponsor__label">YOUR LOGO HERE</span>
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    width={96}
-                    height={96}
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       <HomeImpactStats />
       <p className="impact-stats__cta">
