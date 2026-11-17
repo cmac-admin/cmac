@@ -2,19 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { SITE_PAGE_GROUPS } from "@/lib/site-pages";
-
-type EventEntry = {
-  isoDate: string;
-  time: string;
-  name: string;
-  school: string;
-  schoolShort: string;
-  location: string;
-  type: string;
-  cmacTable: "Yes" | "No" | "TBD";
-  formStatus: "Open" | "Closed" | "TBD";
-  notes?: string;
-};
+import { mergeWithCurated, type EventEntry } from "@/lib/snapshot-events";
 
 type OrderRow = {
   school: string;
@@ -32,8 +20,8 @@ const FALLBACK_EVENTS: EventEntry[] = [
   { isoDate: "2026-11-24", time: "TBD", name: "JFK Fall Fine Art Showcase", school: "John F. Kennedy Middle School", schoolShort: "JFK", location: "JFK Middle School", type: "Art Show", cmacTable: "TBD", formStatus: "TBD", notes: "Confirm time" },
   { isoDate: "2026-12-09", time: "6:30 PM", name: "Boyle Winter Concert", school: "Boyle Road Elementary", schoolShort: "Boyle", location: "JFK Middle School", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
   { isoDate: "2026-12-14", time: "7:00 PM", name: "JFK Winter Concert, Group 1", school: "John F. Kennedy Middle School", schoolShort: "JFK", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
-  { isoDate: "2026-12-15", time: "6:30 PM", name: "Terryville Winter Concert", school: "Terryville Road Elementary", schoolShort: "Terryville", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
-  { isoDate: "2026-12-16", time: "7:00 PM", name: "CHS Winter & Chamber Concert", school: "Comsewogue High School", schoolShort: "CHS", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-15", time: "7:00 PM", name: "CHS Winter & Chamber Concert", school: "Comsewogue High School", schoolShort: "CHS", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
+  { isoDate: "2026-12-16", time: "6:30 PM", name: "Terryville Winter Concert", school: "Terryville Road Elementary", schoolShort: "Terryville", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
   { isoDate: "2026-12-17", time: "7:00 PM", name: "JFK Winter Concert, Group 2", school: "John F. Kennedy Middle School", schoolShort: "JFK", location: "CHS Auditorium", type: "Concert", cmacTable: "Yes", formStatus: "Open" },
   { isoDate: "2027-02-26", time: "7:00 PM", name: "CHS Musical: TBA", school: "Comsewogue High School", schoolShort: "CHS", location: "CHS Auditorium", type: "Musical", cmacTable: "Yes", formStatus: "Open", notes: "Night 1" },
   { isoDate: "2027-02-27", time: "7:00 PM", name: "CHS Musical: TBA", school: "Comsewogue High School", schoolShort: "CHS", location: "CHS Auditorium", type: "Musical", cmacTable: "Yes", formStatus: "Open", notes: "Night 2" },
@@ -98,81 +86,6 @@ function parseIcsDate(value: string): { isoDate: string; time: string } {
   const suffix = h >= 12 ? "PM" : "AM";
   const hour12 = h % 12 === 0 ? 12 : h % 12;
   return { isoDate, time: `${hour12}:${minute} ${suffix}` };
-}
-
-function normalizeLookupToken(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
-}
-
-/**
- * The district calendar only supplies name/date/time/location. Everything CMAC
- * curates — whether we run a table and the notes — lives
- * in FALLBACK_EVENTS. Without this merge
- * a district refresh silently wipes all of that back to "TBD".
- */
-const CURATED_BY_NAME_DATE = new Map<string, EventEntry>();
-const CURATED_BY_NAME = new Map<string, EventEntry>();
-
-for (const curated of FALLBACK_EVENTS) {
-  CURATED_BY_NAME_DATE.set(
-    normalizeLookupToken(`${curated.name}|${curated.isoDate}`),
-    curated,
-  );
-  const nameKey = normalizeLookupToken(curated.name);
-  // Repeated titles (multi-night runs) keep the first entry as the template.
-  if (!CURATED_BY_NAME.has(nameKey)) {
-    CURATED_BY_NAME.set(nameKey, curated);
-  }
-}
-
-function findCurated(name: string, isoDate: string): EventEntry | null {
-  return (
-    CURATED_BY_NAME_DATE.get(normalizeLookupToken(`${name}|${isoDate}`)) ??
-    CURATED_BY_NAME.get(normalizeLookupToken(name)) ??
-    null
-  );
-}
-
-/** District values win for date/time/location; curated values win for CMAC fields. */
-function mergeCurated(live: EventEntry): EventEntry {
-  const curated = findCurated(live.name, live.isoDate);
-  if (!curated) {
-    return {
-      ...live,
-
-    };
-  }
-
-  return {
-    ...live,
-    location: live.location && live.location !== "TBD" ? live.location : curated.location,
-    time: live.time && live.time !== "TBD" ? live.time : curated.time,
-    type: curated.type || live.type,
-    cmacTable: curated.cmacTable,
-    formStatus: live.formStatus !== "TBD" ? live.formStatus : curated.formStatus,
-    notes: curated.notes || live.notes,
-  };
-}
-
-/**
- * Merges the district feed with the curated list, keeping curated-only events
- * (for example anything the district publishes under a title CMAC renamed).
- */
-function mergeWithCurated(live: EventEntry[]): EventEntry[] {
-  const merged = live.map(mergeCurated);
-  const seen = new Set(merged.map((ev) => normalizeLookupToken(`${ev.name}|${ev.isoDate}`)));
-
-  for (const curated of FALLBACK_EVENTS) {
-    const key = normalizeLookupToken(`${curated.name}|${curated.isoDate}`);
-    if (!seen.has(key)) {
-      merged.push({
-        ...curated,
-      });
-      seen.add(key);
-    }
-  }
-
-  return merged.sort((a, b) => a.isoDate.localeCompare(b.isoDate) || a.time.localeCompare(b.time));
 }
 
 function normalizeStoredEvents(data: unknown): EventEntry[] {
@@ -427,7 +340,7 @@ export default function SnapshotPage() {
           const ics = await districtRes.text();
           const parsed = parseIcsEvents(ics);
           if (parsed.length && active) {
-            setEvents(mergeWithCurated(parsed));
+            setEvents(mergeWithCurated(parsed, FALLBACK_EVENTS));
             setEventSource("district-live");
             return;
           }
@@ -442,7 +355,7 @@ export default function SnapshotPage() {
           const json = await jsonRes.json();
           const parsed = normalizeStoredEvents(json);
           if (parsed.length && active) {
-            setEvents(mergeWithCurated(parsed));
+            setEvents(mergeWithCurated(parsed, FALLBACK_EVENTS));
             setEventSource("site-json");
             return;
           }

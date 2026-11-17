@@ -2,6 +2,12 @@ A minimal Next.js app.
 
 Run the development server with `npm run dev`.
 
+The snapshot calendar prefers district dates and times, retaining CMAC table details
+and curated-only events. A single district occurrence replaces the old date of a
+matching single curated event; repeated titles retain their separate performances.
+Run the merge regression tests with `node --test scripts/snapshot-events.test.mjs`
+(Node.js 22.18+).
+
 Site data is configured through environment variables so the website can read order links and live metrics from a single Google Sheet without code changes:
 
 - `NEXT_PUBLIC_CMAC_SITE_DATA_SHEET_ID`
