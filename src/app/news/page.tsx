@@ -47,8 +47,12 @@ export default function NewsPage() {
             working so hard to provide the very best education for our students!
           </p>
           <p>
-            <a href="https://www.facebook.com/share/p/18Ri7hmqTH/">
-              Read full story
+            <a
+              href="https://www.facebook.com/share/p/18Ri7hmqTH/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read full story on Facebook
             </a>
           </p>
         </article>
@@ -86,18 +90,9 @@ export default function NewsPage() {
             <a href="https://tbrnewsmedia.com/?s=woman+of+distinction+Johanna+Kosak">
               Read full article
             </a>
-            {" · "}
-            <a href="https://www.comsewoguemusicandarts.org/johanna-kosak-as-the-fifth-legislative-districts-woman-of-distinction/">
-              Previous page & photos
-            </a>
           </p>
         </article>
 
-        <p className="subpage-link">
-          <a href="https://www.comsewoguemusicandarts.org/category/news/">
-            Browse previous News posts
-          </a>
-        </p>
       </section>
 
     </main>

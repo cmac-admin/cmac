@@ -96,6 +96,68 @@ export default async function GetInvolvedPage() {
     },
   ];
 
+  const supporterDetails = [
+    {
+      id: "individual-supporter",
+      title: "Individual Supporter",
+      introduction:
+        "One person can make a meaningful difference. Join a community that helps Comsewogue students keep creating, performing, and exploring the arts.",
+      donation: "$25",
+      benefits: [
+        ["Stay connected", "Receive event updates by email so you can follow CMAC activities and opportunities."],
+        ["Be a member", "Show your commitment to student scholarships, teacher grants, and arts-learning opportunities."],
+        ["Wear your support", "Receive one free CMAC t-shirt."],
+        ["Choose your recognition", "Opt in to recognition on the CMAC supporters page."],
+      ],
+      community: false,
+    },
+    {
+      id: "family-supporter",
+      title: "Family Supporter",
+      introduction:
+        "Make supporting the arts a family tradition. Help create opportunities for students while connecting your household with the CMAC community.",
+      donation: "$50",
+      benefits: [
+        ["Stay connected", "Receive event updates by email for your family."],
+        ["Support together", "Enjoy membership status while helping fund student scholarships and teacher grants."],
+        ["Share your CMAC spirit", "Receive two free CMAC t-shirts."],
+        ["Celebrate your family's support", "Opt in to recognition on the CMAC supporters page."],
+        ["Be part of the thank-you", "Receive recognition in a monthly group social media shout-out."],
+      ],
+      community: false,
+    },
+    {
+      id: "community-supporter",
+      title: "Community Supporter",
+      introduction:
+        "Bring your business, organization, or community network into the CMAC support circle. Your generosity helps students access meaningful music and arts experiences.",
+      donation: "$100",
+      benefits: [
+        ["Stay connected", "Receive event updates by email and membership status."],
+        ["Show your community commitment", "Opt in to recognition on the CMAC supporters page."],
+        ["Be recognized together", "Receive a group social media shout-out."],
+        ["Make an in-kind impact", "Support CMAC with class passes, gift cards, or other in-kind contributions."],
+        ["Help bring fundraisers to life", "Contribute to an art-themed or music-themed raffle basket that supports student opportunities."],
+      ],
+      community: true,
+    },
+    {
+      id: "premier-community-supporter",
+      title: "Premier Community Supporter",
+      introduction:
+        "Take a leading role in keeping the arts strong in our schools. Premier Community Supporters pair meaningful student support with greater visibility throughout the CMAC community.",
+      donation: "$200",
+      benefits: [
+        ["Stay connected", "Receive event updates by email and membership status."],
+        ["Be seen online", "Opt in to website recognition, with prime visibility on the supporters page and CMAC homepage."],
+        ["Connect at events", "Receive event-table logo visibility."],
+        ["Display your commitment", "Receive a digital support badge."],
+        ["Share your story", "Receive a spotlight social media shout-out."],
+      ],
+      community: true,
+    },
+  ];
+
 
   const quickNavItems = [
     { label: "Membership", href: "#membership" },
@@ -381,7 +443,7 @@ export default async function GetInvolvedPage() {
         </div>
       </section>
 
-      <section className="content-card" id="student-member">
+      <section className="content-card membership-detail" id="student-member">
         <h2>CMAC Student Member</h2>
         <p className="muted-copy">
           Looking for a welcoming place to grow your skills, meet other creative students, and be part
@@ -435,6 +497,41 @@ export default async function GetInvolvedPage() {
           </a>
         </div>
       </section>
+
+      {supporterDetails.map(({ id, title, introduction, donation, benefits, community }) => (
+        <section
+          key={id}
+          id={id}
+          className={`content-card membership-detail${community ? " membership-detail--community" : ""}`}
+          aria-labelledby={`${id}-title`}
+        >
+          <h2 id={`${id}-title`}>{title}</h2>
+          <p className="muted-copy">{introduction}</p>
+          <p className="muted-copy">
+            <strong>Suggested donation: {donation}</strong>
+          </p>
+
+          <h3>Why Join as {title === "Individual Supporter" ? "an" : "a"} {title}?</h3>
+          <ul className="table-list">
+            {benefits.map(([label, description]) => (
+              <li key={label}>
+                <strong>{label}</strong> &mdash; {description}
+              </li>
+            ))}
+          </ul>
+
+          <h3>How to Join</h3>
+          <p className="muted-copy">
+            Select the {title} option when you sign up and contribute the suggested{" "}
+            {donation} donation.
+          </p>
+          <div className="primary-cta-row primary-cta-row--bottom">
+            <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
+              Join as {title === "Individual Supporter" ? "an" : "a"} {title}
+            </a>
+          </div>
+        </section>
+      ))}
 
       <section className="content-card">
         <div className="primary-cta-row primary-cta-row--bottom">

@@ -53,11 +53,6 @@ export default function LogoContestStoryPage() {
         </div>
 
         <p className="subpage-link">
-          <a href="https://www.comsewoguemusicandarts.org/logo-contest/">
-            View original story page
-          </a>
-        </p>
-        <p className="subpage-link">
           <Link href="/news">← Back to News</Link>
         </p>
       </section>
