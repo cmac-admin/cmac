@@ -7,7 +7,7 @@ type ContactPopupLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   href?: string;
 };
 
-export function ContactPopupLink({ children, href = "/cmac/contact", ...props }: ContactPopupLinkProps) {
+export function ContactPopupLink({ children, href = "/contact", ...props }: ContactPopupLinkProps) {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (typeof window === "undefined") {
       return;

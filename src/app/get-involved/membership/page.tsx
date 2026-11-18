@@ -61,8 +61,8 @@ export default async function MembershipPage() {
     { label: "Student Member", href: "#student-member" },
     { label: "Support the Show", href: "#other-ways-to-give" },
     { label: "Donate", href: "#direct-donate" },
-    { label: "Volunteer", href: "/cmac/get-involved/volunteer" },
-    { label: "FAQ", href: "/cmac/faq" },
+    { label: "Volunteer", href: "/get-involved/volunteer" },
+    { label: "FAQ", href: "/faq" },
   ];
 
   return (
@@ -79,7 +79,7 @@ export default async function MembershipPage() {
           <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
             Become a Member
           </a>
-          <Link href="/cmac/get-involved/volunteer" className="secondary-btn">
+          <Link href="/get-involved/volunteer" className="secondary-btn">
             Volunteer / Student Representative
           </Link>
         </div>
@@ -197,7 +197,7 @@ export default async function MembershipPage() {
           “Kisses for the Cast.”
         </p>
         <p className="subpage-link">
-          <a href="/cmac/order-here" className="text-link">
+          <a href="/order-here" className="text-link">
             Support the Show
           </a>
         </p>
@@ -220,7 +220,7 @@ export default async function MembershipPage() {
               </p>
               <Image
                 className="qr-image qr-image--small"
-                src="/cmac/cmac-venmo-qr.png"
+                src="/cmac-venmo-qr.png"
                 alt="CMAC Venmo QR code"
                 width={180}
                 height={180}
@@ -231,7 +231,7 @@ export default async function MembershipPage() {
               <p>Scan the code in your banking app or use the QR code on this page.</p>
               <Image
                 className="qr-image qr-image--small"
-                src="/cmac/cmac-zelle-qr.png"
+                src="/cmac-zelle-qr.png"
                 alt="CMAC Zelle QR code"
                 width={180}
                 height={180}

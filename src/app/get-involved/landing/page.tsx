@@ -22,7 +22,7 @@ export default function GetInvolvedLandingPage() {
               <li>Learn about student opportunities</li>
               <li>Make a donation</li>
             </ul>
-            <Link href="/cmac/get-involved/membership" className="apply-btn">
+            <Link href="/get-involved/membership" className="apply-btn">
               Membership
             </Link>
           </article>
@@ -35,7 +35,7 @@ export default function GetInvolvedLandingPage() {
               <li>Event support</li>
               <li>Volunteer outreach</li>
             </ul>
-            <Link href="/cmac/get-involved/volunteer" className="secondary-btn">
+            <Link href="/get-involved/volunteer" className="secondary-btn">
               Volunteer
             </Link>
           </article>

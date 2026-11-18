@@ -10,8 +10,8 @@ export default async function VolunteerPage() {
     { label: "Student Reps", href: "#student-reps" },
     { label: "Event Support", href: "#event-support" },
     { label: "Contact", href: "#contact" },
-    { label: "Membership", href: "/cmac/get-involved/membership" },
-    { label: "FAQ", href: "/cmac/faq" },
+    { label: "Membership", href: "/get-involved/membership" },
+    { label: "FAQ", href: "/faq" },
   ];
 
   return (
@@ -26,7 +26,7 @@ export default async function VolunteerPage() {
           <a href={membershipFormUrl} className="apply-btn" target="_blank" rel="noreferrer">
             Volunteer / Student Representative
           </a>
-          <Link href="/cmac/get-involved/membership" className="secondary-btn">
+          <Link href="/get-involved/membership" className="secondary-btn">
             Join as a Member
           </Link>
         </div>
@@ -82,7 +82,7 @@ export default async function VolunteerPage() {
           “Kisses for the Cast.”
         </p>
         <p className="subpage-link">
-          <a href="/cmac/order-here" className="text-link">
+          <a href="/order-here" className="text-link">
             Support the Show
           </a>
         </p>

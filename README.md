@@ -2,6 +2,10 @@ A minimal Next.js app.
 
 Run the development server with `npm run dev`.
 
+The site is deployed at the root of `https://www.comsewoguemusicandarts.org/`.
+Keep Next.js `basePath` unset and use root-relative links and public asset URLs
+(for example, `/about/` and `/cmac-logo.png`), without the old `/cmac/` prefix.
+
 The snapshot calendar prefers district dates and times, retaining CMAC table details
 and curated-only events. A single district occurrence replaces the old date of a
 matching single curated event; repeated titles retain their separate performances.
