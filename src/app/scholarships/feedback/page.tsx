@@ -6,17 +6,23 @@ import { DEFAULT_FORM_LINKS, resolveFormLink } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Scholarship & Grant Feedback",
   description:
-    "Share how CMAC has made a difference in your life and help inspire more support for students and educators.",
+    "Share feedback about a CMAC scholarship or grant through the option that matches your experience.",
   openGraph: {
     title: "Scholarship & Grant Feedback | Comsewogue Music & Arts Corp.",
-    description:
-      "Tell your CMAC story and show how scholarships, grants, and community support make an impact.",
+    description: "Share feedback about a CMAC scholarship or grant.",
     url: "https://www.comsewoguemusicandarts.org/scholarships/feedback",
   },
 };
 
 export default async function ScholarshipFeedbackPage() {
-  const feedbackUrl = await resolveFormLink("scholarship-grant-feedback", DEFAULT_FORM_LINKS);
+  const scholarshipFeedbackUrl = await resolveFormLink(
+    "scholarship-grant-feedback",
+    DEFAULT_FORM_LINKS
+  );
+  const grantFeedbackUrl = await resolveFormLink(
+    "grant-recipient-feedback",
+    DEFAULT_FORM_LINKS
+  );
 
   return (
     <main className="subpage">
@@ -24,25 +30,43 @@ export default async function ScholarshipFeedbackPage() {
         <p className="subpage-kicker">Scholarships & Grants</p>
         <h1>Scholarship & Grant Feedback</h1>
         <p>
-          Every student, family, teacher, and supporter has a story that can help others
-          see the difference the arts can make. Share how CMAC scholarships, grants, or
-          community support has encouraged you, helped you grow, or opened a new
-          opportunity.
+          Choose the option that matches the CMAC support you received. Scholarship and
+          grant experiences are different, so each has its own feedback path.
         </p>
       </section>
 
-      <section className="content-card">
-        <h2>How has CMAC made a difference?</h2>
+      <section className="content-card" aria-labelledby="scholarship-feedback-title">
+        <h2 id="scholarship-feedback-title">Scholarship Feedback</h2>
         <p>
-          Tell us what CMAC support made possible for you or someone you know. Your story
-          may be featured on our future Impact page to celebrate the people behind CMAC
-          and inspire others to support music and arts education.
+          For students and families who received a CMAC scholarship. Tell us how the
+          scholarship supported your studies, lessons, or arts opportunities.
         </p>
 
         <div className="scholarship-actions" style={{ marginTop: "1.5rem" }}>
-          <ScholarshipApplicationButton href={feedbackUrl} label="Tell Your Story" />
+          <ScholarshipApplicationButton
+            href={scholarshipFeedbackUrl}
+            label="Share Scholarship Feedback"
+          />
           <Link href="/scholarships" className="text-link">
-            Back to Scholarships
+            View Scholarships
+          </Link>
+        </div>
+      </section>
+
+      <section className="content-card" aria-labelledby="grant-feedback-title">
+        <h2 id="grant-feedback-title">Grant Feedback</h2>
+        <p>
+          For teachers who received a CMAC grant. Use this separate form to share how
+          the grant supported your project and students.
+        </p>
+
+        <div className="scholarship-actions" style={{ marginTop: "1.5rem" }}>
+          <ScholarshipApplicationButton
+            href={grantFeedbackUrl}
+            label="Share Grant Feedback"
+          />
+          <Link href="/teacher-grants" className="text-link">
+            View Grants
           </Link>
         </div>
       </section>
