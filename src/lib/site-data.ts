@@ -11,6 +11,7 @@ export type FormLinkName =
   | "summer-scholarship"
   | "teacher-grant"
   | "scholarship-grant-feedback"
+  | "grant-recipient-feedback"
   | "order-form";
 
 export type FormLinkMap = Partial<Record<FormLinkName, string>>;
@@ -35,13 +36,15 @@ export const DEFAULT_FORM_LINKS: FormLinkMap = {
   membership:
     "https://docs.google.com/forms/d/e/1FAIpQLSdwOWX-vnQRQ9KnEE8TAK9Z1022D5BVWH9BhKW6QJByvlAsVQ/viewform",
   "senior-scholarship":
-    "https://docs.google.com/forms/d/e/1FAIpQLScLSr4Da2R51xg59lu_j57lMg5Xd8On3rHcEowwMgNAB9V1ng/viewform",
+    "https://forms.gle/R5yBSweJzm4UzWs3A",
   "summer-scholarship":
     "https://docs.google.com/forms/d/e/1FAIpQLScir77ruuBlPuoi-X3sfDQvLOyjKDciKPPWahdHYigpSOvm_Q/viewform?usp=sharing&ouid=110434350721644737538",
   "teacher-grant":
     "https://docs.google.com/document/d/1NEmmvCaJiTQ7hQDIYkMWc2D85RBUprq-Iq7pR4WUqkM/edit?tab=t.0",
   "scholarship-grant-feedback":
     "https://docs.google.com/forms/d/1_BzbL5t77ZvvjKDEjAaNElxbBsbH1u6Qqn5yEtM_PdY/viewform",
+  "grant-recipient-feedback":
+    "https://docs.google.com/forms/d/1TBSsht4biLV8FSikrE_t-7FT0QdrKmes3O2UWibR5C0/viewform",
   "order-form":
     "https://docs.google.com/forms/d/e/1FAIpQLScrd01PmvNBLsV4ZRqhlKSNRGCgykUOClM61xDVlFGhrXjKiA/viewform?embedded=true",
 };
@@ -303,6 +306,12 @@ const formAliases: Record<FormLinkName, string[]> = {
     "scholarship-feedback",
     "grant-feedback",
     "cmac-scholarship-grant-feedback",
+  ],
+  "grant-recipient-feedback": [
+    "grant-recipient-feedback",
+    "teacher-grant-recipient-feedback",
+    "cmac-teacher-grant-recipient-feedback",
+    "cmac-teacher-grant-recipient-share-your-story",
   ],
   "order-form": ["order-form", "cmac-order-form"],
 };
