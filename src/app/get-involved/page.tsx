@@ -267,7 +267,7 @@ export default async function GetInvolvedPage() {
               </p>
               <Image
                 className="qr-image qr-image--small"
-                src="/cmac/cmac-venmo-qr.png"
+                src="/cmac-venmo-qr.png"
                 alt="CMAC Venmo QR code"
                 width={180}
                 height={180}
@@ -278,7 +278,7 @@ export default async function GetInvolvedPage() {
               <p>Scan the code in your banking app or use the QR code on this page.</p>
               <Image
                 className="qr-image qr-image--small"
-                src="/cmac/cmac-zelle-qr.png"
+                src="/cmac-zelle-qr.png"
                 alt="CMAC Zelle QR code"
                 width={180}
                 height={180}
@@ -341,7 +341,7 @@ export default async function GetInvolvedPage() {
           “Kisses for the Cast.”
         </p>
         <p className="subpage-link">
-          <a href="/cmac/order-here" className="text-link">
+          <a href="/order-here" className="text-link">
             Support the Show
           </a>
         </p>

@@ -170,7 +170,7 @@ export default function SponsorsPage() {
               className="premier-sponsor-sidebar__logo"
             >
               <Image
-                src="/cmac/friends-of-cmac.svg"
+                src="/friends-of-cmac.svg"
                 alt="Friends of CMAC - view our sponsor thank-you page"
                 width={320}
                 height={320}

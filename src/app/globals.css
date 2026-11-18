@@ -91,7 +91,7 @@ a {
       rgba(10, 29, 48, 0.82) 52%,
       rgba(12, 27, 45, 0.82) 100%
     ),
-    url("/cmac/site-header-art.jpg");
+    url("/site-header-art.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 5px 16px rgba(8, 17, 29, 0.25);
@@ -503,7 +503,7 @@ a {
       rgba(0, 0, 0, 0) 40%,
       rgba(10, 23, 40, 0.45) 100%
     ),
-    url("/cmac/site-header-art.jpg");
+    url("/site-header-art.jpg");
   background-size: cover;
   background-position: center 40%;
   animation: heroSlideOne 15s ease-in-out infinite;
@@ -516,7 +516,7 @@ a {
       rgba(0, 0, 0, 0) 40%,
       rgba(16, 33, 55, 0.45) 100%
     ),
-    url("/cmac/drama-stage.jpg");
+    url("/drama-stage.jpg");
   background-size: cover;
   background-position: center 28%;
   animation: heroSlideTwo 15s ease-in-out infinite;

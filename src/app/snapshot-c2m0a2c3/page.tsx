@@ -12,7 +12,7 @@ type OrderRow = {
 
 const ORDER_FEED_URL = "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
 const DISTRICT_CALENDAR_URL = "https://www.comsewogue.k12.ny.us/sndreq/generateCalendarICS.php?calendar_id=135057";
-const EVENT_DATA_PATH = "/cmac/snapshot-c2m0a2c3/events-data.json";
+const EVENT_DATA_PATH = "/snapshot-c2m0a2c3/events-data.json";
 
 const FALLBACK_EVENTS: EventEntry[] = [
   { isoDate: "2025-06-25", time: "TBD", name: "Last Day of School", school: "Comsewogue High School", schoolShort: "CHS", location: "All Schools", type: "District", cmacTable: "No", formStatus: "TBD", notes: "Test past event" },
@@ -449,7 +449,7 @@ export default function SnapshotPage() {
                 <a
                   key={page.path}
                   className={`draft-page-item${page.status === "Hidden" ? " draft-page-item--hidden" : ""}`}
-                  href={`/cmac${page.path === "/" ? "/" : `${page.path}/`}`}
+                  href={page.path === "/" ? "/" : `${page.path}/`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

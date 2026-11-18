@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   output: "export",
   reactCompiler: true,
   trailingSlash: true,
-  basePath: "/cmac",
   images: {
     unoptimized: true,
     remotePatterns: [

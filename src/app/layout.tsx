@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "Comsewogue Music & Arts Corp. (CMAC) is a 501(c) non-profit supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
   metadataBase: new URL(siteUrl),
   icons: {
-    icon: "/cmac/cmac-favicon.png",
-    shortcut: "/cmac/cmac-favicon.png",
-    apple: "/cmac/cmac-favicon.png",
+    icon: "/cmac-favicon.png",
+    shortcut: "/cmac-favicon.png",
+    apple: "/cmac-favicon.png",
   },
   openGraph: {
     siteName: "Comsewogue Music & Arts Corp.",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
     images: [
       {
-        url: "/cmac/cmac-social-preview.png",
+        url: "/cmac-social-preview.png",
         width: 1200,
         height: 630,
         alt: "Comsewogue Music and Arts Connection logo",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Comsewogue Music & Arts Corp.",
     description:
       "Support student artists in the Comsewogue School District through scholarships, teacher grants, and community arts events.",
-    images: ["/cmac/cmac-social-preview.png"],
+    images: ["/cmac-social-preview.png"],
   },
   alternates: {
     canonical: siteUrl,
@@ -74,7 +74,7 @@ export default function RootLayout({
     name: "Comsewogue Music & Arts Corp.",
     alternateName: "CMAC",
     url: siteUrl,
-    logo: `${siteUrl}/cmac/cmac-logo.png`,
+    logo: `${siteUrl}/cmac-logo.png`,
     sameAs: [
       "https://www.facebook.com/groups/1267469880589912/",
       "https://www.instagram.com/comsewogue_music_and_arts/",
@@ -113,7 +113,7 @@ export default function RootLayout({
         />
         <Link href="/" className="floating-logo" aria-label="CMAC Home">
           <Image
-            src="/cmac/cmac-logo.png"
+            src="/cmac-logo.png"
             alt="Comsewogue Music and Arts Connection logo"
             width={92}
             height={92}
