@@ -220,7 +220,6 @@ function useLiveStats(mode: StatsMode = "general") {
 
 export function AboutImpactStats() {
   const stats = useLiveStats("general");
-  const supportedValue = formatMoreThan(stats.studentsTeachersSupported);
 
   return (
     <section className="impact-stats impact-stats--compact" aria-label="CMAC impact highlights">
@@ -233,7 +232,7 @@ export function AboutImpactStats() {
         <p className="impact-stats__label">Events Supported</p>
       </article>
       <article>
-        <p className="impact-stats__value">{supportedValue}</p>
+        <p className="impact-stats__value">20+</p>
         <p className="impact-stats__label">Students &amp; Teachers Supported</p>
       </article>
       <article>

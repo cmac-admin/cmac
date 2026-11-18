@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { FamilySupporterTicker } from "@/components/FamilySupporterTicker";
+import { SupporterTicker } from "@/components/SupporterTicker";
 
 export const metadata: Metadata = {
   title: "Supporters",
@@ -44,9 +45,30 @@ const communityDonors = [
   "Friends of CMAC",
 ];
 
+const studentSupporters = [
+  "Freshman Student",
+  "Sophomore Student",
+  "Junior Student",
+  "Senior Student",
+  "CMAC Student Representative",
+  "Arts Honor Society Member",
+  "Tri-M Honor Society Member",
+];
+
+const individualFamilySupporters = [
+  "FAMILY SUPPORTER",
+  "INDIVIDUAL SUPPORTER",
+  "D. Andersen",
+  "The Kosak Family",
+  "The Perrone Family",
+  "The Dvorsky Family",
+  "The Provenzale Family",
+  "Anonymous",
+];
+
 export default function SponsorsPage() {
   return (
-    <main className="subpage">
+    <main className="subpage sponsors-page">
       <section className="subpage-hero">
         <p className="subpage-kicker">Who supports CMAC?</p>
         <p className="subpage-hero__statement">
@@ -97,12 +119,24 @@ export default function SponsorsPage() {
       </section>
 
       <section className="content-card community-support-card">
+        <h2>Student Supporters</h2>
+        <p className="muted-copy community-support-copy">
+          Thank you to the students whose support helps keep music and arts
+          opportunities growing in our schools.
+        </p>
+        <SupporterTicker supporters={studentSupporters} label="Student Supporters list" />
+      </section>
+
+      <section className="content-card community-support-card">
         <h2>Individual &amp; Family Supporters</h2>
         <p className="muted-copy community-support-copy">
           We are grateful to the individuals and families whose generous support
           helps make scholarships and arts-learning opportunities possible.
         </p>
-        <FamilySupporterTicker />
+        <SupporterTicker
+          supporters={individualFamilySupporters}
+          label="Individual/Family Supporters list"
+        />
       </section>
 
       <section className="content-card community-support-card">
@@ -126,6 +160,25 @@ export default function SponsorsPage() {
           </Link>
         </div>
       </section>
+      <aside className="premier-sponsor-sidebar" aria-labelledby="premier-sidebar-title">
+        <h2 id="premier-sidebar-title">Premier Community Sponsors</h2>
+        <div className="premier-sponsor-sidebar__logos">
+          {[1, 2].map((logo) => (
+            <Link
+              key={logo}
+              href="/sponsors/thank-you"
+              className="premier-sponsor-sidebar__logo"
+            >
+              <Image
+                src="/cmac/friends-of-cmac.svg"
+                alt="Friends of CMAC - view our sponsor thank-you page"
+                width={320}
+                height={320}
+              />
+            </Link>
+          ))}
+        </div>
+      </aside>
     </main>
   );
 }

@@ -66,6 +66,7 @@ export const SITE_PAGE_GROUPS: SitePageGroup[] = [
     category: "Sponsors, Help & Info",
     pages: [
       { path: "/sponsors", label: "Sponsors", description: "Sponsor recognition", status: "Main menu" },
+      { path: "/sponsors/thank-you", label: "Sponsor Thank You", description: "Thank-you page linked from premier sponsor logos", status: "Linked" },
       { path: "/faq", label: "FAQ", description: "Frequently asked questions", status: "Footer" },
       { path: "/contact", label: "Contact CMAC", description: "Contact form and email", status: "Footer" },
       { path: "/privacy-policy", label: "Privacy Policy", description: "Privacy policy", status: "Footer" },

@@ -66,6 +66,23 @@ export default function Home() {
         </Link>
       </p>
 
+      <aside className="premier-sponsor-spotlight" aria-labelledby="premier-sponsor-title">
+        <div>
+          <p className="premier-sponsor-spotlight__kicker">Our highest level of community support</p>
+          <h2 id="premier-sponsor-title">COMING SOON - PREMIER SPONSORS</h2>
+          <p className="premier-sponsor-spotlight__copy">
+            A place of honor for the partners helping Comsewogue students create,
+            perform, and thrive. Premier Community Supporters will be featured here.
+          </p>
+        </div>
+        <Link
+          href="/get-involved#premier-community-supporter"
+          className="premier-sponsor-spotlight__link"
+        >
+          Become a Premier Supporter
+        </Link>
+      </aside>
+
       <section className="home-pathways" aria-label="Ways to support CMAC">
         <div className="section-heading">
           <p className="section-kicker">Ways to support</p>
