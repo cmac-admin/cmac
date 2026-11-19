@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "Comsewogue Music & Arts Corp. (CMAC) is a 501(c) non-profit supporting student musicians, artists, and performers in the Comsewogue School District through scholarships, teacher grants, and community events.",
   metadataBase: new URL(siteUrl),
   icons: {
-    icon: "/cmac-favicon.png",
-    shortcut: "/cmac-favicon.png",
-    apple: "/cmac-favicon.png",
+    icon: "/cmac-favicon.png?v=cmac-logo",
+    shortcut: "/cmac-favicon.png?v=cmac-logo",
+    apple: "/cmac-favicon.png?v=cmac-logo",
   },
   openGraph: {
     siteName: "Comsewogue Music & Arts Corp.",

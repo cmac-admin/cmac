@@ -21,6 +21,9 @@ export default function Home() {
         <div className="hero__slideshow" aria-hidden="true">
           <div className="hero__slide hero__slide--one" />
           <div className="hero__slide hero__slide--two" />
+          <div className="hero__slide hero__slide--art" />
+          <div className="hero__slide hero__slide--orchestra" />
+          <div className="hero__slide hero__slide--chorus" />
         </div>
 
         <div className="hero__meta">
