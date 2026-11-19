@@ -23,7 +23,7 @@ export default async function AboutPage() {
       <section className="subpage-hero">
         <p className="subpage-kicker">What is CMAC?</p>
         <p className="subpage-hero__statement">
-          A volunteer-run nonprofit dedicated to keeping music, drama, and visual arts strong.
+          A volunteer-run nonprofit dedicated to supporting music, drama, and visual arts in the Comsewogue School District.
         </p>
       </section>
 
