@@ -84,14 +84,12 @@ a {
   left: 0;
   right: 0;
   z-index: 100;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(8, 20, 35, 0.82) 0%,
-      rgba(10, 29, 48, 0.82) 52%,
-      rgba(12, 27, 45, 0.82) 100%
-    ),
-    url("/site-header-art.jpg");
+  background-image: linear-gradient(
+    90deg,
+    #081423 0%,
+    #0a1d30 52%,
+    #0c1b2d 100%
+  );
   background-size: cover;
   background-position: center;
   box-shadow: 0 5px 16px rgba(8, 17, 29, 0.25);
@@ -484,82 +482,79 @@ a {
 .hero__slideshow {
   position: absolute;
   inset: 0;
+  background-color: var(--brand-blue);
 }
 
 .hero__slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center 35%;
-  opacity: 0;
-  transform: scale(1.04);
-  will-change: opacity, transform, background-position;
-}
-
-.hero__slide--one {
   background-image:
     linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 40%,
       rgba(10, 23, 40, 0.45) 100%
     ),
-    url("/site-header-art.jpg");
+    var(--slide-image);
   background-size: cover;
+  background-position: center 35%;
+  opacity: 0;
+  transform: scale(1.04);
+  will-change: opacity, transform;
+  animation: heroSlide 37.5s ease-in-out infinite;
+}
+
+.hero__slide--one {
+  --slide-image: url("/homepage-band.webp");
   background-position: center 40%;
-  animation: heroSlideOne 15s ease-in-out infinite;
 }
 
 .hero__slide--two {
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 40%,
-      rgba(16, 33, 55, 0.45) 100%
-    ),
-    url("/drama-stage.jpg");
-  background-size: cover;
+  --slide-image: url("/drama-stage.jpg");
   background-position: center 28%;
-  animation: heroSlideTwo 15s ease-in-out infinite;
+  scale: -1 1;
+  animation-delay: 7.5s;
 }
 
-@keyframes heroSlideOne {
-  0%,
-  8% {
+.hero__slide--art {
+  --slide-image: url("/homepage-art.webp");
+  animation-delay: 15s;
+}
+
+.hero__slide--orchestra {
+  --slide-image: url("/homepage-orchestra.webp");
+  animation-delay: 22.5s;
+}
+
+.hero__slide--chorus {
+  --slide-image: url("/homepage-chorus.webp");
+  animation-delay: 30s;
+}
+
+@keyframes heroSlide {
+  0% {
     opacity: 0;
     transform: scale(1.045);
-    background-position: 46% 34%;
   }
-  14%,
-  43% {
+  3%,
+  20% {
     opacity: 1;
     transform: scale(1.02);
-    background-position: 52% 38%;
   }
-  49%,
+  23%,
   100% {
     opacity: 0;
     transform: scale(1);
-    background-position: 56% 42%;
   }
 }
 
-@keyframes heroSlideTwo {
-  0%,
-  48% {
-    opacity: 0;
-    transform: scale(1.045);
-    background-position: 50% 28%;
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide {
+    animation: none;
+    transform: none;
   }
-  54%,
-  92% {
+
+  .hero__slide--one {
     opacity: 1;
-    transform: scale(1.02);
-    background-position: 50% 32%;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-    background-position: 57% 40%;
   }
 }
 
